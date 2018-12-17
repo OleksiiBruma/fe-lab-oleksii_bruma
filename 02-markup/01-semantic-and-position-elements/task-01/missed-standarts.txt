@@ -1,0 +1,36 @@
+The file style.css were created to separate html and css.
+
+HTML
+1. <!DOCTYPE html> were missed;
+2. Better to put all styles to the separate file;
+3. Use double quotes;
+4. Value of attributes should be in double quotes;
+5. Indentings were missed;
+6. Charset="UTF-8" were missed;
+7. Link to the font can be merged and type can be omitted;
+8. Missed alt attributes in img tag; 
+9. Div was used instead of nav;
+10. Div was used instead of footer;
+11. Tag body was not closed;
+12. Divs with classes main-nav, about, 
+experiences, achievements, skills should be replaced with section;
+13. Use semantic tags;
+14. Attribute order should be as follow - class, id, name, data-*, src, for,
+type, href, value, title, alt, aria-*, role.
+15. Lang attribute missed.
+16. <meta http-equiv="X-UA-Compatible" content="IE=edge">  only needed to support old IE browsers and should consist content="IE=edge" attribute (commented);
+17. H1 can be only one;
+
+CSS
+1. URL(<link>) link should be without double quotes. 
+2. Avoid 0px/0% - 0 is always 0;
+3. Unknown property  -ms-transition;
+4. Use shorthands for example padding : 0 0 0 0;
+5. Useless of the keyframe (commented);
+6. Don`t use !important (left due to kube.css); 
+7. Useless  .intro were deleted;
+8. Sprite can be used for link images (Facebook, Google)
+but they are too small in this task, so I think we can avoid them; 
+9. Media should be at the bottom;
+
+

@@ -1,0 +1,268 @@
+.title {
+    font-family: "Playfair Display SC", serif;
+    color: #333333
+}
+h2 {
+    font-size:2.25em;
+}
+
+a, p, li {
+    font-size: 1em;
+    font-family: "Lato", Arial, sans-serif;
+    color: #4E4E4E;
+    line-height: 1.75em
+}
+
+a:hover {
+    text-decoration: none !important;
+    color: #333333 !important;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out
+}
+
+.container {
+    margin: auto;
+    max-width: 662px;
+    padding: 0 20px;
+}
+
+/*@-webkit-keyframes blink {*/
+/*0% {*/
+/*opacity: 1*/
+/*}*/
+/*50% {*/
+/*opacity: 0*/
+/*}*/
+/*100% {*/
+/*opacity: 1*/
+/*}*/
+/*}*/
+
+/*@-moz-keyframes blink {*/
+/*0% {*/
+/*opacity: 1*/
+/*}*/
+/*50% {*/
+/*opacity: 0*/
+/*}*/
+/*100% {*/
+/*opacity: 1*/
+/*}*/
+/*}*/
+
+/*@-ms-keyframes blink {*/
+/*0% {*/
+/*opacity: 1*/
+/*}*/
+/*50% {*/
+/*opacity: 0*/
+/*}*/
+/*100% {*/
+/*opacity: 1*/
+/*}*/
+/*}*/
+
+/*@-o-keyframes blink {*/
+/*0% {*/
+/*opacity: 1*/
+/*}*/
+/*50% {*/
+/*opacity: 0*/
+/*}*/
+/*100% {*/
+/*opacity: 1*/
+/*}*/
+/*}*/
+
+.main-nav {
+    background: #F4F4F4;
+    padding-top: 23px
+}
+
+.main-nav a {
+    color: #A7A7A7
+}
+
+.main-nav li.active a {
+    color: #4D4D4D
+}
+
+.section_second {
+    margin-bottom: 90px
+}
+
+.section .container {
+    position: relative
+}
+
+.section .container:after {
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    content: '';
+    border-bottom: 1px solid #CCCCCC;
+    left: 20px
+}
+
+.section .container h2 {
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    position: relative
+}
+
+.introduction {
+    padding: 95px 0 70px 0;
+    overflow-x: hidden;
+}
+
+.avatar_item img {
+    width: 81px;
+    height: 81px;
+    border-radius: 99px;
+}
+
+.introduction .wrap {
+    margin: 30px 0;
+}
+
+.introduction h2:before {
+    position: absolute;
+    left: -220px;
+    top: -150px;
+    font-size: 270px;
+    z-index: -1;
+    color: #f4f4f4;
+}
+
+.unit-80 h2 span {
+    font-size: 47px;
+}
+
+.work-list {
+    margin-left: 0;
+}
+
+.work-list li {
+    list-style: none;
+    font-size: 0.9375em;
+    color: #8C8C8C;
+}
+
+.work-list li a {
+    padding-bottom: 5px;
+    font-size: 1.1875em;
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #B3B3B3;
+}
+
+
+.work-list a:hover {
+    border-bottom: 1px solid #333333;
+}
+
+.award-list {
+    margin-left: 0;
+}
+
+.award-list li:first-child, .skills_list li:first-child {
+    font-size: 0.9375em;
+    color: #8C8C8C;
+}
+
+.skills_list {
+    margin-left: 0;
+}
+
+.quote {
+    background: url(../img/bg.png);
+    padding: 20px 0;
+    margin-top: 120px;
+}
+
+.quote_title {
+    margin: 100px 0;
+    padding: 40px 20px 40px 20px;
+    border: 5px solid #FFFFFF;
+    color: #FFFFFF;
+    font-family: "Playfair Display SC", serif;
+    font-size: 2.25em;
+    font-style: normal;
+    line-height: 1.1;
+    text-rendering: optimizeLegibility;
+}
+
+.social {
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.social_item {
+    list-style: none outside;
+    float: left;
+    margin: 0 10px 0 20px;
+}
+
+.social_item a {
+    display: block;
+    width: 33px;
+    height: 33px;
+    text-indent: -9999px;
+    overflow: hidden;
+}
+
+.facebook a {
+    background-image: url(../img/icons_facebook.jpg);
+}
+
+.facebook a:hover {
+    background-image: url(../img/icons_facebook_active.jpg);
+}
+
+.twitter a {
+    background-image: url(../img/icons_twitter.jpg);
+}
+
+.twitter a:hover {
+    background-image: url(../img/icons_twitter_active.jpg);
+}
+
+.google a:hover {
+    background-image: url(../img/icons_google_active.jpg);
+}
+
+.google a {
+    background-image: url(../img/icons_google.jpg);
+}
+
+.footer {
+    padding: 50px 0 0 0;
+}
+
+.social li {
+    display: inline;
+    margin-left: 20px
+}
+
+.social li a {
+    font-size: 1.25em;
+    color: #999999
+}
+@media only screen and (max-width: 767px) {
+    .main-nav {
+        background-color: #712B2B;
+    }
+
+    li.active a {
+        color: rgba(255, 216, 20, 0.66);
+    }
+
+    footer {
+        text-align: center
+    }
+}
