@@ -5,6 +5,8 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
@@ -40,7 +42,7 @@
   </section>
   <section class="short-bio section">
 
-    <h2 class="title title__blue">About</h2>
+    <h2 class="title title__dark-theme">About</h2>
     <p class="details">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
       has been the industry's standard dummy text ever since the 1500s, when an unknown.</p>
 
@@ -82,12 +84,12 @@
   </section>
   <section class="newsletter section">
 
-    <h2 class="title">Newsletter</h2>
+    <h2 class="title title__dark-theme">Newsletter</h2>
     <p class="details">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown.</p>
-    <form action="#">
-      <input type="email" name="email">
-      <input type="submit" value="Enter Email">
+    <form class="email-form" action="#">
+      <input class="email-form_input" type="email" name="email" placeholder="Enter Email">
+     <label class="fas fa-envelope email-form_submit-icon"><input class="email-form_submit" type="submit" value="Enter Email"></label>
     </form>
 
   </section>
@@ -95,19 +97,22 @@
 <footer class="footer">
 
   <nav class="bottom-nav">
-    <ul>
-      <li></li>
-      <li></li>
-      <li></li></ul>
-    <ul>
-      <li></li>
-      <li></li>
-      <li></li></ul>
-    <ul>
-      <li></li>
-      <li></li>
-      <li></li></ul>
+    <ul class="list list__menu">
+      <li class="list_item__menu">ABOUT</li>
+      <li class="list_item__menu">FAQ</li>
+      <li class="list_item__menu">WORK WITH US</li></ul>
   </nav>
-
+  <nav class="bottom-nav__social">
+    <ul class="list social">
+      <li class="social_item"><a class="social_link" href="#"><i class="social_icon fas fa-envelope"></i></a></li>
+      <li class="social_item"><a class="social_link" href="#"><i class="social_icon fab fa-facebook-f"></i></a></li>
+      <li class="social_item"><a class="social_link" href="#"><i class="social_icon fab  fa-twitter"></i></a></li>
+    </ul>
+  </nav>
+    <ul class="list list__service">
+      <li class="list_item__service">Privacy Policy</li>
+      <li class="list_item__service">Terms and Conditions</li>
+      <li class="list_item__service">© Company.LLC 2014</li>
+    </ul>
 </footer>
 </html>

@@ -15,7 +15,7 @@ padding:0.7em 1.6em;
     align-content: center;
     font-size:14px;
 }
-.btn
+
 .link {
     text-decoration: none;
 
@@ -95,7 +95,11 @@ text-align:center;
 .team {
     padding-top:20px;
     padding-bottom:20px;
-
+}
+.newsletter {
+    padding-top:20px;
+    padding-bottom:20px;
+    background-color:#f9f5ed;
 }
 .details {
     color:black;
@@ -108,7 +112,7 @@ text-align:center;
 .details__white{
     color:white;
 }
-.title__blue {
+.title__dark-theme {
     color:#0ebfdd;
 }
 .member_position {
@@ -128,6 +132,107 @@ text-align:center;
     margin:50px auto 0 auto;
     display:block;
 }
+.email-form {
+    margin:0 auto;
+    display:block;
+    position:relative;
+    width:220px;
+    box-sizing:border-box;
+}
+.email-form_input {
+    box-sizing:border-box;
+display:block;
+    width:100%;
+    border-radius: 0.625rem;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(149, 149, 149);
+    padding:0.7rem;
+    font-style:italic;
+    font-size:0.8rem;
+}
+.email-form_input:focus {
+    outline:0;
+    border-color:#6ec5ea;
+}
+.email-form_submit {
+    width:0;
+    height:0;
+    padding:0;
+    margin:0;
+    border:0;
+}
+.email-form_submit-icon{
+    position:absolute;
+    right:1.5rem;
+    top:50%;
+    cursor:pointer;
+    font-size:1.2rem;
+    transform:translate(50%,-50%);
+    color: #6ec5ea;
+}
+.email-form_submit-icon:hover {
+    color:#0ebfdd;
+}
+.footer {
+    margin: 0;
+    padding: 0;
+    padding-top:35px;
+}
+.email-form_input::placeholder {
+    color:#d3d3d3;
+    font-weight:800;
+}
+.bottom-nav {
+    color:white;
+}
+.social_item {
+    border-radius:2rem;
+    border:1px solid white;
+    padding:0.5rem;
+    font-size:1.6rem;
+}
+.social {
+    display:flex;
+    justify-content:space-evenly;
+    color:#d7dee4;
+}
+.social_link {
+    display:inline-block;
+    width:100%;
+    height:100%;
+}
+.social_icon {
+    padding:.75rem;
+    width:1.6rem;
+    height:1.6rem;
+    color:#d7dee4;
+}
+
+.list_item__menu{
+    padding:0 0 42px 0;
+    font-size:1.2rem;
+    color:#d7dee4;
+}
+
+.social {
+    width:280px;
+    margin:0 auto;
+}
+.list__service {
+    color:#73767a;
+    margin-top:1.7rem;
+    border-top:1px solid #73767a;
+    padding-top:1.6rem;
+}
+.list_item__service {
+    font-size:1.2rem;
+  padding-bottom:1rem;
+}
+
+
+
+
+
 
 
 
