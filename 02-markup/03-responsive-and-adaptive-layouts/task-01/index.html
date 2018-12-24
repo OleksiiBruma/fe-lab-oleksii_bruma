@@ -17,41 +17,41 @@
 	browser</a> to improve your experience.
 </p>
 <![endif]-->
-<div class="wrapper"></div>
+
 <header class="header">
+	<div class="main-wrapper">
+	<div class="wrapper__header">
 	<h1 class="logo">
-		<a class="link" href="#"><img src="images/logo.svg" width="97" height="36" alt="EPAM"></a>
+		<a class="link" href="#"><img class="logo_image" src="images/logo.svg" alt="EPAM"></a>
 	</h1>
 	<nav class="top-nav">
 		<ul class="top-nav_list list">
-			<li><a class="top-nav_item top-nav_item__active link" href="#">SERVICES</a></li>
+			<li><a class="top-nav_item link" href="#">SERVICES</a></li>
 			<li><a class="top-nav_item link" href="#">ABOUT</a></li>
 			<li><a class="top-nav_item link" href="#">CONTACT US</a></li>
 		</ul>
 	</nav>
 	<a class="btn btn__sign-in link" href="#">sign-in</a>
-
+	</div>
+	</div>
 </header>
 <main class="main">
-	<section class="intro section">
+	<section class="intro">
 		<h2 class="title">Our Mission</h2>
 		<p class="details details__white">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
 			Lorem Ipsum has been the industry's standard dummy text ever since the 1500.</p>
 	</section>
-	<section class="short-bio section">
-
+	<section class="short-bio">
 		<h2 class="title title__dark-theme">About</h2>
 		<p class="details">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
 			has been the industry's standard dummy text ever since the 1500s, when an unknown.</p>
-
 	</section>
-	<section class="team section">
-
+	<section class="team">
 		<h2 class="title team_title">Team</h2>
 		<ul class="member-list list">
 			<li class="member">
 				<figure class="member_figure">
-					<img class="member_image" src="images/member1.png" alt="John Doe">
+					<img class="member_image" src="images/m1.jpg" alt="John Doe">
 					<figcaption>
 						<h3 class="member_name">John Doe</h3>
 						<p class="member_position">Founder & CEO</p>
@@ -60,7 +60,7 @@
 			</li>
 			<li class="member">
 				<figure class="member_figure">
-					<img class="member_image" src="images/member2.png" alt="John Doe">
+					<img class="member_image" src="images/m2.jpg" alt="John Doe">
 					<figcaption>
 						<h3 class="member_name">John Doe</h3>
 						<p class="member_position">Co- Founder</p>
@@ -69,7 +69,7 @@
 			</li>
 			<li>
 				<figure class="member_figure">
-					<img class="member_image" src="images/member3.png" alt="John Doe">
+					<img class="member_image" src="images/m3.jpg" alt="John Doe">
 					<figcaption>
 						<h3 class="member_name">John Doe</h3>
 						<p class="member_position">Investor</p>
@@ -80,7 +80,7 @@
 		<a href="#" class="btn btn__wwu link">work with us</a>
 
 	</section>
-	<section class="newsletter section">
+	<section class="newsletter">
 
 		<h2 class="title title__dark-theme">Newsletter</h2>
 		<p class="details">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
@@ -94,12 +94,13 @@
 	</section>
 </main>
 <footer class="footer">
-
+	<div class="main-wrapper">
+	<div class="wrapper__footer">
 	<nav class="bottom-nav">
 		<ul class="list list__menu">
-			<li class="list_item__menu">ABOUT</li>
-			<li class="list_item__menu">FAQ</li>
-			<li class="list_item__menu">WORK WITH US</li>
+			<li class="list_item__menu"><a class="link" href="#">ABOUT</a></li>
+			<li class="list_item__menu"><a class="link" href="#">FAQ</a></li>
+			<li class="list_item__menu"><a class="link" href="#">WORK WITH US</a></li>
 		</ul>
 	</nav>
 	<nav class="bottom-nav__social">
@@ -110,9 +111,11 @@
 		</ul>
 	</nav>
 	<ul class="list list__service">
-		<li class="list_item__service">Privacy Policy</li>
-		<li class="list_item__service">Terms and Conditions</li>
-		<li class="list_item__service">© Company.LLC 2014</li>
+		<li class="list_item__service"><a class="link" href="#">Privacy Policy</a></li>
+		<li class="list_item__service"><a class="link" href="#">Terms and Conditions</a></li>
+		<li class="list_item__service list_item__service-last">© Company.LLC 2014</li>
 	</ul>
+	</div>
+	</div>
 </footer>
 </html>
