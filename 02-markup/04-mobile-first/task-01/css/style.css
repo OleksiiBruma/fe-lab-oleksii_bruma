@@ -36,14 +36,112 @@
 	padding: 0.5rem 0.8125rem 0.0625rem 0.9375rem;
 }
 
+.signup__image {
+	display:inline-block;
+	width: 28%;
+	vertical-align: middle;
+	height:auto;
+	margin-top: 0.625rem;
+	margin-right: 1.25rem;
+}
+
 @media screen and (min-width: 1250px) {
-	.container_header {
-		padding: 0;
+	.signup__image{
+		width: 36%;
 	}
 }
 
 .link {
 	text-decoration: none;
+}
+.signup {
+	background: url("../img/signup.jpg");
+	background-size: cover;
+	position: relative;
+	z-index: -1;
+}
+@media screen and (min-width: 1250px) {
+	.container_signup:before {
+		position:absolute;
+		top: 50%;
+		left:-3.125rem;
+		content: " ";
+		width: 2.8125rem;
+		height: 2.8125rem;
+		border-top: 0.125rem #979ea6 solid;
+		border-left: 0.125rem #979ea6 solid;
+		transform: rotate(-45deg) translate(50%, 50%);
+	}
+	.container_signup:after {
+		position:absolute;
+		top: 50%;
+		right:-3.125rem;
+		content: " ";
+		width: 2.8125rem;
+		height: 2.8125rem;
+		border-top: 0.125rem #979ea6 solid;
+		border-left: 0.125rem #979ea6 solid;
+		transform: rotate(135deg) translate(50%, 50%);
+	}
+}
+.signup__caption {
+	font-size: 0.9375rem;
+	text-align: left;
+	margin: 0;
+font-weight:normal;
+}
+
+@media screen and (min-width: 1250px) {
+	.signup__caption {
+		font-size:2.625rem;
+
+	}
+}
+
+.signup__text {
+	margin: 0;
+	text-align: left;
+	line-height: 1.125rem;
+
+}
+
+@media screen and (min-width: 1250px) {
+	.signup__text {
+		font-size:1.625rem;
+		line-height: 2.825rem;
+	}
+}
+
+.signup__button {
+	display:inline-block;
+	font-size: 0.9375rem;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1;
+	letter-spacing: normal;
+	text-align: left;
+	color: white;
+	padding: 0.3125rem 0.3125rem 0.3125rem 2rem;
+	margin-top: 1.0625rem;
+	background: url("../img/signup_pic.svg") no-repeat #5094f2;
+	background-size: 0.9375rem;
+	background-position: 0.5375rem 0.2125rem;
+}
+
+@media screen and (min-width: 1250px) {
+	.signup__button {
+		margin-top: 2rem;
+		font-size: 1.5rem;
+		background-position: 0.5375rem 0.5375rem;
+		background-size: 1.3375rem;
+		padding: 0.3125rem 0.3125rem 0.7125rem 2.5rem;
+	}
+}
+
+@media screen and (min-width: 1250px) {
+	.container_header {
+		padding: 0;
+	}
 }
 
 .logo {
@@ -88,10 +186,9 @@
 }
 
 .menu__link {
-	font-family: 'Ek Mukta';
 	width: 24.625rem;
 	height: 1rem;
-	font-size: 1.26875rem;
+	font: 1.26875rem 'Ek Mukta', sans-serif;
 	font-weight: normal;
 	font-style: normal;
 	font-stretch: normal;
@@ -124,4 +221,49 @@
 	.nav {
 		width: 43%;
 	}
+}
+.wrapper_signup {
+	display: inline-block;
+	vertical-align:middle;
+	font-family: 'Roboto', sans-serif;
+	font-size: 0.71875rem;
+	color: white;
+	text-align:left;
+}
+
+@media screen and (min-width: 1250px) {
+	.wrapper_signup {
+		margin-top: 1.875rem;
+		margin-left: 4.5rem;
+	}
+}
+
+.container_signup {
+	text-align: center;
+	position: relative;
+}
+
+@media screen and (min-width: 1250px) {
+	.container_signup {
+		width:90%;
+	}
+}
+
+.popular {
+	height: 200px;
+}
+@media screen and (min-width: 1250px) {
+.features {
+	margin-top: -0.9rem;
+	border-top: 10px solid transparent;
+	background-image:
+					linear-gradient(white, white),
+					linear-gradient(to bottom right, transparent 50.5%, white 50.5%),
+					linear-gradient(to bottom left, transparent 50.5%, white 50.5%);
+	background-repeat: repeat, repeat-x, repeat-x;
+	background-position: 0 0, 10px 0, 10px 0;
+	background-size: auto auto, 15px 15px, 15px 15px;
+	background-clip: padding-box, border-box, border-box;
+	background-origin: padding-box, border-box, border-box, border-box, border-box;
+}
 }
