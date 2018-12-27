@@ -1,0 +1,127 @@
+@font-face {
+	font-family: 'Ek Mukta';
+	src: url('../fonts/EkMukta-Regular.eot');
+	src: url('../fonts/EkMukta-Regular.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/EkMukta-Regular.woff2') format('woff2'),
+	url('../fonts/EkMukta-Regular.woff') format('woff'),
+	url('../fonts/EkMukta-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.bar {
+	display: block;
+	margin: 0 0 2px 0;
+	width: 18px;
+	height: 3px;
+	background-color: white;
+	border-radius: 1px;
+}
+
+.container {
+	max-width: 1025px;
+	margin: 0 auto;
+}
+
+@media screen and (min-width: 1250px) {
+	.container {
+		max-width: 1025px;
+	}
+}
+
+.container_header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 8px 13px 1px 15px;
+}
+
+@media screen and (min-width: 1250px) {
+	.container_header {
+		padding: 0 0 0 0;
+	}
+}
+
+.link {
+	text-decoration: none;
+}
+
+.logo {
+	margin: 0;
+	width: 104px;
+	height: auto;
+}
+
+@media screen and (min-width: 1250px) {
+	.logo {
+		width: 178px;
+		height: 44px;
+		margin-left: 28px;
+	}
+}
+
+.logo__img {
+	width: 100%;
+}
+
+.list {
+	margin: 0;
+}
+
+.menu {
+	display: none;
+	justify-content: space-around;
+	list-style-type: none;
+	margin-top: 14px;
+	padding: 0;
+}
+@media screen and (min-width: 1250px) {
+	.menu {
+		display: flex;
+	}
+}
+
+.menu__item {
+	display: block;
+	margin-top: 25px;
+	padding-bottom: 13px;
+}
+
+.menu__link {
+	font-family: 'Ek Mukta';
+	width: 394px;
+	height: 16px;
+	font-size: 20.3px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: 0.2px;
+	text-align: left;
+	color: #6c6c6c;
+	padding-bottom: 10px;
+}
+
+.menu__link_active {
+	border-bottom: 3px solid #5094f2;
+}
+
+.toggle {
+	text-align: center;
+	padding: 5px 5px 3px 5px;
+	display: inline-block;
+	background-color: #5094f2;
+	border-radius: 1px;
+}
+
+@media screen and (min-width: 1250px) {
+	.toggle {
+		display: none;
+	}
+}
+
+@media screen and (min-width: 1250px) {
+	.nav {
+		width: 43%;
+	}
+}
