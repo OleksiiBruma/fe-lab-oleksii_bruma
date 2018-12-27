@@ -11,11 +11,11 @@
 
 .bar {
 	display: block;
-	margin: 0 0 2px 0;
-	width: 18px;
-	height: 3px;
+	margin: 0 0 0.125rem 0;
+	width: 1.125rem;
+	height: 0.1875rem;
 	background-color: white;
-	border-radius: 1px;
+	border-radius: 0.0625rem;
 }
 
 .container {
@@ -33,12 +33,12 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 8px 13px 1px 15px;
+	padding: 0.5rem 0.8125rem 0.0625rem 0.9375rem;
 }
 
 @media screen and (min-width: 1250px) {
 	.container_header {
-		padding: 0 0 0 0;
+		padding: 0;
 	}
 }
 
@@ -48,15 +48,15 @@
 
 .logo {
 	margin: 0;
-	width: 104px;
+	width: 6.5rem;
 	height: auto;
 }
 
 @media screen and (min-width: 1250px) {
 	.logo {
-		width: 178px;
-		height: 44px;
-		margin-left: 28px;
+		width: 11.125rem;
+		height: 2.75rem;
+		margin-left: 1.75rem;
 	}
 }
 
@@ -72,7 +72,7 @@
 	display: none;
 	justify-content: space-around;
 	list-style-type: none;
-	margin-top: 14px;
+	margin-top: 0.875rem;
 	padding: 0;
 }
 @media screen and (min-width: 1250px) {
@@ -83,35 +83,35 @@
 
 .menu__item {
 	display: block;
-	margin-top: 25px;
-	padding-bottom: 13px;
+	margin-top: 1.5625rem;
+	padding-bottom: 0.8125rem;
 }
 
 .menu__link {
 	font-family: 'Ek Mukta';
-	width: 394px;
-	height: 16px;
-	font-size: 20.3px;
+	width: 24.625rem;
+	height: 1rem;
+	font-size: 1.26875rem;
 	font-weight: normal;
 	font-style: normal;
 	font-stretch: normal;
 	line-height: normal;
-	letter-spacing: 0.2px;
+	letter-spacing: 0.0125rem;
 	text-align: left;
 	color: #6c6c6c;
-	padding-bottom: 10px;
+	padding-bottom: 0.625rem;
 }
 
 .menu__link_active {
-	border-bottom: 3px solid #5094f2;
+	border-bottom: 0.1875rem solid #5094f2;
 }
 
 .toggle {
 	text-align: center;
-	padding: 5px 5px 3px 5px;
+	padding: 0.3125rem 0.3125rem 0.1875rem 0.3125rem;
 	display: inline-block;
 	background-color: #5094f2;
-	border-radius: 1px;
+	border-radius: 0.0625rem;
 }
 
 @media screen and (min-width: 1250px) {
