@@ -55,10 +55,20 @@
 	text-decoration: none;
 }
 .signup {
-	background: url("../img/signup.jpg");
+	background: url("../img/signup-mob.jpg");
 	background-size: cover;
 	position: relative;
 	z-index: -1;
+}
+
+@media screen and (min-width: 1250px) {
+	.signup {
+		background: url("../img/signup.jpg");
+		background-size: cover;
+		position: relative;
+		z-index: -1;
+	}
+
 }
 @media screen and (min-width: 1250px) {
 	.container_signup:before {
@@ -390,4 +400,100 @@ font-weight:normal;
 	flex-direction: row;
 	justify-content:center;
 	margin-top: 50px;
+}}
+
+.shopping-cart__caption {
+	font-size: 22px;
+	font-family: 'Roboto', sans-serif;
+	color: #6f7173;
+	text-align: center;
+
+}
+
+
+@media screen and (min-width: 1250px) {
+	.shopping-cart__caption {
+		font-size: 42px;
+		font-family: 'Roboto', sans-serif;
+		color: #6f7173;
+		text-align: left;
+
+	}
+}
+
+
+@media screen and (min-width: 1250px) {
+	.shopping-cart__caption_small {
+	font-size: 26px;
+		margin-top: 0;
+	}
+}
+
+.shopping-cart__pic {
+	display:block;
+	margin:0 auto;
+	width:50%;
+	height: auto;
+	flex-shrink: 0;
+
+}
+
+@media screen and (min-width: 1250px) {
+	.shopping-cart__pic {
+		max-width:41%;
+		height:auto;
+		margin:0;
+	}
+}
+
+
+.shopping-cart__text {
+	font-family: 'Roboto', sans-serif;
+	text-align: left;
+	color: #6f7173;
+
+}
+@media screen and (min-width: 1250px) {
+	.shopping-cart__text {
+		width:48%;
+	}
+}
+
+.shopping-cart__description {
+	font-size:10px;
+	line-height: 2.07;
+}
+
+@media screen and (min-width: 1250px) {
+	.shopping-cart__description {
+		font-size: 15px;
+	}
+}
+
+.footer {
+	border-top: 1px #cccccc solid;
+	text-align: center;
+	font-family: 'Roboto', sans-serif;
+	color: #6f7173;
+	font-size: 8px;
+	margin:0;
+	padding:0;
+
+}
+
+.footer__text {
+	display:inline-block;
+	vertical-align: middle;
+	line-height: 2.35;
+	font-size: 10px;
+}
+
+@media screen and (min-width: 1250px) {
+.shopping-cart__item {
+	display:flex;
+	justify-content: space-between;
+	margin-right:0;
+	margin-left:0;
+	align-items: center;
+
 }}
