@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,500,700'), "common.scss",  "mixins.scss",  "variables.scss";
+.btn {
+
+  &_success{
+    @include btn($success-shadow, $success-background);
+  }
+  &_warning{
+    @include btn($warning-shadow, $warning-background);
+  }
+  &_danger{
+    @include btn($danger-shadow, $danger-background);
+  }
+  &_info{
+      @include btn($info-shadow, $info-background);
+    }
+  &_default{
+    @include btn($default-shadow, $default-background);
+  }
+  &_hover {
+     box-shadow: none;
+     background-image: none;
+   }
+  &_active {
+    box-shadow: inset 0px 2px 5px 0px rgba(0, 0, 0, 0.21);
+    background-image: none;
+  }
+}
+.checkbox {
+  &_success {
+    @include checkbox($success-background);
+  }
+  &_warning{
+    @include checkbox($warning-background);
+  }
+  &_danger{
+    @include checkbox($danger-background);
+  }
+  &_info{
+    @include checkbox($info-background);
+  }
+  &_default{
+    @include checkbox($default-background);
+  }
+}
+.list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  &_buttons {
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+  }
+
+  &__checkboxes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+
+body{
+  background-color: #f3f3f3;
+};
+
+.caption {
+    width:80%;
+    margin: 0 auto;
+    margin-top: 70px;
+    font-family: Roboto, sans-serif;
+    font-size: 40px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 0.83;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+  &_bold {
+    font-weight: bold;
+  }
+}
+
+.wrapper_buttons {
+  margin:0 auto;
+  width:82%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.list__item {
+  margin-top: 70px;
+}
+
+.hidden {
+  display: none;
+}

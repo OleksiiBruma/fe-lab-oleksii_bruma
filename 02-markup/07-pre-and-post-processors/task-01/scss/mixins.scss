@@ -1,0 +1,73 @@
+@mixin btn ($color-shadow, $color-background) {
+  display: inline-block;
+  box-shadow: 0 2px 0 0 $color-shadow, inset -5px 0px 50px 0 rgba(0, 0, 0, 0.1);
+  background-color: $color-background;
+  background-image: linear-gradient(to top, rgba(0,0,0,0.1), rgba(255,255,255,0.3)), linear-gradient(to bottom, $color-background, $color-background);
+  padding: 32px 96px;
+  font-family: Roboto, sans-serif;
+  font-size: 36.8px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 0.8;
+  letter-spacing: normal;
+  text-align: left;
+  color: #fafafa;
+  border-radius: 5px;
+  &:hover {
+     box-shadow: none;
+     background: $color-background;
+   }
+  &:active {
+    box-shadow: inset 0px 2px 5px 0px rgba(0, 0, 0, 0.21);
+    background: $color-background;
+  }
+}
+
+@mixin checkbox ($color-background) {
+ & + label {
+    display: block;
+    cursor: pointer;
+   width:35px;
+   height:35px;
+   margin-top: 10px;
+   box-sizing: border-box;
+  }
+
+  & {
+    display: none;
+  }
+
+  & + label:before {
+    font-family: "Font Awesome 5 Free", sans-serif;
+    font-weight: 900;
+    box-sizing: border-box;
+    content: "\f00c";
+    border: 2px solid #000;
+    border-radius: 5px;
+    display: inline-block;
+    width:35px;
+    height:35px;
+    color: transparent;
+    opacity: 0.2;
+    background-color: #e8ebec;
+    padding: 10px;
+  }
+
+  &:checked + label:before {
+    background-color: $color-background;
+    border: 0;
+    color: #fff;
+    opacity: 1;
+    border-radius: 5px;
+    box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.2);
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.2)), linear-gradient(to bottom, $color-background, $color-background);
+  }
+
+  &:checked:disabled + label:before {
+    background-color: $color-background;
+    border-color: $color-background;
+    opacity: 0.5;
+  }
+}
+
