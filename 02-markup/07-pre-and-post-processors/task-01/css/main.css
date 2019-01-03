@@ -335,6 +335,267 @@
   opacity: 0.5;
 }
 
+.pagination_success {
+  display: inline-block;
+}
+.pagination_success__link {
+  border-radius: 4.6px;
+  color: #454c4d;
+  display: inline-block;
+  text-decoration: none;
+  box-sizing: border-box;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  margin: auto;
+  font-size: 20px;
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+  box-shadow: 0px 1px 0px 1px #c3c3c3, inset 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.1), white), linear-gradient(to bottom, #e7eaeb, #e7eaeb);
+  margin-right: 20px;
+}
+.pagination_success__link:hover, .pagination_success__link_hover {
+  background-color: #ddd;
+  box-shadow: none;
+  background-image: none;
+}
+.pagination_success__link_active {
+  box-shadow: 0px 1px 0px 1px #27ae60, inset 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.3)), linear-gradient(to bottom, #27ae60, #27ae60);
+  color: white;
+}
+.pagination_success__link_active:hover, .pagination_success__link_active_hover {
+  box-shadow: none;
+  background-image: none;
+  background-color: #168c48;
+  color: white;
+}
+.pagination_success__icon_right:before {
+  font-family: "Font Awesome 5 Free", sans-serif;
+  font-weight: 900;
+  content: "";
+  font-size: 16px;
+}
+.pagination_success__icon:hover, .pagination_success__icon_hover {
+  background-color: #cacfd2;
+}
+.pagination_success__icon_left:before {
+  font-family: "Font Awesome 5 Free", sans-serif;
+  font-weight: 900;
+  content: "";
+  font-size: 16px;
+}
+.pagination_warning {
+  display: inline-block;
+}
+.pagination_warning__link {
+  border-radius: 4.6px;
+  color: #454c4d;
+  display: inline-block;
+  text-decoration: none;
+  box-sizing: border-box;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  margin: auto;
+  font-size: 20px;
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+  box-shadow: 0px 1px 0px 1px #c3c3c3, inset 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.1), white), linear-gradient(to bottom, #e7eaeb, #e7eaeb);
+  margin-right: 20px;
+}
+.pagination_warning__link:hover, .pagination_warning__link_hover {
+  background-color: #ddd;
+  box-shadow: none;
+  background-image: none;
+}
+.pagination_warning__link_active {
+  box-shadow: 0px 1px 0px 1px #f1c40f, inset 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.3)), linear-gradient(to bottom, #f1c40f, #f1c40f);
+  color: white;
+}
+.pagination_warning__link_active:hover, .pagination_warning__link_active_hover {
+  box-shadow: none;
+  background-image: none;
+  background-color: #cca60d;
+  color: white;
+}
+.pagination_warning__icon_right:before {
+  font-family: "Font Awesome 5 Free", sans-serif;
+  font-weight: 900;
+  content: "";
+  font-size: 16px;
+}
+.pagination_warning__icon:hover, .pagination_warning__icon_hover {
+  background-color: #cacfd2;
+}
+.pagination_warning__icon_left:before {
+  font-family: "Font Awesome 5 Free", sans-serif;
+  font-weight: 900;
+  content: "";
+  font-size: 16px;
+}
+.pagination_danger {
+  display: inline-block;
+}
+.pagination_danger__link {
+  border-radius: 4.6px;
+  color: #454c4d;
+  display: inline-block;
+  text-decoration: none;
+  box-sizing: border-box;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  margin: auto;
+  font-size: 20px;
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+  box-shadow: 0px 1px 0px 1px #c3c3c3, inset 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.1), white), linear-gradient(to bottom, #e7eaeb, #e7eaeb);
+  margin-right: 20px;
+}
+.pagination_danger__link:hover, .pagination_danger__link_hover {
+  background-color: #ddd;
+  box-shadow: none;
+  background-image: none;
+}
+.pagination_danger__link_active {
+  box-shadow: 0px 1px 0px 1px #e74c3c, inset 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.3)), linear-gradient(to bottom, #e74c3c, #e74c3c);
+  color: white;
+}
+.pagination_danger__link_active:hover, .pagination_danger__link_active_hover {
+  box-shadow: none;
+  background-image: none;
+  background-color: #aa3428;
+  color: white;
+}
+.pagination_danger__icon_right:before {
+  font-family: "Font Awesome 5 Free", sans-serif;
+  font-weight: 900;
+  content: "";
+  font-size: 16px;
+}
+.pagination_danger__icon:hover, .pagination_danger__icon_hover {
+  background-color: #cacfd2;
+}
+.pagination_danger__icon_left:before {
+  font-family: "Font Awesome 5 Free", sans-serif;
+  font-weight: 900;
+  content: "";
+  font-size: 16px;
+}
+.pagination_info {
+  display: inline-block;
+}
+.pagination_info__link {
+  border-radius: 4.6px;
+  color: #454c4d;
+  display: inline-block;
+  text-decoration: none;
+  box-sizing: border-box;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  margin: auto;
+  font-size: 20px;
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+  box-shadow: 0px 1px 0px 1px #c3c3c3, inset 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.1), white), linear-gradient(to bottom, #e7eaeb, #e7eaeb);
+  margin-right: 20px;
+}
+.pagination_info__link:hover, .pagination_info__link_hover {
+  background-color: #ddd;
+  box-shadow: none;
+  background-image: none;
+}
+.pagination_info__link_active {
+  box-shadow: 0px 1px 0px 1px #2980b9, inset 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.3)), linear-gradient(to bottom, #2980b9, #2980b9);
+  color: white;
+}
+.pagination_info__link_active:hover, .pagination_info__link_active_hover {
+  box-shadow: none;
+  background-image: none;
+  background-color: #1c5f8a;
+  color: white;
+}
+.pagination_info__icon_right:before {
+  font-family: "Font Awesome 5 Free", sans-serif;
+  font-weight: 900;
+  content: "";
+  font-size: 16px;
+}
+.pagination_info__icon:hover, .pagination_info__icon_hover {
+  background-color: #cacfd2;
+}
+.pagination_info__icon_left:before {
+  font-family: "Font Awesome 5 Free", sans-serif;
+  font-weight: 900;
+  content: "";
+  font-size: 16px;
+}
+.pagination_default {
+  display: inline-block;
+}
+.pagination_default__link {
+  border-radius: 4.6px;
+  color: #454c4d;
+  display: inline-block;
+  text-decoration: none;
+  box-sizing: border-box;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  margin: auto;
+  font-size: 20px;
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+  box-shadow: 0px 1px 0px 1px #c3c3c3, inset 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.1), white), linear-gradient(to bottom, #e7eaeb, #e7eaeb);
+  margin-right: 20px;
+}
+.pagination_default__link:hover, .pagination_default__link_hover {
+  background-color: #ddd;
+  box-shadow: none;
+  background-image: none;
+}
+.pagination_default__link_active {
+  box-shadow: 0px 1px 0px 1px #454c4d, inset 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.3)), linear-gradient(to bottom, #454c4d, #454c4d);
+  color: white;
+}
+.pagination_default__link_active:hover, .pagination_default__link_active_hover {
+  box-shadow: none;
+  background-image: none;
+  background-color: #1c1c1c;
+  color: white;
+}
+.pagination_default__icon_right:before {
+  font-family: "Font Awesome 5 Free", sans-serif;
+  font-weight: 900;
+  content: "";
+  font-size: 16px;
+}
+.pagination_default__icon:hover, .pagination_default__icon_hover {
+  background-color: #cacfd2;
+}
+.pagination_default__icon_left:before {
+  font-family: "Font Awesome 5 Free", sans-serif;
+  font-weight: 900;
+  content: "";
+  font-size: 16px;
+}
+
 .list {
   list-style-type: none;
   margin: 0;
@@ -348,10 +609,16 @@
   align-items: center;
   display: flex;
 }
-.list__checkboxes {
+.list_checkboxes {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.pagination {
+  margin-top: 40px;
 }
 
 body {
@@ -360,8 +627,7 @@ body {
 
 .caption {
   width: 80%;
-  margin: 0 auto;
-  margin-top: 70px;
+  margin: 70px auto 0 auto;
   font-family: Roboto, sans-serif;
   font-size: 40px;
   font-weight: 300;
@@ -382,6 +648,14 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap;
+}
+.wrapper_paginations {
+  width: 82%;
+  justify-content: space-between;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
 }
 
 .list__item {
