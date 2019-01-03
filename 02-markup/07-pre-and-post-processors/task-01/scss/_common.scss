@@ -1,41 +1,77 @@
+.buttons {
+  &__list {
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  &__caption {
+    margin: 120px 0 20px 20px;
+  }
+}
+
+.checkboxes {
+  &__caption {
+    margin: 192px 0 110px 0;
+
+  }
+  &__list {
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width:350px;
+  }
+}
+
 .btn {
-  &_success{
+  &_success {
     @include btn($success-shadow, $success-background);
   }
-  &_warning{
+
+  &_warning {
     @include btn($warning-shadow, $warning-background);
   }
-  &_danger{
+
+  &_danger {
     @include btn($danger-shadow, $danger-background);
   }
-  &_info{
+
+  &_info {
     @include btn($info-shadow, $info-background);
   }
-  &_default{
+
+  &_default {
     @include btn($default-shadow, $default-background);
   }
+
   &_hover {
     box-shadow: none;
     background-image: none;
   }
+
   &_active {
     box-shadow: inset 0 2px 5px 0 rgba(0, 0, 0, 0.21);
     background-image: none;
   }
 }
+
 .checkbox {
+
   &_success {
     @include checkbox($success-background);
   }
+
   &_warning {
     @include checkbox($warning-background);
   }
+
   &_danger {
     @include checkbox($danger-background);
   }
+
   &_info {
     @include checkbox($info-background);
   }
+
   &_default {
     @include checkbox($default-background);
   }
@@ -43,20 +79,48 @@
 
 .pagination {
 
-  &_success{
+  &_success {
     @include pagination($success-shadow, $success-background);
   }
-  &_warning{
+
+  &_warning {
     @include pagination($warning-shadow, $warning-background);
   }
-  &_danger{
+
+  &_danger {
     @include pagination($danger-shadow, $danger-background);
   }
-  &_info{
+
+  &_info {
     @include pagination($info-shadow, $info-background);
   }
+
   &_default {
     @include pagination($default-shadow, $default-background);
+  }
+}
+
+.tabs {
+  @include tabs(none, none);
+
+  &_success {
+    @include tabs($success-shadow, $success-background);
+  }
+
+  &_warning {
+    @include tabs($warning-shadow, $warning-background);
+  }
+
+  &_danger {
+    @include tabs($danger-shadow, $danger-background);
+  }
+
+  &_info {
+    @include tabs($info-shadow, $info-background);
+  }
+
+  &_default {
+    @include tabs($default-shadow, $default-background);
   }
 }
 
@@ -64,6 +128,9 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
+  &__item {
+    margin-top: 100px;
+  }
 
   &_buttons {
     flex-direction: column;
@@ -79,20 +146,31 @@
     flex-direction: row;
     justify-content: space-around;
     width: 95%;
-    margin:0 auto;
+    margin: 0 auto;
   }
-}
-.pagination{
-  margin-top:40px;
+
+  &_tabs {
+    border-bottom: 2px solid #e1e5e6;
+  }
+
+  &_tabs__full {
+    border: 0;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+
 }
 
-body{
+.pagination {
+  margin-top: 40px;
+}
+
+body {
   background-color: #f3f3f3;
-};
+}
 
 .caption {
-  width:80%;
-  margin: 70px auto 0 auto;
   font-family: Roboto, sans-serif;
   font-size: 40px;
   font-weight: 300;
@@ -102,34 +180,18 @@ body{
   letter-spacing: normal;
   text-align: left;
   color: #000000;
+
   &_bold {
     font-weight: bold;
   }
 }
 
-.wrapper {
-  &_buttons {
-    margin: 0 auto;
-    width: 82%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-
-  &_paginations {
-    width: 82%;
-    justify-content: space-between;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-  }
+.container {
+  width: 82%;
+  margin: 20px auto;
 }
-  .list__item {
-    margin-top: 70px;
-  }
 
-  .hidden {
-    display: none;
-  }
+.hidden {
+  display: none;
+}
 
