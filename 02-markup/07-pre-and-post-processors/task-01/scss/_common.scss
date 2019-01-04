@@ -1,10 +1,24 @@
+$baseFontSize: 16;
+@function rem($pixels, $context: $baseFontSize) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return $pixels / $context * 1rem;
+}
+
+
 .list {
   margin: 0;
   padding: 0;
   list-style-type: none;
 
   &__item {
-    margin-top: 100px;
+    margin-top: rem(100);
   }
 }
 
@@ -16,13 +30,13 @@
   }
 
   &__caption {
-    margin: 120px 0 20px 20px;
+    margin: rem(120) 0 rem(20) rem(20);
   }
 }
 
 .checkboxes {
   &__caption {
-    margin: 192px 0 110px 0;
+    margin: rem(192) 0 rem(110) 0;
 
   }
 
@@ -30,20 +44,20 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    max-width: 350px;
+    max-width: rem(350);
   }
 }
 
 .tabs {
 
-  padding-bottom: 240px;
+  padding-bottom: rem(240);
 
   &__list {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     width: 75%;
-    margin-top: 158px;
+    margin-top: rem(158);
   }
 
   &__list_full {
@@ -51,18 +65,18 @@
   }
 
   &__list-inner {
-    border-bottom: 2px solid #e1e5e6;
+    border-bottom: rem(2) solid #e1e5e6;
   }
 
   &__caption {
-    margin-top: 150px;
+    margin-top: rem(150);
 
   }
 
   &__list-inner_full {
     overflow: hidden;
-    border-radius: 5px;
-    border: 1px solid #e1e5e6;
+    border-radius: rem(5);
+    border:rem(1) solid #e1e5e6;
   }
 }
 
@@ -93,7 +107,7 @@
   }
 
   &_active {
-    box-shadow: inset 0 2px 5px 0 rgba(0,0,0,0.21);
+    box-shadow: inset 0 rem(2) rem(5) 0 rgba(0,0,0,0.21);
     background-image: none;
   }
 }
@@ -123,16 +137,16 @@
 
 .pagination {
 
-  margin-top: 100px;
+  margin-top: rem(100);
 
   &__lists {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    margin-top: rem(20);
   }
 
   &__caption {
-    margin-top: 120px;
+    margin-top: rem(120);
     margin-bottom: 0;
   }
 
@@ -183,12 +197,12 @@
 
 .main {
   background-color: #f3f3f3;
-  border: 1px solid transparent;
+  border: rem(1) solid transparent;
 }
 
 .caption {
   font-family: Roboto, sans-serif;
-  font-size: 40px;
+  font-size: rem(40);
   font-weight: 300;
   font-style: normal;
   font-stretch: normal;
@@ -204,12 +218,10 @@
 
 .container {
   width: 82%;
-  margin: 20px auto;
+  margin: rem(20) auto;
 }
 
 .hidden {
   display: none;
 }
-
-
 
