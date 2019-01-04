@@ -1,0 +1,9 @@
+{
+  "use": ["autoprefixer","cssnano"],
+  "input": "src/styles.css",
+  "output": "build.css",
+  "local-plugins": true,
+  "autoprefixer": {
+    "browsers": ["last 2 version"]
+  }
+}
