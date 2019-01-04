@@ -1,8 +1,5 @@
-@mixin btn ($color-shadow, $color-background) {
+@mixin btn($color-shadow, $color-background) {
   display: inline-block;
-  box-shadow: 0 2px 0 0 $color-shadow, inset -5px 0px 50px 0 rgba(0, 0, 0, 0.1);
-  background-color: $color-background;
-  background-image: linear-gradient(to top, rgba(0,0,0,0.1), rgba(255,255,255,0.3)), linear-gradient(to bottom, $color-background, $color-background);
   padding: 32px 96px;
   font-family: Roboto, sans-serif;
   font-size: 36.8px;
@@ -14,22 +11,25 @@
   text-align: left;
   color: #fafafa;
   border-radius: 5px;
+  box-shadow: 0 2px 0 0 $color-shadow, inset -5px 0px 50px 0 rgba(0,0,0,0.1);
+  background-color: $color-background;
+  background-image: linear-gradient(to top, rgba(0,0,0,0.1), rgba(255,255,255,0.3)), linear-gradient(to bottom, $color-background, $color-background);
   &:hover {
-     box-shadow: none;
-   }
+    box-shadow: none;
+  }
   &:active {
-    box-shadow: inset 0 2px 5px 0 rgba(0, 0, 0, 0.21);
+    box-shadow: inset 0 2px 5px 0 rgba(0,0,0,0.21);
   }
 }
 
-@mixin checkbox ($color-background) {
- & + label {
+@mixin checkbox($color-background) {
+  & + label {
     display: block;
+    box-sizing: border-box;
+    width: 35px;
+    height: 35px;
+    margin-top: 10px;
     cursor: pointer;
-   width:35px;
-   height:35px;
-   margin-top: 10px;
-   box-sizing: border-box;
   }
 
   & {
@@ -37,19 +37,19 @@
   }
 
   & + label:before {
+    content: "\f00c";
+    display: inline-block;
+    box-sizing: border-box;
+    width: 35px;
+    height: 35px;
+    padding: 10px;
     font-family: "Font Awesome 5 Free", sans-serif;
     font-weight: 900;
-    box-sizing: border-box;
-    content: "\f00c";
+    color: transparent;
     border: 2px solid #000;
     border-radius: 5px;
-    display: inline-block;
-    width:35px;
-    height:35px;
-    color: transparent;
     opacity: 0.2;
     background-color: #e8ebec;
-    padding: 10px;
   }
 
   &:checked + label:before {
@@ -58,8 +58,8 @@
     color: #fff;
     opacity: 1;
     border-radius: 5px;
-    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
-    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.2)),
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.2);
+    background-image: linear-gradient(to top, rgba(0,0,0,0.2), rgba(255,255,255,0.2)),
     linear-gradient(to bottom, $color-background, $color-background);
   }
 
@@ -70,109 +70,107 @@
   }
 }
 
-@mixin pagination ($color-shadow, $color-background) {
+@mixin pagination($color-shadow, $color-background) {
   & {
-    display: inline-block;}
+    display: inline-block;
+  }
 
-    &__link {
-      border-radius: 4.6px;
-    color: #454c4d;
-      display: inline-block;
-    text-decoration: none;
+  &__link {
+    display: inline-block;
     box-sizing: border-box;
     width: 50px;
     height: 50px;
-    text-align:center;
+    margin: 20px auto auto;
+    border-radius: 4.6px;
+    color: #454c4d;
+    text-decoration: none;
+    text-align: center;
     line-height: 50px;
-    margin: auto;
     font-size: 20px;
     font-family: Roboto, sans-serif;
     font-weight: 500;
-    box-shadow: 0px 1px 0px 1px rgba(195, 195, 195, 1), inset 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
-    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 1)),
+    box-shadow: 0 1px 0 1px rgba(195,195,195,1), inset 0 1px 1px 0 rgba(0,0,0,0.1);
+    background-image: linear-gradient(to top, rgba(0,0,0,0.1), rgba(255,255,255,1)),
     linear-gradient(to bottom, #e7eaeb, #e7eaeb);
-    margin-right: 20px;
   }
   &__link:hover,
-  &__link_hover
-  {background-color: #ddd;
+  &__link_hover {
+    background-color: #ddd;
     box-shadow: none;
     background-image: none;
   }
 
   &__link_active {
-    box-shadow: 0px 1px 0px 1px $color-background, inset 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
-    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.3)),
+    box-shadow: 0px 1px 0px 1px $color-background, inset 0px 1px 1px 0px rgba(0,0,0,0.1);
+    background-image: linear-gradient(to top, rgba(0,0,0,0.1), rgba(255,255,255,0.3)),
     linear-gradient(to bottom, $color-background, $color-background);
     color: white;
   }
 
   &__link_active:hover,
-  &__link_active_hover{
+  &__link_active_hover {
     box-shadow: none;
     background-image: none;
     background-color: $color-shadow;
     color: white;
   }
   &__icon_right:before {
+    content: "\f061";
     font-family: "Font Awesome 5 Free", sans-serif;
     font-weight: 900;
-    content: "\f061";
     font-size: 16px;
   }
   &__icon:hover,
-  &__icon_hover
-  {
-      background-color: rgb(202, 207, 210);
+  &__icon_hover {
+    background-color: rgb(202,207,210);
   }
   &__icon_left:before {
+    content: "\f060";
     font-family: "Font Awesome 5 Free", sans-serif;
     font-weight: 900;
-    content: "\f060";
     font-size: 16px;
-
-
   }
 }
 
-@mixin tabs ($color-shadow, $color-background) {
-  &{
-    display:inline-block;
-    font-size:0;
+@mixin tab($color-shadow, $color-background) {
+  & {
+    display: inline-block;
+    font-size: 0;
     margin-right: 20px;
   }
+
   &_full {
-    margin-right:0;
+    margin-right: 0;
   }
 
   &__link {
-    display:inline-block;
+    display: inline-block;
     text-decoration: none;
+    padding: 18px 30px;
     color: #bdc3c7;
     text-align: center;
     font-family: "Open Sans", sans-serif;
     font-size: 30.3px;
     font-weight: 600;
-    padding: 18px 30px;
     line-height: normal;
   }
 
   &__link_full {
     background-color: #ffffff;
     color: #7f8c8d;
-    border-top: 1px solid rgb(202,207,210, 0.5);
-    border-bottom: 1px solid rgb(202,207,210, 0.5);
-    border-right: 1px solid rgb(202,207,210, 0.5);
+    border-top: 1px solid rgb(202,207,210,0.5);
+    border-bottom: 1px solid rgb(202,207,210,0.5);
+    border-right: 1px solid rgb(202,207,210,0.5);
   }
 
   &__link_active {
-    color:#454c4d;
+    color: #454c4d;
     border-bottom: 4px solid $color-background;
   }
+
   &__link_active_full {
     background-color: $color-background;
-    color:#ffffff;
+    color: #ffffff;
     border: 1px solid $color-background;
   }
-
 }
