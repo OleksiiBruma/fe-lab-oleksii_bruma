@@ -1,5 +1,7 @@
+@rem: 1rem / 16px;
+
 //color palette
-  //primary
+//primary
 @adoration: rgb(42, 63, 80);
 @alicante: rgb(141, 165, 184);
 @azoychka: rgb(200, 200, 200);
@@ -16,7 +18,7 @@
 @san: rgb(89, 171, 227);
 @sasha: rgb(54, 139, 197);
 @stupice: rgb(35, 128, 181);
-  //priority
+//priority
 @urgent: rgb(247, 92, 76);
 @urgent-active: rgb(201, 77, 71);
 @high: rgb(255, 168, 55);
@@ -25,7 +27,7 @@
 @middle-active: rgb(232, 189, 10);
 @low: rgb(26, 188, 156);
 @low-active: rgb(22, 160, 133);
-  //categories
+//categories
 @work: rgb(255, 178, 0);
 @work-active: rgb(221, 143, 5);
 @education: rgb(89, 171, 227);
@@ -36,4 +38,68 @@
 @sport-active: rgb(183, 78, 75);
 @other: rgb(0, 212, 217);
 @other-active: rgb(4, 165, 165);
+//breakpoints
+@laptop: ~"only screen and (max-width: 1279px)";
+@mobile-l: ~"only screen and (max-width: 1024px) and (orientation:landscape)";
+@mobile-p: ~"only screen and (max-width: 768px)";
+//fonts
+@font-family-roboto: 'Roboto', sans-serif;
+@font-family-ptsans: 'PT Sans', sans-serif;
+@font-message: {
+  family: @font-family-roboto;
+  weight: 300;
+  desktop-size: @rem*36;
+  laptop-size: @rem*36;
+  mobile-size-portrait: @rem*36;
+  mobile-size-landscape: @rem*36;
+}
 
+@font-heading-1: {
+  family: @font-family-roboto;
+  weight: 700;
+  desktop-size: @rem*28;
+  laptop-size: @rem*32;
+  mobile-size-portrait: @rem*32;
+  mobile-size-landscape: @rem*32;
+}
+
+@font-heading-2: {
+  family: @font-family-roboto;
+  weight: 700;
+  desktop-size: @rem*16;
+  laptop-size: @rem*16;
+  mobile-size-portrait: @rem*16;
+  mobile-size-landscape: @rem*16;
+}
+@font-heading-3: {
+  family: @font-family-roboto;
+  weight: 500;
+  desktop-size: @rem*19;
+  laptop-size: @rem*22;
+  mobile-size-portrait: @rem*24;
+  mobile-size-landscape: @rem*19;
+}
+@font-subtitle: {
+  family: @font-family-roboto;
+  weight: 400;
+  desktop-size: @rem*17;
+  laptop-size: @rem*21;
+  mobile-size-portrait: @rem*19;
+  mobile-size-landscape: @rem*19;
+}
+@font-paragraph: {
+  family: @font-family-roboto;
+  weight: 400;
+  desktop-size: @rem*16;
+  laptop-size: @rem*19;
+  mobile-size-portrait: @rem*17;
+  mobile-size-landscape: @rem*15;
+}
+@font-caption: {
+  family: @font-family-ptsans;
+  weight: 400;
+  desktop-size: @rem*14;
+  laptop-size: @rem*14;
+  mobile-size-portrait: @rem*14;
+  mobile-size-landscape: @rem*14;
+}
