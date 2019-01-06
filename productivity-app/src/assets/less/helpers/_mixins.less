@@ -1,6 +1,19 @@
-.opacity (@opacity: 0.5) {
-  -webkit-opacity: @opacity;
-  -moz-opacity: @opacity;
-  opacity: @opacity;
+.font(@font-name){
+  font-family: @font-name[family];
+  font-weight: @font-name[weight];
+  font-size: @font-name[desktop-size];
+  @media @laptop{
+    font-size: @font-name[laptop-size];
+  }
+  @media @mobile-p {
+    font-size: @font-name[mobile-size-portrait];
+  }
+  @media @mobile-l {
+    font-size: @font-name[mobile-size-landscape];
+  }
 }
+
+
+
+
 
