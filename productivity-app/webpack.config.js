@@ -54,6 +54,10 @@ module.exports = {
       {
         from: 'src/assets/images',
         to: 'images'
+      },
+      {
+        from: 'src/assets/fonts',
+        to: 'fonts'
       }
     ])
   ],

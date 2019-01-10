@@ -1,5 +1,4 @@
 @rem: 1rem / 16px;
-
 //color palette
 //primary
 @adoration: rgb(42, 63, 80);
@@ -12,12 +11,25 @@
 @campari: rgb(26, 188, 156);
 @canario: rgb(22, 160, 133);
 @celebrity: rgb(14, 140, 116);
-@plum: rgb(247, 92, 76);
+@plumer: rgb(247, 92, 76);
 @raf: rgb(201, 77, 71);
 @paul: rgb(188, 53, 53);
 @san: rgb(89, 171, 227);
 @sasha: rgb(54, 139, 197);
 @stupice: rgb(35, 128, 181);
+//color for buttons
+@success: campari;
+@success-hover: canario;
+@success-active: celebrity;
+
+@info: san;
+@info-hover: sasha;
+@info-active: stupice;
+
+@danger: plumer;
+@danger-hover: raf;
+@danger-active: paul;
+
 //priority
 @urgent: rgb(247, 92, 76);
 @urgent-active: rgb(201, 77, 71);
@@ -102,4 +114,72 @@
   laptop-size: @rem*14;
   mobile-size-portrait: @rem*14;
   mobile-size-landscape: @rem*14;
+}
+//icons
+
+@icon-add : "\e900";
+@icon-arrow_circle : "\e901";
+@icon-arrow-left : "\e902";
+@icon-arrow-right : "\e903";
+@icon-arrows-up : "\e904";
+@icon-check : "\e905";
+@icon-close : "\e906";
+@icon-edit : "\e907";
+@icon-global-list-arrow-down : "\e908";
+@icon-global-list-arrow-right : "\e909";
+@icon-list : "\e90a";
+@icon-minus : "\e90b";
+@icon-settings : "\e90c";
+@icon-statistics : "\e90d";
+@icon-timer : "\e90e";
+@icon-tomato-error : "\e90f";
+@icon-tomato-info : "\e910";
+@icon-tomato-success : "\e911";
+@icon-tomato-warning : "\e912";
+@icon-tomato : "\e913";
+@icon-trash : "\e914";
+
+// !!not mentioned in UI guideline!!
+@colorfortooltips: #cedeea;
+@font-tooltip: {
+  family: @font-family-roboto;
+  weight: 700;
+  desktop-size: @rem*12;
+  laptop-size: @rem*12;
+  mobile-size-portrait: @rem*12;
+  mobile-size-landscape: @rem*12;
+}
+@font-task-date: {
+  family: @font-family-roboto;
+  weight: 700;
+  desktop-size: @rem*11;
+  laptop-size: @rem*11;
+  mobile-size-portrait: @rem*11;
+  mobile-size-landscape: @rem*11;
+}
+@font-indicator: {
+  family: @font-family-ptsans;
+  weight: 400;
+  desktop-size: @rem*24;
+  laptop-size: @rem*24;
+  mobile-size-portrait: @rem*24;
+  mobile-size-landscape: @rem*24;
+}
+
+@font-button: {
+  family: @font-family-ptsans;
+  weight: 400;
+  desktop-size: @rem*18;
+  laptop-size: @rem*18;
+  mobile-size-portrait: @rem*18;
+  mobile-size-landscape: @rem*18;
+}
+
+@font-open-button: {
+  family: @font-family-ptsans;
+  weight: 400;
+  desktop-size: @rem*20;
+  laptop-size: @rem*20;
+  mobile-size-portrait: @rem*20;
+  mobile-size-landscape: @rem*20;
 }

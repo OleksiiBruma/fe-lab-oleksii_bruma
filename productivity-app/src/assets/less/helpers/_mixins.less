@@ -1,8 +1,10 @@
-.font(@font-name){
+//Mixin for fonts
+
+.font(@font-name) {
   font-family: @font-name[family];
   font-weight: @font-name[weight];
   font-size: @font-name[desktop-size];
-  @media @laptop{
+  @media @laptop {
     font-size: @font-name[laptop-size];
   }
   @media @mobile-p {
@@ -13,7 +15,147 @@
   }
 }
 
+//Mixin for icons
 
+.icon (@icon-name) {
+  content: @icon-name;
+  font-family: "icomoon", sans-serif !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
 
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+//Mixin for task modifiers
+//priority
+.task-modifier-priority (@priority) {
+  .task__indicator {
+    background-color: ~"@{@{priority}}";
+  }
+  .task__indicator:hover {
+    background-color: ~"@{@{priority}-active}";
+  }
+  .task__caption {
+    color: ~"@{@{priority}}";
+  }
+}
+
+//category
+.task-modifier-category (@category) {
+  .task__delete {
+    background-color: ~"@{@{category}}";
+  }
+  .task__delete:hover {
+    background-color: ~"@{@{category}-active}";
+  }
+}
+
+//Mixin for tooltip
+
+.tooltip () {
+
+  &__tooltip {
+    .font(@font-tooltip);
+    display: none;
+    background-color: @colorfortooltips;
+    color: @adoration;
+    text-align: center;
+    border-radius: 2px;
+    padding: 10px;
+    position: absolute;
+    z-index: 3;
+    top: 100%;
+    right: 50%;
+    transform: translate(50%, 50%);
+    margin-left: @rem*20;
+    opacity: 0;
+    transition: opacity 0.3s;
+    white-space: nowrap;
+  }
+  &:focus &__tooltip {
+    outline: none;
+  }
+
+  &__tooltip::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 15%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent @colorfortooltips transparent;
+  }
+
+  &:hover &__tooltip {
+    display: block;
+    opacity: 0.9;
+  }
+}
+
+//Mixin for color links
+
+.colors-for-links () {
+  & {
+    color: @alicante;
+  }
+  &:hover,
+  &:focus,
+  &:active {
+    color: @hanover;
+  }
+}
+
+//Mixin for Global List decorations
+.global-list-decor (@color) {
+  & {
+    .tasks__item--caption {
+      color: @color;
+    }
+  }
+  &:before {
+    content: "";
+    height: 100%;
+    width: @rem*9;
+    background-color: @color;
+    position: absolute;
+    z-index: 2;
+  }
+  &:after {
+    content: "";
+    height: @rem*5;
+    width: @rem*5;
+    border-radius: @rem*5;
+    position: absolute;
+    z-index: 2;
+    background-color: @color;
+    border: @rem*2 solid @adoration;
+    box-shadow: 0 0 0 @rem*4 @color;
+    top: @rem*3;
+  }
+}
+
+//Mixin for buttons
+
+.button-bg (@color) {
+
+  &--@{color} {
+    background: e("@{@{@{color}}}");
+    &:hover,
+    &:focus {
+      background: e("@{@{@{color}-hover}}");
+    }
+
+    &:active {
+      background: e("@{@{@{color}-active}}");
+    }
+  }
+}
 
 
