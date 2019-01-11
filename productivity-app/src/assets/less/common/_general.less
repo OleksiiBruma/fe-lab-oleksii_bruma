@@ -1,3 +1,7 @@
+.hidden {
+  display: none;
+}
+
 html, body {
   margin: 0;
   background-color: @adoration;
@@ -113,7 +117,7 @@ html, body {
 
   }
 
-  .todo-done-tab {
+  .tab {
     padding: 0;
     margin: 0;
     display: flex;
@@ -153,6 +157,12 @@ html, body {
       margin: 0;
       color: @hanover;
     }
+    &--remove {
+      display:none;
+    }
+    &--remove-mode{
+      display:flex;
+    }
   }
 
   .container {
@@ -170,6 +180,7 @@ html, body {
     z-index: 100;
 &--no-sticky {
   position:static;
+  box-shadow: none;
 }
     &__item {
       display: flex;
@@ -232,6 +243,7 @@ html, body {
     &--other {
       .global-list-decor(@other);
     }
+
   }
 
   .page {
@@ -277,17 +289,10 @@ html, body {
         justify-content: space-between;
       }
     }
-    &__remove {
+    .task__shift {
       display:none;
-      &--remove-mode{
-        display:flex;
-      }
     }
-    &__tab {
-      &--remove-mode {
-        display:block;
-      }
-    }
+
     &__message {
       position: relative;
       margin-top: @rem*40;
@@ -366,8 +371,9 @@ html, body {
         text-decoration: line-through;
       }
 
-      .task__edit {
+      .task__edit-tools {
         display: none;
+
       }
 
       .task__toggle {
@@ -415,11 +421,17 @@ html, body {
         content: @icon-close;
       }
     }
+    &--overdue {
+      .task__date{
+        color:@plumer;
+      }
+    }
 
     &__toggle {
       position: relative;
       min-width: @rem*94;
       margin: 0;
+      text-align: center;
     }
 
     &__date {
@@ -430,6 +442,11 @@ html, body {
       margin: 0;
       color: @bigbeef;
       .font(@font-task-date);
+    }
+    &__date-day {
+      font-size:@rem*27;
+      display:block;
+      text-align:center;
     }
 
     &__delete {
@@ -467,28 +484,13 @@ html, body {
       color: @brandywine;
     }
 
-    &__edit {
-      border: 0;
-      background: none;
-      display: block;
+    &__edit-tools {
+      display: flex;
       width: auto;
       height: auto;
-      color: @azoychka;
-      position: absolute;
-      right: @rem*30;
-      top: 50%;
-      transform: translate(0, -50%);
-      font-size: @rem*16;
-      cursor: pointer;
-    }
-
-    &__edit:hover,
-    &__edit:active {
-      color: @alicante;
-    }
-
-    &__edit:focus {
-      color: @hanover;
+      flex-direction: column;
+      justify-content: space-around;
+      padding: @rem*10 0;
     }
 
     &__indicator {
@@ -499,7 +501,7 @@ html, body {
       background-color: red;
       .font(@font-indicator);
       color: @beefsteak;
-      padding-top: 10px;
+      padding-top: @rem*10;
       cursor: pointer;
     }
 
@@ -519,6 +521,60 @@ html, body {
 
     &__indicator:hover:before {
       .icon(@icon-timer);
+    }
+    &__edit{
+      display:block;
+      color: @azoychka;
+      font-size: @rem*16;
+      cursor: pointer;
+      border: 0;
+      background: none;
+      position:relative;
+      padding: 0 @rem*35;
+      width: @rem*16;
+      height: @rem*16;
+
+      &:before{
+        transform: translate(-50%, -50%);
+        .icon(@icon-edit);
+        position: absolute;
+      }
+
+    &__edit:hover,
+    &__edit:active {
+      color: @alicante;
+    }
+
+    &__edit:focus {
+      color: @hanover;
+    }
+    }
+    &__shift{
+      width: @rem*16;
+      height: @rem*16;
+      display:block;
+      color: @azoychka;
+      font-size: @rem*16;
+      cursor: pointer;
+      border: 0;
+      background: none;
+      position:relative;
+      padding: 0 @rem*35;
+
+      &:before{
+        transform: translate(-50%, -50%);
+        .icon(@icon-arrows-up);
+        position: absolute;
+      }
+
+      &__edit:hover,
+      &__edit:active {
+        color: @alicante;
+      }
+
+      &__edit:focus {
+        color: @hanover;
+      }
     }
   }
 
@@ -570,8 +626,25 @@ html, body {
     }
 
     &__tasks-list {
-      margin-top: @rem*60;
+      margin-top: @rem*25;
     }
+    &__filter {
+      display: none;
+      &--active{
+        display:flex;
+      }
+    }
+    &__tasks {
+      display: none;
+    }
+    &__tasks--active {
+      display:block;
+    }
+    &__remove {
+      margin-top: @rem*25;
+    }
+
+
   }
 
   .trash {
