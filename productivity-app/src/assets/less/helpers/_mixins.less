@@ -26,8 +26,7 @@
   font-variant: normal;
   text-transform: none;
   line-height: 1;
-
-  /* Better Font Rendering =========== */
+  //Better Font Rendering
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -56,49 +55,6 @@
   }
 }
 
-//Mixin for tooltip
-
-.tooltip () {
-
-  &__tooltip {
-    .font(@font-tooltip);
-    display: none;
-    background-color: @colorfortooltips;
-    color: @adoration;
-    text-align: center;
-    border-radius: 2px;
-    padding: 10px;
-    position: absolute;
-    z-index: 3;
-    top: 100%;
-    right: 50%;
-    transform: translate(50%, 50%);
-    margin-left: @rem*20;
-    opacity: 0;
-    transition: opacity 0.3s;
-    white-space: nowrap;
-  }
-  &:focus &__tooltip {
-    outline: none;
-  }
-
-  &__tooltip::before {
-    content: "";
-    position: absolute;
-    bottom: 100%;
-    left: 15%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent @colorfortooltips transparent;
-  }
-
-  &:hover &__tooltip {
-    display: block;
-    opacity: 0.9;
-  }
-}
-
 //Mixin for color links
 
 .colors-for-links () {
@@ -119,7 +75,7 @@
       color: @color;
     }
   }
-  &:before {
+  &::before {
     content: "";
     height: 100%;
     width: @rem*9;
@@ -127,7 +83,7 @@
     position: absolute;
     z-index: 2;
   }
-  &:after {
+  &::after {
     content: "";
     height: @rem*5;
     width: @rem*5;
@@ -158,4 +114,32 @@
   }
 }
 
+//Mixin for tooltip
+.tooltip() {
+  &::after {
+    content: attr(data-tooltip);
+    .font(@font-tooltip);
+    background-color: @colorfortooltips;
+    color: @adoration;
+    text-align: center;
+    border-radius: 2px;
+    padding: 10px;
+    position: absolute;
+    z-index: 2;
+    top: @rem*10;
+    right:0;
+    transform: translate(70%, 50%);
+    white-space: nowrap;
+  }
 
+  &::before {
+    content: "";
+    position: absolute;
+    bottom:-@rem*10;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent @colorfortooltips transparent;
+  }
+}
