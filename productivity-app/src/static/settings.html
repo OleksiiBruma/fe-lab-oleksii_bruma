@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../styles.css">
+  <title>Productivity app</title>
+</head>
+<body>
+<header class="header header--no-sticky">
+  <div class="header__item  header__item--no-sticky container">
+    <h1 class="header__logo header__logo--no-sticky logo"><a class="logo__link" href="#">
+      <img class="logo-image" src="../images/Logo.svg" alt="logo" width="242" height="74"></a></h1>
+    <nav class="navigation">
+      <ul class="menu">
+        <li class="menu__item">
+          <a href="#" class="menu__link menu__link--icon-list "></a>
+        </li>
+        <li data-tooltip="Go to Reports" class="menu__item menu__item--icon-statistics"><a href="#" class="menu__link menu__link--icon-statistics "></a>
+        </li>
+        <li class="menu__item"><a href="#" class="menu__link menu__link--icon-settings menu__link--active "></a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main class="page page--no-sticky">
+  <div class="page__item container">
+    <h2 class="page__caption">Settings</h2>
+    <ul class="page__toggle  tab">
+      <li class="tab__item"><a class="tab__link
+       tab__link--active" href="#">Pomodoros</a></li>
+      <li class="tab__item">
+        <a class="tab__link" href="#">Categories</a>
+      </li>
+    </ul>
+  </div>
+  <section class="settings container">
+    <h3 class="page__subcaption">Pomodoros settings</h3>
+    <ul class="input-list">
+      <li class="input-list__item input">
+        <label class="input__label input__label--work-time" for="work-time">WORK TIME</label>
+    <div class="input__number number">
+      <button class="number__step number__step--down"></button>
+      <input id="work-time" class="number__input" type="number" min="15" max="25" value="25">
+      <button class="number__step number__step--up"></button>
+    </div>
+      <p class="input__description">Please select a value between 15 and 25 <em class="input__highlighted">minutes</em></p>
+      </li>
+    <li class="input-list__item input">
+      <label class="input__label input__label--work-iteration" for="work-iteration">WORK ITERATION</label>
+      <div class="input__number number">
+        <button class="number__step number__step--down"></button>
+        <input id="work-iteration" class="number__input" type="number" min="2" max="5" value="5">
+        <button class="number__step number__step--up"></button>
+      </div>
+      <p class="input__description">Please select a value between 2 and 5 <em class="input__highlighted">iterations</em></p>
+    </li>
+      <li class="input-list__item input">
+        <label class="input__label input__label--short-break" for="short-break">SHORT BREAK</label>
+        <div class="input__number number">
+          <button class="number__step number__step--down"></button>
+          <input id="short-break" class="number__input" type="number" min="3" max="5" value="5">
+          <button class="number__step number__step--up"></button>
+        </div>
+        <p class="input__description">Please select a value between 3 and 5 <em class="input__highlighted">minutes</em></p>
+      </li>
+      <li class="input-list__item input">
+        <label class="input__label input__label--long-break" for="long-break">LONG BREAK</label>
+        <div class="input__number number">
+          <button class="number__step number__step--down"></button>
+          <input id="long-break" class="number__input" type="number" min="15" max="30" value="25">
+          <button class="number__step number__step--up"></button>
+        </div>
+        <p class="input__description">Please select a value between 3 and 5 <em class="input__highlighted">minutes</em></p>
+      </li>
+    </ul>
+    <h3 class="your-cycle">Your cycle</h3>
+    <div class="graph"></div>
+    <div class="settings__buttons buttons">
+      <button class="buttons__item buttons__item--info" type="button">Go to Tasks</button>
+      <button class="buttons__item buttons__item--success" type="button">Save</button>
+    </div>
+  </section>
+  </main>
+</body>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../styles.css">
+  <title>Productivity app</title>
+</head>
+<body>
+<header class="header">
+  <div class="header__item container">
+    <h1 class="header__logo logo"><a class="logo__link" href="#"><img class="logo-image" src="../images/Logo.svg" alt="logo" width="242" height="74"></a></h1>
+    <nav class="navigation">
+      <ul class="menu">
+        <li class="menu__item menu__item__tooltip">
+          <a href="#" class="menu__link icon-trash "><span class="trash__count">5</span></a>
+          <span class="menu__tooltip">Go to Trash</span>
+        </li>
+        <li class="menu__item">
+          <a href="#" class="menu__link menu__link--active icon-list "></a>
+          <span class="menu__tooltip">Go to Daily Tasks</span>
+        </li>
+        <li class="menu__item"><a href="#" class="menu__link icon-statistics "></a>
+          <span class="menu__tooltip">Go to Reports</span></li>
+        <li class="menu__item"><a href="#" class="menu__link icon-settings "></a>
+          <span
+          class="menu__tooltip">Go to Settings</span></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main class="page">
+  <div class="page__item container">
+    <h2 class="page__caption">Daily Task List <button
+      class="page__add-button" type="button"></button></h2>
+
+
+
+    <div class="page__stub stub add-first-task">
+      <img class="stub__img" src="../images/tomato-add.svg" alt="tomato settings">
+      <p class="stub__message">
+        Add your first task
+      </p>
+    </div>
+
+    <div class="page__stub stub add-first-task">
+      <img class="stub__img" src="../images/tomato-addv02.svg" alt="tomato settings">
+      <p class="stub__message">
+        You don’t have any tasks left.<br>
+        Add new tasks to stay productive.
+      </p>
+    </div>
+
+    <div class="page__stub stub add-first-task">
+      <img class="stub__img" src="../images/tomato_settings.svg" alt="tomato settings">
+      <p class="stub__message">
+        As you visited our site for a first time you can check <br>
+        and customize your default application settings
+      </p>
+      <div class="stub__choose buttons">
+      <button class="buttons__item buttons__item--info" type="button">Skip</button>
+      <button class="buttons__item buttons__item--success" type="button">Go to Settings</button>
+      </div>
+    </div>
+
+
+
+
+    <ul class="page__tab todo-done-tab">
+      <li class="todo-done-tab__item"><a class="todo-done-tab__link
+    todo-done-tab__link--active" href="#">To Do</a></li>
+      <li class="todo-done-tab__item">
+        <a class="todo-done-tab__link" href="#">Done</a>
+      </li>
+    </ul>
+    <section class="daily">
+
+      <p class="daily__message">Excellent,<br> all daily tasks done! :) </p>
+
+      <p class="daily__message daily__message--drag">Task added,<br> drag it to the top 5 in daily list </p>
+
+      <ul class="daily__tasks-list tasks">
+        <li class="tasks__item task task--high task--education task--done task--delete">
+          <p class="task__toggle">
+            <span class="task__date">TODAY</span>
+            <span class="task__delete"></span>
+          </p>
+          <div class="task__text">
+            <h2 class="task__caption">Lorem ipsum sit amet</h2>
+            <p class="task__details">Lorem ipsum dolor sit amet, consectetur
+              adipisicing elit.
+              <a class="task__edit icon-edit edit" type="button"><span class="edit__tooltip">Edit task</span></a>
+            </p>
+          </div>
+          <button class="task__indicator indicator" type="button">3<span class="indicator__tooltip">Go to timer</span></button>
+        </li>
+        <li class="tasks__item task task--high task--education task--delete">
+          <p class="task__toggle">
+            <span class="task__date">TODAY</span>
+            <span class="task__delete"></span>
+          </p>
+          <div class="task__text">
+            <h3 class="task__caption">Lorem ipsum sit amet</h3>
+            <p class="task__details">Lorem ipsum dolor sit amet, consectetur
+              adipisicing elit.
+              <a class="task__edit icon-edit edit" type="button"><span class="edit__tooltip">Edit task</span></a>
+            </p>
+          </div>
+          <button class="task__indicator indicator" type="button">3<span class="indicator__tooltip">Go to timer</span></button>
+        </li>
+        <li class="tasks__item task task--high task--education">
+          <p class="task__toggle">
+            <span class="task__date">TODAY</span>
+            <span class="task__delete"></span>
+          </p>
+          <div class="task__text">
+            <h3 class="task__caption">Lorem ipsum sit amet</h3>
+            <p class="task__details">Lorem ipsum dolor sit amet, consectetur
+              adipisicing elit.
+              <a class="task__edit icon-edit edit" type="button"><span class="edit__tooltip">Edit task</span></a>
+            </p>
+          </div>
+          <button class="task__indicator indicator" type="button">3<span class="indicator__tooltip">Go to timer</span></button>
+        </li>
+        <li class="tasks__item task task--high task--education">
+          <p class="task__toggle">
+            <span class="task__date">TODAY</span>
+            <span class="task__delete"></span>
+          </p>
+          <div class="task__text">
+            <h3 class="task__caption">Lorem ipsum sit amet</h3>
+            <p class="task__details">Lorem ipsum dolor sit amet, consectetur
+              adipisicing elit.
+              <a class="task__edit icon-edit edit" type="button"><span class="edit__tooltip">Edit task</span></a>
+            </p>
+          </div>
+          <button class="task__indicator indicator" type="button">3<span class="indicator__tooltip">Go to timer</span></button>
+        </li>
+      </ul>
+    </section>
+    <section class="global">
+      <header class="global__header"><h2 class="global__caption"><button class="global__button open-button" href="#">Global list <span class="open-button__icon"></span><span class="open-button__tooltip">Go to Global List</span></button></h2>
+      <ul class="todo-done-tab">
+        <li class="todo-done-tab__item"><a class="todo-done-tab__link
+    todo-done-tab__link--active" href="#">All</a></li>
+        <li class="todo-done-tab__item">
+          <a class="todo-done-tab__link" href="#">Urgent</a>
+        </li>
+        <li class="todo-done-tab__item">
+          <a class="todo-done-tab__link" href="#">High</a>
+        </li>
+        <li class="todo-done-tab__item">
+          <a class="todo-done-tab__link" href="#">Middle</a>
+        </li>
+        <li class="todo-done-tab__item">
+          <a class="todo-done-tab__link" href="#">Low</a>
+        </li>
+      </ul>
+      </header>
+      <div class="global__tasks">
+        <ul class="global__tasks-list tasks tasks--work ">
+          <li class="tasks__item tasks__item--caption" >WORK</li>
+          <li class="tasks__item task task--high task--education task--done">
+            <p class="task__toggle">
+              <span class="task__date">TODAY</span>
+              <span class="task__delete"></span>
+            </p>
+            <div class="task__text">
+              <h3 class="task__caption">Lorem ipsum sit amet</h3>
+              <p class="task__details">Lorem ipsum dolor sit amet, consectetur
+                adipisicing elit.
+                <a class="task__edit icon-edit edit" type="button"><span class="edit__tooltip">Edit task</span></a>
+              </p>
+            </div>
+            <button class="task__indicator indicator" type="button">3<span class="indicator__tooltip">Go to timer</span></button>
+          </li>
+          <li class="tasks__item task task--high task--education">
+            <p class="task__toggle">
+              <span class="task__date">TODAY</span>
+              <span class="task__delete"></span>
+            </p>
+            <div class="task__text">
+              <h3 class="task__caption">Lorem ipsum sit amet</h3>
+              <p class="task__details">Lorem ipsum dolor sit amet, consectetur
+                adipisicing elit.
+                <a class="task__edit icon-edit edit" type="button"><span class="edit__tooltip">Edit task</span></a>
+              </p>
+            </div>
+            <button class="task__indicator indicator" type="button">3<span class="indicator__tooltip">Go to timer</span></button>
+          </li>
+          <li class="tasks__item task task--high task--education">
+            <p class="task__toggle">
+              <span class="task__date">TODAY</span>
+              <span class="task__delete"></span>
+            </p>
+            <div class="task__text">
+              <h3 class="task__caption">Lorem ipsum sit amet</h3>
+              <p class="task__details">Lorem ipsum dolor sit amet, consectetur
+                adipisicing elit.
+                <a class="task__edit icon-edit edit" type="button"><span class="edit__tooltip">Edit task</span></a>
+              </p>
+            </div>
+            <button class="task__indicator indicator" type="button">3<span class="indicator__tooltip">Go to timer</span></button>
+          </li>
+          <li class="tasks__item task task--high task--education">
+            <p class="task__toggle">
+              <span class="task__date">TODAY</span>
+              <span class="task__delete"></span>
+            </p>
+            <div class="task__text">
+              <h3 class="task__caption">Lorem ipsum sit amet</h3>
+              <p class="task__details">Lorem ipsum dolor sit amet, consectetur
+                adipisicing elit.
+                <a class="task__edit icon-edit edit" type="button"><span class="edit__tooltip">Edit task</span></a>
+              </p>
+            </div>
+            <button class="task__indicator indicator" type="button">3<span class="indicator__tooltip">Go to timer</span></button>
+          </li>
+        </ul>
+
+        <ul class="global__tasks-list tasks tasks--education">
+          <li class="tasks__item tasks__item--caption" >EDUCATION</li>
+          <li class="tasks__item task task--high task--education task--done">
+            <p class="task__toggle">
+              <span class="task__date">TODAY</span>
+              <span class="task__delete"></span>
+            </p>
+            <div class="task__text">
+              <h3 class="task__caption">Lorem ipsum sit amet</h3>
+              <p class="task__details">Lorem ipsum dolor sit amet, consectetur
+                adipisicing elit.
+                <a class="task__edit icon-edit edit" type="button"><span class="edit__tooltip">Edit task</span></a>
+              </p>
+            </div>
+            <button class="task__indicator indicator" type="button">3<span class="indicator__tooltip">Go to timer</span></button>
+          </li>
+          <li class="tasks__item task task--high task--education">
+            <p class="task__toggle">
+              <span class="task__date">TODAY</span>
+              <span class="task__delete"></span>
+            </p>
+            <div class="task__text">
+              <h3 class="task__caption">Lorem ipsum sit amet</h3>
+              <p class="task__details">Lorem ipsum dolor sit amet, consectetur
+                adipisicing elit.
+                <a class="task__edit icon-edit edit" type="button"><span class="edit__tooltip">Edit task</span></a>
+              </p>
+            </div>
+            <button class="task__indicator indicator" type="button">3<span class="indicator__tooltip">Go to timer</span></button>
+          </li>
+          <li class="tasks__item task task--high task--education">
+            <p class="task__toggle">
+              <span class="task__date">TODAY</span>
+              <span class="task__delete"></span>
+            </p>
+            <div class="task__text">
+              <h3 class="task__caption">Lorem ipsum sit amet</h3>
+              <p class="task__details">Lorem ipsum dolor sit amet, consectetur
+                adipisicing elit.
+                <a class="task__edit icon-edit edit" type="button"><span class="edit__tooltip">Edit task</span></a>
+              </p>
+            </div>
+            <button class="task__indicator indicator" type="button">3<span class="indicator__tooltip">Go to timer</span></button>
+          </li>
+          <li class="tasks__item task task--high task--education">
+            <p class="task__toggle">
+              <span class="task__date">TODAY</span>
+              <span class="task__delete"></span>
+            </p>
+            <div class="task__text">
+              <h3 class="task__caption">Lorem ipsum sit amet</h3>
+              <p class="task__details">Lorem ipsum dolor sit amet, consectetur
+                adipisicing elit.
+                <a class="task__edit icon-edit edit" type="button"><span class="edit__tooltip">Edit task</span></a>
+              </p>
+            </div>
+            <button class="task__indicator indicator" type="button">3<span class="indicator__tooltip">Go to timer</span></button>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+</main>
+<script src="/bundle.js"></script>
+</body>
+
+</html>
