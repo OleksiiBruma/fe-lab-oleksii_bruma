@@ -143,3 +143,17 @@
     border-color: transparent transparent @colorfortooltips transparent;
   }
 }
+
+//Mixin for circles
+.circle (@color) {
+  &:before {
+    position: absolute;
+    content: "";
+    display: block;
+    width: @rem*17;
+    height: @rem*17;
+    border-radius: 50%;
+    background: @color;
+    left: -@rem*17*2;
+  }
+}
