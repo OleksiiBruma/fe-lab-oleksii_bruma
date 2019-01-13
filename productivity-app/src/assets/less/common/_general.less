@@ -1,5 +1,3 @@
-
-
 *:focus{
   outline: rgba(255,255,255, 0.3) solid 1px;
 }
@@ -114,9 +112,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 
-.hidden {
-  display: none;
-}
+
 
 html, body {
   margin: 0;
@@ -901,4 +897,230 @@ html, body {
   }
 }
 
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+  &__item {
+    border-bottom: @rem*1 solid @alicante;
+    margin-bottom:@rem*29;
+    padding-bottom: @rem*7;
+    &:last-child{
+      margin-bottom:0;
+    }
+  }
+&__content {
+    top: @rem*50;
+    left: 50%;
+    transform: translate(-50%, 0);
+    position:absolute;
+    background: @adoration;
+    margin: auto;
+    padding: @rem*45;
+    width:@rem*410;
+    height: @rem*540;
+}
+  &__list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+  }
+  &__field {
+    border:0;
+    padding:0;
 
+  }
+  &__text-input{
+    display: inline-block;
+    width: 100%;
+    background: none;
+    border:0;
+  .font(@font-paragraph);
+    color: @beefsteak;
+    &::-webkit-input-placeholder {
+      color: @alicante;
+    }
+    &::-moz-placeholder {
+      color: @alicante;
+    }
+    &:-ms-input-placeholder {
+      color: @alicante;
+    }
+  }
+  &__title {
+    display: inline-block;
+    width: 100%;
+    .font(@font-caption);
+    color: @beefsteak;
+    padding-bottom: @rem*10;
+
+    &--small {
+      display: inline;
+      width: auto;
+      padding-left: @rem*25;
+      color: @alicante;
+      position: relative;
+
+      &:hover {
+        color: @hanover;
+      }
+
+
+      &:before {
+        background: @alicante;
+        content: "";
+        width: 5px;
+        height: 5px;
+        display: block;
+        position: absolute;
+        left: @rem*10;
+        top: @rem*4;
+        transform: translate(-50%, 0);
+        border-radius: 50%;
+        border: @rem*2 solid @alicante;
+        box-shadow: 0 0 0 @rem*4 @alicante;
+      }
+    }
+  }
+
+  &__caption {
+    text-align: center;
+  .font(@font-heading-1);
+    color: @beefsteak;
+    margin:0;
+  }
+  &__estimate {
+    display: inline-block;
+    position: relative;
+    width:20px;
+    height: 20px;
+    margin:0;
+
+  }
+  &__estimate:before {
+    top:0;
+    left:0;
+    position: absolute;
+    content:"";
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: url("../../images/empty-tomato.svg");
+  }
+  &__pomodoro:checked + &__estimate:before{
+    background: url("../../images/fill tomato.svg");
+  }
+  &__pomodoro--checked + &__estimate:before{
+    background: url("../../images/fill tomato.svg");
+  }
+  &__close {
+    position: absolute;
+    background: none;
+    top: @rem*15;
+    right: @rem*50;
+    width: @rem*20;
+    height: @rem*20;
+    border:0;
+    &::before{
+      position: absolute;
+      .icon(@icon-close);
+      transform: translate(-50%, -50%);
+      font-size: @rem*20;
+    }
+    & {
+      color: @alicante;
+    }
+    &:hover::before,
+    &:focus::before,
+    &:active::before {
+      color: @hanover;
+    }
+    &--remove-task {
+        right: @rem*15;
+    }
+  }
+  &__submit {
+    position: absolute;
+    background: none;
+    top: @rem*15;
+    right: @rem*15;
+    width: @rem*20;
+    height: @rem*20;
+    border:0;
+    &::before{
+      position: absolute;
+      .icon(@icon-check);
+      transform: translate(-50%, -50%);
+      font-size: @rem*20;
+    }
+    & {
+      color: @alicante;
+    }
+    &:hover::before,
+    &:focus::before,
+    &:active::before {
+      color: @hanover;
+    }
+  }
+  &__remove {
+    position: absolute;
+    background: none;
+    top: @rem*15;
+    left: @rem*15;
+    width: @rem*20;
+    height: @rem*20;
+    border:0;
+    &::before{
+      position: absolute;
+      .icon(@icon-trash);
+      transform: translate(-50%, -50%);
+      font-size: @rem*20;
+    }
+    & {
+      color: @alicante;
+    }
+    &:hover::before,
+    &:focus::before,
+    &:active::before {
+      color: @hanover;
+    }
+  }
+  &__form {
+    margin:0;
+    padding:0;
+  }
+  &__message{
+    .font(@font-message);
+    color: @alicante;
+    margin: @rem*155 auto 0;
+    text-align: center;
+    width: 90%;
+  }
+  &__removecancel {
+  margin-top: @rem*180;
+}
+}
+
+input[type="radio"]{
+display:none;
+}
+
+.radio(other);
+.radio(work);
+.radio(education);
+.radio(hobby);
+.radio(sport);
+.radio(high);
+.radio(urgent);
+.radio(middle);
+.radio(low);
+.hidden {
+  display: none;
+}

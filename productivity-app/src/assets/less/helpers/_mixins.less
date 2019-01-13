@@ -157,3 +157,16 @@
     left: -@rem*17*2;
   }
 }
+//Mixins for radio
+.radio(@color) {
+  input[type="radio"]:checked + .modal__title--@{color}:before{
+    background: ~"@{@{color}}";
+    box-shadow: 0 0 0 @rem*4 ~"@{@{color}}";
+    border: @rem*2 solid @adoration;
+  }
+  .modal__title--@{color}:hover:before {
+    background: ~"@{@{color}}";
+    box-shadow: 0 0 0 @rem*4 ~"@{@{color}}";
+    border: @rem*2 solid ~"@{@{color}}";
+  }
+}
