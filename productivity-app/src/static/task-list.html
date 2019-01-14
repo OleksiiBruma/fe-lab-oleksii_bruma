@@ -15,14 +15,14 @@
     <nav class="navigation">
       <ul class="menu">
         <li class="menu__item">
-          <a href="#" class="menu__link menu__link--icon-trash"><span class="trash__count">5</span></a>
+          <a href="#" class="menu__link menu__link--icon-trash"><span class="trash__count">5</span><span class="sr-only">Go to trash</span></a>
         </li>
         <li class="menu__item">
-          <a href="#" class="menu__link menu__link--active menu__link--icon-list "></a>
+          <a href="#" class="menu__link menu__link--active menu__link--icon-list "><span class="sr-only">Go to Task list</span></a>
         </li>
-        <li data-tooltip="Go to Reports" class="menu__item menu__item--icon-statistics"><a href="#" class="menu__link menu__link--icon-statistics "></a>
+        <li data-tooltip="Go to Reports" class="menu__item menu__item--icon-statistics"><a href="#" class="menu__link menu__link--icon-statistics "><span class="sr-only">Go to Reports</span></a>
           </li>
-        <li class="menu__item"><a href="#" class="menu__link menu__link--icon-settings "></a>
+        <li class="menu__item"><a href="#" class="menu__link menu__link--icon-settings "><span class="sr-only">Go to Settings</span></a>
           </li>
       </ul>
     </nav>
@@ -32,7 +32,7 @@
   <div class="page__item container">
     <h2 class="page__caption">Daily Task List
       <button
-        class="page__add-button" type="button"></button>
+        class="page__add-button" type="button"><span class="sr-only">Add task button</span></button>
     </h2>
     <div class="page__stub stub hidden ">
       <img class="stub__img" src="../images/tomato-add.svg" alt="tomato settings">
@@ -63,7 +63,7 @@
         <ul class="daily__remove tab tab--remove ">
           <li class="tab__item"><a class="tab__link" href="#">Select All </a></li>
           <li class="tab__item">
-            <a class="tab__link" href="#">Select Deselect</a>
+            <a class="tab__link" href="#">Deselect All</a>
           </li>
         </ul>
         <ul class="daily__tab tab">
@@ -80,7 +80,7 @@
         <li class="tasks__item task task--urgent task--other ">
           <p class="task__toggle">
             <span class="task__date">TODAY</span>
-            <span class="task__delete "></span>
+            <span class="task__delete "><span class="sr-only">Click to delete task</span></span>
           </p>
           <div class="task__text">
             <h3 class="task__caption">Lorem ipsum sit amet</h3>
@@ -89,17 +89,17 @@
             </p>
           </div>
           <div class="task__edit-tools">
-            <button class="task__shift" type="button"></button>
-              <button class="task__edit" type="button"></button>
+            <button class="task__shift" type="button"><span class="sr-only">Shift to daily</span></button>
+              <button class="task__edit" type="button"><span class="sr-only">Edit task</span></button>
 
           </div>
-          <button class="task__indicator indicator" type="button">3
+          <button class="task__indicator indicator" type="button">3<span class="sr-only">Amount of pomodoros</span>
           </button>
         </li>
         <li class="tasks__item task task--high task--education ">
           <p class="task__toggle">
             <span class="task__date">TODAY</span>
-            <span class="task__delete "></span>
+            <span class="task__delete "><span class="sr-only">Click to delete task</span></span>
           </p>
           <div class="task__text">
             <h3 class="task__caption">Lorem ipsum sit amet</h3>
@@ -108,17 +108,17 @@
             </p>
           </div>
           <div class="task__edit-tools">
-            <button class="task__shift" type="button"></button>
-              <button class="task__edit" type="button"></button>
+            <button class="task__shift" type="button"><span class="sr-only">Shift to daily</span></button>
+            <button class="task__edit" type="button"><span class="sr-only">Edit task</span></button>
 
           </div>
-          <button class="task__indicator indicator" type="button">3
+          <button class="task__indicator indicator" type="button">3<span class="sr-only">Amount of pomodoros</span>
           </button>
         </li>
         <li class="tasks__item task task--low task--work ">
           <p class="task__toggle">
             <span class="task__date">TODAY</span>
-            <span class="task__delete "></span>
+            <span class="task__delete "><span class="sr-only">Click to delete task</span></span>
           </p>
           <div class="task__text">
             <h3 class="task__caption">Lorem ipsum sit amet</h3>
@@ -127,11 +127,11 @@
             </p>
           </div>
           <div class="task__edit-tools">
-            <button class="task__shift" type="button"></button>
-            <button class="task__edit" type="button"></button>
+            <button class="task__shift" type="button"><span class="sr-only">Shift to daily</span></button>
+            <button class="task__edit" type="button"><span class="sr-only">Edit task</span></button>
 
           </div>
-          <button class="task__indicator indicator" type="button">3
+          <button class="task__indicator indicator" type="button">3<span class="sr-only">Amount of pomodoros</span>
           </button>
         </li>
       </ul>
@@ -160,9 +160,9 @@
       </header>
       <div class="global__tasks">
         <ul class="global__remove tab tab--remove">
-          <li class="tab__item"><a class="tab__link" href="#">Select All </a></li>
+          <li class="tab__item"><a class="tab__link" href="#">Select All</a></li>
           <li class="tab__item">
-            <a class="tab__link" href="#">Select Deselect</a>
+            <a class="tab__link" href="#">Deselect All</a>
           </li>
         </ul>
         <ul class="global__tasks-list tasks tasks--work ">
@@ -170,7 +170,7 @@
           <li class="tasks__item task task--urgent task--work ">
             <p class="task__toggle">
               <span class="task__date">TODAY</span>
-              <span class="task__delete "></span>
+              <span class="task__delete "><span class="sr-only">Click to delete task</span></span>
             </p>
             <div class="task__text">
               <h3 class="task__caption">Lorem ipsum sit amet</h3>
@@ -179,11 +179,11 @@
               </p>
             </div>
             <div class="task__edit-tools">
-              <button class="task__shift" type="button"></button>
-                <button class="task__edit" type="button"></button>
+              <button class="task__shift" type="button"><span class="sr-only">Shift to daily</span></button>
+              <button class="task__edit" type="button"><span class="sr-only">Edit task</span></button>
 
             </div>
-            <button class="task__indicator indicator" type="button">3
+            <button class="task__indicator indicator" type="button">3<span class="sr-only">Amount of pomodoros</span>
             </button>
           </li>
         </ul>
@@ -192,7 +192,7 @@
           <li class="tasks__item task task--high task--education ">
             <p class="task__toggle">
               <span class="task__date">TODAY</span>
-              <span class="task__delete "></span>
+              <span class="task__delete "><span class="sr-only">Click to delete task</span></span>
             </p>
             <div class="task__text">
               <h3 class="task__caption">Lorem ipsum sit amet</h3>
@@ -201,11 +201,11 @@
               </p>
             </div>
             <div class="task__edit-tools">
-              <button class="task__shift" type="button"> </button>
-                <button class="task__edit" type="button"></button>
+              <button class="task__shift" type="button"><span class="sr-only">Shift to daily</span></button>
+              <button class="task__edit" type="button"><span class="sr-only">Edit task</span></button>
 
             </div>
-            <button class="task__indicator indicator" type="button">3
+            <button class="task__indicator indicator" type="button">3<span class="sr-only">Amount of pomodoros</span>
             </button>
           </li>
         </ul>
@@ -282,9 +282,9 @@
             <input id="low-edit" type="radio" name="priority" value="low"> <label class="modal__title modal__title--small modal__title--low" for="low-edit">Low</label>
           </fieldset></li>
         </ul>
-        <button class="modal__close" type="button"></button>
-        <button class="modal__submit" type="submit"></button>
-        <button class="modal__remove" type="button"></button>
+        <button class="modal__close" type="button"><span class="sr-only">Close</span></button>
+        <button class="modal__submit" type="submit"><span class="sr-only">Submit</span></button>
+        <button class="modal__remove" type="button"><span class="sr-only">Remove task</span></button>
       </form>
     </div>
   </div>
@@ -293,7 +293,7 @@
       <form action="" method="get" class="modal__form">
         <h2 class="modal__caption">Remove Task</h2>
         <p class="modal__message">Are you sure you want to remove selected task(s)?</p>
-        <button class="modal__close modal__close--remove-task" type="button"></button>
+        <button class="modal__close modal__close--remove-task" type="button"><span class="sr-only">Close modal</span></button>
         <div class="modal__removecancel buttons">
           <button class="buttons__item buttons__item--info" type="button">Cancel</button>
           <button class="buttons__item buttons__item--danger" type="button">Remove</button>
@@ -304,26 +304,24 @@
 </div>
 </main>
     <div class="notification notification--info hidden">
-      <span class="notification__indicator"></span>
+      <span class="notification__indicator"><span class="sr-only">Info</span></span>
       <p class="notification__message">This is just an info notification message!</p>
-      <button class="notification__close-button"></button>
-
+      <button class="notification__close-button"><span class="sr-only">Close notification</span></button>
   </div>
-
     <div class="notification notification--warning hidden">
-      <span class="notification__indicator"></span>
+      <span class="notification__indicator"> <span class="sr-only">Warning</span></span>
       <p class="notification__message">This is just a warning notification message!</p>
-      <button class="notification__close-button"></button>
+      <button class="notification__close-button"><span class="sr-only">Close notification</span></button>
     </div>
 <div class="notification notification--error hidden">
-  <span class="notification__indicator"></span>
+  <span class="notification__indicator"><span class="sr-only">Error</span></span>
   <p class="notification__message">Ups! An error has occured!</p>
-  <button class="notification__close-button"></button>
+  <button class="notification__close-button"><span class="sr-only">Close notification</span></button>
 </div>
 <div class="notification notification--success hidden">
-  <span class="notification__indicator"></span>
+  <span class="notification__indicator"> <span class="sr-only">Success</span></span>
   <p class="notification__message">Task was successfully created!</p>
-  <button class="notification__close-button"></button>
+  <button class="notification__close-button"><span class="sr-only">Close notification</span></button>
 </div>
 <script src="/bundle.js"></script>
 </body>

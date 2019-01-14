@@ -15,11 +15,11 @@
     <nav class="navigation">
       <ul class="menu">
         <li class="menu__item">
-          <a href="#" class="menu__link menu__link--icon-list "></a>
+          <a href="#" class="menu__link menu__link--icon-list "><span class="sr-only">Go to Task list</span></a>
         </li>
-        <li data-tooltip="Go to Reports" class="menu__item menu__item--icon-statistics"><a href="#" class="menu__link menu__link--icon-statistics "></a>
+        <li data-tooltip="Go to Reports" class="menu__item menu__item--icon-statistics"><a href="#" class="menu__link menu__link--icon-statistics "><span class="sr-only">Go to Reports</span></a>
         </li>
-        <li class="menu__item"><a href="#" class="menu__link menu__link--icon-settings "></a>
+        <li class="menu__item"><a href="#" class="menu__link menu__link--icon-settings "><span class="sr-only">Go to Settings</span></a>
         </li>
       </ul>
     </nav>
@@ -31,9 +31,9 @@
      <h2 class="timer__title">1. Creating a New Design</h2>
      <p class="timer__description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
      <div class="timer__estimates">
-      <span class="timer__estimate"></span>
-       <span class="timer__estimate"></span>
-       <span class="timer__estimate"></span>
+      <span class="timer__estimate"><span class="sr-only">pomodoro</span></span>
+       <span class="timer__estimate"><span class="sr-only">pomodoro</span></span>
+       <span class="timer__estimate"><span class="sr-only">pomodoro</span></span>
      </div>
      <div class="timer__dial">
        <div class="timer__message"><span class="timer__time-basic">Let`s do it!</span></div>
@@ -45,16 +45,17 @@
      <a class="timer__goback arrow" href="#">
        <span class="arrow__item arrow__item--top"></span>
        <span class="arrow__item arrow__item--bottom"></span>
+       <span class="sr-only">Go back</span>
      </a>
    </section>
     <section class="timer timer--process hidden">
       <h2 class="timer__title">1. Creating a New Design</h2>
       <p class="timer__description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
       <div class="timer__estimates">
-        <span class="timer__estimate"></span>
-        <span class="timer__estimate"></span>
-        <span class="timer__estimate"></span>
-        <button class="timer__add" type="button"></button>
+        <span class="timer__estimate"><span class="sr-only">pomodoro</span></span>
+        <span class="timer__estimate"><span class="sr-only">pomodoro</span></span>
+        <span class="timer__estimate"><span class="sr-only">pomodoro</span></span>
+        <button class="timer__add" type="button"><span class="sr-only">Add pomodoro</span></button>
       </div>
       <div class="timer__dial">
         <svg class="timer__indicator" >
@@ -72,9 +73,9 @@
       <h2 class="timer__title">1. Creating a New Design</h2>
       <p class="timer__description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
       <div class="timer__estimates">
-        <span class="timer__estimate timer__estimate--success"></span>
-        <span class="timer__estimate"></span>
-        <span class="timer__estimate"></span>
+        <span class="timer__estimate timer__estimate--success"><span class="sr-only">pomodoro</span></span>
+        <span class="timer__estimate"><span class="sr-only">pomodoro</span></span>
+        <span class="timer__estimate"><span class="sr-only">pomodoro</span></span>
       </div>
       <div class="timer__dial">
         <svg class="timer__indicator" >
@@ -91,9 +92,9 @@
       <h2 class="timer__title">1. Creating a New Design</h2>
       <p class="timer__description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
       <div class="timer__estimates">
-        <span class="timer__estimate timer__estimate--failed"></span>
-        <span class="timer__estimate"></span>
-        <span class="timer__estimate"></span>
+        <span class="timer__estimate timer__estimate--failed"><span class="sr-only">pomodoro</span></span>
+        <span class="timer__estimate"><span class="sr-only">pomodoro</span></span>
+        <span class="timer__estimate"><span class="sr-only">pomodoro</span></span>
       </div>
       <div class="timer__dial">
         <svg class="timer__indicator" >
@@ -110,9 +111,9 @@
       <h2 class="timer__title">1. Creating a New Design</h2>
       <p class="timer__description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
       <div class="timer__estimates">
-        <span class="timer__estimate timer__estimate--success"></span>
-        <span class="timer__estimate timer__estimate--success"></span>
-        <span class="timer__estimate timer__estimate--success"></span>
+        <span class="timer__estimate timer__estimate--success"><span class="sr-only">pomodoro</span></span>
+        <span class="timer__estimate timer__estimate--success"><span class="sr-only">pomodoro</span></span>
+        <span class="timer__estimate timer__estimate--success"><span class="sr-only">pomodoro</span></span>
       </div>
       <div class="timer__dial">
         <svg class="timer__indicator" >
@@ -126,10 +127,12 @@
       <a class="timer__goback arrow" href="#">
         <span class="arrow__item arrow__item--top"></span>
         <span class="arrow__item arrow__item--bottom"></span>
+        <span class="sr-only">Go back</span>
       </a>
       <a class="timer__goback timer__goback--right arrow" href="#">
         <span class="arrow__item arrow__item--right"></span>
         <span class="arrow__item arrow__item--left"></span>
+        <span class="sr-only">Go to settings</span>
       </a>
     </section>
   </div>

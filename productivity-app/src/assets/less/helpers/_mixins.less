@@ -19,8 +19,8 @@
 
 .icon (@icon-name) {
   content: @icon-name;
-  font-family: "icomoon", sans-serif !important;
   speak: none;
+  font-family: "icomoon", sans-serif !important;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -75,39 +75,39 @@
       color: @color;
     }
   }
+
   &::before {
     content: "";
+    position: absolute;
+    z-index: 2;
     height: 100%;
     width: @rem*9;
     background-color: @color;
-    position: absolute;
-    z-index: 2;
   }
+
   &::after {
     content: "";
+    position: absolute;
+    z-index: 2;
+    top: @rem*3;
     height: @rem*5;
     width: @rem*5;
     border-radius: @rem*5;
-    position: absolute;
-    z-index: 2;
     background-color: @color;
     border: @rem*2 solid @adoration;
     box-shadow: 0 0 0 @rem*4 @color;
-    top: @rem*3;
   }
 }
 
 //Mixin for buttons
 
 .button-bg (@color) {
-
   &--@{color} {
     background: e("@{@{@{color}}}");
     &:hover,
     &:focus {
       background: e("@{@{@{color}-hover}}");
     }
-
     &:active {
       background: e("@{@{@{color}-active}}");
     }
@@ -118,16 +118,16 @@
 .tooltip() {
   &::after {
     content: attr(data-tooltip);
-    .font(@font-tooltip);
-    background-color: @colorfortooltips;
-    color: @adoration;
-    text-align: center;
-    border-radius: 2px;
-    padding: 10px;
     position: absolute;
     z-index: 2;
     top: @rem*10;
-    right:0;
+    right: 0;
+    text-align: center;
+    background-color: @colorfortooltips;
+    color: @adoration;
+    border-radius: @rem*2;
+    padding: @rem*10;
+    .font(@font-tooltip);
     transform: translate(70%, 50%);
     white-space: nowrap;
   }
@@ -135,10 +135,10 @@
   &::before {
     content: "";
     position: absolute;
-    bottom:-@rem*10;
+    bottom: -@rem*10;
     left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
+    margin-left: @rem*(-5);
+    border-width: @rem*5;
     border-style: solid;
     border-color: transparent transparent @colorfortooltips transparent;
   }
@@ -147,19 +147,20 @@
 //Mixin for circles
 .circle (@color) {
   &:before {
-    position: absolute;
     content: "";
+    position: absolute;
+    left: -@rem*17*2;
     display: block;
     width: @rem*17;
     height: @rem*17;
     border-radius: 50%;
     background: @color;
-    left: -@rem*17*2;
   }
 }
+
 //Mixins for radio
 .radio(@color) {
-  input[type="radio"]:checked + .modal__title--@{color}:before{
+  input[type="radio"]:checked + .modal__title--@{color}:before {
     background: ~"@{@{color}}";
     box-shadow: 0 0 0 @rem*4 ~"@{@{color}}";
     border: @rem*2 solid @adoration;
