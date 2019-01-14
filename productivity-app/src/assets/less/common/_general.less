@@ -1,5 +1,5 @@
 *:focus{
-  outline: rgba(255,255,255, 0.3) solid 1px;
+  outline: rgba(255,255,255, 0.3) solid @rem*1;
 }
 
 input[type="number"] {
@@ -981,8 +981,8 @@ html, body {
       &:before {
         background: @alicante;
         content: "";
-        width: 5px;
-        height: 5px;
+        width: @rem*5;
+        height: @rem*5;
         display: block;
         position: absolute;
         left: @rem*10;
@@ -1004,8 +1004,8 @@ html, body {
   &__estimate {
     display: inline-block;
     position: relative;
-    width:20px;
-    height: 20px;
+    width:@rem*20;
+    height: @rem*20;
     margin:0;
 
   }
@@ -1015,8 +1015,8 @@ html, body {
     position: absolute;
     content:"";
     display: block;
-    width: 20px;
-    height: 20px;
+    width: @rem*20;
+    height: @rem*20;
     background: url("../../images/empty-tomato.svg");
   }
   &__pomodoro:checked + &__estimate:before{
@@ -1161,7 +1161,7 @@ display:none;
     height:@rem*4;
     background:@alicante;
     display:block;
-    left:10px;
+    left:@rem*10;
     transform-origin: left;
 
     &--top{
@@ -1169,6 +1169,14 @@ display:none;
     }
     &--bottom{
       transform: rotate(-45deg) translate(-8%, 50%);
+    }
+    &--right{
+      transform-origin: right;
+      transform: rotate(45deg) translate(8%, 50%);
+    }
+    &--left{
+      transform-origin: right;
+      transform: rotate(-45deg) translate(0, 50%);
     }
   }
 }
@@ -1185,10 +1193,10 @@ display:none;
   width:@rem*550;
   height: @rem*65;
     border-style: solid;
-    border-width: 1px;
+    border-width: @rem*1;
     border-color: @beefsteak;
-    border-radius: 2px;
-    box-shadow: 0 18px 30.72px 1.28px rgba(0, 0, 0, 0.2);
+    border-radius: @rem*2;
+    box-shadow: 0 @rem*18 @rem*30.72 @rem*1.28 rgba(0, 0, 0, 0.2);
   &__message{
     .font(@font-button);
     color: @beefsteak;
@@ -1302,6 +1310,161 @@ display:none;
     }
   }
 }
+
+.timer{
+  &__title{
+    .font(@font-heading-1);
+    color: @beefsteak;
+    text-align: center;
+    margin:0;
+  }
+  &__description{
+    .font(@font-subtitle);
+    color: @beefsteak;
+    text-align: center;
+    margin:0;
+    margin-top: @rem*25;
+  }
+  &__estimates{
+   text-align: center;
+    margin:@rem*35 auto 0;
+  }
+  &__estimate {
+    display: inline-block;
+    position: relative;
+    padding-right: @rem*10;
+    width:@rem*25;
+    height: @rem*25;
+    margin:0;
+    background: url("../../images/empty-tomato.svg")  no-repeat;
+  }
+
+  &__estimate--success {
+    background: url("../../images/fill tomato.svg") no-repeat;
+  }
+  &__estimate--failed {
+    background: url("../../images/tomato-failed.svg") no-repeat;
+  }
+  &__dial{
+    position: relative;
+    margin: @rem*65 auto 0;
+    width:@rem*254;
+    height:@rem*254;
+    border-radius: 50%;
+    border: @rem*6 solid @high;
+    box-shadow: 0 @rem*5 @rem*83 @rem*17 rgba(21, 43, 59, 0.25);
+
+  }
+  &__message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 0 auto;
+    transform: translate(-50%, -50%);
+    width: @rem*160;
+    height: @rem*160;
+    border-radius: 50%;
+    background: @adoration;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+  }
+  &__indicator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: @rem*254;
+    height: @rem*254;
+    transform: translate(-50%, -50%) rotate(270deg);
+
+    .circle {
+      stroke-dasharray: @rem*660px;
+      stroke-dashoffset: @rem*388px;
+      stroke-width: @rem*30px;
+      stroke: @alicante;
+      fill: none;
+      &--done{
+        stroke-dashoffset: 0;
+      }
+      &--failed {
+        stroke-dashoffset: @rem*100;
+      }
+    }
+  }
+&__time-number{
+  font-family: @font-family-roboto, sans-serif;
+  font-size: @rem*100;
+  display:block;
+  color: @beefsteak;
+  line-height:1;
+
+}
+  &__time-basic{
+    .font(@font-indicator-timer);
+    color: @beefsteak;
+    display:block;
+    text-align: center;
+    &--brake-is-over{
+      padding: 0 38px;
+    }
+
+  }
+&__phase{
+  font-size: @rem*15;
+  font-family: @font-family-roboto, sans-serif;
+  font-weight: normal;
+  color: @beefsteak;
+}
+&__add{
+  border:0;
+  background: none;
+  position:relative;
+  width:@rem*25;
+  height: @rem*25;
+  &:before {
+    content:"";
+    display:block;
+    position: absolute;
+    .icon(@icon-add);
+    top:50%;
+    left:50%;
+    font-size: @rem*15;
+    color: @alicante;
+    transform: translate(-50%, -50%);
+
+  }
+  &:hover:before{
+    color:@hanover;
+  }
+  }
+  &__buttons{
+    margin: @rem*70 0;
+  }
+
+
+  &__goback {
+    position: absolute;
+    top: 50%;
+    left: @rem*36;
+    width: @rem*48;
+    height: @rem*48*1.5;
+    transform: translate(0, -50%);
+
+    &:hover .arrow__item,
+    &:focus .arrow__item,
+    &:active .arrow__item {
+      background: @hanover;
+    }
+    &--right{
+      right:@rem*36;
+      left:unset;
+    }
+  }
+}
+
+
 .hidden {
   display: none;
 }
