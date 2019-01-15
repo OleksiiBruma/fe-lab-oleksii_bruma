@@ -1,15 +1,10 @@
 function createCounter(startCount = 0, incrementor = 1){
     let initialCount = startCount - incrementor;
     const counter= ()=> {
-        try{
             if (typeof startCount  !== "number" || typeof incrementor !== "number"){
                 throw "Only numeric params are allowed";
             }
             return initialCount = initialCount + incrementor;
-        }
-        catch (e) {
-            console.log(e);
-        }
     }
     counter.resetCounter = ()=>{
         initialCount = startCount - incrementor;
