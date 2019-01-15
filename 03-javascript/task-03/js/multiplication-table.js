@@ -19,8 +19,5 @@ function multiplicationTable(colStart, rowStart, size) {
         }
     }
     table[0][0] = null;
-
-    console.log(table);
+    return table;
 }
-
-const table = multiplicationTable(2, 3, 4);
