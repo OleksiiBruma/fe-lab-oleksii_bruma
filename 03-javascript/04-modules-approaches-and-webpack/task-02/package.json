@@ -1,0 +1,18 @@
+{
+  "name": "task-02",
+  "version": "1.0.0",
+  "description": "Using only ES5 language features create 3 Classes which describe Employee. \r One Abstract Class and two concrete implementations:",
+  "main": "js/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:prod": "webpack --mode=production ./js/index.js --output ./build/bundle.js",
+    "build:dev": "webpack --mode=development ./js/index.js --output ./build/bundle.js",
+    "watch": "webpack --mode=development --watch ./js/index.js --output ./build/bundle.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.28.4",
+    "webpack-cli": "^3.2.1"
+  }
+}
