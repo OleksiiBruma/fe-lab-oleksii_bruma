@@ -4,12 +4,13 @@ function EmployeeCollection (collection) {
     this.data = [];
     for (var i = 0; i < collection.length; i++) {
         if (collection[i].type === "per-hour") {
-            var PerHourSalary = new PerHourSalaryEmployee("" + i, collection[i].name, collection[i].salary);
+            var PerHourSalary = new PerHourSalaryEmployee("" + i, collection[i].name, +collection[i].salary);
             this.data.push(PerHourSalary);
         }
         if (collection[i].type === "fixed") {
-            var FixedSalary = new FixedSalaryEmployee("" + i, collection[i].name, collection[i].salary);
+            var FixedSalary = new FixedSalaryEmployee("" + i, collection[i].name, +collection[i].salary);
             this.data.push(FixedSalary);
+
         }
         this.sorted = this.data.sort(function (a, b) {
             if (a.salary < b.salary) return -1;
@@ -38,9 +39,11 @@ function EmployeeCollection (collection) {
         }
         this.getCollectionAverage = function(){
             var total = this.sorted.reduce(function (amountSalary, currentEmployee){
-                return amountSalary + currentEmployee.salary;
+                console.log(amountSalary);
+                return  amountSalary + +currentEmployee.salary;
+
             },0);
-            return (total/this.sorted.length).toFixed(2);
+            return total.toFixed(1)/this.sorted.length;
         }
     }
 }
