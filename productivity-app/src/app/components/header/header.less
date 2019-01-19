@@ -1,8 +1,110 @@
-// ~ at the beginning of path is used to enable webpack file revolver mechanism. Allows to use webpack aliases
+@import ( reference ) '~@less-helpers-module/_mixins.less';
+@import ( reference ) '~@less-helpers-module/_variables.less';
 
-/* example of using mixins */
-@import ( reference ) '~@less-helpers-module/_mixins.less'; // ~@less-helpers-module - is a path to less helpers folder
+.header {
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  box-shadow: 0 @rem*5 @rem*8.3 @rem*1.7 rgba(34, 56, 73, 1);
+  background-color: @adoration;
+
+  &--no-sticky {
+    position: static;
+    box-shadow: none;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: @rem*27;
+    padding-bottom: @rem*27;
+
+    &--no-sticky {
+      position: static;
+      padding-top: @rem*56;
+      padding-bottom: @rem*21;
+      justify-content: flex-end;
+    }
+  }
+
+  &__logo {
+    margin: 0;
 
 
-  //background: url('~@assets-root-path/images/test.jpg') no-repeat; // ~@assets-root-path - is a path to images folder
+    &--no-sticky {
+      display: none;
+    }
+  }
+}
 
+.menu {
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+  list-style-type: none;
+
+  &__item {
+    position: relative;
+    display: inline-block;
+    margin: 0 @rem*30 0 0;
+    padding: 0;
+
+    &--icon-statistics {
+      .tooltip();
+    }
+  }
+
+  &__item:last-child {
+    margin: 0;
+  }
+
+  &__link {
+    display: block;
+    text-decoration: none;
+    font-size: @rem*15;
+    color: @alicante;
+
+    &--icon-trash {
+      position: relative;
+
+      &::before {
+        .icon(@icon-trash);
+      }
+    }
+
+    &--icon-list {
+      position: relative;
+
+      &::before {
+        .icon(@icon-list);
+      }
+    }
+
+    &--icon-statistics {
+      position: relative;
+
+      &::before {
+        .icon(@icon-statistics);
+      }
+    }
+
+    &--icon-settings {
+      position: relative;
+
+      &::before {
+        .icon(@icon-settings);
+      }
+    }
+  }
+
+  &__link:hover,
+  &__link:focus,
+  &__link:active {
+    color: @hanover;
+  }
+
+  &__link--active {
+    color: @beefsteak;
+  }
+}
