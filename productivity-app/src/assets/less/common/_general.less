@@ -96,52 +96,6 @@ input[type="radio"]{
   }
 }
 
-.number {
-
-  &__input {
-    flex-grow: 2;
-    padding-bottom:@rem*5;
-    .font(@font-paragraph);
-    text-align: center;
-    color: @alicante;
-    background:transparent;
-    border: 0;
-  }
-
-  &__step{
-    position: relative;
-    padding-bottom:@rem*5;
-    background: none;
-    border:0;
-    cursor: pointer;
-    color: @alicante;
-
-    &:hover{
-      color: @hanover;
-    }
-
-    &--up{
-      padding-left: @rem*20;
-
-      &::before{
-        position: absolute;
-        .icon(@icon-add);
-        transform: translate(-50%, -50%);
-      }
-    }
-
-    &--down{
-      padding-right: @rem*20;
-
-      &::before{
-        position: absolute;
-        .icon(@icon-minus);
-        transform: translate(-50%, -50%);
-      }
-    }
-  }
-}
-
 .logo__image {
   max-width: 100%;
   height: auto;
@@ -236,33 +190,6 @@ input[type="radio"]{
   }
 }
 
-.settings-pomodoro{
-
-  &__buttons {
-    margin-top:@rem*43;
-  }
-
-  &__subcaption {
-    margin: @rem*10 0 0;
-  }
-
-  &__list {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: 0 auto;
-    padding: 0;
-    max-width: @rem*750;
-  }
-
-  &__caption {
-    margin-top: @rem*80;
-    .font(@font-caption2);
-    color: @beefsteak;
-    text-align: center;
-  }
-}
 
 
 .tab {

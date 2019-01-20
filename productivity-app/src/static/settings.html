@@ -41,7 +41,7 @@
       </li>
     </ul>
   </div>
-  <section class="settings-pomodoro container hidden">
+  <section class="settings-pomodoro container ">
     <h3 class="settings-pomodoro__subcaption subcaption">Pomodoros settings</h3>
     <ul class="settings-pomodoro__list">
       <li class="settings-pomodoro__item input">
@@ -49,8 +49,8 @@
           TIME</label>
         <div class="input__number number">
           <button class="number__step number__step--down"><span class="sr-only">Remove one</span></button>
-          <input id="work-time" class="number__input" type="number" min="15" max="25" value="25">
-          <button class="number__step number__step--up"><span class="sr-only">Add</span></button>
+          <input id="work-time" class="number__input" type="number" min="15" max="25" value="25" disabled>
+          <button class="number__step number__step--up number__step--disabled " disabled><span class="sr-only">Add</span></button>
         </div>
         <p class="input__description">Please select a value between 15 and 25
           <em class="input__highlighted">minutes</em></p>
@@ -61,7 +61,7 @@
         <div class="input__number number">
           <button class="number__step number__step--down"><span class="sr-only">Remove one</span></button>
           <input id="work-iteration" class="number__input" type="number" min="2"
-                 max="5" value="5">
+                 max="5" value="5" disabled>
           <button class="number__step number__step--up"><span class="sr-only">Add</span></button>
         </div>
         <p class="input__description">Please select a value between 2 and 5 <em
@@ -73,7 +73,7 @@
         <div class="input__number number">
           <button class="number__step number__step--down"><span class="sr-only">Remove one</span></button>
           <input id="short-break" class="number__input" type="number" min="3"
-                 max="5" value="5">
+                 max="5"  disabled>
           <button class="number__step number__step--up"><span class="sr-only">Add</span></button>
         </div>
         <p class="input__description">Please select a value between 3 and 5 <em
@@ -85,15 +85,15 @@
         <div class="input__number number">
           <button class="number__step number__step--down"><span class="sr-only">Remove one</span></button>
           <input id="long-break" class="number__input" type="number" min="15"
-                 max="30" value="25">
-          <button class="number__step number__step--up"><span class="sr-only">Add</span></button>
+                 max="30"  disabled>
+          <button class="number__step number__step--up "><span class="sr-only">Add</span></button>
         </div>
-        <p class="input__description">Please select a value between 3 and 5 <em
+        <p class="input__description">Please select a value between 15 and 30 <em
           class="input__highlighted">minutes</em></p>
       </li>
     </ul>
     <h3 class="settings-pomodoro__caption">Your cycle</h3>
-    <div class="graph"><span class="sr-only">Graph</span></div>
+    <div class="settings-pomodoro__progress-bar"><span class="sr-only">Graph</span></div>
     <div class="settings-pomodoro__buttons buttons">
       <button class="buttons__item buttons__item--info" type="button">Go to
         Tasks
