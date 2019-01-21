@@ -137,7 +137,6 @@
 .progress {
   &__bottom-scale {
     display:flex;
-    justify-content: space-around;
     .font(@font-caption);
     color:@alicante;
     padding-top:@rem*15;
@@ -145,6 +144,13 @@
   }
   &__bottom-scale-item {
     position:relative;
+    text-align: right;
+
+  }
+  &__bottom-scale-value {
+    position:absolute;
+    right:0;
+    transform: translate(50%,0);
     &:before {
       content:"";
       position:absolute;
@@ -162,7 +168,7 @@
   }
   &__top-scale{
     display:flex;
-    justify-content: space-between;
+    flex-wrap: nowrap;
     .font(@font-caption);
     padding-bottom:@rem*15;
     color:@alicante;
@@ -195,11 +201,14 @@
       border-radius: 50%;
       bottom:0;
       transform: translate(0,150%);
-      left:50%;
+      right:0;
     }
   }
   &__end-point {
     position:relative;
+    margin-right: 0;
+    margin-left: auto;
+    width:auto;
     &::before{
       content:"";
       position:absolute;
@@ -214,11 +223,15 @@
       right:0;
     }
   }
+  &__middle-point-value {
+    position:absolute;
+    transform: translate(50%,0);
+    right: 0;
+  }
 &__graph{
   height: @rem*10;
   display:flex;
   flex-wrap: nowrap;
-
 }
 
   &__work-time {
@@ -233,5 +246,4 @@
     height:@rem*10;
     background: @hobby;
   }
-
 }
