@@ -1,45 +1,103 @@
 require('./settings.less');
 
-var settingsItems = [
-  {
-    name: "workTime",
-    min: 15,
-    max: 25,
-    value: 25,
-    step: 5,
-    id: "work-time"
-  },
-  {
-    name: "workIteration",
-    min: 2,
-    max: 5,
-    value: 3,
-    step: 1,
-    id: "work-iteration"
-  },
-  {
-    name: "shortBreak",
-    min: 3,
-    max: 5,
-    value: 4,
-    step: 1,
-    id: "short-break"
-  },
-  {
-    name: "longBreak",
-    min: 15,
-    max: 30,
-    value: 20,
-    step: 5,
-    id: "long-break"
-  }];
+function SettingsItem(options) {
+  var settingsElem = options.settingsElem;
+  var settingsStep = options.settingsStep;
+  var settingsMin = options.settingsMin;
+  var settingsMax = options.settingsMax;
+  var settingsValue = options.settingsValue;
+  var settingsInput = settingsElem.querySelector('.number__input');
+  var settingsUp = settingsElem.querySelector(".number__step--up");
+  var settingsDown = settingsElem.querySelector(".number__step--down");
 
+  settingsElem.onclick = function(event) {
+    if (event.target.classList.contains('number__step--down')) {
+      settingsItemDecrease();
+      graph.drawGraph();
+    } else if (event.target.classList.contains('number__step--up')) {
+      settingsItemIncrease();
+      graph.drawGraph();
+    }
+  };
 
+  settingsElem.onmousedown = function() {
+    return false;
+  };
+  function stepUp(){
+    settingsValue += settingsStep;
+    settingsInput.value = settingsValue;
+  }
+  function stepDown(){
+    settingsValue -= settingsStep;
+    settingsInput.value = settingsValue;
+  };
+  this.getValue = function(){
+    return settingsValue;
+  };
+  function settingsItemDecrease() {
+    if (+settingsInput.value > settingsMin){
+      settingsUp.removeAttribute("disabled");
+      settingsUp.classList.remove("number__step--disabled");
+      stepDown();
+    }
+    if(+settingsInput.value === settingsMin) {
+      settingsDown.setAttribute("disabled", "");
+      settingsDown.classList.add("number__step--disabled");
+    }
+  }
+
+  function settingsItemIncrease() {
+    if (+settingsInput.value < settingsMax){
+      settingsDown.removeAttribute("disabled");
+      settingsDown.classList.remove("number__step--disabled");
+      stepUp();
+    }
+    if(+settingsInput.value === settingsMax) {
+      settingsUp.setAttribute("disabled", "");
+      settingsUp.classList.add("number__step--disabled");
+    }
+  }
+}
+
+function Graph(){
 var progressFragment = document.createDocumentFragment();
-var settingsList = document.querySelector(".settings-pomodoro__list");
 var progressBar = document.querySelector(".settings-pomodoro__progress-bar");
 var progress = document.createElement("div");
 progress.classList.add("progress__graph");
+
+function createProgressPart() {
+  for (var i = 0; i < workIteration.getValue(); i++) {
+    var workTimeHTML = document.createElement("div");
+    workTimeHTML.classList.add("progress__work-time");
+    workTimeHTML.style.width = calcPercentage(workTime.getValue() );
+    progress.appendChild(workTimeHTML);
+    if (i < workIteration.getValue() - 1) {
+      var shortBreakHTML = document.createElement("div");
+      shortBreakHTML.style.width = calcPercentage(shortBreak.getValue());
+      shortBreakHTML.classList.add("progress__short-break");
+      progress.appendChild(shortBreakHTML);
+    }
+  }
+}
+
+function createProgress() {
+  while (progress.firstChild) {
+    progress.removeChild(progress.firstChild);
+  }
+  createTopScale();
+  createProgressPart();
+  var longBreakHTML = document.createElement("div");
+  longBreakHTML.classList.add("progress__long-break");
+  longBreakHTML.style.width = calcPercentage(longBreak.getValue());
+  progress.appendChild(longBreakHTML);
+  createProgressPart();
+  progressFragment.appendChild(progress);
+  createBottomScale();
+  while (progressBar.firstChild) {
+    progressBar.removeChild(progressBar.firstChild);
+  }
+  progressBar.appendChild(progressFragment);
+}
 
 function createTopScale() {
   var topScale = document.createElement("div");
@@ -78,53 +136,13 @@ function createBottomScale() {
     bottomScale.appendChild(bottomScaleItem);
   }
   progressFragment.appendChild(bottomScale);
-
-}
-
-function createProgress() {
-  while (progress.firstChild) {
-    progress.removeChild(progress.firstChild);
-  }
-  createTopScale();
-  createProgressPart();
-  var longBreak = document.createElement("div");
-  longBreak.classList.add("progress__long-break");
-  longBreak.style.width = calcPercentage(settingsItems[3].value);
-  progress.appendChild(longBreak);
-  createProgressPart();
-  progressFragment.appendChild(progress);
-  createBottomScale();
-  while (progressBar.firstChild) {
-    progressBar.removeChild(progressBar.firstChild);
-  }
-  progressBar.appendChild(progressFragment);
-}
-
-function createProgressPart() {
-  for (var i = 0; i < settingsItems[1].value; i++) {
-    var workTime = document.createElement("div");
-    workTime.classList.add("progress__work-time");
-    workTime.style.width = calcPercentage(settingsItems[0].value);
-    progress.appendChild(workTime);
-    if (i < settingsItems[1].value - 1) {
-      var shortBreak = document.createElement("div");
-      shortBreak.style.width = calcPercentage(settingsItems[2].value);
-      shortBreak.classList.add("progress__short-break");
-      progress.appendChild(shortBreak);
-    }
-  }
-}
-
-function calcPercentage(number) {
-  return ((number / getFullCycle()) * 100).toFixed(2) + "%";
-
 }
 
 function getFullCycle() {
-  return ((settingsItems[0].value + settingsItems[2].value) * settingsItems[1].value)* 2 - 2 * settingsItems[2].value + settingsItems[3].value;
+  return ((workTime.getValue() + shortBreak.getValue()) * workIteration.getValue())* 2 - 2 * shortBreak.getValue() + longBreak.getValue();
 }
 function getFirstCycle() {
-  return (settingsItems[0].value + settingsItems[2].value) * settingsItems[1].value - settingsItems[2].value + settingsItems[3].value;
+  return (workTime.getValue() + shortBreak.getValue()) * workIteration.getValue() - shortBreak.getValue() + longBreak.getValue();
 }
 
 function minToHours(data) {
@@ -133,48 +151,50 @@ function minToHours(data) {
   if (hours === 0) {
     return minutes.toFixed(0) + "m";
   }
+  if (minutes === 0) {
+    return hours + "h" ;
+  }
 
   return hours + "h" + " " + minutes.toFixed(0) + "m";
 }
-
-function updateNumberInputes() {
-  settingsItems.forEach(function (item) {
-    document.querySelector("#" + item.id).value = item.value;
-  })
+function calcPercentage(number) {
+  return ((number / getFullCycle()) * 100) + "%";
+}
+this.drawGraph = function(){
+  createProgress();
+  }
 }
 
-function getProgressValue(e) {
-  settingsItems.forEach(function (item) {
-    if (e.target.parentElement.children[1].id === item.id) {
-      if (e.target.classList.contains("number__step--up") && +e.target.parentElement.children[1].value < item.max) {
-        e.target.parentElement.children[0].removeAttribute("disabled");
-        e.target.parentElement.children[0].classList.remove("number__step--disabled");
-        item.value += item.step;
-        updateNumberInputes();
-        createProgress();
-        if (+e.target.parentElement.children[1].value === item.max) {
-          e.target.parentElement.children[2].setAttribute("disabled", "");
-          e.target.parentElement.children[2].classList.add("number__step--disabled")
-        }
-      } else if (e.target.classList.contains("number__step--down") && e.target.parentElement.children[1].value > item.min) {
-        e.target.parentElement.children[2].removeAttribute("disabled");
-        e.target.parentElement.children[2].classList.remove("number__step--disabled");
-        item.value -= item.step;
-        updateNumberInputes();
-        createProgress();
-        if (+e.target.parentElement.children[1].value === item.min) {
-          e.target.parentElement.children[0].setAttribute("disabled", "");
-          e.target.parentElement.children[0].classList.add("number__step--disabled")
-        }
-      }
-    }
-  });
-}
+var workTime = new SettingsItem({
+  settingsElem: document.getElementById('work-time').parentElement,
+  settingsStep: 5,
+  settingsMin: 15,
+  settingsMax: 25,
+  settingsValue: 25,
+});
+var workIteration = new SettingsItem({
+  settingsElem: document.getElementById('work-iteration').parentElement,
+  settingsStep: 1,
+  settingsMin: 2,
+  settingsMax: 5,
+  settingsValue: 5
+});
+var shortBreak = new SettingsItem({
+  settingsElem: document.getElementById('short-break').parentElement,
+  settingsStep: 1,
+  settingsMin: 3,
+  settingsMax: 5,
+  settingsValue: 5
+});
+var longBreak = new SettingsItem({
+  settingsElem: document.getElementById('long-break').parentElement,
+  settingsStep: 5,
+  settingsMin: 15,
+  settingsMax: 30,
+  settingsValue: 30
+});
 
+var graph = new Graph();
 
-createProgress();
-updateNumberInputes();
-settingsList.addEventListener("click", getProgressValue);
-
-
+graph.drawGraph();
 

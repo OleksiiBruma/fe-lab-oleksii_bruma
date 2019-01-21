@@ -73,7 +73,7 @@
         <div class="input__number number">
           <button class="number__step number__step--down"><span class="sr-only">Remove one</span></button>
           <input id="short-break" class="number__input" type="number" min="3"
-                 max="5"  disabled>
+                 max="5"  value="5" disabled>
           <button class="number__step number__step--up"><span class="sr-only">Add</span></button>
         </div>
         <p class="input__description">Please select a value between 3 and 5 <em
@@ -85,7 +85,7 @@
         <div class="input__number number">
           <button class="number__step number__step--down"><span class="sr-only">Remove one</span></button>
           <input id="long-break" class="number__input" type="number" min="15"
-                 max="30"  disabled>
+                 max="30"  value="30"  disabled>
           <button class="number__step number__step--up "><span class="sr-only">Add</span></button>
         </div>
         <p class="input__description">Please select a value between 15 and 30 <em
@@ -102,7 +102,7 @@
       </button>
     </div>
   </section>
-  <section class="settings-category container ">
+  <section class="settings-category container hidden">
     <h3 class="settings-category__subcaption subcaption">Categories list overview</h3>
     <ul class="settings-category__list">
       <li class="settings-category__item settings-category__item--work">Work</li>
