@@ -2,6 +2,60 @@
 @import ( reference ) '~@less-helpers-module/_variables.less';
 
 
+
+.settings-category {
+
+  &__subcaption {
+    margin: @rem*10 0 0;
+  }
+
+  &__list{
+    margin:@rem*73 0 0;
+    padding:0;
+    list-style-type: none;
+    padding-left: @rem*50;
+  }
+
+  &__item {
+    position: relative;
+    padding-bottom: @rem*10;
+    border-bottom: @rem*1 solid @alicante;
+    max-width: @rem*245;
+    margin: @rem*34 auto 0;
+    .font(@font-paragraph);
+    color: @alicante;
+
+    &:first-child {
+      margin-top:0;
+    }
+
+    &--work{
+      .circle(@work;)
+    }
+
+    &--education{
+      .circle(@education;)
+    }
+
+    &--hobby{
+      .circle(@hobby;)
+    }
+
+    &--sport{
+      .circle(@sport;)
+    }
+
+    &--other{
+      .circle(@other;)
+    }
+  }
+
+  &__buttons {
+    margin-top: @rem*97;
+  }
+}
+
+
 .settings-pomodoro{
 
   &__buttons {
@@ -28,6 +82,7 @@
     color: @beefsteak;
     text-align: center;
   }
+
 }
 
 .number {
@@ -77,4 +132,106 @@
       }
     }
   }
+}
+
+.progress {
+  &__bottom-scale {
+    display:flex;
+    justify-content: space-around;
+    .font(@font-caption);
+    color:@alicante;
+    padding-top:@rem*15;
+    position:relative;
+  }
+  &__bottom-scale-item {
+    position:relative;
+    &:before {
+      content:"";
+      position:absolute;
+      width: @rem*3;
+      height: @rem*3;
+      background: @campari;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+      bottom:0;
+      transform: translate(0,-150%);
+      left:50%;
+      top: 0;
+    }
+  }
+  &__top-scale{
+    display:flex;
+    justify-content: space-between;
+    .font(@font-caption);
+    padding-bottom:@rem*15;
+    color:@alicante;
+  }
+  &__start-point{
+    position:relative;
+  }
+  &__start-point:before{
+    content:"";
+    position:absolute;
+    width: @rem*3;
+    height: @rem*3;
+    background: @campari;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    bottom:0;
+    transform: translate(0,150%)
+  }
+  &__middle-point {
+    position:relative;
+    &::before{
+      content:"";
+      position:absolute;
+      width: @rem*3;
+      height: @rem*3;
+      background: @campari;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+      bottom:0;
+      transform: translate(0,150%);
+      left:50%;
+    }
+  }
+  &__end-point {
+    position:relative;
+    &::before{
+      content:"";
+      position:absolute;
+      width: @rem*3;
+      height: @rem*3;
+      background: @campari;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+      bottom:0;
+      transform: translate(0,150%);
+      right:0;
+    }
+  }
+&__graph{
+  height: @rem*10;
+  display:flex;
+  flex-wrap: nowrap;
+
+}
+
+  &__work-time {
+    height: @rem*10;
+    background: @work;
+  }
+  &__short-break {
+    height:@rem*10;
+    background: @education;
+  }
+  &__long-break {
+    height:@rem*10;
+    background: @hobby;
+  }
+
 }
