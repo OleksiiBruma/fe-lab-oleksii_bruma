@@ -1,0 +1,122 @@
+.canvas__item {
+	width:300px;
+	background: lightgrey;
+	height:300px;
+	box-shadow: 0 4px 5px 0 rgba(0,0,0,0.75);
+	margin-top: 40px;
+	padding: 0 30px;
+	box-sizing: border-box;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+.canvas__like {
+	border:0;
+	background:url("./images/like.svg") center no-repeat ;
+	background-size:50px 50px;
+	width:50px;
+	height:50px;
+	margin-right: 10px;
+}
+.canvas__link {
+	width:100%;
+}
+.canvas__image {
+	width: 100%;
+}
+.canvas__likes-amount {
+	display: block;
+	font-weight: bold;
+	font-size: 20px;
+}
+.photo-gallery {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: normal;
+
+}
+.container {
+	max-width: 1024px;
+	margin: 0 auto;
+}
+
+
+
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0,0,0);
+	background-color: rgba(0,0,0,0.4);
+}
+
+
+.modal__content {
+	position:relative;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	background-color: #fefefe;
+	margin: 15% auto;
+	padding:0 300px;
+	border: 1px solid #888;
+	width: 1024px;
+	box-sizing: border-box;
+
+	overflow:hidden;
+}
+
+
+.close {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+	position: absolute;
+	top:20px;
+	right: 20px;
+}
+
+.close:hover,
+.close:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.buttons {
+	margin:20px 0;
+	display:flex;
+	justify-content: center;
+	width:90%;
+}
+.canvas__prev {
+	background:transparent;
+	border: black 1px solid;
+	padding: 10px 20px;
+
+	outline:0;
+}
+.canvas__next {
+	background:transparent;
+	border: black 1px solid;
+	padding: 10px 20px;
+	outline:0;
+	cursor: pointer;
+}
+.canvas__next:hover {
+	color: white;
+	background:green;
+}
+
+.canvas__prev:hover {
+	color: white;
+	background:blue; }
