@@ -31,7 +31,7 @@ var likeController =  require("./controllers.js").likeController;
 reRender(e, index, data2) {
         let likeAmount = data2[index].likeAmount;
         console.log (data2[index].likeAmount)
-  e.target.nextElementSibling.innerHTML ="( " + likeAmount + " likes)";
+  e.target.nextElementSibling.innerHTML ="(" + likeAmount + " likes)";
 }
 
 }

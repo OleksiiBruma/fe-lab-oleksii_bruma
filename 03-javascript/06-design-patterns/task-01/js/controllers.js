@@ -20,7 +20,6 @@ class LikeController {
         this.likeView = new LikeView(model);
     }
     reRender (e,i,model){
-        console.log(this.likeView);
         this.likeView.reRender(e,i,model)
     }
 
@@ -44,6 +43,7 @@ function checkClick(e){
         for (let i=0; i<model.length; i++){
             if ( model[i].id === +id ){
                 listController.getModel()[i].like.likeUp();
+                listController.getModel()[i].update();
                 likeController.reRender(e,i,model);
                 return
             }

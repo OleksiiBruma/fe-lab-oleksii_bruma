@@ -7,7 +7,6 @@ class Like {
 
     likeUp() {
         this.value += 1;
-        return this.value;
     }
 
     getValue() {
@@ -22,19 +21,25 @@ class Like {
         this.id = id;
         this.image = faker.image.avatar();
     }
+    update(){
+        this.likeAmount = this.like.getValue();
+    }
 }
 
  class List {
     constructor(amountBlocks) {
         let imageBlockList = [];
         for (let i = 0; i < amountBlocks; i++) {
-            let imageBlock = new ImageBlock(i);
-            imageBlockList.push(imageBlock);
+            this.imageBlock = new ImageBlock(i);
+            imageBlockList.push(this.imageBlock);
         }
         return imageBlockList;
     }
 }
 const model = new List (10);
+model[1].like.likeUp();
+model[1].update();
+console.log(model);
 module.exports.model=model;
 
 
