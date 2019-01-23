@@ -14,19 +14,20 @@ class Like {
     }
 }
 
- class ImageBlock {
+class ImageBlock {
     constructor(id) {
         this.like = new Like(faker.random.number());
         this.likeAmount = this.like.getValue();
         this.id = id;
         this.image = faker.image.avatar();
     }
-    update(){
+
+    update() {
         this.likeAmount = this.like.getValue();
     }
 }
 
- class List {
+class List {
     constructor(amountBlocks) {
         let imageBlockList = [];
         for (let i = 0; i < amountBlocks; i++) {
@@ -36,10 +37,9 @@ class Like {
         return imageBlockList;
     }
 }
-const model = new List (10);
-model[1].like.likeUp();
-model[1].update();
-console.log(model);
-module.exports.model=model;
+
+
+const model = new List(10);
+module.exports.model = model;
 
 
