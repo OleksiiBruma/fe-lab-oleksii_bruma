@@ -41,6 +41,10 @@ module.exports = {
       use: ['file-loader']
     },
       {
+        test: /\.handlebars$/,
+        loader: "handlebars-loader"
+      },
+      {
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
