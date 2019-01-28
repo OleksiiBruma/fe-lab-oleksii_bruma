@@ -48,6 +48,7 @@ Router
 
 class Global_controller{
   constructor(){
+
     EventBus.subscribe('goToTaskList',function(){
       event.preventDefault();
       Router.navigate();
@@ -87,7 +88,6 @@ class Global_controller{
 }
 const global_controller = new Global_controller();
 global_controller.addEventListeners();
-
 
 
 

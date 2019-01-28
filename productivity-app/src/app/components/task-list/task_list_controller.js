@@ -8,6 +8,7 @@ export class Task_list_controller{
   }
   init(){
     this.view.init();
+
   }
 }
 
