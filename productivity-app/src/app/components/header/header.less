@@ -108,3 +108,27 @@
     color: @beefsteak;
   }
 }
+
+.trash {
+  &__count {
+    position: absolute;
+    top: @rem*7;
+    left: @rem*8;
+    display: none;
+    min-width: @rem*14;
+    height: @rem*14;
+    padding: @rem*3;
+    background-color: @plumer;
+    text-align: center;
+    font-size: @rem*14;
+    border-radius: @rem*14;
+    color: @beefsteak;
+    line-height: 1;
+    font-family: @font-family-roboto;
+    font-weight: 700;
+
+    &--remove-mode {
+      display: block;
+    }
+  }
+}

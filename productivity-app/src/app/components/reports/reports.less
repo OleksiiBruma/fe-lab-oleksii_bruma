@@ -1,0 +1,31 @@
+@import ( reference ) '~@less-helpers-module/_mixins.less';
+@import ( reference ) '~@less-helpers-module/_variables.less';
+
+.report {
+  padding-top:@rem*125+@rem*35;
+
+  &__goback {
+    position:fixed;
+    top: 50%;
+    left:@rem*36;
+    width:@rem*48;
+    height:@rem*48*1.5;
+    transform: translate(0, -50%);
+
+    &:hover .arrow__item,
+    &:focus .arrow__item,
+    &:active .arrow__item {
+      background: @hanover;
+    }
+  }
+
+  &__graph {
+    background: url("/images/Graphreport.png") center no-repeat;
+    height:@rem*297;
+  }
+
+  &__toggle {
+    margin-top:@rem*80;
+    justify-content: center;
+  }
+}

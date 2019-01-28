@@ -1,0 +1,112 @@
+<div class="page__item container">
+  <section class="timer">
+    <h2 class="timer__title">1. Creating a New Design</h2>
+    <p class="timer__description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+    <div class="timer__estimates">
+      <span class="timer__estimate"><span class="sr-only">pomodoro</span></span>
+      <span class="timer__estimate"><span class="sr-only">pomodoro</span></span>
+      <span class="timer__estimate"><span class="sr-only">pomodoro</span></span>
+    </div>
+    <div class="timer__dial">
+      <div class="timer__message"><span class="timer__time-basic">Let`s do it!</span></div>
+    </div>
+    <div class="timer__buttons buttons">
+      <button class="buttons__item buttons__item--success" type="button">Start</button>
+      <button class="buttons__item buttons__item--danger hidden" type="button">Remove</button>
+    </div>
+    <a class="timer__goback arrow" href="#">
+      <span class="arrow__item arrow__item--top"></span>
+      <span class="arrow__item arrow__item--bottom"></span>
+      <span class="sr-only">Go back</span>
+    </a>
+  </section>
+  <section class="timer timer--process hidden">
+    <h2 class="timer__title">1. Creating a New Design</h2>
+    <p class="timer__description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+    <div class="timer__estimates">
+      <span class="timer__estimate"><span class="sr-only">pomodoro</span></span>
+      <span class="timer__estimate"><span class="sr-only">pomodoro</span></span>
+      <span class="timer__estimate"><span class="sr-only">pomodoro</span></span>
+      <button class="timer__add" type="button"><span class="sr-only">Add pomodoro</span></button>
+    </div>
+    <div class="timer__dial">
+      <svg class="timer__indicator" >
+        <circle class="circle" cx="50%" cy="50%" r="105"></circle>
+      </svg>
+      <div class="timer__message"><span class="timer__time-number"> 6</span> <span class="timer__time-basic">min</span></div>
+    </div>
+    <div class="timer__buttons buttons">
+      <button class="buttons__item buttons__item--warning" type="button">Fail Pomodora</button>
+      <button class="buttons__item buttons__item--success " type="button">Finish Pomodora</button>
+    </div>
+
+  </section>
+  <section class="timer timer--break-is-over hidden">
+    <h2 class="timer__title">1. Creating a New Design</h2>
+    <p class="timer__description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+    <div class="timer__estimates">
+      <span class="timer__estimate timer__estimate--success"><span class="sr-only">pomodoro</span></span>
+      <span class="timer__estimate"><span class="sr-only">pomodoro</span></span>
+      <span class="timer__estimate"><span class="sr-only">pomodoro</span></span>
+    </div>
+    <div class="timer__dial">
+      <svg class="timer__indicator" >
+        <circle class="circle circle--done" cx="50%" cy="50%" r="105"></circle>
+      </svg>
+      <div class="timer__message"><span class="timer__time-basic timer__time-basic--brake-is-over">Break is over</span></div>
+    </div>
+    <div class="timer__buttons buttons">
+      <button class="buttons__item buttons__item--success" type="button">Start Pomodora</button>
+      <button class="buttons__item buttons__item--info " type="button">Finish Task</button>
+    </div>
+  </section>
+  <section class="timer timer--failed hidden">
+    <h2 class="timer__title">1. Creating a New Design</h2>
+    <p class="timer__description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+    <div class="timer__estimates">
+      <span class="timer__estimate timer__estimate--failed"><span class="sr-only">pomodoro</span></span>
+      <span class="timer__estimate"><span class="sr-only">pomodoro</span></span>
+      <span class="timer__estimate"><span class="sr-only">pomodoro</span></span>
+    </div>
+    <div class="timer__dial">
+      <svg class="timer__indicator" >
+        <circle class="circle circle--failed" cx="50%" cy="50%" r="105"></circle>
+      </svg>
+      <div class="timer__message"><span class="timer__phase">break</span><span class="timer__time-number">3</span><span class="timer__time-basic ">min</span></div>
+    </div>
+    <div class="timer__buttons buttons">
+      <button class="buttons__item buttons__item--success" type="button">Start Pomodora</button>
+
+    </div>
+  </section>
+  <section class="timer timer--completed hidden">
+    <h2 class="timer__title">1. Creating a New Design</h2>
+    <p class="timer__description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+    <div class="timer__estimates">
+      <span class="timer__estimate timer__estimate--success"><span class="sr-only">pomodoro</span></span>
+      <span class="timer__estimate timer__estimate--success"><span class="sr-only">pomodoro</span></span>
+      <span class="timer__estimate timer__estimate--success"><span class="sr-only">pomodoro</span></span>
+    </div>
+    <div class="timer__dial">
+      <svg class="timer__indicator" >
+        <circle class="circle circle--done" cx="50%" cy="50%" r="105"></circle>
+      </svg>
+      <div class="timer__message"><span class="timer__phase"></span><span class="timer__time-number"></span><span class="timer__time-basic ">You Completed Task</span></div>
+    </div>
+    <div class="timer__buttons buttons">
+      <button class="buttons__item buttons__item--success" type="button">Start Pomodora</button>
+    </div>
+    <a class="timer__goback arrow" href="#">
+      <span class="arrow__item arrow__item--top"></span>
+      <span class="arrow__item arrow__item--bottom"></span>
+      <span class="sr-only">Go back</span>
+    </a>
+    <a class="timer__goback timer__goback--right arrow" href="#">
+      <span class="arrow__item arrow__item--right"></span>
+      <span class="arrow__item arrow__item--left"></span>
+      <span class="sr-only">Go to settings</span>
+    </a>
+  </section>
+</div>
+</main>
+<script src="/bundle.js"></script>

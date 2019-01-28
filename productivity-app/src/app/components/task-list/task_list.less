@@ -1,0 +1,661 @@
+@import ( reference ) '~@less-helpers-module/_mixins.less';
+@import ( reference ) '~@less-helpers-module/_variables.less';
+
+.tasks {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 0;
+
+  &__item {
+    list-style-type: none;
+  }
+
+  &__item--caption {
+    margin-left: @rem*20;
+    margin-bottom: @rem*15;
+    .font(@font-heading-2);
+    line-height: 1;
+  }
+
+  &--work {
+    .global-list-decor(@work);
+  }
+
+  &--education {
+    .global-list-decor(@education);
+  }
+
+  &--hobby {
+    .global-list-decor(@hobby);
+  }
+
+  &--sport {
+    .global-list-decor(@sport);
+  }
+
+  &--other {
+    .global-list-decor(@other);
+  }
+}
+.daily {
+
+  &__tasks-list {
+    margin-top: @rem*20;
+  }
+
+  &__nav {
+    display: flex;
+    margin-top: @rem*35;
+    justify-content: flex-end;
+
+    &--remove-mode {
+      justify-content: space-between;
+    }
+  }
+
+  .task__shift {
+    display: none;
+  }
+
+  &__message {
+    position: relative;
+    margin-top: @rem*40;
+    margin-bottom: @rem*120 - @rem*40;
+    .font(@font-message);
+    color: @alicante;
+    text-align: center;
+
+    &--drag {
+
+      &:before {
+        .icon(@icon-arrow_circle);
+        position: absolute;
+        bottom: @rem*-30;
+        left: 50%;
+        transform: translate(-50%, 100%);
+        font-size: @rem*60;
+      }
+    }
+  }
+}
+.task {
+  position: relative;
+  margin-bottom: @rem*9;
+  min-height: @rem*87;
+  display: flex;
+  vertical-align: middle;
+  background-color: @beefsteak;
+  box-shadow: 0 @rem*5 @rem*8.3 @rem*1.7 rgba(34, 56, 73, 1);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &--urgent {
+    .task-modifier-priority (urgent);
+  }
+
+  &--high {
+    .task-modifier-priority (high);
+  }
+
+  &--middle {
+    .task-modifier-priority (middle);
+  }
+
+  &--low {
+    .task-modifier-priority (low);
+  }
+
+  &--work {
+    .task-modifier-category (work);
+  }
+
+  &--education {
+    .task-modifier-category (education);
+  }
+
+  &--hobby {
+    .task-modifier-category (hobby);
+  }
+
+  &--sport {
+    .task-modifier-category (sport);
+  }
+
+  &--other {
+    .task-modifier-category (other);
+  }
+
+  &--done {
+    opacity: 0.8;
+
+    .task__caption {
+      text-decoration: line-through;
+    }
+
+    .task__edit-tools {
+      display: none;
+
+    }
+
+    .task__toggle {
+      opacity: 1;
+    }
+
+    .task__indicator:hover:before {
+      .icon(@icon-tomato);
+      color: @beefsteak;
+    }
+
+    .task__indicator:hover {
+      color: @beefsteak;
+    }
+
+    .task__indicator {
+      cursor: default;
+    }
+  }
+
+
+  &--delete {
+    position: relative;
+
+    .task__delete {
+      width: 100%;
+    }
+    .task__delete:before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      .icon(@icon-trash);
+      transform: translate(-50%, -50%);
+      font-size: @rem*45;
+      color: @beefsteak;
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+  }
+
+  &--delete-checked {
+    .task__delete:before {
+      content: @icon-close;
+    }
+  }
+
+  &--overdue {
+    .task__date {
+      color: @plumer;
+    }
+  }
+
+  &__toggle {
+    position: relative;
+    min-width: @rem*94;
+    margin: 0;
+    text-align: center;
+  }
+
+  &__date {
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    color: @bigbeef;
+    .font(@font-task-date);
+  }
+
+  &__date-day {
+    display: block;
+    font-size: @rem*27;
+    text-align: center;
+  }
+
+  &__delete {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    width: @rem*9;
+    height: 100%;
+    transition-timing-function: ease;
+    transition: width 1s;
+  }
+
+  &__text {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: @rem*87;
+    width: 100%;
+    margin-left: @rem*15;
+  }
+
+  &__caption {
+    display: block;
+    margin: 0;
+    .font(@font-heading-3);
+  }
+
+  &__details {
+    display: block;
+    margin: 0;
+    padding-top: @rem*5;
+    .font(@font-paragraph);
+    color: @brandywine;
+  }
+
+  &__edit-tools {
+    display: flex;
+    width: auto;
+    height: auto;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: @rem*10 0;
+  }
+
+  &__indicator {
+    position: relative;
+    border: 0;
+    margin: 0;
+    padding-top: @rem*10;
+    min-width: @rem*87;
+    background-color: red;
+    .font(@font-indicator);
+    color: @beefsteak;
+    cursor: pointer;
+  }
+
+  &__indicator:hover {
+    color: transparent;
+  }
+
+  &__indicator:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: @rem*50;
+    color: @beefsteak;
+    .icon(@icon-tomato);
+  }
+
+  &__indicator:hover:before {
+    .icon(@icon-timer);
+  }
+
+  &__edit {
+    position: relative;
+    display: block;
+    padding: 0 @rem*35;
+    width: @rem*16;
+    height: @rem*16;
+    color: @azoychka;
+    font-size: @rem*16;
+    cursor: pointer;
+    border: 0;
+    background: none;
+
+    &:before {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      .icon(@icon-edit);
+    }
+
+    &:hover,
+    &:active {
+      color: @alicante;
+    }
+
+    &:focus {
+      color: @hanover;
+    }
+  }
+
+  &__shift {
+    position: relative;
+    display: block;
+    width: @rem*16;
+    height: @rem*16;
+    padding: 0 @rem*35;
+    color: @azoychka;
+    font-size: @rem*16;
+    cursor: pointer;
+    border: 0;
+    background: none;
+
+    &:before {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      .icon(@icon-arrows-up);
+    }
+
+    &:hover,
+    &:active {
+      color: @alicante;
+    }
+
+    &:focus {
+      color: @hanover;
+    }
+  }
+}
+.open-button {
+  position: relative;
+  padding: 0;
+  background: none;
+  border: none;
+  .font(@font-caption2);
+  .colors-for-links ();
+  line-height: 1;
+  cursor: pointer;
+
+  &__icon:before {
+    .icon(@icon-global-list-arrow-right);
+    font-size: @rem*11;
+  }
+
+  &__icon--active:before {
+    .icon(@icon-global-list-arrow-down);
+    font-size: @rem*11;
+  }
+}
+.global {
+  padding: @rem*40 0;
+
+  &__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  &__caption {
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+  }
+
+  &__tasks-list {
+    margin-top: @rem*25;
+  }
+
+  &__filter {
+    display: none;
+
+    &--active {
+      display: flex;
+    }
+  }
+
+  &__tasks {
+    display: none;
+  }
+
+  &__tasks--active {
+    display: block;
+  }
+
+  &__remove {
+    margin-top: @rem*25;
+  }
+}
+.stub {
+  &__img {
+    display: block;
+    margin: @rem*127 auto 0 auto;
+    height: @rem*162;
+    width: auto;
+    text-align: center;
+  }
+
+  &__choose {
+    margin-top: @rem*81;
+    padding-bottom: @rem*56;
+  }
+
+  &__message {
+    margin: @rem*80 auto 0;
+    text-align: center;
+    .font(@font-message);
+    color: @alicante;
+  }
+}
+.modal {
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+
+  &__item {
+    border-bottom: @rem*1 solid @alicante;
+    margin-bottom:@rem*29;
+    padding-bottom: @rem*7;
+
+    &:last-child {
+      margin-bottom:0;
+    }
+  }
+
+  &__content {
+    top: @rem*50;
+    left: 50%;
+    transform: translate(-50%, 0);
+    position:absolute;
+    margin: auto;
+    padding: @rem*45;
+    width:@rem*410;
+    height: @rem*540;
+    background: @adoration;
+  }
+  &__list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+  }
+
+  &__field {
+    border:0;
+    padding:0;
+  }
+
+  &__text-input{
+    display: inline-block;
+    width: 100%;
+    background: none;
+    border:0;
+
+    .font(@font-paragraph);
+    color: @beefsteak;
+
+    &::-webkit-input-placeholder {
+      color: @alicante;
+    }
+
+    &::-moz-placeholder {
+      color: @alicante;
+    }
+
+    &:-ms-input-placeholder {
+      color: @alicante;
+    }
+  }
+
+  &__title {
+    display: inline-block;
+    width: 100%;
+    .font(@font-caption);
+    color: @beefsteak;
+    padding-bottom: @rem*10;
+
+    &--small {
+      position: relative;
+      display: inline;
+      width: auto;
+      padding-left: @rem*25;
+      color: @alicante;
+
+      &:hover {
+        color: @hanover;
+      }
+
+      &:before {
+        position: absolute;
+        left: @rem*10;
+        top: @rem*4;
+        transform: translate(-50%, 0);
+        content: "";
+        display: block;
+        width: @rem*5;
+        height: @rem*5;
+        border-radius: 50%;
+        border: @rem*2 solid @alicante;
+        box-shadow: 0 0 0 @rem*4 @alicante;
+        background: @alicante;
+      }
+    }
+  }
+
+  &__caption {
+    margin:0;
+    text-align: center;
+    .font(@font-heading-1);
+    color: @beefsteak;
+  }
+
+  &__estimate {
+    position: relative;
+    display: inline-block;
+    width:@rem*20;
+    height: @rem*20;
+    margin:0;
+  }
+
+  &__estimate:before {
+    top:0;
+    left:0;
+    position: absolute;
+    content:"";
+    display: block;
+    width: @rem*20;
+    height: @rem*20;
+    background: url("/images/empty-tomato.svg");
+  }
+
+  &__pomodoro:checked + &__estimate:before{
+    background: url("/images/fill tomato.svg");
+  }
+
+  &__pomodoro--checked + &__estimate:before{
+    background: url("/images/fill tomato.svg");
+  }
+
+  &__close {
+    position: absolute;
+    top: @rem*15;
+    right: @rem*50;
+    width: @rem*20;
+    height: @rem*20;
+    border:0;
+    background: none;
+
+    &::before{
+      position: absolute;
+      .icon(@icon-close);
+      transform: translate(-50%, -50%);
+      font-size: @rem*20;
+    }
+
+    & {
+      color: @alicante;
+    }
+
+    &:hover::before,
+    &:focus::before,
+    &:active::before {
+      color: @hanover;
+    }
+
+    &--remove-task {
+      right: @rem*15;
+    }
+  }
+
+  &__submit {
+    position: absolute;
+    background: none;
+    top: @rem*15;
+    right: @rem*15;
+    width: @rem*20;
+    height: @rem*20;
+    border:0;
+
+    &::before{
+      position: absolute;
+      .icon(@icon-check);
+      transform: translate(-50%, -50%);
+      font-size: @rem*20;
+    }
+
+    & {
+      color: @alicante;
+    }
+
+    &:hover::before,
+    &:focus::before,
+    &:active::before {
+      color: @hanover;
+    }
+  }
+
+  &__remove {
+    position: absolute;
+    background: none;
+    top: @rem*15;
+    left: @rem*15;
+    width: @rem*20;
+    height: @rem*20;
+    border:0;
+
+    &::before {
+      position: absolute;
+      .icon(@icon-trash);
+      transform: translate(-50%, -50%);
+      font-size: @rem*20;
+    }
+
+    & {
+      color: @alicante;
+    }
+
+    &:hover::before,
+    &:focus::before,
+    &:active::before {
+      color: @hanover;
+    }
+  }
+
+  &__form {
+    margin:0;
+    padding:0;
+  }
+
+  &__message{
+    margin: @rem*155 auto 0;
+    text-align: center;
+    width: 90%;
+    .font(@font-message);
+    color: @alicante;
+  }
+
+  &__removecancel {
+    margin-top: @rem*180;
+  }
+}

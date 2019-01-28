@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "firebase": "^5.8.1",
+    "handlebars": "^4.0.12",
     "handlebars-loader": "^1.7.1"
   }
 }
