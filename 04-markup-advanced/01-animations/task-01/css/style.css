@@ -1,0 +1,51 @@
+.card-container {
+	height: 174px;
+	perspective: 600px;
+	position: relative;
+	width: 238px;
+}
+
+.card {
+	height: 100%;
+	position: absolute;
+	width: 100%;
+	-moz-transform-style: none;
+	-o-transform-style: none;
+	-ms-transform-style: none;
+	-ms-transform: none;
+}
+
+.card .side {
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	height: 100%;
+	position: absolute;
+	width: 100%;
+	transform: rotateY(-180deg);
+	-ms-transform: rotateY(-180deg);
+	transition: transform 0.8s;
+}
+
+.card .back {
+	background: #393F45;
+	color: #fff;
+	line-height: 150px;
+	text-align: center;
+	font-size: 15px;
+	transform: rotateY(0deg);
+	-ms-transform: rotateY(0deg);
+	transition: transform 0.8s;
+}
+
+.card:hover .side {
+	-ms-transform: rotateY(0deg);
+	transform: rotateY(0deg);
+}
+
+.card:hover .back {
+	-ms-transform: rotateY(-180deg);
+	transform: rotateY(-180deg);
+}
