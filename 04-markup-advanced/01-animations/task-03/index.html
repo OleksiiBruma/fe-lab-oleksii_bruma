@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+    .cube {
+        font-size: 5em;
+        width: 2em;
+        height: 2em;
+        margin: 4em auto;
+        transform-style: preserve-3d;
+        
+        /* you can change only this styles */
+         perspective: 122px;
+         perspective-origin: 50% 63%;
+    }
+
+    .side {
+        position: absolute;
+        width: 2em;
+        height: 2em;
+
+        background-color: aquamarine;
+        border: 1px solid rgba(0,0,0,.5);
+
+        color: white;
+        text-align: center;
+        line-height: 2em;
+    }
+
+    .dot1 {
+        height: 0.2em;
+        width: 0.2em;
+        margin: 1em 1em;
+        background-color: #e2203a;
+        opacity: 0.5;
+        border-radius: 50%;
+    }
+
+    .dot2 {
+        height: 1em;
+        width: 1em;
+        background-color: #2420e2;
+        opacity: 0.5;
+        border-radius: 50%;
+    }
+
+    .front  {
+        transform: translateZ(1.01em);
+        background: transparent;
+    }
+    .top    { transform: rotateX( 90deg) translateZ(1.01em); }
+    .right  { transform: rotateY( 90deg)  translateZ(1.01em); }
+    .left   { transform: rotateY(-90deg)  translateZ(1.01em); }
+    .bottom { transform: rotateX(-90deg)  translateZ(1.01em); }
+    .back   {
+        transform: rotateY(-180deg) translateZ(1.01em);
+        background: transparent;
+    }
+</style>
+<div class="cube">
+    <div class="side  front">
+        <div class="dot1"></div>
+    </div>
+    <div class="side   back">
+        <div class="dot2"></div>
+    </div>
+    <div class="side  right">4</div>
+    <div class="side   left">3</div>
+    <div class="side    top">5</div>
+    <div class="side bottom">2</div>
+</div>
+</body>
+</html>
