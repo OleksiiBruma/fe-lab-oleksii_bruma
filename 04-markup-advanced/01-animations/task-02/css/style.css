@@ -1,0 +1,171 @@
+.move-boat:after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 120px;
+  background: url('../images/steam.png') no-repeat;
+  background-size: 120px;
+  position: absolute;
+  top: -50%;
+  left: -10%;
+  opacity: 0;
+  animation: smoke 5s infinite linear;
+  transform-origin:bottom right;
+}
+.move-boat{
+  position: absolute;
+  bottom:10px;
+  -webkit-transition: left 2s linear;
+  transition: left 2s ease-in;
+  left:0;
+  animation:boat 5s infinite linear;
+}
+.wave{
+  position: absolute;
+  bottom:0;
+  width: 1600px;
+  height:150px;
+  left:-50%;
+  animation:wave 2s infinite;
+}
+.sun {
+  position: absolute;
+  right:0;
+  animation:sun 1s infinite linear;
+
+}
+.cloud{
+  position: absolute;
+  right:-150px;
+  z-index:1;
+  animation:cloud 5s infinite linear;
+}
+.animation-box {
+  animation:animation-box 5s infinite;
+}
+
+@keyframes wave {
+  0%   {left: -50%}
+  25%  {left:0}
+  50%  {left: -50%;}
+  100% {left:0}
+}
+@keyframes sun {
+  to {
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes cloud {
+  0%   { right:-150px;}
+  50%  {right:-60px;}
+  100% { right:-150px;}
+}
+@keyframes animation-box {
+  0%   { background: transparent}
+  50%  {background:#262F37}
+  100% { background: transparent}
+}
+@keyframes smoke {
+  0% {
+   opacity:0;
+    transform:rotate(5deg);
+  }
+  10%{
+    opacity:1;
+    transform:rotate(-5deg);
+  }
+  20%{
+    opacity:0;
+    transform:rotate(5deg);
+  }
+  30%{
+    opacity:1;
+    transform:rotate(-5deg);
+  }
+  40% {
+    opacity:0;
+    transform:rotate(5deg);
+  }
+  50% {
+    opacity:1;
+    transform:rotate(-5deg);
+  }
+  60% {
+    opacity:0;
+    transform:rotate(5deg);
+  }
+  70% {
+    opacity:1;
+    transform:rotate(-5deg);
+  }
+  80% {
+    opacity:0;
+    transform:rotate(5deg);
+  }
+  90% {
+    opacity:1;
+    transform:rotate(-5deg);
+  }
+  100% {
+    opacity:0;
+    transform: rotate(5deg) ;
+
+  }
+}
+@keyframes boat {
+  0% {
+    left:-30%;
+    transform:rotate(-5deg);
+  }
+  10%{
+    transform:rotate(5deg);
+  }
+  20%{
+    transform:rotate(-5deg);
+  }
+  30%{
+    transform:rotate(5deg);
+  }
+  40% {
+    transform:rotate(-5deg);
+  }
+  50% {
+    transform:rotate(5deg);
+  }
+  60% {
+    transform:rotate(-5deg);
+  }
+  70% {
+    transform:rotate(5deg);
+  }
+  80% {
+    transform:rotate(-5deg);
+  }
+  90% {
+    transform:rotate(5deg);
+  }
+  100% {
+    transform: rotate(-5deg) ;
+    left:40%;
+  }
+}
+
+.wave,
+.sun,
+.cloud,
+.animation-box,
+.move-boat:after,
+.move-boat{
+  animation-play-state: paused;
+}
+
+.animation-box:hover .wave,
+.animation-box:hover .sun,
+.animation-box:hover .cloud,
+.animation-box:hover .animation-box,
+.animation-box:hover .move-boat:after,
+.animation-box:hover .move-boat{
+  animation-play-state: running;
+
+}
