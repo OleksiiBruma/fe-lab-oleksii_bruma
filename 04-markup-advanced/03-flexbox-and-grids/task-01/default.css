@@ -1,0 +1,93 @@
+/* common styles */
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    background-color: rgb(191, 227, 255);
+    border: 3px dotted #000;
+}
+
+.item {
+    padding: 1rem 1.5rem;
+    margin: 5px;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    font-size: 20px;
+    text-align: center;
+    color: #FFF;
+    background-color: rgb(34,181,115);
+}
+
+/* PART 1 */
+.part-1 .container {
+    height: 40vw;
+}
+
+@media screen and (max-width: 500px) {
+    .part-1 .container {
+        height: 200px;
+    }
+}
+
+.part-1 .item {
+    width: 300px;
+}
+
+.part-1 span {
+    font-weight: bold;
+}
+
+.part-1 p {
+    font-size: 14px;
+}
+
+/* PART 2 */
+.part-2 .container {
+    padding: 0;
+    list-style-type: none;
+}
+
+.part-2 .item:nth-child(1){ background: hsl(221,50%,75%); }
+.part-2 .item:nth-child(2){ background: hsl(226,50%,75%); }
+.part-2 .item:nth-child(3){ background: hsl(231,50%,75%); }
+.part-2 .item:nth-child(4){ background: hsl(236,50%,75%); }
+.part-2 .item:nth-child(5){ background: hsl(241,50%,75%); }
+.part-2 .item:nth-child(6){ background: hsl(246,50%,75%); }
+.part-2 .item:nth-child(7){ background: hsl(251,50%,75%); }
+.part-2 .item:nth-child(8){ background: hsl(256,50%,75%); }
+.part-2 .item:nth-child(9){ background: hsl(261,50%,75%); }
+.part-2 .item:nth-child(10){ background: hsl(266,50%,75%); }
+.part-2 .item:nth-child(11){ background: hsl(271,50%,75%); }
+.part-2 .item:nth-child(12){ background: hsl(276,50%,75%); }
+.part-2 .item:nth-child(13){ background: hsl(281,50%,75%); }
+.part-2 .item:nth-child(14){ background: hsl(286,50%,75%); }
+.part-2 .item:nth-child(15){ background: hsl(291,50%,75%); }
+.part-2 .item:nth-child(16){ background: hsl(296,50%,75%); }
+.part-2 .item:nth-child(17){ background: hsl(301,50%,75%); }
+.part-2 .item:nth-child(18){ background: hsl(306,50%,75%); }
+.part-2 .item:nth-child(19){ background: hsl(311,50%,75%); }
+
+/* PART 3 */
+.part-3 .container {
+    height: 40vh;
+    direction: rtl;
+}
+
+.part-3 .item-1 { background: rgb(223, 159, 217); }
+.part-3 .item-2 { background: rgb(34,181,115); }
+.part-3 .item-3 { background: rgb(159, 180, 223); }
+
+/* PART 4 */
+.part-4 .item {
+    width: 200px;
+    height: 200px;
+}
+
+/* PART 5 */
+.part-5 .container { height: 60vw; }
+
+
+@media screen and (max-width: 500px) {
+    .part-5 .container { height: 300px; }
+}

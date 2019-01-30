@@ -1,0 +1,134 @@
+body {
+	min-width: 400px;
+	overflow:auto;
+}
+/* PART 1 */
+/* large screens */
+.part-1 .container {
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+/* small screens */
+@media only screen and (max-width: 500px) {
+	.part-1 .container {
+		display:flex;
+		align-items: stretch;
+	}
+	.part-1 .item {
+		flex:1 1 100%;
+		-ms-flex:1 1 100%;
+	}
+}
+
+/* PART 2 */
+/* large screens */
+.part-2 .container {
+	display:flex;
+	flex-direction:row;
+	flex-wrap:wrap;
+	justify-content:space-around;
+
+}
+.part-2 .item {
+	flex-grow: 1;
+}
+/* small screens */
+@media only screen and (max-width: 500px) {
+	.part-2 .item {
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		width:calc(50% - 10px);
+	}
+}
+
+/* PART 3 */
+/* large screens */
+.part-3 .container {
+	display:flex;
+	flex-direction:row-reverse;
+}
+
+.part-3 .item-1 {
+	flex-grow:2;
+}
+.part-3 .item-2 {
+	flex-grow:1;
+}
+.part-3 .item-3 {
+	flex-grow:1;
+}
+
+
+/* small screens */
+@media only screen and (max-width: 500px) {
+	.part-3 .container {
+		flex-wrap: wrap;
+	}
+	.part-3 .item {
+		flex-grow:1;
+	}
+
+}
+
+/* PART 4 */
+/* large screens */
+.part-4 .container {
+	display:flex;
+	flex-wrap: wrap;
+}
+.part-4 .item:nth-child(2){
+	order:-1;
+}
+
+/* small screens */
+@media only screen and (max-width: 500px) {
+	.part-4 .item{
+	flex-grow:1;
+		flex-basis:calc(50% - 10px);
+	}
+	.part-4 .item:nth-child(3){
+		flex-grow:2;
+	}
+}
+
+/* PART 5 */
+/* large screens */
+.part-5 .container {
+flex-direction: column-reverse;
+display:flex;
+	justify-content: space-between;
+}
+.part-5 .item{
+width: 30%;
+	align-items: center;
+	height: auto;
+}
+.part-5 .item:nth-child(1){
+align-self: flex-end;
+}
+.part-5 .item:nth-child(2){
+	align-self: center;
+}
+.part-5 .item:nth-child(3){
+	align-self: flex-start;
+}
+/* small screens */
+@media only screen and (max-width: 500px) {
+	.part-5 .item{
+		align-self:auto;
+	}
+	.part-5 .item{
+		width: 100%;
+		align-items: stretch;
+
+	}
+	.part-5 .item:nth-child(1),
+	.part-5 .item:nth-child(2),
+	.part-5 .item:nth-child(3) {
+		align-self: auto;
+		width:calc(100% - 10px)
+	}
+}
