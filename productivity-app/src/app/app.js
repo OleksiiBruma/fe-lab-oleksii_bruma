@@ -1,4 +1,5 @@
 /* root component starts here */
+require('assets/less/main.less'); // include general styles
 import {EventBus} from "./eventBus";
 import {Router} from "./router.js"
 import {header_controller} from "./components/header/header_controller.js"
@@ -8,7 +9,6 @@ import {settings_controller} from "./components/settings/settings_controller.js"
 import {timer_controller} from "./components/timer/timer_controller.js"
 const firebase = require("firebase/app");
 require("firebase/firestore");
-require('assets/less/main.less'); // include general styles
 import {Websockets} from "./components/communication-service/websockets.js";
 const dataFB = new Websockets();
 dataFB.getData();
