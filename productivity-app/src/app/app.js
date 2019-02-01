@@ -2,6 +2,7 @@
 require('assets/less/main.less'); // include general styles
 import {EventBus} from "./eventBus";
 import {Router} from "./router.js"
+import {dataService} from "./components/service/DataService";
 import {header_controller} from "./components/header/header_controller.js"
 import {reports_controller} from "./components/reports/reports_controller.js"
 import {task_list_controller} from "./components/task-list/task_list_controller.js"
@@ -74,7 +75,9 @@ class Global_controller {
     EventBus.subscribe('submitNewTask', function () {
       event.preventDefault();
       pop_up_controller.setNewTaskData();
-      console.log(pop_up_controller.getNewTaskData());
+      pop_up_controller.closeSelf();
+      dataService.addNewTaskData(pop_up_controller.getNewTaskData());
+      dataService.getAllTasksData();
     });
   }
 
