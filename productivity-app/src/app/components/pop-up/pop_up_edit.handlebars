@@ -1,0 +1,38 @@
+<div class="modal modal__edit">
+  <div class="modal__content">
+    <form action="" method="get" class="modal__form" name="modal">
+      <h2 class="modal__caption">Edit Task</h2>
+      <ul class="modal__list">
+        <li class="modal__item "><label for="title-edit" class="modal__title">TITLE</label><input id="title-edit" class="modal__text-input" type="text" placeholder="Add title here"></li>
+        <li class="modal__item "><label for="description-edit" class="modal__title">DESCRIPTION</label><input id="description-edit" class="modal__text-input"  type="text" placeholder="Add description here"></li>
+        <li class="modal__item"><fieldset class="modal__field" name="category">
+          <legend class="modal__title" >CATEGORY</legend>
+          <input id="work-edit" type="radio" name="category" value="work" checked> <label class="modal__title modal__title--small modal__title--work" for="work-edit">Work</label>
+          <input id="education-edit" type="radio" name="category" value="education"> <label class="modal__title modal__title--small modal__title--education" for="education-edit">Education</label>
+          <input id="hobby-edit" type="radio" name="category" value="hobby"> <label class="modal__title modal__title--small modal__title--hobby" for="hobby-edit">Hobby</label>
+          <input id="sport-edit" type="radio" name="category" value="sport"> <label class="modal__title modal__title--small modal__title--sport" for="sport-edit">Sport</label>
+          <input id="other-edit" type="radio" name="category" value="other"> <label class="modal__title modal__title--small modal__title--other" for="other-edit">Other</label>
+        </fieldset></li>
+        <li class="modal__item"><label class="modal__title" for="deadline-edit">DEADLINE</label><input class="modal__text-input" id="deadline-edit" type="date" placeholder="May 23, 2016"></li>
+        <li class="modal__item"><fieldset class="modal__field modal__field--pomodoro" name="estimation">
+          <legend class="modal__title">ESTIMATION</legend>
+          <input class="modal__pomodoro modal__pomodoro--checked" id="1-pomodoro-edit" type="radio" name="estimation" value="1"><label class="modal__estimate" for="1-pomodoro-edit"></label>
+          <input class="modal__pomodoro modal__pomodoro--checked" id="2-pomodoro-edit" type="radio" name="estimation" value="2"><label class="modal__estimate" for="2-pomodoro-edit"></label>
+          <input class="modal__pomodoro" id="3-pomodoro-edit" type="radio" name="estimation" value="3" checked> <label class="modal__estimate" for="3-pomodoro-edit"></label>
+          <input class="modal__pomodoro" id="4-pomodoro-edit" type="radio" name="estimation" value="4"><label class="modal__estimate" for="4-pomodoro-edit"></label>
+          <input class="modal__pomodoro" id="5-pomodoro-edit" type="radio" name="estimation" value="5"><label class="modal__estimate" for="5-pomodoro-edit"></label>
+        </fieldset></li>
+        <li class="modal__item" ><fieldset class="modal__field" name="priority">
+          <legend class="modal__title">PRIORITY</legend>
+          <input id="urgent-edit" type="radio" name="priority" value="1" checked> <label class="modal__title modal__title--small modal__title--urgent" for="urgent-edit">Urgent</label>
+          <input id="high-edit" type="radio" name="priority" value="2"><label class="modal__title modal__title--small modal__title--high" for="high-edit">High</label>
+          <input id="middle-edit" type="radio" name="priority" value="3"> <label class="modal__title modal__title--small modal__title--middle" for="middle-edit">Middle</label>
+          <input id="low-edit" type="radio" name="priority" value="4"> <label class="modal__title modal__title--small modal__title--low" for="low-edit">Low</label>
+        </fieldset></li>
+      </ul>
+      <button class="modal__close" type="button"><span class="sr-only">Close</span></button>
+      <button class="modal__submit" type="submit"><span class="sr-only">Submit</span></button>
+      <button class="modal__remove" type="button"><span class="sr-only">Remove task</span></button>
+    </form>
+  </div>
+</div>

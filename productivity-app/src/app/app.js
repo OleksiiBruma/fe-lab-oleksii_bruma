@@ -7,9 +7,11 @@ import {reports_controller} from "./components/reports/reports_controller.js"
 import {task_list_controller} from "./components/task-list/task_list_controller.js"
 import {settings_controller} from "./components/settings/settings_controller.js"
 import {timer_controller} from "./components/timer/timer_controller.js"
+import {pop_up_controller} from "./components/pop-up/pop_up_controller.js"
 const firebase = require("firebase/app");
 require("firebase/firestore");
 import {Websockets} from "./components/communication-service/websockets.js";
+
 const dataFB = new Websockets();
 dataFB.getData();
 
@@ -19,7 +21,6 @@ Router.config({mode: 'history'});
 // returning the user to the initial state
 
 // adding routes
-
 
 Router
   .add(/settings/, function () {
@@ -36,56 +37,78 @@ Router
     header_controller.init();
     reports_controller.init();
     header_controller.listenForSticky();
-
   })
   .add(function () {
     header_controller.init();
     task_list_controller.init();
     header_controller.listenForSticky();
-
   })
   .check().listen();
 
-class Global_controller{
-  constructor(){
+class Global_controller {
+  constructor() {
 
-    EventBus.subscribe('goToTaskList',function(){
+    EventBus.subscribe('goToTaskList', function () {
       event.preventDefault();
       Router.navigate();
     });
-    EventBus.subscribe('goToReports',function(){
+    EventBus.subscribe('goToReports', function () {
       event.preventDefault();
       Router.navigate(/reports/);
     });
-    EventBus.subscribe('goToSettings',function(){
+    EventBus.subscribe('goToSettings', function () {
       event.preventDefault();
       Router.navigate(/settings/);
     });
-    EventBus.subscribe('goToTimer',function(){
+    EventBus.subscribe('goToTimer', function () {
       event.preventDefault();
       Router.navigate(/timer/);
     });
+    EventBus.subscribe('addNewTask', function () {
+      event.preventDefault();
+      pop_up_controller.renderAdd();
+    });
+    EventBus.subscribe('closeModal', function () {
+      pop_up_controller.closeSelf();
+    });
+    EventBus.subscribe('submitNewTask', function () {
+      event.preventDefault();
+      pop_up_controller.setNewTaskData();
+      console.log(pop_up_controller.getNewTaskData());
+    });
   }
-  addEventListeners(){
 
-    function chooseTarget(e){
-      if(e.target.classList.contains("menu__link--icon-list")){
+  addEventListeners() {
+
+    function chooseTarget(e) {
+      if (e.target.classList.contains("menu__link--icon-list")) {
         EventBus.emit('goToTaskList');
       }
-      if(e.target.classList.contains("menu__link--icon-statistics")){
+      if (e.target.classList.contains("menu__link--icon-statistics")) {
         EventBus.emit('goToReports');
       }
-      if(e.target.classList.contains("menu__link--icon-settings")){
+      if (e.target.classList.contains("menu__link--icon-settings")) {
         EventBus.emit('goToSettings');
       }
-      if(e.target.classList.contains("task__indicator")){
+      if (e.target.classList.contains("task__indicator")) {
         EventBus.emit('goToTimer');
+      }
+      if (e.target.classList.contains("page__add-button")) {
+        EventBus.emit('addNewTask');
+      }
+      if (e.target.classList.contains("modal__close")) {
+        EventBus.emit('closeModal');
+      }
+      if (e.target.classList.contains("modal__submit")) {
+        EventBus.emit("submitNewTask");
       }
 
     }
+
     document.body.addEventListener("click", chooseTarget)
   }
 }
+
 const global_controller = new Global_controller();
 global_controller.addEventListeners();
 

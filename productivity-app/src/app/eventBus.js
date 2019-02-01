@@ -1,4 +1,3 @@
-
 export const EventBus = {
   handlers: [],
   emit: function (eventName) {

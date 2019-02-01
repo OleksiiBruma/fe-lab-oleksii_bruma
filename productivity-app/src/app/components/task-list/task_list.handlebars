@@ -1,4 +1,4 @@
-<div class="page page--no-sticky">
+<main class="page page--no-sticky">
   <div class="page__item container">
     <h2 class="page__caption">Daily Task List
       <button
@@ -109,7 +109,7 @@
     <section class="global">
       <header class="global__header">
         <h2 class="global__caption">
-          <button class="global__button open-button" >Global list <span class="open-button__icon"></span></button>
+          <button class="global__button open-button">Global list <span class="open-button__icon"></span></button>
         </h2>
         <ul class="global__filter tab">
           <li class="tab__item"><a class="tab__link
@@ -181,98 +181,9 @@
         </ul>
       </div>
     </section>
-
   </div>
-  <div class="modal modal__add hidden">
-    <div class="modal__content">
-      <form action="" method="get" class="modal__form">
-        <h2 class="modal__caption">Add Task</h2>
-        <ul class="modal__list">
-          <li class="modal__item "><label for="title" class="modal__title">TITLE</label><input id="title" class="modal__text-input" type="text" placeholder="Add title here"></li>
-          <li class="modal__item "><label for="description" class="modal__title">DESCRIPTION</label><input id="description" class="modal__text-input"  type="text" placeholder="Add description here"></li>
-          <li class="modal__item"><fieldset class="modal__field">
-            <legend class="modal__title" >CATEGORY</legend>
-            <input id="work" type="radio" name="category" value="work" checked> <label class="modal__title modal__title--small modal__title--work" for="work">Work</label>
-            <input id="education" type="radio" name="category" value="education"> <label class="modal__title modal__title--small modal__title--education" for="education">Education</label>
-            <input id="hobby" type="radio" name="category" value="hobby"> <label class="modal__title modal__title--small modal__title--hobby" for="hobby">Hobby</label>
-            <input id="sport" type="radio" name="category" value="sport"> <label class="modal__title modal__title--small modal__title--sport" for="sport">Sport</label>
-            <input id="other" type="radio" name="category" value="other"> <label class="modal__title modal__title--small modal__title--other" for="other">Other</label>
-          </fieldset></li>
-          <li class="modal__item"><label class="modal__title" for="deadline">DEADLINE</label><input class="modal__text-input" id="deadline" type="text" placeholder="May 23, 2016"></li>
-          <li class="modal__item"><fieldset class="modal__field modal__field--pomodoro">
-            <legend class="modal__title">ESTIMATION</legend>
-            <input class="modal__pomodoro modal__pomodoro--checked" id="1-pomodoro" type="radio" name="estimation" value="1"><label class="modal__estimate" for="1-pomodoro"></label>
-            <input class="modal__pomodoro modal__pomodoro--checked" id="2-pomodoro" type="radio" name="estimation" value="2"><label class="modal__estimate" for="2-pomodoro"></label>
-            <input class="modal__pomodoro" id="3-pomodoro" type="radio" name="estimation" value="3" checked> <label class="modal__estimate" for="3-pomodoro"></label>
-            <input class="modal__pomodoro" id="4-pomodoro" type="radio" name="estimation" value="4"><label class="modal__estimate" for="4-pomodoro"></label>
-            <input class="modal__pomodoro" id="5-pomodoro" type="radio" name="estimation" value="5"><label class="modal__estimate" for="5-pomodoro"></label>
-          </fieldset></li>
-          <li class="modal__item" ><fieldset class="modal__field">
-            <legend class="modal__title">PRIORITY</legend>
-            <input id="urgent" type="radio" name="priority" value="urgent" checked> <label class="modal__title modal__title--small modal__title--urgent" for="urgent">Urgent</label>
-            <input id="high" type="radio" name="priority" value="high"><label class="modal__title modal__title--small modal__title--high" for="high">High</label>
-            <input id="middle" type="radio" name="priority" value="middle"> <label class="modal__title modal__title--small modal__title--middle" for="middle">Middle</label>
-            <input id="low" type="radio" name="priority" value="low"> <label class="modal__title modal__title--small modal__title--low" for="low">Low</label>
-          </fieldset></li>
-        </ul>
-        <button class="modal__close" type="button"></button>
-        <button class="modal__submit" type="submit"></button>
-      </form>
-    </div>
-  </div>
-  <div class="modal modal__edit hidden">
-    <div class="modal__content">
-      <form action="" method="get" class="modal__form">
-        <h2 class="modal__caption">Edit Task</h2>
-        <ul class="modal__list">
-          <li class="modal__item "><label for="title-edit" class="modal__title">TITLE</label><input id="title-edit" class="modal__text-input" type="text" placeholder="Add title here"></li>
-          <li class="modal__item "><label for="description-edit" class="modal__title">DESCRIPTION</label><input id="description-edit" class="modal__text-input"  type="text" placeholder="Add description here"></li>
-          <li class="modal__item"><fieldset class="modal__field">
-            <legend class="modal__title" >CATEGORY</legend>
-            <input id="work-edit" type="radio" name="category" value="work" checked> <label class="modal__title modal__title--small modal__title--work" for="work-edit">Work</label>
-            <input id="education-edit" type="radio" name="category" value="education"> <label class="modal__title modal__title--small modal__title--education" for="education-edit">Education</label>
-            <input id="hobby-edit" type="radio" name="category" value="hobby"> <label class="modal__title modal__title--small modal__title--hobby" for="hobby-edit">Hobby</label>
-            <input id="sport-edit" type="radio" name="category" value="sport"> <label class="modal__title modal__title--small modal__title--sport" for="sport-edit">Sport</label>
-            <input id="other-edit" type="radio" name="category" value="other"> <label class="modal__title modal__title--small modal__title--other" for="other-edit">Other</label>
-          </fieldset></li>
-          <li class="modal__item"><label class="modal__title" for="deadline-edit">DEADLINE</label><input class="modal__text-input" id="deadline-edit" type="text" placeholder="May 23, 2016"></li>
-          <li class="modal__item"><fieldset class="modal__field modal__field--pomodoro">
-            <legend class="modal__title">ESTIMATION</legend>
-            <input class="modal__pomodoro modal__pomodoro--checked" id="1-pomodoro-edit" type="radio" name="estimation" value="1"><label class="modal__estimate" for="1-pomodoro-edit"></label>
-            <input class="modal__pomodoro modal__pomodoro--checked" id="2-pomodoro-edit" type="radio" name="estimation" value="2"><label class="modal__estimate" for="2-pomodoro-edit"></label>
-            <input class="modal__pomodoro" id="3-pomodoro-edit" type="radio" name="estimation" value="3" checked> <label class="modal__estimate" for="3-pomodoro-edit"></label>
-            <input class="modal__pomodoro" id="4-pomodoro-edit" type="radio" name="estimation" value="4"><label class="modal__estimate" for="4-pomodoro-edit"></label>
-            <input class="modal__pomodoro" id="5-pomodoro-edit" type="radio" name="estimation" value="5"><label class="modal__estimate" for="5-pomodoro-edit"></label>
-          </fieldset></li>
-          <li class="modal__item" ><fieldset class="modal__field">
-            <legend class="modal__title">PRIORITY</legend>
-            <input id="urgent-edit" type="radio" name="priority" value="urgent" checked> <label class="modal__title modal__title--small modal__title--urgent" for="urgent-edit">Urgent</label>
-            <input id="high-edit" type="radio" name="priority" value="high"><label class="modal__title modal__title--small modal__title--high" for="high-edit">High</label>
-            <input id="middle-edit" type="radio" name="priority" value="middle"> <label class="modal__title modal__title--small modal__title--middle" for="middle-edit">Middle</label>
-            <input id="low-edit" type="radio" name="priority" value="low"> <label class="modal__title modal__title--small modal__title--low" for="low-edit">Low</label>
-          </fieldset></li>
-        </ul>
-        <button class="modal__close" type="button"><span class="sr-only">Close</span></button>
-        <button class="modal__submit" type="submit"><span class="sr-only">Submit</span></button>
-        <button class="modal__remove" type="button"><span class="sr-only">Remove task</span></button>
-      </form>
-    </div>
-  </div>
-  <div class="modal modal__remove-task hidden">
-    <div class="modal__content">
-      <form action="" method="get" class="modal__form">
-        <h2 class="modal__caption">Remove Task</h2>
-        <p class="modal__message">Are you sure you want to remove selected task(s)?</p>
-        <button class="modal__close modal__close--remove-task" type="button"><span class="sr-only">Close modal</span></button>
-        <div class="modal__removecancel buttons">
-          <button class="buttons__item buttons__item--info" type="button">Cancel</button>
-          <button class="buttons__item buttons__item--danger" type="button">Remove</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
 </main>
+
 <div class="notification notification--info hidden">
   <span class="notification__indicator"><span class="sr-only">Info</span></span>
   <p class="notification__message">This is just an info notification message!</p>
