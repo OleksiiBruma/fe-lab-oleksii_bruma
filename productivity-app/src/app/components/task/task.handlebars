@@ -1,0 +1,18 @@
+<li class="tasks__item task task--{{toPriority priority}} task--{{categoryId}} data-id={{id}}">
+  <p class="task__toggle">
+    <span class="task__date">{{toDate deadlineDate}}</span>
+    <span class="task__delete "><span class="sr-only">Click to delete task</span></span>
+  </p>
+  <div class="task__text">
+    <h3 class="task__caption">{{title}}</h3>
+    <p class="task__details">{{description}}
+    </p>
+  </div>
+  <div class="task__edit-tools">
+    <button class="task__shift" type="button"><span class="sr-only">Shift to daily</span></button>
+    <button class="task__edit" type="button"><span class="sr-only">Edit task</span></button>
+
+  </div>
+  <button class="task__indicator indicator" type="button">{{estimation}}<span class="sr-only">Amount of pomodoros</span>
+  </button>
+</li>

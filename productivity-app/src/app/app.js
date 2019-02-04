@@ -5,7 +5,8 @@ import {Router} from "./router.js"
 import {database} from "./components/communication-service/dataservice.js";
 import {header_controller} from "./components/header/header_controller.js"
 import {reports_controller} from "./components/reports/reports_controller.js"
-import {task_list_controller} from "./components/task-list/task_list_controller.js"
+import {task_collection_controller} from "./components/task-collection/task_collection_controller.js"
+import {task_controller} from "./components/task/task_controller.js"
 import {settings_controller} from "./components/settings/settings_controller.js"
 import {timer_controller} from "./components/timer/timer_controller.js"
 import {pop_up_controller} from "./components/pop-up/pop_up_controller.js"
@@ -31,7 +32,7 @@ Router
   .add(function () {
     Router.navigate('');
     header_controller.init();
-    task_list_controller.init();
+    task_collection_controller.init();
     header_controller.listenForSticky();
   })
   .check().listen();
@@ -65,10 +66,16 @@ class Global_controller {
     EventBus.subscribe('submitNewTask', function () {
       event.preventDefault();
       pop_up_controller.setNewTaskData();
-      pop_up_controller.closeSelf();
       database.addNewTaskData(pop_up_controller.getNewTaskData());
-      database.getData();
+      task_collection_controller.setTasks(database.getData());
+      task_controller.setTasks(database.getData());
+      task_collection_controller.globalListRender();
+      task_controller.renderTasks();
+
     });
+    EventBus.subscribe('toggleGlobalList',function(){
+      task_collection_controller.toggleGlobalList();
+    })
   }
 
   addEventListeners() {
@@ -95,6 +102,10 @@ class Global_controller {
       if (e.target.classList.contains("modal__submit")) {
         EventBus.emit("submitNewTask");
       }
+      if (e.target.classList.contains("global__button")||
+        e.target.classList.contains("open-button__icon") ) {
+        EventBus.emit("toggleGlobalList");
+      }
 
     }
 
@@ -104,6 +115,8 @@ class Global_controller {
 
 const global_controller = new Global_controller();
 global_controller.addEventListeners();
+
+console.log(new Date("2019-02-05") > new Date());
 
 
 

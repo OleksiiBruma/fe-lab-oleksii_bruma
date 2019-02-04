@@ -42,7 +42,13 @@ module.exports = {
     },
       {
         test: /\.handlebars$/,
-        loader: "handlebars-loader"
+        loader: "handlebars-loader",
+        exclude: /(node_modules)/,
+        query: {
+         helperDirs: [
+        `${__dirname}/src/app/handlebarsHelpers/`
+         ]
+        }
       },
       {
         test: /\.m?js$/,

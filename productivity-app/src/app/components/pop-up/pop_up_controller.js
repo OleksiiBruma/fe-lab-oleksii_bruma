@@ -29,6 +29,7 @@ export class Pop_up_controller {
     newTaskRawData.status = "GLOBAL_LIST";
     newTaskRawData.createDate = new Date();
     this.model.setNewTaskData(newTaskRawData);
+    this.closeSelf();
   }
 
   getNewTaskData() {

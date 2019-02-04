@@ -1,0 +1,108 @@
+<main class="page page--no-sticky">
+  <div class="page__item container">
+    <h2 class="page__caption">Daily Task List
+      <button
+        class="page__add-button" type="button"><span class="sr-only">Add task button</span></button>
+    </h2>
+    <div class="page__stub stub hidden ">
+      <img class="stub__img" src="../images/tomato-add.svg" alt="tomato settings">
+      <p class="stub__message">
+        Add your first task
+      </p>
+    </div>
+    <section class="page__stub stub hidden">
+      <img class="stub__img" src="../images/tomato-addv02.svg" alt="tomato settings">
+      <p class="stub__message">
+        You don’t have any tasks left.<br>
+        Add new tasks to stay productive.
+      </p>
+    </section>
+    <section class="page__stub stub stub--first-visit hidden ">
+      <img class="stub__img" src="../images/tomato_settings.svg" alt="tomato settings">
+      <p class="stub__message">
+        As you visited our site for a first time you can check <br>
+        and customize your default application settings
+      </p>
+      <div class="stub__choose buttons">
+        <button class="buttons__item buttons__item--info" type="button">Skip</button>
+        <button class="buttons__item buttons__item--success" type="button">Go to Settings</button>
+      </div>
+    </section>
+    <section class="daily">
+      <div class="daily__nav ">
+        <ul class="daily__remove tab tab--remove ">
+          <li class="tab__item"><a class="tab__link" href="#">Select All </a></li>
+          <li class="tab__item">
+            <a class="tab__link" href="#">Deselect All</a>
+          </li>
+        </ul>
+        <ul class="daily__tab tab">
+          <li class="tab__item"><a class="tab__link
+       tab__link--active" href="#">To Do</a></li>
+          <li class="tab__item">
+            <a class="tab__link" href="#">Done</a>
+          </li>
+        </ul>
+      </div>
+      <p class="daily__message hidden">Excellent,<br> all daily tasks done! :) </p>
+      <p class="daily__message daily__message--drag hidden">Task added,<br> drag it to the top 5 in daily list </p>
+      <ul class="daily__tasks-list tasks">
+
+
+      </ul>
+    </section>
+    <section class="global">
+      <header class="global__header">
+        <h2 class="global__caption">
+          <button class="global__button open-button">Global list <span class="open-button__icon"></span></button>
+        </h2>
+        <ul class="global__filter tab">
+          <li class="tab__item"><a class="tab__link
+       tab__link--active" href="#">All</a></li>
+          <li class="tab__item">
+            <a class="tab__link" href="#">Urgent</a>
+          </li>
+          <li class="tab__item">
+            <a class="tab__link" href="#">High</a>
+          </li>
+          <li class="tab__item">
+            <a class="tab__link" href="#">Middle</a>
+          </li>
+          <li class="tab__item">
+            <a class="tab__link" href="#">Low</a>
+          </li>
+        </ul>
+      </header>
+      <div class="global__tasks">
+        <ul class="global__remove tab tab--remove">
+          <li class="tab__item"><a class="tab__link" href="#">Select All</a></li>
+          <li class="tab__item">
+            <a class="tab__link" href="#">Deselect All</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</main>
+
+<div class="notification notification--info hidden">
+  <span class="notification__indicator"><span class="sr-only">Info</span></span>
+  <p class="notification__message">This is just an info notification message!</p>
+  <button class="notification__close-button"><span class="sr-only">Close notification</span></button>
+</div>
+<div class="notification notification--warning hidden">
+  <span class="notification__indicator"> <span class="sr-only">Warning</span></span>
+  <p class="notification__message">This is just a warning notification message!</p>
+  <button class="notification__close-button"><span class="sr-only">Close notification</span></button>
+</div>
+<div class="notification notification--error hidden">
+  <span class="notification__indicator"><span class="sr-only">Error</span></span>
+  <p class="notification__message">Ups! An error has occured!</p>
+  <button class="notification__close-button"><span class="sr-only">Close notification</span></button>
+</div>
+<div class="notification notification--success hidden">
+  <span class="notification__indicator"> <span class="sr-only">Success</span></span>
+  <p class="notification__message">Task was successfully created!</p>
+  <button class="notification__close-button"><span class="sr-only">Close notification</span></button>
+</div>
+<script src="/bundle.js"></script>
