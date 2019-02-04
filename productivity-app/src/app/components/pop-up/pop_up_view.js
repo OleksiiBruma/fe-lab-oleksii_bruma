@@ -4,25 +4,30 @@ import templateEdit from "./pop_up_edit.handlebars";
 import templateRemove from "./pop_up_remove.handlebars";
 
 export class Pop_up_view {
-  constructor(){
+  constructor() {
     this.templateAdd = templateAdd();
     this.templateEdit = templateEdit();
     this.templateRemove = templateRemove();
 
   }
-  renderAdd(){
+
+  renderAdd() {
     document.querySelector("main").insertAdjacentHTML("beforeend", this.templateAdd);
   }
-  renderEdit(){
+
+  renderEdit() {
     document.querySelector("main").insertAdjacentHTML("beforeend", this.templateEdit);
   }
-  renderRemove(){
+
+  renderRemove() {
     document.querySelector("main").insertAdjacentHTML("beforeend", this.templateRemove);
   }
-  closeSelf(){
+
+  closeSelf() {
     document.querySelector(".modal").remove();
   }
-  scanProperties(){
+
+  scanProperties() {
     let form = document.forms.modal;
     return {
       title: form.title.value,

@@ -2,26 +2,15 @@
 require('assets/less/main.less'); // include general styles
 import {EventBus} from "./eventBus";
 import {Router} from "./router.js"
-import {dataService} from "./components/service/DataService";
+import {database} from "./components/communication-service/dataservice.js";
 import {header_controller} from "./components/header/header_controller.js"
 import {reports_controller} from "./components/reports/reports_controller.js"
 import {task_list_controller} from "./components/task-list/task_list_controller.js"
 import {settings_controller} from "./components/settings/settings_controller.js"
 import {timer_controller} from "./components/timer/timer_controller.js"
 import {pop_up_controller} from "./components/pop-up/pop_up_controller.js"
-const firebase = require("firebase/app");
-require("firebase/firestore");
-import {Websockets} from "./components/communication-service/websockets.js";
 
-const dataFB = new Websockets();
-dataFB.getData();
-
-// configuration
 Router.config({mode: 'history'});
-
-// returning the user to the initial state
-
-// adding routes
 
 Router
   .add(/settings/, function () {
@@ -40,6 +29,7 @@ Router
     header_controller.listenForSticky();
   })
   .add(function () {
+    Router.navigate('');
     header_controller.init();
     task_list_controller.init();
     header_controller.listenForSticky();
@@ -76,8 +66,8 @@ class Global_controller {
       event.preventDefault();
       pop_up_controller.setNewTaskData();
       pop_up_controller.closeSelf();
-      dataService.addNewTaskData(pop_up_controller.getNewTaskData());
-      dataService.getAllTasksData();
+      database.addNewTaskData(pop_up_controller.getNewTaskData());
+      database.getData();
     });
   }
 
