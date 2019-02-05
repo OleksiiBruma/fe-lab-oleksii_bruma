@@ -1,6 +1,6 @@
 module.exports = function (date) {
   if(new Date(date).getUTCDate()=== new Date().getUTCDate()){
-    return "today"
+    return
   }
-  else return new Date(date).getUTCDate();
+  else return new Date(date).getDate();
 };

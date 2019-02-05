@@ -18,12 +18,15 @@ export class Header_view {
     const offset = window.pageYOffset;
      this.headerItem = this.headerHTML.querySelector(".header__item");
      this.headerLogo = this.headerHTML.querySelector(".header__logo");
+     this.addTask = this.headerHTML.querySelector(".page__add-button--header");
     if ( distance <= 0) {
+      this.addTask.classList.remove("hidden");
       this.headerHTML.classList.remove("header--no-sticky");
       this.page.classList.remove("page--no-sticky");
       this.headerItem.classList.remove("header__item--no-sticky");
       this.headerLogo.classList.remove("header__logo--no-sticky");
     } else if (offset <= this.headerHTML.offsetTop+140){
+      this.addTask.classList.add("hidden");
       this.headerHTML.classList.add("header--no-sticky");
       this.page.classList.add("page--no-sticky");
       this.headerItem.classList.add("header__item--no-sticky");

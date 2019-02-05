@@ -13,9 +13,12 @@ export class Database {
       storageBucket: "prodapp-be142.appspot.com",
       messagingSenderId: "231543741919"
     });
-    this.alltasks = [];
+    this.alltasks ={};
     this.remoteTasks = firebase.database().ref("tasks");
-    this.remoteTasks.on('value', (data) => {this.alltasks = data.val(); console.log(this.alltasks)});
+
+  }
+  updateDataBase(){
+    this.remoteTasks.on('value', (data) => {if(!data.val()) return ; this.alltasks = data.val(); EventBus.emit("databaseUpdated")});
   }
 
   getData() {
@@ -24,6 +27,15 @@ export class Database {
 
   addNewTaskData(newTask) {
     this.remoteTasks.push(newTask)
+      .then(function(){console.log("success!: new task has been added")})
+      .catch(function(error){console.log(error)
+    })
+  }
+  removeAllData(){
+    this.remoteTasks.remove();
+  }
+  updateData(arg){
+    this.remoteTasks.child(`/${arg[0]}/`).update(arg[1]);
   }
 }
 

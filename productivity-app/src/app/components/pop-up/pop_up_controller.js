@@ -28,6 +28,9 @@ export class Pop_up_controller {
     newTaskRawData.id = +new Date();
     newTaskRawData.status = "GLOBAL_LIST";
     newTaskRawData.createDate = new Date();
+    if(!isNaN(newTaskRawData.deadlineDate)){
+      newTaskRawData.deadlineDate = new Date().toISOString();
+    }
     this.model.setNewTaskData(newTaskRawData);
     this.closeSelf();
   }

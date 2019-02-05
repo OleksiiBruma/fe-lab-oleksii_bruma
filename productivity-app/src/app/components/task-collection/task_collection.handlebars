@@ -38,9 +38,9 @@
         </ul>
         <ul class="daily__tab tab">
           <li class="tab__item"><a class="tab__link
-       tab__link--active" href="#">To Do</a></li>
+       tab__link--active" href="#" data-todoView="true">To Do</a></li>
           <li class="tab__item">
-            <a class="tab__link" href="#">Done</a>
+            <a class="tab__link" href="#" data-todoView="false">Done</a>
           </li>
         </ul>
       </div>
@@ -54,26 +54,26 @@
     <section class="global">
       <header class="global__header">
         <h2 class="global__caption">
-          <button class="global__button open-button">Global list <span class="open-button__icon"></span></button>
+          <button class="global__button open-button">Global list <span class="open-button__icon open-button__icon--active"></span></button>
         </h2>
-        <ul class="global__filter tab">
+        <ul class="global__filter global__filter--active tab">
           <li class="tab__item"><a class="tab__link
-       tab__link--active" href="#">All</a></li>
+       tab__link--active" href="#" data-filter="0">All</a></li>
           <li class="tab__item">
-            <a class="tab__link" href="#">Urgent</a>
+            <a class="tab__link" href="#" data-filter="1">Urgent</a>
           </li>
           <li class="tab__item">
-            <a class="tab__link" href="#">High</a>
+            <a class="tab__link" href="#" data-filter="2">High</a>
           </li>
           <li class="tab__item">
-            <a class="tab__link" href="#">Middle</a>
+            <a class="tab__link" href="#" data-filter="3">Middle</a>
           </li>
           <li class="tab__item">
-            <a class="tab__link" href="#">Low</a>
+            <a class="tab__link" href="#" data-filter="4">Low</a>
           </li>
         </ul>
       </header>
-      <div class="global__tasks">
+      <div class="global__tasks global__tasks--active">
         <ul class="global__remove tab tab--remove">
           <li class="tab__item"><a class="tab__link" href="#">Select All</a></li>
           <li class="tab__item">

@@ -1,6 +1,7 @@
-<li class="tasks__item task task--{{toPriority priority}} task--{{categoryId}} data-id={{id}}">
+<li class="tasks__item task {{toOverdue deadlineDate }} task--{{toPriority priority}} task--{{categoryId}} " data-id="{{id}}">
   <p class="task__toggle">
-    <span class="task__date">{{toDate deadlineDate}}</span>
+    <span class="task__date">
+    <span class="task__date-day">{{toDay deadlineDate}}</span>{{toMonth deadlineDate}}</span>
     <span class="task__delete "><span class="sr-only">Click to delete task</span></span>
   </p>
   <div class="task__text">

@@ -33,9 +33,14 @@ export class Task_collection_controller {
       return self.indexOf(value) === index;
     })
   }
-
   globalListRender() {
     this.view.globalListRender(this.getCategories())
+  }
+  setState(state){
+    this.model.setState(state)
+  }
+  getState(){
+    return this.model.getState();
   }
 
 }

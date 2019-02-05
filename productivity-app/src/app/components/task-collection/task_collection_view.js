@@ -1,3 +1,5 @@
+import {EventBus} from "../../eventBus.js";
+
 require('./task_collection.less');
 import template from "./task_collection.handlebars";
 import globalListTemplate from "./task_collection_globalList.handlebars"
@@ -10,6 +12,7 @@ export class Task_collection_view {
     if(sessionStorage.length === 0) {
       document.querySelector("body").insertAdjacentHTML("beforeend", this.task_collectionTemplate);
       sessionStorage.setItem('newUser', 'false');
+      EventBus.emit('deleteAllData');
       this.firstVisit();
       return
     }
@@ -28,4 +31,5 @@ export class Task_collection_view {
   globalListRender(categories){
     document.querySelector(".global__tasks").innerHTML = this.globalListTemplate(categories);
   }
+
 }
