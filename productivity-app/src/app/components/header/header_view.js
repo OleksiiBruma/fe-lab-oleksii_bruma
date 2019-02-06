@@ -1,3 +1,5 @@
+import {EventBus} from "../../eventBus";
+
 require('./header.less');
 import template from "./header.handlebars";
 
@@ -35,6 +37,21 @@ export class Header_view {
   }
   listenForSticky(){
     window.addEventListener("scroll",this.makeHeaderSticky);
+  }
+  openTrashCount(){
+     document.querySelector(".trash__count").classList.add("trash__count--remove-mode");
+  }
+  closeTrashCount(){
+    document.querySelector(".trash__count").classList.remove("trash__count--remove-mode");
+  }
+  updateTrashCount(amount){
+    document.querySelector(".trash__count").textContent = amount;
+  }
+  isChecked(){
+    if(document.querySelectorAll(".task--delete-checked").length){
+      EventBus.emit("openTrashCount");
+      EventBus.emit("updateTrashCount",document.querySelectorAll(".task--delete-checked").length);}
+    else EventBus.emit("closeTrashCount");
   }
 }
 

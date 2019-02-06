@@ -49,17 +49,24 @@ export class Database {
   }
 
   getFIDTaskById(id) {
-      let tasks = this.alltasks;
-      let FID = 0;
-      Object.keys(tasks).forEach(function (task) {
-      if (tasks[task].id === +id) {
-        FID = task
+    let tasks = this.alltasks;
+    let FID = 0;
+    Object.keys(tasks).forEach(function (task) {
+        if (tasks[task].id === +id) {
+          FID = task
+        }
       }
-    }
-  );
+    );
     return FID;
+  }
 
-
+  deleteData(id) {
+    this.remoteTasks.child(`/${id}/`).remove()
+      .then(function () {
+        console.log("items removed")})
+      .catch(function (error) {
+      console.log(error)
+    });
   }
 }
 

@@ -34,13 +34,19 @@ export class Task_collection_view {
     document.querySelector(".global__tasks").innerHTML = this.globalListTemplate(categories);
   }
   dailyListRender(){
+    document.querySelector(".daily__nav").classList.remove("daily__nav--remove-mode");
+    document.querySelector(".daily__remove").classList.remove("tab--remove-mode");
     document.querySelector(".daily__tasks-list").innerHTML = "";
   }
   removeModeOn(){
     document.querySelector(".global__tasks").insertAdjacentHTML("afterbegin", this.globalRemove())
     document.querySelector(".daily__nav").classList.add("daily__nav--remove-mode");
-
-
+    document.querySelector(".daily__remove").classList.add("tab--remove-mode");
+  }
+  removeModeOff(){
+    document.querySelector(".global__remove").remove();
+    document.querySelector(".daily__nav").classList.remove("daily__nav--remove-mode");
+    document.querySelector(".daily__remove").classList.remove("tab--remove-mode");
   }
 
 }

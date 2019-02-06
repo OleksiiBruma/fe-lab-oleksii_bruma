@@ -1,3 +1,4 @@
+import {EventBus} from "../../eventBus";
 import {Task_collection_view} from "./task_collection_view";
 import {Task_collection_model} from "./task_collection_model";
 
@@ -72,7 +73,24 @@ export class Task_collection_controller {
   removeModeOn(){
     this.view.removeModeOn();
   }
+  removeModeOff(){
+    this.view.removeModeOff();
+  }
 
-}
+  removeMode(){
+
+   if(!document.querySelector(".task--delete")){
+      EventBus.emit("removeModeOn");
+   }
+  else if(document.querySelector(".task--delete")){
+    if (document.querySelector(".task--delete-checked")){
+
+      EventBus.emit("openRemoveModal");
+    }
+    else EventBus.emit("removeModeOff");
+  }
+
+
+}}
 
 export const task_collection_controller = new Task_collection_controller(new Task_collection_model(), new Task_collection_view());

@@ -1,6 +1,7 @@
 import {Task_view} from "./task_view";
 import {Task_model} from "./task_model";
 import {EventBus} from "../../eventBus";
+
 export class Task_controller {
   constructor(model, view) {
     this.model = model;
@@ -14,51 +15,72 @@ export class Task_controller {
   getTasks() {
     return this.model.getTasks();
   }
-  renderTasks(state){
+
+  renderTasks(state) {
     let allTasks = this.getTasks();
     let view = this.view;
     Object.keys(allTasks).forEach(function (task) {
       let category = allTasks[task].categoryId;
-      let date = new Date(allTasks[task].completeDate).setHours(0,0,0,0,);
-      let now = new Date().setHours(0,0,0,0);
-      if(state.todoView){
-        if(allTasks[task].status === "GLOBAL_LIST" && +allTasks[task].priority === +state.filterState){
+      let date = new Date(allTasks[task].completeDate).setHours(0, 0, 0, 0,);
+      let now = new Date().setHours(0, 0, 0, 0);
+      if (state.todoView) {
+        if (allTasks[task].status === "GLOBAL_LIST" && +allTasks[task].priority === +state.filterState) {
           view.renderTaskGlobal(allTasks[task], category);
         }
-        if(allTasks[task].status === "GLOBAL_LIST" && +state.filterState === 0){
+        if (allTasks[task].status === "GLOBAL_LIST" && +state.filterState === 0) {
           view.renderTaskGlobal(allTasks[task], category);
         }
-        if(allTasks[task].status=== "DAILY_LIST"){
+        if (allTasks[task].status === "DAILY_LIST") {
           view.renderTaskDaily(allTasks[task])
         }
       }
-      if(!state.todoView){
+      if (!state.todoView) {
 
-        if(allTasks[task].status === "COMPLETED" && +allTasks[task].priority === +state.filterState && date !== now  ){
+        if (allTasks[task].status === "COMPLETED" && +allTasks[task].priority === +state.filterState && date !== now) {
           view.renderTaskGlobal(allTasks[task], category);
 
         }
-        if(allTasks[task].status === "COMPLETED" && +state.filterState === 0 && date !== now ){
+        if (allTasks[task].status === "COMPLETED" && +state.filterState === 0 && date !== now) {
           view.renderTaskGlobal(allTasks[task], category);
 
         }
-        if(allTasks[task].status === "COMPLETED"  && date === now ){
+        if (allTasks[task].status === "COMPLETED" && date === now) {
           view.renderTaskDaily(allTasks[task]);
 
         }
       }
-
-
     });
   }
-  globalToDaily(id){
+
+  globalToDaily(id) {
     let allTasks = this.model.getTasks();
-    Object.keys(allTasks).forEach(function(task){
-      if(allTasks[task].id === +id) {
-        EventBus.emit("updateStatus", [task,{status: "DAILY_LIST"}]);
+    Object.keys(allTasks).forEach(function (task) {
+      if (allTasks[task].id === +id) {
+        EventBus.emit("updateStatus", [task, {status: "DAILY_LIST"}]);
       }
     })
+  }
 
+  removeModeOn() {
+    this.view.removeModeOn();
+  }
+  removeModeOff() {
+    this.view.removeModeOff();
+  }
+  toggleSelectedTask(task){
+    task.classList.toggle("task--delete-checked");
+    EventBus.emit("isChecked");
+  }
+  selectAll(list){
+    this.view.selectAll(list);
+EventBus.emit("isChecked");
+  }
+  deselectAll(list) {
+    this.view.deselectAll(list);
+    EventBus.emit("isChecked");
+  }
+  removeTasks(){
+    [].forEach.call(document.querySelectorAll(".task--delete-checked"),(task)=> {EventBus.emit("deleteTask",+task.dataset.id)})
   }
 }
 

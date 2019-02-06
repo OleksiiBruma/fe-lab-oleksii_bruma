@@ -11,6 +11,18 @@ export class Header_controller{
   listenForSticky(){
     this.view.listenForSticky()
   }
+  openTrashCount(){
+    this.view.openTrashCount()
+  }
+  closeTrashCount(){
+    this.view.closeTrashCount()
+  }
+  updateTrashCount(amount){
+    this.view.updateTrashCount(amount)
+  }
+  isChecked(){
+    this.view.isChecked();
+  }
 }
 
 export const header_controller = new Header_controller(new Header_model(), new Header_view());
