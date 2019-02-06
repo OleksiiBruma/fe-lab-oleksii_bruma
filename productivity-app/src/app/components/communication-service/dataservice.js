@@ -13,12 +13,17 @@ export class Database {
       storageBucket: "prodapp-be142.appspot.com",
       messagingSenderId: "231543741919"
     });
-    this.alltasks ={};
+    this.alltasks = {};
     this.remoteTasks = firebase.database().ref("tasks");
 
   }
-  updateDataBase(){
-    this.remoteTasks.on('value', (data) => {if(!data.val()) return ; this.alltasks = data.val(); EventBus.emit("databaseUpdated")});
+
+  updateDataBase() {
+    this.remoteTasks.on('value', (data) => {
+      if (!data.val()) return;
+      this.alltasks = data.val();
+      EventBus.emit("databaseUpdated")
+    });
   }
 
   getData() {
@@ -27,15 +32,34 @@ export class Database {
 
   addNewTaskData(newTask) {
     this.remoteTasks.push(newTask)
-      .then(function(){console.log("success!: new task has been added")})
-      .catch(function(error){console.log(error)
-    })
+      .then(function () {
+        console.log("success!: new task has been added")
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
   }
-  removeAllData(){
+
+  removeAllData() {
     this.remoteTasks.remove();
   }
-  updateData(arg){
+
+  updateData(arg) {
     this.remoteTasks.child(`/${arg[0]}/`).update(arg[1]);
+  }
+
+  getFIDTaskById(id) {
+      let tasks = this.alltasks;
+      let FID = 0;
+      Object.keys(tasks).forEach(function (task) {
+      if (tasks[task].id === +id) {
+        FID = task
+      }
+    }
+  );
+    return FID;
+
+
   }
 }
 

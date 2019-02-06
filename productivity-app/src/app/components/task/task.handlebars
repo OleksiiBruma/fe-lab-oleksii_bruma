@@ -1,4 +1,4 @@
-<li class="tasks__item task {{toOverdue deadlineDate }} task--{{toPriority priority}} task--{{categoryId}} " data-id="{{id}}">
+<li class="tasks__item task {{#if completeDate}}task--done{{/if}} {{toOverdue deadlineDate }} task--{{toPriority priority}} task--{{categoryId}} " data-id="{{id}}">
   <p class="task__toggle">
     <span class="task__date">
     <span class="task__date-day">{{toDay deadlineDate}}</span>{{toMonth deadlineDate}}</span>

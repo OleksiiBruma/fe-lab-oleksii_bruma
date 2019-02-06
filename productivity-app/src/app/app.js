@@ -1,5 +1,3 @@
-import {task_controller} from "./components/task/task_controller";
-
 require('assets/less/main.less');
 import {EventBus} from "./eventBus";
 import {Router} from "./router.js"
@@ -51,8 +49,13 @@ class Global_controller {
       if (e.target.classList.contains("modal__close")) {
         EventBus.emit('closeModal');
       }
-      if (e.target.classList.contains("modal__submit")) {
+      if (e.target.classList.contains("modal__submit--add")) {
+        e.preventDefault();
         EventBus.emit("submitNewTask");
+      }
+      if (e.target.classList.contains("modal__submit--edit")) {
+        e.preventDefault();
+        EventBus.emit("submitEditedTask");
       }
       if (e.target.classList.contains("global__button")||
         e.target.classList.contains("open-button__icon") ) {
@@ -67,8 +70,18 @@ class Global_controller {
       }
       if (e.target.hasAttribute("data-todoView")){
         e.preventDefault()
-        EventBus.emit("setFilterStatus",["todoView", e.target.dataset.todoview])
+        EventBus.emit("setFilterStatus",["todoView", !!e.target.dataset.todoview])
       }
+      if (e.target.classList.contains("task__edit")){
+        EventBus.emit("openEditModal", e.target.parentElement.parentElement.dataset.id)
+      }
+      if(e.target.classList.contains("modal__submit--edit")){
+        EventBus.emit("submitEdit")
+      }
+      if(e.target.classList.contains("menu__link--icon-trash")){
+        EventBus.emit("RemoveModeOn")
+      }
+
 
     }
 

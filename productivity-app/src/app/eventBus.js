@@ -27,15 +27,17 @@ EventBus.subscribe("databaseUpdated",function(){
   task_collection_controller.setTasks(database.getData());
   task_controller.setTasks(database.getData());
   task_collection_controller.globalListRender();
+  task_collection_controller.dailyListRender();
   task_controller.renderTasks(task_collection_controller.getState());
   console.log("database updated");
-})
+});
 EventBus.subscribe('goToTaskList', function () {
   Router.navigate('');
   header_controller.init();
   header_controller.listenForSticky();
   task_collection_controller.init();
   task_collection_controller.globalListRender();
+  task_collection_controller.dailyListRender();
   task_controller.renderTasks(task_collection_controller.getState());
   database.updateDataBase();
 });
@@ -65,12 +67,19 @@ EventBus.subscribe('closeModal', function () {
   pop_up_controller.closeSelf();
 });
 EventBus.subscribe('submitNewTask', function () {
-  event.preventDefault();
   pop_up_controller.setNewTaskData();
   database.addNewTaskData(pop_up_controller.getNewTaskData());
   task_collection_controller.globalListRender();
+  task_collection_controller.dailyListRender();
   task_controller.renderTasks(task_collection_controller.getState());
 
+});
+EventBus.subscribe("submitEdit",function(){
+  database.updateData([(database.getFIDTaskById(pop_up_controller.getTaskToBeEdited())),pop_up_controller.getScannedProperties()]);
+  pop_up_controller.closeSelf();
+  task_collection_controller.globalListRender();
+  task_collection_controller.dailyListRender();
+  task_controller.renderTasks(task_collection_controller.getState());
 });
 EventBus.subscribe('toggleGlobalList',function(){
   task_collection_controller.toggleGlobalList();
@@ -87,8 +96,17 @@ EventBus.subscribe("updateStatus",function(arg){
 EventBus.subscribe("setFilterStatus",function(arg){
   task_collection_controller.setState(arg);
   task_collection_controller.globalListRender();
+  task_collection_controller.dailyListRender();
   task_controller.renderTasks(task_collection_controller.getState());
 });
+EventBus.subscribe("openEditModal",function(id){
+  pop_up_controller.renderEdit();
+  pop_up_controller.setTaskToBeEdited(id);
+});
+EventBus.subscribe("RemoveModeOn",function(){
+task_collection_controller.removeModeOn();
+})
+
 
 
 

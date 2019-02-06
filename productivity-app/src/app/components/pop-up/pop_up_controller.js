@@ -14,6 +14,12 @@ export class Pop_up_controller {
   renderEdit() {
     this.view.renderEdit();
   }
+  setTaskToBeEdited(id){
+    this.model.setTaskToBeEdited(id);
+  }
+  getTaskToBeEdited(){
+    return this.model.getTaskToBeEdited();
+  }
 
   renderRemove() {
     this.view.renderRemove();
@@ -23,14 +29,18 @@ export class Pop_up_controller {
     this.view.closeSelf();
   }
 
+  getScannedProperties(){
+    return this.view.scanProperties()
+  }
+
   setNewTaskData() {
-    const newTaskRawData = this.view.scanProperties();
+    const newTaskRawData = this.getScannedProperties();
     newTaskRawData.id = +new Date();
     newTaskRawData.status = "GLOBAL_LIST";
     newTaskRawData.createDate = new Date();
-    if(!isNaN(newTaskRawData.deadlineDate)){
-      newTaskRawData.deadlineDate = new Date().toISOString();
-    }
+    newTaskRawData.completeDate = false;
+    newTaskRawData.failedPomodoros = [];
+    newTaskRawData.completedCount = false;
     this.model.setNewTaskData(newTaskRawData);
     this.closeSelf();
   }

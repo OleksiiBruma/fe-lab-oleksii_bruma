@@ -16,6 +16,7 @@ export class Pop_up_view {
   }
 
   renderEdit() {
+
     document.querySelector("main").insertAdjacentHTML("beforeend", this.templateEdit);
   }
 
@@ -29,13 +30,17 @@ export class Pop_up_view {
 
   scanProperties() {
     let form = document.forms.modal;
+    let deadlineDate =form.deadline.value;
+    if(!isNaN(form.deadline.value)){
+       deadlineDate = new Date().toISOString();
     return {
       title: form.title.value,
       description: form.description.value,
       categoryId: form.category.value,
       priority: +form.priority.value,
       estimation: +form.estimation.value,
-      deadlineDate: form.deadline.value,
+      deadlineDate: deadlineDate,
+    }
     };
   }
 }

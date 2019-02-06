@@ -19,16 +19,35 @@ export class Task_controller {
     let view = this.view;
     Object.keys(allTasks).forEach(function (task) {
       let category = allTasks[task].categoryId;
-
-      if(state.todoView === true){
-        console.log(state);
+      let date = new Date(allTasks[task].completeDate).setHours(0,0,0,0,);
+      let now = new Date().setHours(0,0,0,0);
+      if(state.todoView){
         if(allTasks[task].status === "GLOBAL_LIST" && +allTasks[task].priority === +state.filterState){
-          view.renderTask(allTasks[task], category);
+          view.renderTaskGlobal(allTasks[task], category);
+        }
+        if(allTasks[task].status === "GLOBAL_LIST" && +state.filterState === 0){
+          view.renderTaskGlobal(allTasks[task], category);
         }
         if(allTasks[task].status=== "DAILY_LIST"){
-          //renderDaily
+          view.renderTaskDaily(allTasks[task])
         }
       }
+      if(!state.todoView){
+
+        if(allTasks[task].status === "COMPLETED" && +allTasks[task].priority === +state.filterState && date !== now  ){
+          view.renderTaskGlobal(allTasks[task], category);
+
+        }
+        if(allTasks[task].status === "COMPLETED" && +state.filterState === 0 && date !== now ){
+          view.renderTaskGlobal(allTasks[task], category);
+
+        }
+        if(allTasks[task].status === "COMPLETED"  && date === now ){
+          view.renderTaskDaily(allTasks[task]);
+
+        }
+      }
+
 
     });
   }

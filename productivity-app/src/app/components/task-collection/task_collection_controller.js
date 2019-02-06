@@ -6,7 +6,6 @@ export class Task_collection_controller {
     this.model = model;
     this.view = view;
   }
-
   init() {
     this.view.init();
   };
@@ -24,23 +23,54 @@ export class Task_collection_controller {
   }
 
   getCategories() {
+    let states = this.model.getState();
     let currentTasks = this.getTasks();
     let rawCategories = [];
     Object.keys(currentTasks).forEach(function (task) {
-      rawCategories.push(currentTasks[task].categoryId);
-    });
+        let date = new Date(currentTasks[task].completeDate).setHours(0, 0, 0, 0,);
+        let now = new Date().setHours(0, 0, 0, 0);
+        if (states.todoView) {
+          if (+states.filterState === +currentTasks[task].priority && currentTasks[task].status === "GLOBAL_LIST" && +states.filterState !== 0) {
+            rawCategories.push(currentTasks[task].categoryId);
+          } else if (+states.filterState === 0 && currentTasks[task].status === "GLOBAL_LIST") {
+            rawCategories.push(currentTasks[task].categoryId);
+          }
+        }
+        if (!states.todoView) {
+
+          if (+states.filterState === +currentTasks[task].priority && currentTasks[task].status === "COMPLETED"
+            && +states.filterState !== 0 && date === now) {
+            rawCategories.push(currentTasks[task].categoryId);
+          } else if (+states.filterState === 0 && currentTasks[task].status === "COMPLETED"
+            && date === now) {
+            rawCategories.push(currentTasks[task].categoryId);
+          }
+        }
+      }
+    );
+
     return rawCategories.filter(function (value, index, self) {
       return self.indexOf(value) === index;
     })
   }
+
   globalListRender() {
     this.view.globalListRender(this.getCategories())
   }
-  setState(state){
+
+  dailyListRender() {
+    this.view.dailyListRender()
+  }
+
+  setState(state) {
     this.model.setState(state)
   }
-  getState(){
+
+  getState() {
     return this.model.getState();
+  }
+  removeModeOn(){
+    this.view.removeModeOn();
   }
 
 }
