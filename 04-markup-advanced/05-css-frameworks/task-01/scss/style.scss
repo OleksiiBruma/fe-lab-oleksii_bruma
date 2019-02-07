@@ -1,0 +1,7 @@
+@import "variables";
+/* Bootstrap */
+@import "bootstrap/bootstrap-variables";
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import "bootstrap/bootstrapCustomization";
+/* Project CSS */
+@import "general";

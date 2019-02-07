@@ -1,0 +1,80 @@
+.btn {
+  @extend .btn, .btn-success, .text-uppercase, .font-weight-bold;
+  background: rgb(80,195,175);
+  border:0;
+  border-radius:20px;
+}
+.header {
+  background: url("../images/tree.jpg") center/ cover no-repeat black;
+  @extend .d-flex, .justify-content-center, .flex-column;
+  &__logo {
+    @extend .text-center, .pt-5;
+  }
+  &__btn{
+    @extend .pl-5, .pr-5, .pt-3, .pb-3 ,.align-self-center;
+    margin:6rem 0 8rem 0;
+  }
+}
+
+.menu {
+  &__list {
+    @extend .nav, .justify-content-center, .mt-5;
+  }
+
+  &__item {
+    @extend .nav-item;
+  }
+
+  &__link {
+    @extend .nav-link, .text-light, .text-uppercase, .pr-4, .pl-4;
+  }
+}
+
+.heading {
+  @extend .text-uppercase, .text-light, .text-center,.font-weight-bold;
+
+  &--big {
+    @extend .mt-5;
+    font-size: 4rem;
+  }
+
+  &--small {
+    @extend .mt-4, .text-uppercase;
+    font-size: 1rem;
+    position: relative;
+    overflow: hidden;
+
+    span {
+      display: inline-block;
+      vertical-align: baseline;
+      zoom: 1;
+      position: relative;
+      padding: 0 20px;
+
+      &:before, &:after {
+        content: '';
+        display: block;
+        width: 9rem;
+        position: absolute;
+        top: 0.73em;
+        border-top: 1px solid white;
+        opacity: .3;
+      }
+
+      &:before { right: 100%; }
+      &:after { left: 100%; }
+    }
+
+  }
+}
+.characters{
+  @extend .container;
+}
+.templates{
+  @extend .container;
+}
+.footer {
+  @extend .container;
+}
+
+
