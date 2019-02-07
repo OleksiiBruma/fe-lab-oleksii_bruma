@@ -5,12 +5,15 @@
 	<meta name="viewport"
 	      content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+	      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/style.css">
 	<title>Document</title>
 </head>
 <body>
 <header class="header">
-	<h1 class="header__logo logo"><a class="logo__link" href="#"><img class="logo__img" src="images/Elena.png" alt="Elena"></a></h1>
+	<h1 class="header__logo logo"><a class="logo__link" href="#"><img class="logo__img" src="images/Elena.png"
+	                                                                  alt="Elena"></a></h1>
 	<nav class="header__menu menu">
 		<ul class="menu__list">
 			<li class="menu__item"><a class="menu__link" href="#">home</a></li>
@@ -25,137 +28,157 @@
 </header>
 <main>
 	<div class="characters characters--dark">
-		<dl class="characters__item">
-			<dt class="characters__title">profesionals</dt>
-			<dd class="characters__text description">lorem ipsum dolor sit amet consectetur</dd>
-		</dl>
-		<dl class="characters__item">
-			<dt class="characters__title">amateurs</dt>
-			<dd class="characters__text description">lorem ipsum dolor sit amet consectetur</dd>
-		</dl>
-		<dl class="characters__item">
-			<dt class="characters__title">for everyone</dt>
-			<dd class="characters__text description">lorem ipsum dolor sit amet consectetur</dd>
-		</dl>
+		<div class="container container--characters">
+			<dl class="characters__item">
+				<i class="fas fa-users fa-3x icon icon--success"></i>
+				<dt class="characters__title">profesionals</dt>
+				<dd class="characters__text description">lorem ipsum dolor sit amet consectetur</dd>
+			</dl>
+			<dl class="characters__item ">
+				<i class="fas fa-heart fa-3x icon icon--success"></i>
+				<dt class="characters__title">amateurs</dt>
+				<dd class="characters__text description">lorem ipsum dolor sit amet consectetur</dd>
+			</dl>
+			<dl class="characters__item">
+				<i class="fas fa-headphones-alt fa-3x icon icon--success"></i>
+				<dt class="characters__title">for everyone</dt>
+				<dd class="characters__text description">lorem ipsum dolor sit amet consectetur</dd>
+			</dl>
+		</div>
 	</div>
 	<div class="templates templates--medium templates--light">
-		<article class="template">
-			<picture class="template__images">
-				<source srcset="#">
-				<img class="template__image" src="#" alt="car">
-			</picture>
-			<h2 class="template__heading heading">Responsive email template</h2>
-			<p class="template__description description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-				interdum mollis</p>
-			<a class="template__btn btn btn--small" href="#">read more</a>
-		</article>
-		<article class="template">
-			<picture class="template__images">
-				<source srcset="#">
-				<img class="template__image" src="#" alt="car">
-			</picture>
-			<h2 class="template__heading heading">Responsive email template</h2>
-			<p class="template__description description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-				interdum mollis</p>
-			<a class="template__btn btn btn--small" href="#">read more</a>
-		</article>
+		<div class="container container--medium">
+			<article class="template">
+				<picture class="template__images">
+					<source srcset="./images/car.jpg">
+					<img class="template__image" src="./images/car.jpg" alt="car">
+				</picture>
+				<h2 class="template__heading ">Responsive email template</h2>
+				<p class="template__description description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+					interdum mollis</p>
+				<a class="template__btn btn btn--small" href="#">read more</a>
+			</article>
+			<article class="template">
+				<picture class="template__images">
+					<source srcset="./images/car.jpg">
+					<img class="template__image" src="./images/car.jpg" alt="car">
+				</picture>
+				<h2 class="template__heading">Fully compatible template</h2>
+				<p class="template__description description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+					interdum mollis</p>
+				<a class="template__btn btn btn--small" href="#">read more</a>
+			</article>
+		</div>
 	</div>
 	<div class="templates templates--small templates--dark">
-		<article class="template">
-			<h2 class="template__heading heading">fully supported template</h2>
-			<p class="template__description description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-				Suspendisse malesuada sodales risus, a adipiscing lorem commodo vitae. Ut semper semper lacus.
-				Suspendisse convallis vel tellus at consectetur. Aenean risus arcu</p>
-			<a class="template__btn btn btn--small btn--dark" href="#">read more</a>
-		</article>
+		<div class="container">
+			<article class="template">
+				<h2 class="template__heading "><i class="far fa-circle template__icon template__icon--dark"></i> fully supported
+					template</h2>
+				<p class="template__description description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+				</p>
+				<a class="template__btn btn btn--small btn--dark" href="#">read more</a>
+			</article>
+		</div>
 	</div>
 	<div class="templates templates--big templates--light">
-		<article class="template">
-			<picture class="template__images">
-				<source srcset="#">
-				<img class="template__image" src="#" alt="traffic lights">
-			</picture>
-			<h2 class="template__heading heading heading--small">FULLY Layered PSD</h2>
-			<p class="template__description description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-				Suspendisse malesuada sodales risus, a adipiscing lorem commodo vitae. Ut semper semper lacus.
-				Suspendisse convallis vel tellus at consectetur. Aenean risus arcu</p>
-			<a class="template__btn btn btn--link" href="#">Check this out</a>
-		</article>
-		<article class="template">
-			<picture class="template__images">
-				<source srcset="#">
-				<img class="template__image" src="#" alt="woman with umbrella">
-			</picture>
-			<h2 class="template__heading heading heading--small">FUll Compatibility</h2>
-			<p class="template__description description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-				Suspendisse malesuada sodales risus, a adipiscing lorem commodo vitae. Ut semper semper lacus.
-				Suspendisse convallis vel tellus at consectetur. Aenean risus arcu</p>
-			<a class="template__btn btn btn--link" href="#">Check this out</a>
-		</article>
-		<article class="template">
-			<picture class="template__images">
-				<source srcset="#">
-				<img class="template__image" src="#" alt="converse boots">
-			</picture>
-			<h2 class="template__heading heading heading--small">very great modules </h2>
-			<p class="template__description description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-				Suspendisse malesuada sodales risus, a adipiscing lorem commodo vitae. Ut semper semper lacus.
-				Suspendisse convallis vel tellus at consectetur. Aenean risus arcu</p>
-			<a class="template__btn btn btn--link" href="#">Check this out</a>
-		</article>
+		<div class="container container--big">
+			<article class="template">
+				<picture class="template__images">
+					<source srcset="./images/car.jpg">
+					<img class="template__image" src="./images/car.jpg" alt="traffic lights">
+				</picture>
+				<h2 class="template__heading  heading--small">FULLY Layered PSD</h2>
+				<p class="template__description description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+				</p>
+				<a class="template__btn btn btn--link" href="#">Check this out ></a>
+			</article>
+			<article class="template">
+				<picture class="template__images">
+					<source srcset="./images/car.jpg">
+					<img class="template__image" src="./images/car.jpg" alt="woman with umbrella">
+				</picture>
+				<h2 class="template__heading  heading--small">FUll Compatibility</h2>
+				<p class="template__description description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+				</p>
+				<a class="template__btn btn btn--link" href="#">Check this out ></a>
+			</article>
+			<article class="template">
+				<picture class="template__images">
+					<source srcset="./images/car.jpg">
+					<img class="template__image" src="./images/car.jpg" alt="converse boots">
+				</picture>
+				<h2 class="template__heading  heading--small">very great modules </h2>
+				<p class="template__description description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+				</p>
+				<a class="template__btn btn btn--link" href="#">Check this out ></a>
+			</article>
+		</div>
 	</div>
-	<div class="templates templates--medium templates--dark">
-		<article class="template">
-			<h2 class="template__heading heading">send it now</h2>
-			<p class="template__description description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-				Suspendisse malesuada sodales risus, a adipiscing lorem commodo vitae. Ut semper semper lacus.
-				Suspendisse convallis vel tellus at consectetur. Aenean risus arcu</p>
-			<a class="template__btn btn btn--small " href="#">read more</a>
-		</article>
-		<article class="template">
-			<h2 class="template__heading heading">send it now</h2>
-			<p class="template__description description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-				Suspendisse malesuada sodales risus, a adipiscing lorem commodo vitae. Ut semper semper lacus.
-				Suspendisse convallis vel tellus at consectetur. Aenean risus arcu</p>
-			<a class="template__btn btn btn--small " href="#">read more</a>
-		</article>
+	<div class="templates templates--medium templates--vp templates--dark">
+		<div class="container container--medium">
+			<article class="template">
+				<h2 class="template__heading "><i class="fab fa-telegram-plane template__icon--dark"></i> send it now</h2>
+				<p class="template__description description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					Suspendisse malesuada sodales risus, a adipiscing lorem commodo vitae. Ut semper semper lacus.
+					Suspendisse convallis vel tellus at consectetur. Aenean risus arcu</p>
+				<a class="template__btn btn btn--small " href="#">read more</a>
+			</article>
+			<article class="template">
+				<h2 class="template__heading "><i class="fas fa-pen template__icon--dark"></i> send it now</h2>
+				<p class="template__description description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					Suspendisse malesuada sodales risus, a adipiscing lorem commodo vitae. Ut semper semper lacus.
+					Suspendisse convallis vel tellus at consectetur. Aenean risus arcu</p>
+				<a class="template__btn btn btn--small " href="#">read more</a>
+			</article>
+		</div>
 	</div>
-	<div class="templates templates--medium templates--dark">
-		<article class="template">
-			<picture class="template__images template__images--left">
-				<source srcset="#">
-				<img class="template__image" src="#" alt="woman with umbrella">
-			</picture>
-			<h2 class="template__heading heading heading--small">FUll Compatibility</h2>
-			<p class="template__description description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-				Suspendisse malesuada sodales risus, a adipiscing lorem commodo vitae. Ut semper semper lacus.
-				Suspendisse convallis vel tellus at consectetur. Aenean risus arcu</p>
-			<a class="template__btn btn btn--small btn--dark" href="#">read more</a>
-		</article>
+	<div class="templates templates--medium  templates--left">
+		<div class="container">
+			<article class="template">
+				<picture class="template__images template__images--left">
+					<source src="./images/car.jpg">
+					<img class="template__image" src="./images/car.jpg" alt="woman with umbrella">
+				</picture>
+				<div class="template__info">
+					<h2 class="template__heading ">FUll Compatibility</h2>
+					<p class="template__description description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+						Suspendisse malesuada sodales risus, a adipiscing lorem commodo vitae. Ut semper semper lacus.
+						Suspendisse convallis vel tellus at consectetur. Aenean risus arcu</p>
+					<a class="template__btn btn btn--small btn--dark" href="#">read more</a>
+				</div>
+			</article>
+		</div>
 	</div>
 </main>
-<footer class="footer">
-	<div class="footer__top featured">
-		<h2 class="featured__heading heading--smaller heading--light">this template was featured on </h2>
-		<ul class="featured__logos">
-			<li class="featured__logo"><a href="#"><img src="#" alt="TechCrunch"></a></li>
-			<li class="featured__logo"><a href="#"><img src="#" alt="promail"></a></li>
-			<li class="featured__logo"><a href="#"><img src="#" alt="mashable"></a></li>
-			<li class="featured__logo"><a href="#"><img src="#" alt="atlaspix"></a></li>
-		</ul>
+<footer class="__footer">
+	<div class="container">
+		<div class="footer__top featured">
+			<h2 class="featured__heading heading--smaller heading--light"><i class="fas fa-star"></i> this template was
+				featured on </h2>
+			<ul class="featured__logos">
+				<li class="featured__logo"><a href="#"><img src="images/Elena.png" alt="Elena"></a></li>
+				<li class="featured__logo"><a href="#"><img class="logo__img" src="images/Elena.png" alt="Elena"></a></li>
+				<li class="featured__logo"><a href="#"><img class="logo__img" src="images/Elena.png" alt="Elena"></a></li>
+				<li class="featured__logo"><a href="#"><img class="logo__img" src="images/Elena.png" alt="Elena"></a></li>
+			</ul>
+		</div>
 	</div>
+</footer>
+<div class="container">
 	<div class="footer__bottom">
 		<p class="footer__legal"><span class="footer__legal footer__legal--dark">Elenea ©</span>
 			copyright 2013 - <a class="footer__unsubscribe"
 			                    href="#">Unsubscribe here</a></p>
 		<nav class="footer__social social">
 			<ul class="social__list">
-				<li class="social__item"><a class="social__link google" href="#"></a></li>
-				<li class="social__item"><a class="social__link facebook" href="#"></a></li>
-				<li class="social__item"><a class="social__link twitter" href="#"></a></li>
+				<li class="social__item"><a class="social__link google" href="#"><i class="fab fa-facebook-f"></i></a></li>
+				<li class="social__item"><a class="social__link facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
+				<li class="social__item"><a class="social__link twitter" href="#"><i class="fab fa-facebook-f"></i></a></li>
 			</ul>
 		</nav>
 	</div>
-</footer>
+</div>
+
 </body>
 </html>

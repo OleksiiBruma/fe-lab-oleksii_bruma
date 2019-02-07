@@ -1,0 +1,17 @@
+{
+  "name": "task-01",
+  "version": "1.0.0",
+  "description": "Impelement markup according to design and all requirements using Bootstrap v4 Sass version via NPM .",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^4.2.1",
+    "node-sass": "^4.11.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass --watch scss --o css"
+  },
+  "author": "",
+  "license": "ISC"
+}
