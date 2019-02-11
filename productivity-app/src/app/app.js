@@ -15,7 +15,7 @@ Router
     EventBus.emit('goToReports');
   })
   .add(function () {
-    Router.navigate('');
+    history.replaceState(null, null, "");
     EventBus.emit('goToTaskList');
   })
   .check().listen();
@@ -29,19 +29,19 @@ class Global_controller {
     function chooseTarget(e) {
       if (e.target.classList.contains("menu__link--icon-list")) {
         event.preventDefault();
-        EventBus.emit('goToTaskList');
+        Router.navigate('');
       }
       if (e.target.classList.contains("menu__link--icon-statistics")) {
         event.preventDefault();
-        EventBus.emit('goToReports');
+        Router.navigate('/reports/');
       }
       if (e.target.classList.contains("menu__link--icon-settings")) {
         e.preventDefault();
-        EventBus.emit('goToSettings');
+        Router.navigate('/settings/');
       }
       if (e.target.classList.contains("task__indicator")) {
         event.preventDefault();
-        EventBus.emit('goToTimer');
+        Router.navigate('/timer/');
       }
       if (e.target.classList.contains("page__add-button")) {
         EventBus.emit('addNewTask');
@@ -99,11 +99,6 @@ class Global_controller {
       if (e.target.classList.contains("button--remove")) {
         EventBus.emit("submitDeleteTask")
       }
-
-
-
-
-
     }
 
     document.body.addEventListener("click", chooseTarget)

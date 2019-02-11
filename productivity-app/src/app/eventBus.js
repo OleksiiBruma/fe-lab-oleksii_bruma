@@ -31,29 +31,22 @@ EventBus.subscribe("databaseUpdated", function () {
   task_controller.renderTasks(task_collection_controller.getState());
 });
 EventBus.subscribe('goToTaskList', function () {
-  Router.navigate('');
   header_controller.init();
   header_controller.listenForSticky();
   task_collection_controller.init();
-  task_collection_controller.globalListRender();
-  task_collection_controller.dailyListRender();
-  task_controller.renderTasks(task_collection_controller.getState());
   database.updateDataBase();
 });
 EventBus.subscribe('goToReports', function () {
-  Router.navigate(/reports/);
   header_controller.init();
   reports_controller.init();
   header_controller.listenForSticky();
 });
 EventBus.subscribe('goToSettings', function () {
-  Router.navigate(/settings/);
   header_controller.init();
   settings_controller.init();
   header_controller.listenForSticky();
 });
 EventBus.subscribe('goToTimer', function () {
-  Router.navigate(/timer/);
   header_controller.init();
   timer_controller.init();
   header_controller.listenForSticky();
@@ -106,12 +99,12 @@ EventBus.subscribe("RemoveMode", function () {
   task_collection_controller.removeMode();
 })
 EventBus.subscribe("toggleSelectedTask", function (arg) {
-task_controller.toggleSelectedTask(arg)
+  task_controller.toggleSelectedTask(arg)
 })
-EventBus.subscribe("selectAll",function(list){
+EventBus.subscribe("selectAll", function (list) {
   task_controller.selectAll(list);
 })
-EventBus.subscribe("deselectAll",function(list){
+EventBus.subscribe("deselectAll", function (list) {
   task_controller.deselectAll(list);
 })
 EventBus.subscribe("removeModeOn", function () {
@@ -123,30 +116,30 @@ EventBus.subscribe("removeModeOff", function () {
   task_controller.removeModeOff();
   task_collection_controller.removeModeOff();
 });
-EventBus.subscribe("openTrashCount", function(){
+EventBus.subscribe("openTrashCount", function () {
   header_controller.openTrashCount();
 })
-EventBus.subscribe("closeTrashCount", function(){
+EventBus.subscribe("closeTrashCount", function () {
   header_controller.closeTrashCount();
 })
-EventBus.subscribe("updateTrashCount", function(amount){
+EventBus.subscribe("updateTrashCount", function (amount) {
   header_controller.updateTrashCount(amount);
 })
-EventBus.subscribe("isChecked",function(){
+EventBus.subscribe("isChecked", function () {
   header_controller.isChecked();
 })
-EventBus.subscribe("openRemoveModal",function(){
+EventBus.subscribe("openRemoveModal", function () {
   pop_up_controller.renderRemove();
 });
-EventBus.subscribe("closeRemoveModal",function(){
+EventBus.subscribe("closeRemoveModal", function () {
   pop_up_controller.closeSelf();
 });
-EventBus.subscribe("submitDeleteTask",function(){
+EventBus.subscribe("submitDeleteTask", function () {
 
- task_controller.removeTasks();
+  task_controller.removeTasks();
   pop_up_controller.closeSelf();
 });
-EventBus.subscribe("deleteTask",function(id){
+EventBus.subscribe("deleteTask", function (id) {
   database.deleteData(database.getFIDTaskById(id));
   header_controller.closeTrashCount();
 
