@@ -17,12 +17,14 @@ export class Database {
     this.remoteTasks = firebase.database().ref("tasks");
 
   }
+  setUpdatedData(data){
+    this.alltasks = data;
+    EventBus.emit("databaseUpdated");
+  }
 
   updateDataBase() {
     this.remoteTasks.on('value', (data) => {
-      if (!data.val()) return;
-      this.alltasks = data.val();
-      EventBus.emit("databaseUpdated")
+      this.setUpdatedData(data.val());
     });
   }
 
@@ -63,7 +65,9 @@ export class Database {
   deleteData(id) {
     this.remoteTasks.child(`/${id}/`).remove()
       .then(function () {
-        console.log("items removed")})
+        console.log("items removed");
+        database.updateDataBase();
+      })
       .catch(function (error) {
       console.log(error)
     });

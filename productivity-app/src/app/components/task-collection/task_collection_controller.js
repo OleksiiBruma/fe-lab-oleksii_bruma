@@ -26,6 +26,7 @@ export class Task_collection_controller {
   getCategories() {
     let states = this.model.getState();
     let currentTasks = this.getTasks();
+    if(!currentTasks)  return;
     let rawCategories = [];
     Object.keys(currentTasks).forEach(function (task) {
         let date = new Date(currentTasks[task].completeDate).setHours(0, 0, 0, 0,);

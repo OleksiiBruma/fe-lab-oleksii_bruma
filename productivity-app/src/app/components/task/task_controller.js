@@ -18,6 +18,7 @@ export class Task_controller {
 
   renderTasks(state) {
     let allTasks = this.getTasks();
+    if(!allTasks) return;
     let view = this.view;
     Object.keys(allTasks).forEach(function (task) {
       let category = allTasks[task].categoryId;
@@ -85,6 +86,7 @@ export class Task_controller {
   }
 
   removeTasks() {
+    debugger;
     [].forEach.call(document.querySelectorAll(".task--delete-checked"), (task) => {
       EventBus.emit("deleteTask", parseInt(task.dataset.id))
     })

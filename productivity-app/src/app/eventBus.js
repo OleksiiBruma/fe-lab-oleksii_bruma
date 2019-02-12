@@ -140,7 +140,6 @@ EventBus.subscribe("submitDeleteTask", function () {
 EventBus.subscribe("deleteTask", function (id) {
   database.deleteData(database.getFIDTaskById(id));
   header_controller.closeTrashCount();
-
 });
 
 
