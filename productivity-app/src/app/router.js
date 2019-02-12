@@ -97,7 +97,7 @@ Router
     EventBus.emit('goToReports');
   })
   .add(function () {
-    history.replaceState(null, null, "");
+    history.replaceState(null, null, "/");
     EventBus.emit('goToTaskList');
   })
   .check().listen();
