@@ -76,11 +76,11 @@ class Global_controller {
         EventBus.emit("openEditModal", e.target.parentElement.parentElement.dataset.id)
       }
       if (e.target.classList.contains("modal__submit--edit")) {
-        EventBus.emit("submitEdit")
+        EventBus.emit("submitEdit");
       }
       if (e.target.classList.contains("menu__link--icon-trash")) {
-        e.preventDefault()
-        EventBus.emit("RemoveMode")
+        e.preventDefault();
+        EventBus.emit("RemoveMode");
       }
       if (e.target.classList.contains("task__delete")) {
         EventBus.emit("toggleSelectedTask",e.target.parentElement.parentElement)

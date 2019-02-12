@@ -8,7 +8,6 @@ export class Pop_up_view {
     this.templateAdd = templateAdd();
     this.templateEdit = templateEdit();
     this.templateRemove = templateRemove();
-
   }
 
   renderAdd() {
@@ -37,10 +36,10 @@ export class Pop_up_view {
       title: form.title.value,
       description: form.description.value,
       categoryId: form.category.value,
-      priority: +form.priority.value,
-      estimation: +form.estimation.value,
+      priority: parseInt(form.priority.value),
+      estimation: parseInt(form.estimation.value),
       deadlineDate: deadlineDate,
     }
-    };
+    }
   }
 }

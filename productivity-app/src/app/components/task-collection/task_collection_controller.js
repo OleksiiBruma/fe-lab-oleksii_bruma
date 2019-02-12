@@ -31,18 +31,18 @@ export class Task_collection_controller {
         let date = new Date(currentTasks[task].completeDate).setHours(0, 0, 0, 0,);
         let now = new Date().setHours(0, 0, 0, 0);
         if (states.todoView) {
-          if (+states.filterState === +currentTasks[task].priority && currentTasks[task].status === "GLOBAL_LIST" && +states.filterState !== 0) {
+          if (parseInt(states.filterState) === parseInt(currentTasks[task].priority) && currentTasks[task].status === "GLOBAL_LIST" && parseInt(states.filterState) !== 0) {
             rawCategories.push(currentTasks[task].categoryId);
-          } else if (+states.filterState === 0 && currentTasks[task].status === "GLOBAL_LIST") {
+          } else if (parseInt(states.filterState) === 0 && currentTasks[task].status === "GLOBAL_LIST") {
             rawCategories.push(currentTasks[task].categoryId);
           }
         }
         if (!states.todoView) {
 
-          if (+states.filterState === +currentTasks[task].priority && currentTasks[task].status === "COMPLETED"
-            && +states.filterState !== 0 && date === now) {
+          if (parseInt(states.filterState) === parseInt(currentTasks[task].priority) && currentTasks[task].status === "COMPLETED"
+            && parseInt(states.filterState) !== 0 && date === now) {
             rawCategories.push(currentTasks[task].categoryId);
-          } else if (+states.filterState === 0 && currentTasks[task].status === "COMPLETED"
+          } else if (parseInt(states.filterState) === 0 && currentTasks[task].status === "COMPLETED"
             && date === now) {
             rawCategories.push(currentTasks[task].categoryId);
           }

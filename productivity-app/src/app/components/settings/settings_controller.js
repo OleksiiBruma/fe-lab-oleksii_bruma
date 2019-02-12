@@ -43,24 +43,24 @@ function SettingsItem(options) {
     return settingsValue;
   };
   function settingsItemDecrease() {
-    if (+settingsInput.value > settingsMin){
+    if (parseInt(settingsInput.value) > settingsMin){
       settingsUp.removeAttribute("disabled");
       settingsUp.classList.remove("number__step--disabled");
       stepDown();
     }
-    if(+settingsInput.value === settingsMin) {
+    if(parseInt(settingsInput.value) === settingsMin) {
       settingsDown.setAttribute("disabled", "");
       settingsDown.classList.add("number__step--disabled");
     }
   }
 
   function settingsItemIncrease() {
-    if (+settingsInput.value < settingsMax){
+    if (parseInt(settingsInput.value) < settingsMax){
       settingsDown.removeAttribute("disabled");
       settingsDown.classList.remove("number__step--disabled");
       stepUp();
     }
-    if(+settingsInput.value === settingsMax) {
+    if(parseInt(settingsInput.value) === settingsMax) {
       settingsUp.setAttribute("disabled", "");
       settingsUp.classList.add("number__step--disabled");
     }

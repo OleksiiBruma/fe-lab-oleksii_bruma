@@ -24,10 +24,10 @@ export class Task_controller {
       let date = new Date(allTasks[task].completeDate).setHours(0, 0, 0, 0,);
       let now = new Date().setHours(0, 0, 0, 0);
       if (state.todoView) {
-        if (allTasks[task].status === "GLOBAL_LIST" && +allTasks[task].priority === +state.filterState) {
+        if (allTasks[task].status === "GLOBAL_LIST" && parseInt(allTasks[task].priority) === parseInt(state.filterState)) {
           view.renderTaskGlobal(allTasks[task], category);
         }
-        if (allTasks[task].status === "GLOBAL_LIST" && +state.filterState === 0) {
+        if (allTasks[task].status === "GLOBAL_LIST" && parseInt(state.filterState) === 0) {
           view.renderTaskGlobal(allTasks[task], category);
         }
         if (allTasks[task].status === "DAILY_LIST") {
@@ -36,11 +36,11 @@ export class Task_controller {
       }
       if (!state.todoView) {
 
-        if (allTasks[task].status === "COMPLETED" && +allTasks[task].priority === +state.filterState && date !== now) {
+        if (allTasks[task].status === "COMPLETED" && parseInt(allTasks[task].priority) === parseInt(state.filterState) && date !== now) {
           view.renderTaskGlobal(allTasks[task], category);
 
         }
-        if (allTasks[task].status === "COMPLETED" && +state.filterState === 0 && date !== now) {
+        if (allTasks[task].status === "COMPLETED" && parseInt(state.filterState) === 0 && date !== now) {
           view.renderTaskGlobal(allTasks[task], category);
 
         }
@@ -55,7 +55,7 @@ export class Task_controller {
   globalToDaily(id) {
     let allTasks = this.model.getTasks();
     Object.keys(allTasks).forEach(function (task) {
-      if (allTasks[task].id === +id) {
+      if (allTasks[task].id === parseInt(id)) {
         EventBus.emit("updateStatus", [task, {status: "DAILY_LIST"}]);
       }
     })
@@ -80,7 +80,7 @@ EventBus.emit("isChecked");
     EventBus.emit("isChecked");
   }
   removeTasks(){
-    [].forEach.call(document.querySelectorAll(".task--delete-checked"),(task)=> {EventBus.emit("deleteTask",+task.dataset.id)})
+    [].forEach.call(document.querySelectorAll(".task--delete-checked"),(task)=> {EventBus.emit("deleteTask",parseInt(task.dataset.id))})
   }
 }
 

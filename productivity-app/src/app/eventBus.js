@@ -97,16 +97,16 @@ EventBus.subscribe("openEditModal", function (id) {
 });
 EventBus.subscribe("RemoveMode", function () {
   task_collection_controller.removeMode();
-})
+});
 EventBus.subscribe("toggleSelectedTask", function (arg) {
   task_controller.toggleSelectedTask(arg)
-})
+});
 EventBus.subscribe("selectAll", function (list) {
   task_controller.selectAll(list);
-})
+});
 EventBus.subscribe("deselectAll", function (list) {
   task_controller.deselectAll(list);
-})
+});
 EventBus.subscribe("removeModeOn", function () {
   task_controller.removeModeOn();
   task_collection_controller.removeModeOn();
@@ -118,16 +118,16 @@ EventBus.subscribe("removeModeOff", function () {
 });
 EventBus.subscribe("openTrashCount", function () {
   header_controller.openTrashCount();
-})
+});
 EventBus.subscribe("closeTrashCount", function () {
   header_controller.closeTrashCount();
-})
+});
 EventBus.subscribe("updateTrashCount", function (amount) {
   header_controller.updateTrashCount(amount);
-})
+});
 EventBus.subscribe("isChecked", function () {
   header_controller.isChecked();
-})
+});
 EventBus.subscribe("openRemoveModal", function () {
   pop_up_controller.renderRemove();
 });
