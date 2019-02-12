@@ -2,24 +2,6 @@ require('assets/less/main.less');
 import {EventBus} from "./eventBus";
 import {Router} from "./router.js"
 
-Router.config({mode: 'history'});
-
-Router
-  .add(/settings/, function () {
-    EventBus.emit('goToSettings');
-  })
-  .add(/timer/, function () {
-    EventBus.emit('goToTimer');
-  })
-  .add(/reports/, function () {
-    EventBus.emit('goToReports');
-  })
-  .add(function () {
-    history.replaceState(null, null, "");
-    EventBus.emit('goToTaskList');
-  })
-  .check().listen();
-
 class Global_controller {
   constructor() {
   }

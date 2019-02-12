@@ -1,4 +1,3 @@
-import {Router} from "./router";
 import {pop_up_controller} from "./components/pop-up/pop_up_controller";
 import {database} from "./components/communication-service/dataservice";
 import {task_collection_controller} from "./components/task-collection/task_collection_controller";
