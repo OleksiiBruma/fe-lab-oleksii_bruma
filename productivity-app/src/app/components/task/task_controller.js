@@ -64,23 +64,30 @@ export class Task_controller {
   removeModeOn() {
     this.view.removeModeOn();
   }
+
   removeModeOff() {
     this.view.removeModeOff();
   }
-  toggleSelectedTask(task){
+
+  toggleSelectedTask(task) {
     task.classList.toggle("task--delete-checked");
     EventBus.emit("isChecked");
   }
-  selectAll(list){
+
+  selectAll(list) {
     this.view.selectAll(list);
-EventBus.emit("isChecked");
+    EventBus.emit("isChecked");
   }
+
   deselectAll(list) {
     this.view.deselectAll(list);
     EventBus.emit("isChecked");
   }
-  removeTasks(){
-    [].forEach.call(document.querySelectorAll(".task--delete-checked"),(task)=> {EventBus.emit("deleteTask",parseInt(task.dataset.id))})
+
+  removeTasks() {
+    [].forEach.call(document.querySelectorAll(".task--delete-checked"), (task) => {
+      EventBus.emit("deleteTask", parseInt(task.dataset.id))
+    })
   }
 }
 

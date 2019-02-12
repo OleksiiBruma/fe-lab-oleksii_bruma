@@ -29,9 +29,10 @@ export class Pop_up_view {
 
   scanProperties() {
     let form = document.forms.modal;
-    let deadlineDate =form.deadline.value;
-    if(!isNaN(form.deadline.value)){
-       deadlineDate = new Date().toISOString();
+    let deadlineDate = form.deadline.value;
+    if (!isNaN(form.deadline.value)) {
+      deadlineDate = new Date().toISOString();
+    }
     return {
       title: form.title.value,
       description: form.description.value,
@@ -40,6 +41,6 @@ export class Pop_up_view {
       estimation: parseInt(form.estimation.value),
       deadlineDate: deadlineDate,
     }
-    }
   }
+
 }

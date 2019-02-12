@@ -134,7 +134,6 @@ EventBus.subscribe("closeRemoveModal", function () {
   pop_up_controller.closeSelf();
 });
 EventBus.subscribe("submitDeleteTask", function () {
-
   task_controller.removeTasks();
   pop_up_controller.closeSelf();
 });
