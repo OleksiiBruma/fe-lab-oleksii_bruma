@@ -51,7 +51,7 @@ export class Database {
   }
 
   getFIDTaskById(id) {
-    let tasks = this.alltasks;
+    const tasks = this.alltasks;
     let FID = 0;
     Object.keys(tasks).forEach(function (task) {
         if (tasks[task].id === +id) {

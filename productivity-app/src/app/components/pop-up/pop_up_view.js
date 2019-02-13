@@ -28,7 +28,7 @@ export class Pop_up_view {
   }
 
   scanProperties() {
-    let form = document.forms.modal;
+    const form = document.forms.modal;
     let deadlineDate = form.deadline.value;
     if (!isNaN(form.deadline.value)) {
       deadlineDate = new Date().toISOString();

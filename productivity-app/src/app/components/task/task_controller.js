@@ -17,13 +17,13 @@ export class Task_controller {
   }
 
   renderTasks(state) {
-    let allTasks = this.getTasks();
+    const allTasks = this.getTasks();
     if(!allTasks) return;
-    let view = this.view;
+    const view = this.view;
     Object.keys(allTasks).forEach(function (task) {
-      let category = allTasks[task].categoryId;
-      let date = new Date(allTasks[task].completeDate).setHours(0, 0, 0, 0,);
-      let now = new Date().setHours(0, 0, 0, 0);
+      const category = allTasks[task].categoryId;
+      const date = new Date(allTasks[task].completeDate).setHours(0, 0, 0, 0,);
+      const now = new Date().setHours(0, 0, 0, 0);
       if (state.todoView) {
         if (allTasks[task].status === "GLOBAL_LIST" && parseInt(allTasks[task].priority) === parseInt(state.filterState)) {
           view.renderTaskGlobal(allTasks[task], category);
@@ -54,7 +54,7 @@ export class Task_controller {
   }
 
   globalToDaily(id) {
-    let allTasks = this.model.getTasks();
+    const allTasks = this.model.getTasks();
     Object.keys(allTasks).forEach(function (task) {
       if (allTasks[task].id === parseInt(id)) {
         EventBus.emit("updateStatus", [task, {status: "DAILY_LIST"}]);

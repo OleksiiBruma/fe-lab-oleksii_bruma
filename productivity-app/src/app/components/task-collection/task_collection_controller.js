@@ -24,13 +24,13 @@ export class Task_collection_controller {
   }
 
   getCategories() {
-    let states = this.model.getState();
-    let currentTasks = this.getTasks();
+    const states = this.model.getState();
+    const currentTasks = this.getTasks();
     if(!currentTasks)  return;
-    let rawCategories = [];
+    const rawCategories = [];
     Object.keys(currentTasks).forEach(function (task) {
-        let date = new Date(currentTasks[task].completeDate).setHours(0, 0, 0, 0,);
-        let now = new Date().setHours(0, 0, 0, 0);
+        const date = new Date(currentTasks[task].completeDate).setHours(0, 0, 0, 0,);
+        const now = new Date().setHours(0, 0, 0, 0);
         if (states.todoView) {
           if (parseInt(states.filterState) === parseInt(currentTasks[task].priority) && currentTasks[task].status === "GLOBAL_LIST" && parseInt(states.filterState) !== 0) {
             rawCategories.push(currentTasks[task].categoryId);
