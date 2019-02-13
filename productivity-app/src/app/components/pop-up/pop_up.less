@@ -43,6 +43,9 @@
   &__field {
     border: 0;
     padding: 0;
+    &--pomodoro{
+     direction: rtl;
+    }
   }
 
   &__text-input {
@@ -73,6 +76,7 @@
     .font(@font-caption);
     color: @beefsteak;
     padding-bottom: @rem*10;
+    cursor: pointer;
 
     &--small {
       position: relative;
@@ -115,24 +119,11 @@
     width: @rem*20;
     height: @rem*20;
     margin: 0;
-  }
-
-  &__estimate:before {
-    top: 0;
-    left: 0;
-    position: absolute;
-    content: "";
-    display: block;
-    width: @rem*20;
-    height: @rem*20;
     background: url("/images/empty-tomato.svg");
+    cursor: pointer;
   }
 
-  &__pomodoro:checked + &__estimate:before {
-    background: url("/images/fill tomato.svg");
-  }
-
-  &__pomodoro--checked + &__estimate:before {
+  &__pomodoro:checked ~ &__estimate {
     background: url("/images/fill tomato.svg");
   }
 
