@@ -7,15 +7,15 @@ export class Global_view {
   addEventListeners() {
 
     function chooseTarget(e) {
-      if (e.target.classList.contains("menu__link--icon-list")) {
-        event.preventDefault();
+      if (e.target.matches(`[data-id="tasklist"]`)) {
+        e.preventDefault();
         Router.navigate('');
       }
-      if (e.target.classList.contains("menu__link--icon-statistics")) {
-        event.preventDefault();
+      if (e.target.matches(`[data-id="reports"]`)) {
+        e.preventDefault();
         Router.navigate('/reports/');
       }
-      if (e.target.classList.contains("menu__link--icon-settings")) {
+      if (e.target.matches(`[data-id="settings"]`)) {
         e.preventDefault();
         Router.navigate('/settings/');
       }
@@ -37,8 +37,7 @@ export class Global_view {
         e.preventDefault();
         EventBus.emit("submitEditedTask");
       }
-      if (e.target.classList.contains("global__button") ||
-        e.target.classList.contains("open-button__icon")) {
+      if (e.target.matches(`[data-id="globalbutton"]`)) {
         EventBus.emit("toggleGlobalList");
       }
       if (e.target.classList.contains("task__shift")) {
@@ -58,7 +57,7 @@ export class Global_view {
       if (e.target.classList.contains("modal__submit--edit")) {
         EventBus.emit("submitEdit");
       }
-      if (e.target.classList.contains("menu__link--icon-trash")) {
+      if (e.target.matches(`[data-id="trash"]`)) {
         e.preventDefault();
         EventBus.emit("RemoveMode");
       }
