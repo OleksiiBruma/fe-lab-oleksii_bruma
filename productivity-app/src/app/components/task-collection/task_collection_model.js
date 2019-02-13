@@ -3,14 +3,14 @@ export class Task_collection_model {
     this.tasks = [];
     this.state = {
       filterState: 0,
-      todoView: true
+      todoView: 1,
     };
   }
 getState(){
    return this.state;
 }
 setState(stateInfo){
-    this.state[stateInfo[0]] = stateInfo[1];
+    this.state[stateInfo[0]] = parseInt(stateInfo[1]);
 }
 
   setTasks(newTasks) {

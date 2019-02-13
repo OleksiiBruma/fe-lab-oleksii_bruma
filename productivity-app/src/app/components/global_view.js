@@ -44,13 +44,13 @@ export class Global_view {
       if (e.target.classList.contains("task__shift")) {
         EventBus.emit("globalToDaily", e.target.parentElement.parentElement.dataset.id);
       }
-      if (e.target.hasAttribute("data-filter")) {
+      if (e.target.hasAttribute("data-filterState")) {
         e.preventDefault();
-        EventBus.emit("setFilterStatus", ["filterState", e.target.dataset.filter])
+        EventBus.emit("setFilterStatus", ["filterState", e.target.dataset.filterstate])
       }
       if (e.target.hasAttribute("data-todoView")) {
         e.preventDefault();
-        EventBus.emit("setFilterStatus", ["todoView", !!e.target.dataset.todoview])
+        EventBus.emit("setFilterStatus", ["todoView", e.target.dataset.todoview])
       }
       if (e.target.classList.contains("task__edit")) {
         EventBus.emit("openEditModal", e.target.parentElement.parentElement.dataset.id)

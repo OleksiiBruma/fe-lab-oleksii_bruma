@@ -31,14 +31,14 @@ export class Task_collection_controller {
     Object.keys(currentTasks).forEach(function (task) {
         const date = new Date(currentTasks[task].completeDate).setHours(0, 0, 0, 0,);
         const now = new Date().setHours(0, 0, 0, 0);
-        if (states.todoView) {
+        if (states.todoView === 1) {
           if (parseInt(states.filterState) === parseInt(currentTasks[task].priority) && currentTasks[task].status === "GLOBAL_LIST" && parseInt(states.filterState) !== 0) {
             rawCategories.push(currentTasks[task].categoryId);
           } else if (parseInt(states.filterState) === 0 && currentTasks[task].status === "GLOBAL_LIST") {
             rawCategories.push(currentTasks[task].categoryId);
           }
         }
-        if (!states.todoView) {
+        if (states.todoView === 2) {
 
           if (parseInt(states.filterState) === parseInt(currentTasks[task].priority) && currentTasks[task].status === "COMPLETED"
             && parseInt(states.filterState) !== 0 && date === now) {
@@ -65,7 +65,8 @@ export class Task_collection_controller {
   }
 
   setState(state) {
-    this.model.setState(state)
+    this.model.setState(state);
+    this.view.setActiveClass(state)
   }
 
   getState() {

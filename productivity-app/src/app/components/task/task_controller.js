@@ -24,7 +24,7 @@ export class Task_controller {
       const category = allTasks[task].categoryId;
       const date = new Date(allTasks[task].completeDate).setHours(0, 0, 0, 0,);
       const now = new Date().setHours(0, 0, 0, 0);
-      if (state.todoView) {
+      if (state.todoView === 1) {
         if (allTasks[task].status === "GLOBAL_LIST" && parseInt(allTasks[task].priority) === parseInt(state.filterState)) {
           view.renderTaskGlobal(allTasks[task], category);
         }
@@ -35,7 +35,7 @@ export class Task_controller {
           view.renderTaskDaily(allTasks[task])
         }
       }
-      if (!state.todoView) {
+      if (state.todoView === 2) {
 
         if (allTasks[task].status === "COMPLETED" && parseInt(allTasks[task].priority) === parseInt(state.filterState) && date !== now) {
           view.renderTaskGlobal(allTasks[task], category);

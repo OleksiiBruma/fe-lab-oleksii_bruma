@@ -48,5 +48,9 @@ export class Task_collection_view {
     document.querySelector(".daily__nav").classList.remove("daily__nav--remove-mode");
     document.querySelector(".daily__remove").classList.remove("tab--remove-mode");
   }
+  setActiveClass(args){
+    document.querySelector(` .tab__link--active[data-${args[0]}]`).classList.remove("tab__link--active");
+    document.querySelector(`[data-${args[0]}="${args[1]}"`).classList.add("tab__link--active");
+  }
 
 }
