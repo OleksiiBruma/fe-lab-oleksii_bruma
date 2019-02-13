@@ -7,6 +7,7 @@
     </h1>
     <nav class="navigation">
       <ul class="menu">
+        {{#if addButton}}
         <li class="menu__item">
         <button
           class="page__add-button page__add-button--header hidden" type="button" data-id="newtask"><span class="sr-only">Add task button</span></button>
@@ -14,15 +15,12 @@
         <li class="menu__item">
           <a href="#" class="menu__link menu__link--icon-trash"  data-id="trash"><span class="trash__count" data-id="trash">5</span><span class="sr-only">Go to trash</span></a>
         </li>
+        {{/if}}
+        {{#each tabs}}
         <li class="menu__item">
-          <a href="" class="menu__link menu__link--icon-list " data-id="tasklist"><span class="sr-only">Go to Task list</span></a>
+          <a href="#" class="menu__link menu__link--icon-{{class}} " data-id="{{id}}"><span class="sr-only">{{text}}</span></a>
         </li>
-        <li data-tooltip="Go to Reports" class="menu__item menu__item--icon-statistics">
-          <a href="" class="menu__link menu__link--icon-statistics " data-id="reports"><span class="sr-only">Go to Reports</span></a>
-        </li>
-        <li class="menu__item">
-          <a href="" class="menu__link menu__link--icon-settings menu__link--active" data-id="settings"><span class="sr-only">Go to Settings</span></a>
-        </li>
+        {{/each}}
       </ul>
     </nav>
   </div>

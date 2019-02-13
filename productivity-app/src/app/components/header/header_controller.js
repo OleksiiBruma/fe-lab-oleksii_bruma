@@ -1,26 +1,40 @@
 import {Header_view} from "./header_view";
 import {Header_model} from "./header_model";
-export class Header_controller{
-  constructor(model,view){
+
+export class Header_controller {
+  constructor(model, view) {
     this.model = model;
     this.view = view;
   }
-  init(){
-    this.view.init();
+
+  initBasic(id) {
+    this.view.init(this.model.typeHeader.basic);
+    this.view.addActiveClass(id);
   }
-  listenForSticky(){
+
+  initFull(id) {
+    this.view.init(this.model.typeHeader.full);
+    this.view.addActiveClass(id);
+  }
+
+
+  listenForSticky() {
     this.view.listenForSticky()
   }
-  openTrashCount(){
+
+  openTrashCount() {
     this.view.openTrashCount()
   }
-  closeTrashCount(){
+
+  closeTrashCount() {
     this.view.closeTrashCount()
   }
-  updateTrashCount(amount){
+
+  updateTrashCount(amount) {
     this.view.updateTrashCount(amount)
   }
-  isChecked(){
+
+  isChecked() {
     this.view.isChecked();
   }
 }

@@ -1,5 +1,6 @@
 import {Router} from "../router";
 import {EventBus} from "../eventBus";
+
 export class Global_view {
   constructor() {
   }

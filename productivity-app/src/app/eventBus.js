@@ -30,23 +30,23 @@ EventBus.subscribe("databaseUpdated", function () {
   task_controller.renderTasks(task_collection_controller.getState());
 });
 EventBus.subscribe('goToTaskList', function () {
-  header_controller.init();
+  header_controller.initFull("tasklist");
   header_controller.listenForSticky();
   task_collection_controller.init();
   database.updateDataBase();
 });
 EventBus.subscribe('goToReports', function () {
-  header_controller.init();
+  header_controller.initBasic("reports");
   reports_controller.init();
   header_controller.listenForSticky();
 });
 EventBus.subscribe('goToSettings', function () {
-  header_controller.init();
+  header_controller.initBasic("settings");
   settings_controller.init();
   header_controller.listenForSticky();
 });
 EventBus.subscribe('goToTimer', function () {
-  header_controller.init();
+  header_controller.initBasic("tasklist");
   timer_controller.init();
   header_controller.listenForSticky();
 });
