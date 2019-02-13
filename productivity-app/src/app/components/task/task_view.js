@@ -6,8 +6,7 @@ export class Task_view {
     this.taskTemplate = taskTemplate;
   }
  renderTaskGlobal(data, category){
-    const tasksCategory = document.querySelector(`.tasks--${category}`);
-  tasksCategory.insertAdjacentHTML("beforeend",this.taskTemplate(data));
+    document.querySelector(`.tasks--${category}`).insertAdjacentHTML("beforeend",this.taskTemplate(data));
  }
  renderTaskDaily(data){
    document.querySelector(".daily__tasks-list").insertAdjacentHTML("beforeend",this.taskTemplate(data));

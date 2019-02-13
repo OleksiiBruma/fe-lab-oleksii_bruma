@@ -15,16 +15,67 @@ export class Task_controller {
   getTasks() {
     return this.model.getTasks();
   }
+  countStatusTasks(){
+    const allTasks = this.getTasks();
+    if(!allTasks) return;
+    const now = new Date().setHours(0, 0, 0, 0);
+    const countedTasks = {
+      global:0,
+      daily:0,
+      completed:0,
+      completedToday:0
+    };
+    Object.keys(allTasks).forEach(function (task) {
+      const date = new Date(allTasks[task].completeDate).setHours(0, 0, 0, 0,);
+      if (allTasks[task].status === "GLOBAL_LIST") {
+        countedTasks.global++
+      }
+      if (allTasks[task].status === "DAILY_LIST") {
+        countedTasks.daily++
+      }
+      if (allTasks[task].status === "COMPLETED" && date!==now){
+        countedTasks.completed++
+      }
+      if (allTasks[task].status === "COMPLETED" && date===now){
+        countedTasks.completedToday++
+      }
+    });
+    return countedTasks}
 
   renderTasks(state) {
     const allTasks = this.getTasks();
+    if(sessionStorage.length === 0){
+      sessionStorage.setItem('newUser', 'false');
+      EventBus.emit("firstVisit");
+      return
+    }
+    EventBus.emit("renderTaskList");
+    EventBus.emit("renderLists");
+    EventBus.emit("hideAllMessages");
+    EventBus.emit("showGlobalList");
+    const countedTasks = this.countStatusTasks();
+    if(!countedTasks){
+      EventBus.emit("addYourFirstTask");
+    }
+    else if(countedTasks.global && !countedTasks.daily && !countedTasks.completedToday){
+      EventBus.emit("taskAdded")
+    }
+
     if(!allTasks) return;
     const view = this.view;
+    const now = new Date().setHours(0, 0, 0, 0);
     Object.keys(allTasks).forEach(function (task) {
       const category = allTasks[task].categoryId;
       const date = new Date(allTasks[task].completeDate).setHours(0, 0, 0, 0,);
-      const now = new Date().setHours(0, 0, 0, 0);
+
       if (state.todoView === 1) {
+        if(!countedTasks.global && !countedTasks.daily && countedTasks.completed ){
+          EventBus.emit("youDoNotHaveAnyTasks")
+        }
+        if(countedTasks.global && !countedTasks.daily && countedTasks.completedToday){
+          EventBus.emit("excellentAllDaily")
+        }
+
         if (allTasks[task].status === "GLOBAL_LIST" && parseInt(allTasks[task].priority) === parseInt(state.filterState)) {
           view.renderTaskGlobal(allTasks[task], category);
         }
@@ -34,15 +85,18 @@ export class Task_controller {
         if (allTasks[task].status === "DAILY_LIST") {
           view.renderTaskDaily(allTasks[task])
         }
+
       }
-      if (state.todoView === 2) {
+      if (parseInt(state.todoView) === 2) {
+
 
         if (allTasks[task].status === "COMPLETED" && parseInt(allTasks[task].priority) === parseInt(state.filterState) && date !== now) {
           view.renderTaskGlobal(allTasks[task], category);
-
         }
         if (allTasks[task].status === "COMPLETED" && parseInt(state.filterState) === 0 && date !== now) {
+          debugger
           view.renderTaskGlobal(allTasks[task], category);
+
 
         }
         if (allTasks[task].status === "COMPLETED" && date === now) {
@@ -86,7 +140,6 @@ export class Task_controller {
   }
 
   removeTasks() {
-    debugger;
     [].forEach.call(document.querySelectorAll(".task--delete-checked"), (task) => {
       EventBus.emit("deleteTask", parseInt(task.dataset.id))
     })

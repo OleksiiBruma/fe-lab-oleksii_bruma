@@ -20,6 +20,10 @@ export class Global_view {
         e.preventDefault();
         Router.navigate('/settings/');
       }
+      if (e.target.matches(`[data-id="tasklistfirsttime"]`)) {
+        e.preventDefault();
+        EventBus.emit('goToTaskList');
+      }
       if (e.target.classList.contains("task__indicator")) {
         event.preventDefault();
         Router.navigate('/timer/');

@@ -7,9 +7,13 @@ export class Task_collection_controller {
     this.model = model;
     this.view = view;
   }
+
   init() {
     this.view.init();
   };
+  firstVisit(){
+    this.view.firstVisit();
+  }
 
   toggleGlobalList() {
     this.view.toggleGlobalList();
@@ -26,7 +30,7 @@ export class Task_collection_controller {
   getCategories() {
     const states = this.model.getState();
     const currentTasks = this.getTasks();
-    if(!currentTasks)  return;
+    if (!currentTasks) return;
     const rawCategories = [];
     Object.keys(currentTasks).forEach(function (task) {
         const date = new Date(currentTasks[task].completeDate).setHours(0, 0, 0, 0,);
@@ -38,8 +42,8 @@ export class Task_collection_controller {
             rawCategories.push(currentTasks[task].categoryId);
           }
         }
-        if (states.todoView === 2) {
 
+        if (parseInt(states.todoView) === 2) {
           if (parseInt(states.filterState) === parseInt(currentTasks[task].priority) && currentTasks[task].status === "COMPLETED"
             && parseInt(states.filterState) !== 0 && date === now) {
             rawCategories.push(currentTasks[task].categoryId);
@@ -52,6 +56,7 @@ export class Task_collection_controller {
     );
 
     return rawCategories.filter(function (value, index, self) {
+      debugger
       return self.indexOf(value) === index;
     })
   }
@@ -72,27 +77,51 @@ export class Task_collection_controller {
   getState() {
     return this.model.getState();
   }
-  removeModeOn(){
+
+  removeModeOn() {
     this.view.removeModeOn();
   }
-  removeModeOff(){
+
+  removeModeOff() {
     this.view.removeModeOff();
   }
 
-  removeMode(){
+  removeMode() {
 
-   if(!document.querySelector(".task--delete")){
+    if (!document.querySelector(".task--delete")) {
       EventBus.emit("removeModeOn");
-   }
-  else if(document.querySelector(".task--delete")){
-    if (document.querySelector(".task--delete-checked")){
+    } else if (document.querySelector(".task--delete")) {
+      if (document.querySelector(".task--delete-checked")) {
 
-      EventBus.emit("openRemoveModal");
+        EventBus.emit("openRemoveModal");
+      } else EventBus.emit("removeModeOff");
     }
-    else EventBus.emit("removeModeOff");
+  }
+
+  showAddYourFirstTasks() {
+    this.view.showAddYourFirstTasks();
+  }
+
+  showTaskAdded() {
+    this.view.showTaskAdded();
+  }
+
+  showExcellentAllDaily() {
+    this.view.showExcellentAllDaily();
+  }
+
+  showYouDoNotHaveAnyTasks() {
+    this.view.showYouDoNotHaveAnyTasks();
+  }
+  hideAllMessages(){
+    this.view.hideAllMessages();
+  }
+  showGlobalList(){
+    this.view.showGlobalList()
   }
 
 
-}}
+}
 
-export const task_collection_controller = new Task_collection_controller(new Task_collection_model(), new Task_collection_view());
+export const
+  task_collection_controller = new Task_collection_controller(new Task_collection_model(), new Task_collection_view());

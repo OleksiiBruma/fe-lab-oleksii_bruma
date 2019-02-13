@@ -11,11 +11,7 @@ export class Task_collection_view {
     this.globalRemove = globalRemove;
   }
   init(){
-    if(sessionStorage.length === 0) {
-      document.querySelector("body").insertAdjacentHTML("beforeend", this.task_collectionTemplate);
-      sessionStorage.setItem('newUser', 'false');
-      EventBus.emit('deleteAllData');
-      this.firstVisit();
+    if(document.querySelector(".daily")){
       return
     }
     document.querySelector("body").insertAdjacentHTML("beforeend", this.task_collectionTemplate);
@@ -51,6 +47,30 @@ export class Task_collection_view {
   setActiveClass(args){
     document.querySelector(` .tab__link--active[data-${args[0]}]`).classList.remove("tab__link--active");
     document.querySelector(`[data-${args[0]}="${args[1]}"`).classList.add("tab__link--active");
+  }
+  showAddYourFirstTasks(){
+    document.querySelector(".stub--add-your-first-task").classList.remove("hidden");
+    document.querySelector(".daily").classList.add("hidden");
+    document.querySelector(".global").classList.add("hidden");
+  }
+  showTaskAdded(){
+    document.querySelector(".daily__message--task-added").classList.remove("hidden");
+  }
+  showExcellentAllDaily(){
+    document.querySelector(".daily__message--excellent").classList.remove("hidden");
+  }
+  showYouDoNotHaveAnyTasks(){
+    document.querySelector(".page__stub--dont-have-any-tasks").classList.remove("hidden");
+    document.querySelector(".global").classList.add("hidden");
+  }
+  hideAllMessages(){
+    document.querySelector(".page__stub--dont-have-any-tasks").classList.add("hidden");
+    document.querySelector(".daily__message--excellent").classList.add("hidden");
+    document.querySelector(".daily__message--task-added").classList.add("hidden");
+    document.querySelector(".stub--add-your-first-task").classList.add("hidden");
+  }
+  showGlobalList(){
+    document.querySelector(".global").classList.remove("hidden");
   }
 
 }

@@ -22,17 +22,27 @@ export const EventBus = {
     )
   }
 };
-EventBus.subscribe("databaseUpdated", function () {
-  task_collection_controller.setTasks(database.getData());
-  task_controller.setTasks(database.getData());
+EventBus.subscribe("firstVisit",function(){
+  task_collection_controller.init();
+  task_collection_controller.firstVisit();
+});
+EventBus.subscribe("renderTaskList",function() {
+  task_collection_controller.init();
+});
+
+EventBus.subscribe("renderLists", function(){
   task_collection_controller.globalListRender();
   task_collection_controller.dailyListRender();
+});
+EventBus.subscribe("databaseUpdated", function () {
+  header_controller.initFull("tasklist");
+  task_collection_controller.setTasks(database.getData());
+  task_controller.setTasks(database.getData());
   task_controller.renderTasks(task_collection_controller.getState());
 });
 EventBus.subscribe('goToTaskList', function () {
   header_controller.initFull("tasklist");
   header_controller.listenForSticky();
-  task_collection_controller.init();
   database.updateDataBase();
 });
 EventBus.subscribe('goToReports', function () {
@@ -60,6 +70,9 @@ EventBus.subscribe('closeModal', function () {
 EventBus.subscribe('submitNewTask', function () {
   pop_up_controller.setNewTaskData();
   database.addNewTaskData(pop_up_controller.getNewTaskData());
+  header_controller.initFull("tasklist");
+  header_controller.listenForSticky();
+  task_collection_controller.init();
   task_collection_controller.globalListRender();
   task_collection_controller.dailyListRender();
   task_controller.renderTasks(task_collection_controller.getState());
@@ -81,6 +94,9 @@ EventBus.subscribe("deleteAllData", function () {
 EventBus.subscribe("globalToDaily", function (arg) {
   task_controller.globalToDaily(arg);
 });
+
+//filtering
+
 EventBus.subscribe("updateStatus", function (arg) {
   database.updateData(arg);
 });
@@ -90,10 +106,15 @@ EventBus.subscribe("setFilterStatus", function (arg) {
   task_collection_controller.dailyListRender();
   task_controller.renderTasks(task_collection_controller.getState());
 });
+
+//edit mode
 EventBus.subscribe("openEditModal", function (id) {
   pop_up_controller.renderEdit();
   pop_up_controller.setTaskToBeEdited(id);
 });
+
+
+//remove mode
 EventBus.subscribe("RemoveMode", function () {
   task_collection_controller.removeMode();
 });
@@ -141,6 +162,29 @@ EventBus.subscribe("deleteTask", function (id) {
   database.deleteData(database.getFIDTaskById(id));
   header_controller.closeTrashCount();
 });
+
+EventBus.subscribe("addYourFirstTask", function () {
+  task_collection_controller.showAddYourFirstTasks();
+});
+EventBus.subscribe("taskAdded", function () {
+  task_collection_controller.showTaskAdded();
+});
+EventBus.subscribe("excellentAllDaily", function () {
+  task_collection_controller.showExcellentAllDaily();
+});
+EventBus.subscribe("youDoNotHaveAnyTasks", function () {
+  task_collection_controller.showYouDoNotHaveAnyTasks();
+});
+EventBus.subscribe("hideAllMessages",function(){
+  task_collection_controller.hideAllMessages();
+});
+EventBus.subscribe("showGlobalList",function(){
+  task_collection_controller.showGlobalList()
+});
+
+
+
+
 
 
 

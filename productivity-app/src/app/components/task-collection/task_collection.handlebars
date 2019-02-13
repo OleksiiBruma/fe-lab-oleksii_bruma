@@ -4,19 +4,12 @@
       <button
         class="page__add-button" type="button"><span class="sr-only">Add task button</span></button>
     </h2>
-    <div class="page__stub stub hidden ">
+    <div class="page__stub stub stub--add-your-first-task hidden ">
       <img class="stub__img" src="../images/tomato-add.svg" alt="tomato settings">
       <p class="stub__message">
         Add your first task
       </p>
     </div>
-    <section class="page__stub stub hidden">
-      <img class="stub__img" src="../images/tomato-addv02.svg" alt="tomato settings">
-      <p class="stub__message">
-        You don’t have any tasks left.<br>
-        Add new tasks to stay productive.
-      </p>
-    </section>
     <section class="page__stub stub stub--first-visit hidden ">
       <img class="stub__img" src="../images/tomato_settings.svg" alt="tomato settings">
       <p class="stub__message">
@@ -24,8 +17,8 @@
         and customize your default application settings
       </p>
       <div class="stub__choose buttons">
-        <button class="buttons__item buttons__item--info" type="button">Skip</button>
-        <button class="buttons__item buttons__item--success" type="button">Go to Settings</button>
+        <button class="buttons__item buttons__item--info" data-id="tasklistfirsttime" type="button">Skip</button>
+        <button class="buttons__item buttons__item--success" data-id="settings" type="button">Go to Settings</button>
       </div>
     </section>
     <section class="daily">
@@ -44,12 +37,19 @@
           </li>
         </ul>
       </div>
-      <p class="daily__message hidden">Excellent,<br> all daily tasks done! :) </p>
-      <p class="daily__message daily__message--drag hidden">Task added,<br> drag it to the top 5 in daily list </p>
+      <p class="daily__message daily__message--excellent hidden">Excellent,<br> all daily tasks done! :) </p>
+      <p class="daily__message daily__message--drag daily__message--task-added hidden">Task added,<br> drag it to the top 5 in daily list </p>
       <ul class="daily__tasks-list tasks">
 
 
       </ul>
+    </section>
+    <section class="page__stub stub hidden page__stub--dont-have-any-tasks">
+      <img class="stub__img" src="../images/tomato-addv02.svg" alt="tomato settings">
+      <p class="stub__message">
+        You don’t have any tasks left.<br>
+        Add new tasks to stay productive.
+      </p>
     </section>
     <section class="global">
       <header class="global__header">
