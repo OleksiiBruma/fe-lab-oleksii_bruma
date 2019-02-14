@@ -180,6 +180,14 @@ EventBus.subscribe("showGlobalList",function(){
   task_collection_controller.showGlobalList()
 });
 
+//settings
+EventBus.subscribe("goToSettingsCategory", function(){
+  header_controller.initBasic("settings");
+  settings_controller.init();
+  settings_controller.showCategories();
+  header_controller.listenForSticky();
+});
+
 
 
 

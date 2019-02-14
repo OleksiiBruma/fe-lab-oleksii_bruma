@@ -38,7 +38,7 @@ function SettingsItem(options) {
   function stepDown(){
     settingsValue -= settingsStep;
     settingsInput.value = settingsValue;
-  };
+  }
   this.getValue = function(){
     return settingsValue;
   };
@@ -207,8 +207,12 @@ var graph = new Graph();
 graph.drawGraph();
 
   }
+  showCategories(){
+    this.view.showCategories();
+  }
 }
 
 export const settings_controller = new Settings_controller(new Settings_model(), new Settings_view());
+
 
 

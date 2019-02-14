@@ -87,16 +87,11 @@ export const Router = {
 Router.config({mode: 'history'});
 
 Router
-  .add(/settings/, function () {
-    EventBus.emit('goToSettings');
-  })
-  .add(/timer/, function () {
-    EventBus.emit('goToTimer');
-  })
-  .add(/reports/, function () {
-    EventBus.emit('goToReports');
-  })
-  .add(function () {
+  .add(/settings\/pomodoros/, ()=> EventBus.emit('goToSettings'))
+  .add(/settings\/categories/,()=>{ EventBus.emit("goToSettingsCategory")})
+  .add(/timer/, ()=> EventBus.emit('goToTimer'))
+  .add(/reports/, ()=> EventBus.emit('goToReports'))
+  .add(()=>{
     history.replaceState(null, null, "/");
     EventBus.emit('goToTaskList');
   })

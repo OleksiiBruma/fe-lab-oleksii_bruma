@@ -18,7 +18,7 @@ export class Global_view {
       }
       if (e.target.matches(`[data-id="settings"]`)) {
         e.preventDefault();
-        Router.navigate('/settings/');
+        Router.navigate('/settings\/pomodoros/');
       }
       if (e.target.matches(`[data-id="tasklistfirsttime"]`)) {
         e.preventDefault();
@@ -82,6 +82,14 @@ export class Global_view {
       }
       if (e.target.classList.contains("button--remove")) {
         EventBus.emit("submitDeleteTask")
+      }
+      if (e.target.matches(`[data-id="pomodoros"]`)) {
+        e.preventDefault();
+        Router.navigate('/settings\/pomodoros/');
+      }
+      if (e.target.matches(`[data-id="category"]`)) {
+        e.preventDefault();
+        Router.navigate('/settings\/categories/');
       }
     }
 
