@@ -102,8 +102,6 @@ EventBus.subscribe("updateStatus", function (arg) {
 });
 EventBus.subscribe("setFilterStatus", function (arg) {
   task_collection_controller.setState(arg);
-  task_collection_controller.globalListRender();
-  task_collection_controller.dailyListRender();
   task_controller.renderTasks(task_collection_controller.getState());
 });
 

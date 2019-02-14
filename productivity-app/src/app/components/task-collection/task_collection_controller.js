@@ -11,7 +11,8 @@ export class Task_collection_controller {
   init() {
     this.view.init();
   };
-  firstVisit(){
+
+  firstVisit() {
     this.view.firstVisit();
   }
 
@@ -45,10 +46,10 @@ export class Task_collection_controller {
 
         if (parseInt(states.todoView) === 2) {
           if (parseInt(states.filterState) === parseInt(currentTasks[task].priority) && currentTasks[task].status === "COMPLETED"
-            && parseInt(states.filterState) !== 0 && date === now) {
+            && parseInt(states.filterState) !== 0 && date !== now) {
             rawCategories.push(currentTasks[task].categoryId);
           } else if (parseInt(states.filterState) === 0 && currentTasks[task].status === "COMPLETED"
-            && date === now) {
+            && date !== now) {
             rawCategories.push(currentTasks[task].categoryId);
           }
         }
@@ -56,7 +57,6 @@ export class Task_collection_controller {
     );
 
     return rawCategories.filter(function (value, index, self) {
-      debugger
       return self.indexOf(value) === index;
     })
   }
@@ -113,10 +113,12 @@ export class Task_collection_controller {
   showYouDoNotHaveAnyTasks() {
     this.view.showYouDoNotHaveAnyTasks();
   }
-  hideAllMessages(){
+
+  hideAllMessages() {
     this.view.hideAllMessages();
   }
-  showGlobalList(){
+
+  showGlobalList() {
     this.view.showGlobalList()
   }
 

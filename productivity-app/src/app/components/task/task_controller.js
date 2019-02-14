@@ -66,6 +66,7 @@ export class Task_controller {
     const now = new Date().setHours(0, 0, 0, 0);
     Object.keys(allTasks).forEach(function (task) {
       const category = allTasks[task].categoryId;
+
       const date = new Date(allTasks[task].completeDate).setHours(0, 0, 0, 0,);
 
       if (state.todoView === 1) {
@@ -87,17 +88,12 @@ export class Task_controller {
         }
 
       }
-      if (parseInt(state.todoView) === 2) {
-
-
+      if (state.todoView === 2) {
         if (allTasks[task].status === "COMPLETED" && parseInt(allTasks[task].priority) === parseInt(state.filterState) && date !== now) {
           view.renderTaskGlobal(allTasks[task], category);
         }
         if (allTasks[task].status === "COMPLETED" && parseInt(state.filterState) === 0 && date !== now) {
-          debugger
           view.renderTaskGlobal(allTasks[task], category);
-
-
         }
         if (allTasks[task].status === "COMPLETED" && date === now) {
           view.renderTaskDaily(allTasks[task]);
