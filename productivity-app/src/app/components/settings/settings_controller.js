@@ -8,17 +8,25 @@ export class Settings_controller{
   }
   init(){
 this.view.init();
-function SettingsItem(options) {
-  var settingsElem = options.settingsElem;
-  var settingsStep = options.settingsStep;
-  var settingsMin = options.settingsMin;
-  var settingsMax = options.settingsMax;
-  var settingsValue = options.settingsValue;
-  var settingsInput = settingsElem.querySelector('.number__input');
-  var settingsUp = settingsElem.querySelector(".number__step--up");
-  var settingsDown = settingsElem.querySelector(".number__step--down");
+function SettingsItem(options){
+  this.settingsElem = document.getElementById(`${options.settingsElem}`).parentElement;
+  this.settingsStep = options.settingsStep;
+  this.settingsMin = options.settingsMin;
+  this.settingsMax = options.settingsMax;
+  this.settingsValue = options.settingsValue;
+  const settingsInput = this.settingsElem.querySelector('.number__input');
+  const settingsUp = this.settingsElem.querySelector(".number__step--up");
+  const settingsDown = this.settingsElem.querySelector(".number__step--down");
 
-  settingsElem.onclick = function(event) {
+this.setValues = function(options){
+    this.settingsElem = document.getElementById(`${options.settingsElem}`).parentElement;
+    this.settingsStep = options.settingsStep;
+    this.settingsMin = options.settingsMin;
+    this.settingsMax = options.settingsMax;
+    this.settingsValue = options.settingsValue;
+  }
+
+  this.settingsElem.onclick = function(event) {
     if (event.target.classList.contains('number__step--down')) {
       settingsItemDecrease();
       graph.drawGraph();
@@ -28,44 +36,49 @@ function SettingsItem(options) {
     }
   };
 
-  settingsElem.onmousedown = function() {
+  this.settingsElem.onmousedown = function() {
     return false;
   };
   function stepUp(){
-    settingsValue += settingsStep;
-    settingsInput.value = settingsValue;
+    this.settingsValue += this.settingsStep;
+    settingsInput.value = this.settingsValue;
   }
   function stepDown(){
-    settingsValue -= settingsStep;
-    settingsInput.value = settingsValue;
+    this.settingsValue -= this.settingsStep;
+    settingsInput.value = this.settingsValue;
   }
   this.getValue = function(){
-    return settingsValue;
+    return this.settingsValue;
   };
   function settingsItemDecrease() {
-    if (parseInt(settingsInput.value) > settingsMin){
+    if (parseInt(settingsInput.value) > this.settingsMin){
       settingsUp.removeAttribute("disabled");
       settingsUp.classList.remove("number__step--disabled");
       stepDown();
     }
-    if(parseInt(settingsInput.value) === settingsMin) {
+    if(parseInt(settingsInput.value) === this.settingsMin) {
       settingsDown.setAttribute("disabled", "");
       settingsDown.classList.add("number__step--disabled");
     }
   }
 
   function settingsItemIncrease() {
-    if (parseInt(settingsInput.value) < settingsMax){
+    if (parseInt(settingsInput.value) < this.settingsMax){
       settingsDown.removeAttribute("disabled");
       settingsDown.classList.remove("number__step--disabled");
       stepUp();
     }
-    if(parseInt(settingsInput.value) === settingsMax) {
+    if(parseInt(settingsInput.value) === this.settingsMax) {
       settingsUp.setAttribute("disabled", "");
       settingsUp.classList.add("number__step--disabled");
     }
   }
 }
+
+    this.workTime = new SettingsItem(this.model.settingsData.workTime);
+    this.workIteration = new SettingsItem(this.model.settingsData.workIteration);
+    this.shortBreak = new SettingsItem(this.model.settingsData.shortBreak);
+    this.longBreak = new SettingsItem(this.model.settingsData.longBreak);
 
 function Graph(){
   var progressFragment = document.createDocumentFragment();
@@ -74,14 +87,14 @@ function Graph(){
   progress.classList.add("progress__graph");
 
   function createProgressPart() {
-    for (var i = 0; i < workIteration.getValue(); i++) {
+    for (var i = 0; i < this.workIteration.getValue(); i++) {
       var workTimeHTML = document.createElement("div");
       workTimeHTML.classList.add("progress__work-time");
-      workTimeHTML.style.width = calcPercentage(workTime.getValue() );
+      workTimeHTML.style.width = calcPercentage(this.workTime.getValue() );
       progress.appendChild(workTimeHTML);
-      if (i < workIteration.getValue() - 1) {
+      if (i < this.workIteration.getValue() - 1) {
         var shortBreakHTML = document.createElement("div");
-        shortBreakHTML.style.width = calcPercentage(shortBreak.getValue());
+        shortBreakHTML.style.width = calcPercentage(this.shortBreak.getValue());
         shortBreakHTML.classList.add("progress__short-break");
         progress.appendChild(shortBreakHTML);
       }
@@ -96,7 +109,7 @@ function Graph(){
     createProgressPart();
     var longBreakHTML = document.createElement("div");
     longBreakHTML.classList.add("progress__long-break");
-    longBreakHTML.style.width = calcPercentage(longBreak.getValue());
+    longBreakHTML.style.width = calcPercentage(this.longBreak.getValue());
     progress.appendChild(longBreakHTML);
     createProgressPart();
     progressFragment.appendChild(progress);
@@ -147,10 +160,12 @@ function Graph(){
   }
 
   function getFullCycle() {
-    return ((workTime.getValue() + shortBreak.getValue()) * workIteration.getValue())* 2 - 2 * shortBreak.getValue() + longBreak.getValue();
+
+    return ((this.workTime.getValue() + this.shortBreak.getValue()) * this.workIteration.getValue())* 2 - 2 * this.shortBreak.getValue() + this.longBreak.getValue();
   }
-  function getFirstCycle() {
-    return (workTime.getValue() + shortBreak.getValue()) * workIteration.getValue() - shortBreak.getValue() + longBreak.getValue();
+  this.getFirstCycle = function(){
+    console.log(this);
+    return (this.workTime.getValue() + this.shortBreak.getValue()) * this.workIteration.getValue() - this.shortBreak.getValue() + this.longBreak.getValue();
   }
 
   function minToHours(data) {
@@ -173,38 +188,9 @@ function Graph(){
   }
 }
 
-var workTime = new SettingsItem({
-  settingsElem: document.getElementById('work-time').parentElement,
-  settingsStep: 5,
-  settingsMin: 15,
-  settingsMax: 25,
-  settingsValue: 25,
-});
-var workIteration = new SettingsItem({
-  settingsElem: document.getElementById('work-iteration').parentElement,
-  settingsStep: 1,
-  settingsMin: 2,
-  settingsMax: 5,
-  settingsValue: 5
-});
-var shortBreak = new SettingsItem({
-  settingsElem: document.getElementById('short-break').parentElement,
-  settingsStep: 1,
-  settingsMin: 3,
-  settingsMax: 5,
-  settingsValue: 5
-});
-var longBreak = new SettingsItem({
-  settingsElem: document.getElementById('long-break').parentElement,
-  settingsStep: 5,
-  settingsMin: 15,
-  settingsMax: 30,
-  settingsValue: 30
-});
 
-var graph = new Graph();
-
-graph.drawGraph();
+    this.graph = new Graph();
+this.graph.drawGraph();
 
   }
   showCategories(){
