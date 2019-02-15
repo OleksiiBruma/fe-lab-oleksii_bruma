@@ -6,6 +6,7 @@ import {header_controller} from "./components/header/header_controller";
 import {settings_controller} from "./components/settings/settings_controller";
 import {timer_controller} from "./components/timer/timer_controller";
 import {reports_controller} from "./components/reports/reports_controller";
+// import {Router} from "./router";
 
 export const EventBus = {
   handlers: [],
@@ -22,15 +23,15 @@ export const EventBus = {
     )
   }
 };
-EventBus.subscribe("firstVisit",function(){
+EventBus.subscribe("firstVisit", function () {
   task_collection_controller.init();
   task_collection_controller.firstVisit();
 });
-EventBus.subscribe("renderTaskList",function() {
+EventBus.subscribe("renderTaskList", function () {
   task_collection_controller.init();
 });
 
-EventBus.subscribe("renderLists", function(){
+EventBus.subscribe("renderLists", function () {
   task_collection_controller.globalListRender();
   task_collection_controller.dailyListRender();
 });
@@ -50,11 +51,7 @@ EventBus.subscribe('goToReports', function () {
   reports_controller.init();
   header_controller.listenForSticky();
 });
-EventBus.subscribe('goToSettings', function () {
-  header_controller.initBasic("settings");
-  settings_controller.init();
-  header_controller.listenForSticky();
-});
+
 EventBus.subscribe('goToTimer', function () {
   header_controller.initBasic("tasklist");
   timer_controller.init();
@@ -173,19 +170,42 @@ EventBus.subscribe("excellentAllDaily", function () {
 EventBus.subscribe("youDoNotHaveAnyTasks", function () {
   task_collection_controller.showYouDoNotHaveAnyTasks();
 });
-EventBus.subscribe("hideAllMessages",function(){
+EventBus.subscribe("hideAllMessages", function () {
   task_collection_controller.hideAllMessages();
 });
-EventBus.subscribe("showGlobalList",function(){
+EventBus.subscribe("showGlobalList", function () {
   task_collection_controller.showGlobalList()
 });
 
 //settings
-EventBus.subscribe("goToSettingsCategory", function(){
+EventBus.subscribe('goToSettings', function () {
   header_controller.initBasic("settings");
-  settings_controller.init();
-  settings_controller.showCategories();
+  settings_controller.initModel(true);
   header_controller.listenForSticky();
+});
+
+EventBus.subscribe("goToSettingsCategory", function () {
+  header_controller.initBasic("settings");
+  settings_controller.initModel(false);
+  header_controller.listenForSticky();
+});
+
+EventBus.subscribe("drawGraph", function () {
+  settings_controller.drawGraph();
+});
+
+EventBus.subscribe("getNewSettings", function () {
+  database.getSettingsData();
+});
+
+EventBus.subscribe("setNewSettings", function (data) {
+
+  settings_controller.setNewSettingsData(data);
+  settings_controller.init();
+  settings_controller.drawGraph();
+});
+EventBus.subscribe("writeNewSettings", function () {
+  database.updateSettingsData(settings_controller.getNewSettingsData());
 });
 
 

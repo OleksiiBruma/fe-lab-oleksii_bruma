@@ -85,7 +85,6 @@ export const Router = {
 };
 
 Router.config({mode: 'history'});
-
 Router
   .add(/settings\/pomodoros/, ()=> EventBus.emit('goToSettings'))
   .add(/settings\/categories/,()=>{ EventBus.emit("goToSettingsCategory")})

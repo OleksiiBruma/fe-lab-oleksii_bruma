@@ -1,5 +1,5 @@
-module.exports = function (priority){
-  switch (priority){
+module.exports = function (priority) {
+  switch (priority) {
     case 1:
       return "urgent";
     case 2:

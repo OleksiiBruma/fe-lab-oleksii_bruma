@@ -1,200 +1,237 @@
 import {Settings_view} from "./settings_view";
 import {Settings_model} from "./settings_model";
+import {EventBus} from "../../eventBus";
 
-export class Settings_controller{
-  constructor(model,view){
+export class Settings_controller {
+  constructor(model, view) {
     this.model = model;
     this.view = view;
   }
-  init(){
-this.view.init();
-function SettingsItem(options){
-  this.settingsElem = document.getElementById(`${options.settingsElem}`).parentElement;
-  this.settingsStep = options.settingsStep;
-  this.settingsMin = options.settingsMin;
-  this.settingsMax = options.settingsMax;
-  this.settingsValue = options.settingsValue;
-  const settingsInput = this.settingsElem.querySelector('.number__input');
-  const settingsUp = this.settingsElem.querySelector(".number__step--up");
-  const settingsDown = this.settingsElem.querySelector(".number__step--down");
 
-this.setValues = function(options){
-    this.settingsElem = document.getElementById(`${options.settingsElem}`).parentElement;
-    this.settingsStep = options.settingsStep;
-    this.settingsMin = options.settingsMin;
-    this.settingsMax = options.settingsMax;
-    this.settingsValue = options.settingsValue;
+  initModel(typeOfSettings) {
+    this.model.init(typeOfSettings);
   }
 
-  this.settingsElem.onclick = function(event) {
-    if (event.target.classList.contains('number__step--down')) {
-      settingsItemDecrease();
-      graph.drawGraph();
-    } else if (event.target.classList.contains('number__step--up')) {
-      settingsItemIncrease();
-      graph.drawGraph();
+  init() {
+    this.view.init(this.model.getSettingsData());
+    if (!this.model.typeOfSettings) {
+      this.showCategories();
     }
-  };
 
-  this.settingsElem.onmousedown = function() {
-    return false;
-  };
-  function stepUp(){
-    this.settingsValue += this.settingsStep;
-    settingsInput.value = this.settingsValue;
-  }
-  function stepDown(){
-    this.settingsValue -= this.settingsStep;
-    settingsInput.value = this.settingsValue;
-  }
-  this.getValue = function(){
-    return this.settingsValue;
-  };
-  function settingsItemDecrease() {
-    if (parseInt(settingsInput.value) > this.settingsMin){
-      settingsUp.removeAttribute("disabled");
-      settingsUp.classList.remove("number__step--disabled");
-      stepDown();
-    }
-    if(parseInt(settingsInput.value) === this.settingsMin) {
-      settingsDown.setAttribute("disabled", "");
-      settingsDown.classList.add("number__step--disabled");
-    }
-  }
+    function SettingsItem(options) {
+      this.settingsElem = document.getElementById(`${options.settingsElem}`).parentElement;
+      this.settingsStep = options.settingsStep;
+      this.settingsMin = options.settingsMin;
+      this.settingsMax = options.settingsMax;
+      this.settingsValue = options.settingsValue;
+      const settingsInput = this.settingsElem.querySelector('.number__input');
+      const settingsUp = this.settingsElem.querySelector(".number__step--up");
+      const settingsDown = this.settingsElem.querySelector(".number__step--down");
 
-  function settingsItemIncrease() {
-    if (parseInt(settingsInput.value) < this.settingsMax){
-      settingsDown.removeAttribute("disabled");
-      settingsDown.classList.remove("number__step--disabled");
-      stepUp();
+      this.setValues = function (options) {
+        this.settingsElem = document.getElementById(`${options.settingsElem}`).parentElement;
+        this.settingsStep = options.settingsStep;
+        this.settingsMin = options.settingsMin;
+        this.settingsMax = options.settingsMax;
+        this.settingsValue = options.settingsValue;
+      };
+
+      this.settingsElem.onclick = function (event) {
+        if (event.target.classList.contains('number__step--down')) {
+          this.settingsItemDecrease();
+          EventBus.emit("drawGraph")
+        } else if (event.target.classList.contains('number__step--up')) {
+          this.settingsItemIncrease();
+          EventBus.emit("drawGraph")
+        }
+      }.bind(this);
+
+      this.settingsElem.onmousedown = function () {
+        return false;
+      };
+
+      this.stepUp = function () {
+        this.settingsValue += this.settingsStep;
+        settingsInput.value = this.settingsValue;
+      };
+
+      this.stepDown = function () {
+        this.settingsValue -= this.settingsStep;
+        settingsInput.value = this.settingsValue;
+      };
+
+      this.getValue = function () {
+        return this.settingsValue;
+      };
+
+      this.settingsItemDecrease = function () {
+        if (parseInt(settingsInput.value) > this.settingsMin) {
+          settingsUp.removeAttribute("disabled");
+          settingsUp.classList.remove("number__step--disabled");
+          this.stepDown();
+        }
+        if (parseInt(settingsInput.value) === this.settingsMin) {
+          settingsDown.setAttribute("disabled", "");
+          settingsDown.classList.add("number__step--disabled");
+        }
+      };
+
+      this.settingsItemIncrease = function () {
+        if (parseInt(settingsInput.value) < this.settingsMax) {
+          settingsDown.removeAttribute("disabled");
+          settingsDown.classList.remove("number__step--disabled");
+          this.stepUp();
+        }
+        if (parseInt(settingsInput.value) === this.settingsMax) {
+          settingsUp.setAttribute("disabled", "");
+          settingsUp.classList.add("number__step--disabled");
+        }
+      }
     }
-    if(parseInt(settingsInput.value) === this.settingsMax) {
-      settingsUp.setAttribute("disabled", "");
-      settingsUp.classList.add("number__step--disabled");
-    }
-  }
-}
 
     this.workTime = new SettingsItem(this.model.settingsData.workTime);
     this.workIteration = new SettingsItem(this.model.settingsData.workIteration);
     this.shortBreak = new SettingsItem(this.model.settingsData.shortBreak);
     this.longBreak = new SettingsItem(this.model.settingsData.longBreak);
 
-function Graph(){
-  var progressFragment = document.createDocumentFragment();
-  var progressBar = document.querySelector(".settings-pomodoro__progress-bar");
-  var progress = document.createElement("div");
-  progress.classList.add("progress__graph");
+    function Graph(wT, wI, sB, lB) {
+      this.workTime = wT;
+      this.workIteration = wI;
+      this.shortBreak = sB;
+      this.longBreak = lB;
+      this.progressFragment = document.createDocumentFragment();
+      this.progressBar = document.querySelector(".settings-pomodoro__progress-bar");
+      this.progress = document.createElement("div");
+      this.progress.classList.add("progress__graph");
 
-  function createProgressPart() {
-    for (var i = 0; i < this.workIteration.getValue(); i++) {
-      var workTimeHTML = document.createElement("div");
-      workTimeHTML.classList.add("progress__work-time");
-      workTimeHTML.style.width = calcPercentage(this.workTime.getValue() );
-      progress.appendChild(workTimeHTML);
-      if (i < this.workIteration.getValue() - 1) {
-        var shortBreakHTML = document.createElement("div");
-        shortBreakHTML.style.width = calcPercentage(this.shortBreak.getValue());
-        shortBreakHTML.classList.add("progress__short-break");
-        progress.appendChild(shortBreakHTML);
+      this.createProgressPart = function () {
+        for (var i = 0; i < this.workIteration.getValue(); i++) {
+          let workTimeHTML = document.createElement("div");
+          workTimeHTML.classList.add("progress__work-time");
+          workTimeHTML.style.width = this.calcPercentage(this.workTime.getValue());
+          this.progress.appendChild(workTimeHTML);
+          if (i < this.workIteration.getValue() - 1) {
+            let shortBreakHTML = document.createElement("div");
+            shortBreakHTML.style.width = this.calcPercentage(this.shortBreak.getValue());
+            shortBreakHTML.classList.add("progress__short-break");
+            this.progress.appendChild(shortBreakHTML);
+          }
+        }
       }
+      ;
+      this.createProgress = function () {
+        while (this.progress.firstChild) {
+          this.progress.removeChild(this.progress.firstChild);
+        }
+        this.createTopScale();
+        this.createProgressPart();
+        const longBreakHTML = document.createElement("div");
+        longBreakHTML.classList.add("progress__long-break");
+        longBreakHTML.style.width = this.calcPercentage(this.longBreak.getValue());
+        this.progress.appendChild(longBreakHTML);
+        this.createProgressPart();
+        this.progressFragment.appendChild(this.progress);
+        this.createBottomScale();
+        while (this.progressBar.firstChild) {
+          this.progressBar.removeChild(this.progressBar.firstChild);
+        }
+        this.progressBar.appendChild(this.progressFragment);
+      };
+
+      this.getFirstCycle = function () {
+        return (this.workTime.getValue() + this.shortBreak.getValue()) * this.workIteration.getValue() - this.shortBreak.getValue() + this.longBreak.getValue();
+      };
+
+      this.createTopScale = function () {
+        const topScale = document.createElement("div");
+        const startPoint = document.createElement("div");
+        const middlePoint = document.createElement("div");
+        const middlePointValue = document.createElement("span");
+        const endPoint = document.createElement("div");
+        topScale.classList.add("progress__top-scale");
+        startPoint.classList.add("progress__start-point");
+        startPoint.style.width = "0px";
+        startPoint.textContent = "0m";
+        topScale.appendChild(startPoint);
+        middlePoint.classList.add("progress__middle-point");
+        middlePointValue.classList.add("progress__middle-point-value");
+        middlePointValue.textContent = "First cycle: " + this.minToHours(this.getFirstCycle());
+        middlePoint.style.width = this.calcPercentage(this.getFirstCycle());
+        middlePoint.appendChild(middlePointValue);
+        topScale.appendChild(middlePoint);
+        endPoint.classList.add("progress__end-point");
+        endPoint.textContent = this.minToHours(this.getFullCycle());
+        topScale.appendChild(endPoint);
+        this.progressFragment.appendChild(topScale);
+      };
+
+      this.createBottomScale = function () {
+        const bottomScale = document.createElement("div");
+        bottomScale.classList.add("progress__bottom-scale");
+        const halfOfAnHour = 30;
+        for (let i = halfOfAnHour; i < this.getFullCycle(); i += halfOfAnHour) {
+          const bottomScaleItem = document.createElement("div");
+          const bottomScaleValue = document.createElement("span");
+          bottomScaleValue.textContent = this.minToHours(i);
+          bottomScaleValue.classList.add("progress__bottom-scale-value");
+          bottomScaleItem.classList.add("progress__bottom-scale-item");
+          bottomScaleItem.style.width = this.calcPercentage(halfOfAnHour);
+          bottomScaleItem.appendChild(bottomScaleValue);
+          bottomScale.appendChild(bottomScaleItem);
+        }
+        this.progressFragment.appendChild(bottomScale);
+      };
+
+      this.getFullCycle = function () {
+        return ((this.workTime.getValue() + this.shortBreak.getValue()) * this.workIteration.getValue()) * 2 - 2 * this.shortBreak.getValue() + this.longBreak.getValue();
+      };
+
+
+      this.minToHours = function (data) {
+        const minutesInHour = 60;
+        const minutes = data % minutesInHour;
+        const hours = (data - minutes) / minutesInHour;
+        if (hours === 0) {
+          return minutes.toFixed(0) + "m";
+        }
+        if (minutes === 0) {
+          return hours + "h";
+        }
+        return hours + "h" + " " + minutes.toFixed(0) + "m";
+      }
+      ;
+
+      this.calcPercentage = function (number) {
+        return ((number / this.getFullCycle()) * 100) + "%";
+      }
+      ;
     }
+
+    this.graph = new Graph(this.workTime, this.workIteration, this.shortBreak, this.longBreak);
   }
 
-  function createProgress() {
-    while (progress.firstChild) {
-      progress.removeChild(progress.firstChild);
-    }
-    createTopScale();
-    createProgressPart();
-    var longBreakHTML = document.createElement("div");
-    longBreakHTML.classList.add("progress__long-break");
-    longBreakHTML.style.width = calcPercentage(this.longBreak.getValue());
-    progress.appendChild(longBreakHTML);
-    createProgressPart();
-    progressFragment.appendChild(progress);
-    createBottomScale();
-    while (progressBar.firstChild) {
-      progressBar.removeChild(progressBar.firstChild);
-    }
-    progressBar.appendChild(progressFragment);
-  }
-
-  function createTopScale() {
-    var topScale = document.createElement("div");
-    topScale.classList.add("progress__top-scale");
-    var startPoint = document.createElement("div");
-    startPoint.classList.add("progress__start-point");
-    startPoint.style.width = "0px";
-    startPoint.textContent = "0m";
-    topScale.appendChild(startPoint);
-    var middlePoint = document.createElement("div");
-    middlePoint.classList.add("progress__middle-point");
-    var middlePointValue = document.createElement("span");
-    middlePointValue.classList.add("progress__middle-point-value");
-    middlePointValue.textContent = "First cycle: " + minToHours(getFirstCycle());
-    middlePoint.style.width = calcPercentage(getFirstCycle());
-    middlePoint.appendChild(middlePointValue);
-    topScale.appendChild(middlePoint);
-    var endPoint = document.createElement("div");
-    endPoint.classList.add("progress__end-point");
-    endPoint.textContent = minToHours(getFullCycle());
-    topScale.appendChild(endPoint);
-    progressFragment.appendChild(topScale);
-  }
-
-  function createBottomScale() {
-    var bottomScale = document.createElement("div");
-    bottomScale.classList.add("progress__bottom-scale");
-    for (var i = 30; i < getFullCycle(); i += 30) {
-      var bottomScaleItem = document.createElement("div");
-      var bottomScaleValue = document.createElement("span");
-      bottomScaleValue.textContent = minToHours(i);
-      bottomScaleValue.classList.add("progress__bottom-scale-value");
-      bottomScaleItem.classList.add("progress__bottom-scale-item");
-      bottomScaleItem.style.width = calcPercentage(30);
-      bottomScaleItem.appendChild(bottomScaleValue);
-      bottomScale.appendChild(bottomScaleItem);
-    }
-    progressFragment.appendChild(bottomScale);
-  }
-
-  function getFullCycle() {
-
-    return ((this.workTime.getValue() + this.shortBreak.getValue()) * this.workIteration.getValue())* 2 - 2 * this.shortBreak.getValue() + this.longBreak.getValue();
-  }
-  this.getFirstCycle = function(){
-    console.log(this);
-    return (this.workTime.getValue() + this.shortBreak.getValue()) * this.workIteration.getValue() - this.shortBreak.getValue() + this.longBreak.getValue();
-  }
-
-  function minToHours(data) {
-    var minutes = data % 60;
-    var hours = (data - minutes) / 60;
-    if (hours === 0) {
-      return minutes.toFixed(0) + "m";
-    }
-    if (minutes === 0) {
-      return hours + "h" ;
-    }
-
-    return hours + "h" + " " + minutes.toFixed(0) + "m";
-  }
-  function calcPercentage(number) {
-    return ((number / getFullCycle()) * 100) + "%";
-  }
-  this.drawGraph = function(){
-    createProgress();
-  }
-}
-
-
-    this.graph = new Graph();
-this.graph.drawGraph();
-
-  }
-  showCategories(){
+  showCategories() {
     this.view.showCategories();
+  }
+
+  drawGraph() {
+    this.graph.createProgress();
+  }
+
+  getNewSettingsData() {
+    if (!this.view.getNewSettingsData()) {
+      return;
+    }
+    return this.view.getNewSettingsData()
+
+  }
+
+  setNewSettingsData(newData) {
+    this.model.setSettingsData(newData);
+  }
+
+  getSettingsData() {
+    return this.model.getSettingsData();
   }
 }
 

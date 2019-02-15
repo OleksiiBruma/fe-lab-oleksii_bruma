@@ -15,9 +15,30 @@ export class Database {
     });
     this.alltasks = {};
     this.remoteTasks = firebase.database().ref("tasks");
+    this.remoteSettings = firebase.database().ref("settings");
 
   }
-  setUpdatedData(data){
+
+  updateSettingsData(newData) {
+    if (!newData) {
+      return
+    }
+    this.remoteSettings.set(newData, function (error) {
+      if (error) {
+        console.log(error)
+      } else {
+        console.log("settings have been updated successfully")
+      }
+    });
+  }
+
+  getSettingsData() {
+    this.remoteSettings.once("value").then((snapshot) => {
+      EventBus.emit("setNewSettings", snapshot.val());
+    })
+  }
+
+  setUpdatedData(data) {
     this.alltasks = data;
     EventBus.emit("databaseUpdated");
   }
@@ -69,8 +90,8 @@ export class Database {
         database.updateDataBase();
       })
       .catch(function (error) {
-      console.log(error)
-    });
+        console.log(error)
+      });
   }
 }
 

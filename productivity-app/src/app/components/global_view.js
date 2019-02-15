@@ -91,6 +91,10 @@ export class Global_view {
         e.preventDefault();
         Router.navigate('/settings\/categories/');
       }
+      if(e.target.matches(`[data-id="saveNewSettings"]`)){
+        EventBus.emit("writeNewSettings");
+        Router.navigate('todoList');
+      }
     }
 
     document.body.addEventListener("click", chooseTarget)
