@@ -77,7 +77,6 @@ EventBus.subscribe('submitNewTask', function () {
 });
 EventBus.subscribe("submitEdit", function () {
   database.updateData([(database.getFIDTaskById(pop_up_controller.getTaskToBeEdited())), pop_up_controller.getScannedProperties()]);
-  pop_up_controller.closeSelf();
   task_collection_controller.globalListRender();
   task_collection_controller.dailyListRender();
   task_controller.renderTasks(task_collection_controller.getState());
@@ -88,8 +87,8 @@ EventBus.subscribe('toggleGlobalList', function () {
 EventBus.subscribe("deleteAllData", function () {
   database.removeAllData();
 });
-EventBus.subscribe("globalToDaily", function (arg) {
-  task_controller.globalToDaily(arg);
+EventBus.subscribe("globalToDaily", function ([id, status]) {
+  task_controller.changeState([id, status]);
 });
 
 //filtering
@@ -207,6 +206,20 @@ EventBus.subscribe("setNewSettings", function (data) {
 EventBus.subscribe("writeNewSettings", function () {
   database.updateSettingsData(settings_controller.getNewSettingsData());
 });
+
+//timer
+EventBus.subscribe('writeActiveState', function (id) {
+  task_controller.changeState([id, "ACTIVE"]);
+  database.getTask(database.getFIDTaskById(null, "ACTIVE"));
+});
+EventBus.subscribe("setActiveState", function(activeTask){
+  timer_controller.setActiveTask(activeTask);
+});
+EventBus.subscribe("cancelTimer",function(){
+  console.log(timer_controller.getActiveTask().id);
+  task_controller.changeState([timer_controller.getActiveTask().id, "DAILY_LIST"]);
+});
+
 
 
 

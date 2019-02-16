@@ -1,26 +1,28 @@
 <main class="page page--no-sticky">
 <div class="page__item container">
   <section class="timer">
-    <h2 class="timer__title">1. Creating a New Design</h2>
-    <p class="timer__description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+    <h2 class="timer__title">{{title}}</h2>
+    <p class="timer__description">{{description}}</p>
     <div class="timer__estimates">
+      {{#each (toEstimation estimation)}}
       <span class="timer__estimate"><span class="sr-only">pomodoro</span></span>
-      <span class="timer__estimate"><span class="sr-only">pomodoro</span></span>
-      <span class="timer__estimate"><span class="sr-only">pomodoro</span></span>
+        {{/each}}
     </div>
     <div class="timer__dial">
       <div class="timer__message"><span class="timer__time-basic">Let`s do it!</span></div>
     </div>
     <div class="timer__buttons buttons">
-      <button class="buttons__item buttons__item--success" type="button">Start</button>
+      <button class="buttons__item buttons__item--success"  type="button">Start</button>
       <button class="buttons__item buttons__item--danger hidden" type="button">Remove</button>
     </div>
-    <a class="timer__goback arrow" href="#">
+    <a class="timer__goback arrow" data-id="from-timer-to-tasklist" href="#">
       <span class="arrow__item arrow__item--top"></span>
       <span class="arrow__item arrow__item--bottom"></span>
       <span class="sr-only">Go back</span>
     </a>
   </section>
+
+  <!--
   <section class="timer timer--process hidden">
     <h2 class="timer__title">1. Creating a New Design</h2>
     <p class="timer__description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
@@ -107,7 +109,7 @@
       <span class="arrow__item arrow__item--left"></span>
       <span class="sr-only">Go to settings</span>
     </a>
-  </section>
+  </section>--!>
 </div>
 </main>
 <script src="/bundle.js"></script>

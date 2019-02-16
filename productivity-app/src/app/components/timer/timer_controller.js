@@ -7,7 +7,14 @@ export class Timer_controller{
     this.view = view;
   }
   init(){
-    this.view.init();
+    this.view.init(this.model.getActiveTask());
+
+  }
+  setActiveTask(activeTask){
+    this.model.setActiveTask(activeTask);
+  }
+  getActiveTask(){
+    return this.model.getActiveTask();
   }
 }
 

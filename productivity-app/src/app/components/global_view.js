@@ -27,6 +27,7 @@ export class Global_view {
       if (e.target.classList.contains("task__indicator")) {
         e.preventDefault();
         if(e.target.parentElement.parentElement.classList.contains("daily__tasks-list")){
+          EventBus.emit('writeActiveState',e.target.parentElement.dataset.id);
           Router.navigate('/timer/');
           return
         }
@@ -50,7 +51,7 @@ export class Global_view {
         EventBus.emit("toggleGlobalList");
       }
       if (e.target.classList.contains("task__shift")) {
-        EventBus.emit("globalToDaily", e.target.parentElement.parentElement.dataset.id);
+        EventBus.emit("globalToDaily", [e.target.parentElement.parentElement.dataset.id,"DAILY_LIST"]);
       }
       if (e.target.hasAttribute("data-filterState")) {
         e.preventDefault();
@@ -96,10 +97,17 @@ export class Global_view {
         Router.navigate('/settings\/categories/');
       }
       if (e.target.matches(`[data-id="saveNewSettings"]`)) {
+        e.preventDefault();
         EventBus.emit("writeNewSettings");
         Router.navigate('todoList');
       }
+      if (e.target.matches(`[data-id="from-timer-to-tasklist"]`)) {
+        e.preventDefault();
+        EventBus.emit("cancelTimer");
+        Router.navigate('todoList');
+      }
     }
+
 
     document.body.addEventListener("click", chooseTarget)
   }

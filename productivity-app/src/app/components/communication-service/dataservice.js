@@ -70,14 +70,21 @@ export class Database {
   updateData(arg) {
     this.remoteTasks.child(`/${arg[0]}/`).update(arg[1]);
   }
+  getTask(FID){
+    this.remoteTasks.child(`/${FID}/`).once('value').then(function(task) {
+      EventBus.emit("setActiveState",task.val());
+    })}
 
-  getFIDTaskById(id) {
+  getFIDTaskById(id,status) {
     const tasks = this.alltasks;
     let FID = 0;
     Object.keys(tasks).forEach(function (task) {
         if (tasks[task].id === +id) {
           FID = task
         }
+      if (tasks[task].status === status) {
+        FID = task
+      }
       }
     );
     return FID;

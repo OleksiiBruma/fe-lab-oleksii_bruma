@@ -103,11 +103,11 @@ export class Task_controller {
     });
   }
 
-  globalToDaily(id) {
+  changeState([id,statusName]) {
     const allTasks = this.model.getTasks();
     Object.keys(allTasks).forEach(function (task) {
       if (allTasks[task].id === parseInt(id)) {
-        EventBus.emit("updateStatus", [task, {status: "DAILY_LIST"}]);
+        EventBus.emit("updateStatus", [task, {status: statusName}]);
       }
     })
   }
