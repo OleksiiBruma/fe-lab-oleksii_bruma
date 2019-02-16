@@ -25,8 +25,12 @@ export class Global_view {
         EventBus.emit('goToTaskList');
       }
       if (e.target.classList.contains("task__indicator")) {
-        event.preventDefault();
-        Router.navigate('/timer/');
+        e.preventDefault();
+        if(e.target.parentElement.parentElement.classList.contains("daily__tasks-list")){
+          Router.navigate('/timer/');
+          return
+        }
+        console.log("Please drag the task to the daily list");
       }
       if (e.target.classList.contains("page__add-button")) {
         EventBus.emit('addNewTask');
@@ -91,7 +95,7 @@ export class Global_view {
         e.preventDefault();
         Router.navigate('/settings\/categories/');
       }
-      if(e.target.matches(`[data-id="saveNewSettings"]`)){
+      if (e.target.matches(`[data-id="saveNewSettings"]`)) {
         EventBus.emit("writeNewSettings");
         Router.navigate('todoList');
       }

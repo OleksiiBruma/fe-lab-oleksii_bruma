@@ -47,6 +47,7 @@ coverage
 build/Release
 
 # Dependency directories
+Package-lock
 node_modules
 jspm_packages
 bower_components
