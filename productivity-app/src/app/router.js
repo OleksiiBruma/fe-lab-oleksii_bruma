@@ -1,4 +1,4 @@
-import {EventBus} from "./eventBus";
+import * as EventBus from "./eventBus";
 
 export const Router = {
   routes: [],
@@ -86,13 +86,32 @@ export const Router = {
 
 Router.config({mode: 'history'});
 Router
-  .add(/settings\/pomodoros/, ()=> EventBus.emit('goToSettings'))
-  .add(/settings\/categories/,()=>{ EventBus.emit("goToSettingsCategory")})
-  .add(/timer/, ()=> EventBus.emit('goToTimer'))
-  .add(/reports/, ()=> EventBus.emit('goToReports'))
-  .add(()=>{
+  .add(/settings\/pomodoros/, () => EventBus.EventBus.emit('goToSettings'))
+  .add(/settings\/categories/, () => {
+    EventBus.EventBus.emit("goToSettingsCategory")
+  })
+  .add(/reports\/day\/tasks/, () => {
+    EventBus.EventBus.emit('goToReports')
+  })
+  .add(/reports\/day\/pomodoros/, () => {
+    EventBus.EventBus.emit('goToReports')
+  })
+  .add(/reports\/week\/tasks/, () => {
+    EventBus.EventBus.emit('goToReports')
+  })
+  .add(/reports\/week\/pomodoros/, () => {
+    EventBus.EventBus.emit('goToReports')
+  })
+  .add(/reports\/month\/tasks/, () => {
+    EventBus.EventBus.emit('goToReports')
+  })
+  .add(/reports\/month\/pomodoros/, () => {
+    EventBus.EventBus.emit('goToReports')
+  })
+  .add(/timer/, () => EventBus.EventBus.emit('goToTimer'))
+  .add(() => {
     history.replaceState(null, null, "/");
-    EventBus.emit('goToTaskList');
+    EventBus.EventBus.emit('goToTaskList');
   })
   .check().listen();
 

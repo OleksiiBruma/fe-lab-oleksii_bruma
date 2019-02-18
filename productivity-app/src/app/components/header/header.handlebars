@@ -2,24 +2,28 @@
   <div class="header__item  header__item--no-sticky container">
     <h1 class="header__logo header__logo--no-sticky logo">
       <a class="logo__link" href="#">
-        <img class="logo-image" src="../images/Logo.svg" alt="logo" width="242"
+        <img class="logo-image" src="/images/Logo.svg" alt="logo" width="242"
              height="74"></a>
     </h1>
     <nav class="navigation">
       <ul class="menu">
         {{#if addButton}}
-        <li class="menu__item">
-        <button
-          class="page__add-button page__add-button--header hidden" type="button" data-id="newtask"><span class="sr-only">Add task button</span></button>
-        </li>
-        <li class="menu__item">
-          <a href="#" class="menu__link menu__link--icon-trash"  data-id="trash"><span class="trash__count" data-id="trash">5</span><span class="sr-only">Go to trash</span></a>
-        </li>
+          <li class="menu__item">
+            <button
+              class="page__add-button page__add-button--header hidden" type="button" data-id="newtask"><span
+              class="sr-only">Add task button</span></button>
+          </li>
+          <li class="menu__item">
+            <a href="#" class="menu__link menu__link--icon-trash" data-id="trash"><span class="trash__count"
+                                                                                        data-id="trash">5</span><span
+              class="sr-only">Go to trash</span></a>
+          </li>
         {{/if}}
         {{#each tabs}}
-        <li class="menu__item">
-          <a href="#" class="menu__link menu__link--icon-{{class}} " data-id="{{id}}"><span class="sr-only">{{text}}</span></a>
-        </li>
+          <li class="menu__item">
+            <a href="#" class="menu__link menu__link--icon-{{class}} " data-id="{{id}}"><span
+              class="sr-only">{{text}}</span></a>
+          </li>
         {{/each}}
       </ul>
     </nav>

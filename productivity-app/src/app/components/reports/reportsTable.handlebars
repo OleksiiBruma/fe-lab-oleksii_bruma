@@ -1,0 +1,20 @@
+<table class="report__table">
+  <tr>
+    <th>Date</th>
+    <th>Urgent</th>
+    <th>High</th>
+    <th>Medium</th>
+    <th>Low</th>
+    <th>Failed</th>
+  </tr>
+  {{#each this}}
+    <tr>
+      <td>{{reportDay date}}</td>
+      <td>{{urgent}}</td>
+      <td>{{high}}</td>
+      <td>{{medium}}</td>
+      <td>{{low}}</td>
+      <td>{{failed}}</td>
+    </tr>
+  {{/each}}
+</table>

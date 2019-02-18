@@ -14,7 +14,7 @@ export class Global_view {
       }
       if (e.target.matches(`[data-id="reports"]`)) {
         e.preventDefault();
-        Router.navigate('/reports/');
+        Router.navigate('/reports/day/tasks');
       }
       if (e.target.matches(`[data-id="settings"]`)) {
         e.preventDefault();
@@ -26,12 +26,11 @@ export class Global_view {
       }
       if (e.target.classList.contains("task__indicator")) {
         e.preventDefault();
-       if(e.target.parentElement.classList.contains("task--done")){
-         console.log("The task has already done");
-         return
-       }
-        else if(e.target.parentElement.parentElement.classList.contains("daily__tasks-list")){
-          EventBus.emit('writeActiveState',e.target.parentElement.dataset.id);
+        if (e.target.parentElement.classList.contains("task--done")) {
+          console.log("The task has already done");
+          return
+        } else if (e.target.parentElement.parentElement.classList.contains("daily__tasks-list")) {
+          EventBus.emit('writeActiveState', e.target.parentElement.dataset.id);
           Router.navigate('/timer/');
           return
         }
@@ -55,7 +54,7 @@ export class Global_view {
         EventBus.emit("toggleGlobalList");
       }
       if (e.target.classList.contains("task__shift")) {
-        EventBus.emit("globalToDaily", [e.target.parentElement.parentElement.dataset.id,"DAILY_LIST"]);
+        EventBus.emit("globalToDaily", [e.target.parentElement.parentElement.dataset.id, "DAILY_LIST"]);
       }
       if (e.target.hasAttribute("data-filterState")) {
         e.preventDefault();
@@ -129,6 +128,14 @@ export class Global_view {
       if (e.target.matches(`[data-id="complete-task"]`)) {
         e.preventDefault();
         EventBus.emit("taskCompleted");
+      }
+      if (e.target.hasAttribute("data-reports__time")) {
+        e.preventDefault();
+        EventBus.emit("setReportsState", ["reports__time", e.target.dataset.reports__time])
+      }
+      if (e.target.hasAttribute("data-reports__type")) {
+        e.preventDefault();
+        EventBus.emit("setReportsState", ["reports__type", e.target.dataset.reports__type])
       }
     }
 

@@ -14,10 +14,12 @@ export class Pop_up_controller {
   renderEdit() {
     this.view.renderEdit();
   }
-  setTaskToBeEdited(id){
+
+  setTaskToBeEdited(id) {
     this.model.setTaskToBeEdited(id);
   }
-  getTaskToBeEdited(){
+
+  getTaskToBeEdited() {
     return this.model.getTaskToBeEdited();
   }
 
@@ -29,7 +31,7 @@ export class Pop_up_controller {
     this.view.closeSelf();
   }
 
-  getScannedProperties(){
+  getScannedProperties() {
     return this.view.scanProperties()
   }
 
@@ -37,7 +39,7 @@ export class Pop_up_controller {
     const newTaskRawData = this.getScannedProperties();
     newTaskRawData.id = +new Date();
     newTaskRawData.status = "GLOBAL_LIST";
-    newTaskRawData.createDate = new Date();
+    newTaskRawData.createDate = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
     newTaskRawData.completeDate = false;
     newTaskRawData.failedPomodoros = [];
     newTaskRawData.completedCount = false;

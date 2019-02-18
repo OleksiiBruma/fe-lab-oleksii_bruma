@@ -3,10 +3,10 @@ module.exports = function (settingsName) {
     case 'work-time':
     case 'short-break':
     case 'long-break':
-      return "minutes"
+      return "minutes";
       break;
     case 'work-iteration':
-      return "iterations"
+      return "iterations";
       break;
   }
 

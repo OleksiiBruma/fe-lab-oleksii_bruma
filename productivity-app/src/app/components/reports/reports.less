@@ -2,14 +2,14 @@
 @import ( reference ) '~@less-helpers-module/_variables.less';
 
 .report {
-  padding-top:@rem*125+@rem*35;
+  padding-top: @rem*125+@rem*35;
 
   &__goback {
-    position:fixed;
+    position: fixed;
     top: 50%;
-    left:@rem*36;
-    width:@rem*48;
-    height:@rem*48*1.5;
+    left: @rem*36;
+    width: @rem*48;
+    height: @rem*48*1.5;
     transform: translate(0, -50%);
 
     &:hover .arrow__item,
@@ -20,12 +20,24 @@
   }
 
   &__graph {
-    background: url("/images/Graphreport.png") center no-repeat;
-    height:@rem*297;
+    margin: 0 auto;
+  }
+
+  &__table {
+    margin: 0 auto;
+    border-collapse: collapse;
+
+    td, th {
+      font-size: 20px;
+      border: 1px solid white;
+      color: white;
+
+
+    }
   }
 
   &__toggle {
-    margin-top:@rem*80;
+    margin-top: @rem*80;
     justify-content: center;
   }
 }

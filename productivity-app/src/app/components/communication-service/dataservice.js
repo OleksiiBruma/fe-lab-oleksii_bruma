@@ -17,7 +17,6 @@ export class Database {
     this.settings = {};
     this.remoteTasks = firebase.database().ref("tasks");
     this.remoteSettings = firebase.database().ref("settings");
-
   }
 
   updateSettingsData(newData) {

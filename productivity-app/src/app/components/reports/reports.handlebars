@@ -3,28 +3,28 @@
     <h2 class="page__caption">Report</h2>
     <ul class="page__toggle page__toggle--reports tab">
       <li class="tab__item"><a class="tab__link
-       tab__link--active" href="#">Day</a></li>
+       tab__link--active" data-reports__time="day" href="#">Day</a></li>
       <li class="tab__item">
-        <a class="tab__link" href="#">Week</a>
+        <a class="tab__link" data-reports__time="week" href="#">Week</a>
       </li>
       <li class="tab__item">
-        <a class="tab__link" href="#">Month</a>
+        <a class="tab__link" data-reports__time="month" href="#">Month</a>
       </li>
     </ul>
   </div>
   <section class="report container">
     <div class="report__graph">
     </div>
-    <a class="report__goback arrow" href="#">
+    <a class="report__goback arrow" data-id="tasklist" href="#">
       <span class="arrow__item arrow__item--top"></span>
       <span class="arrow__item arrow__item--bottom"></span>
       <span class="sr-only">Go Back</span>
     </a>
     <ul class="report__toggle tab">
       <li class="tab__item"><a class="tab__link
-       tab__link--active" href="#">Pomodoros</a></li>
+       tab__link--active" data-reports__type="pomodoros" href="#">Pomodoros</a></li>
       <li class="tab__item">
-        <a class="tab__link" href="#">Tasks</a>
+        <a class="tab__link" data-reports__type="tasks" href="#">Tasks</a>
       </li>
     </ul>
   </section>

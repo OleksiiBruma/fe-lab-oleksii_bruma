@@ -6,7 +6,7 @@ import {header_controller} from "./components/header/header_controller";
 import {settings_controller} from "./components/settings/settings_controller";
 import {timer_controller} from "./components/timer/timer_controller";
 import {reports_controller} from "./components/reports/reports_controller";
-// import {Router} from "./router";
+import * as Router from "./router";
 
 export const EventBus = {
   handlers: [],
@@ -38,10 +38,15 @@ EventBus.subscribe("renderLists", function () {
 EventBus.subscribe("databaseUpdated", function () {
   if (location.pathname === "/") {
     header_controller.initFull("tasklist");
-    task_collection_controller.setTasks(database.getData());
-    task_controller.setTasks(database.getData());
     task_controller.renderTasks(task_collection_controller.getState());
   }
+  if (location.pathname.slice(0, 8) === "/reports") {
+    header_controller.initBasic("reports");
+    reports_controller.init(database.getData());
+    header_controller.listenForSticky();
+  }
+  task_collection_controller.setTasks(database.getData());
+  task_controller.setTasks(database.getData());
   settings_controller.initModel();
 });
 EventBus.subscribe('goToTaskList', function () {
@@ -49,11 +54,7 @@ EventBus.subscribe('goToTaskList', function () {
   header_controller.listenForSticky();
   database.updateDataBase();
 });
-EventBus.subscribe('goToReports', function () {
-  header_controller.initBasic("reports");
-  reports_controller.init();
-  header_controller.listenForSticky();
-});
+
 
 EventBus.subscribe('goToTimer', function () {
   header_controller.initBasic("tasklist");
@@ -181,6 +182,7 @@ EventBus.subscribe("showGlobalList", function () {
 
 //settings
 EventBus.subscribe('goToSettings', function () {
+  settings_controller.initModel();
   header_controller.initBasic("settings");
   settings_controller.init(true);
   settings_controller.drawGraph();
@@ -239,7 +241,16 @@ EventBus.subscribe("taskCompleted", function () {
 EventBus.subscribe("completedTaskReady", function () {
   database.updateData([database.getFIDTaskById(timer_controller.getCompletedTask().id), timer_controller.getCompletedTask()]);
 });
+EventBus.subscribe("setReportsState", function (arg) {
+  reports_controller.setState(arg);
+});
+EventBus.subscribe('goToReports', function () {
+  database.updateDataBase();
 
+});
+EventBus.subscribe('reportsNavigate', function ([time, type]) {
+  Router.Router.navigate(`/reports\/${time}\/${type}/`);
+});
 
 
 
