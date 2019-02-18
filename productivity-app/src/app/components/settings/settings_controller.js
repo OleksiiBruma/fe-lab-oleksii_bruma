@@ -8,13 +8,13 @@ export class Settings_controller {
     this.view = view;
   }
 
-  initModel(typeOfSettings) {
-    this.model.init(typeOfSettings);
+  initModel() {
+    this.model.init();
   }
 
-  init() {
+  init(typeOfSettings) {
     this.view.init(this.model.getSettingsData());
-    if (!this.model.typeOfSettings) {
+    if (!typeOfSettings) {
       this.showCategories();
     }
 

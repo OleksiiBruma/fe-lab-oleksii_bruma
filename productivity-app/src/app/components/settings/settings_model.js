@@ -5,10 +5,10 @@ export class Settings_model {
     this.settingsData = null;
   }
 
-  init(typeOfSettings) {
+  init() {
     EventBus.emit("getNewSettings")
-    this.typeOfSettings = typeOfSettings;
   }
+
 
   setSettingsData(newSettingsData) {
     if (!newSettingsData) {

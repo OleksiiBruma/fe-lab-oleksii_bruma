@@ -1,0 +1,22 @@
+<main class="page ">
+  <div class="page__item container">
+    <section class="timer timer--process">
+      <h2 class="timer__title">{{activeTask.activeTask.title}}</h2>
+      <p class="timer__description">{{activeTask.activeTask.description}}</p>
+      <div class="timer__estimates">
+
+      </div>
+      <div class="timer__dial">
+        <svg class="timer__indicator" >
+          <circle class="circle" cx="50%" cy="50%" r="105"></circle>
+        </svg>
+        <div class="timer__message"><span class="timer__time-number"> {{settingsData.workTime.settingsValue}}</span> <span class="timer__time-basic">min</span></div>
+      </div>
+      <div class="timer__buttons buttons">
+        <button class="buttons__item buttons__item--danger" data-id="fail-pomodora" type="button">Fail Pomodora</button>
+        <button class="buttons__item buttons__item--success " data-id="finish-pomodora" type="button">Finish Pomodora</button>
+      </div>
+    </section>
+  </div>
+</main>
+<script src="/bundle.js"></script>

@@ -40,6 +40,7 @@ EventBus.subscribe("databaseUpdated", function () {
   task_collection_controller.setTasks(database.getData());
   task_controller.setTasks(database.getData());
   task_controller.renderTasks(task_collection_controller.getState());
+  settings_controller.initModel();
 });
 EventBus.subscribe('goToTaskList', function () {
   header_controller.initFull("tasklist");
@@ -179,13 +180,14 @@ EventBus.subscribe("showGlobalList", function () {
 //settings
 EventBus.subscribe('goToSettings', function () {
   header_controller.initBasic("settings");
-  settings_controller.initModel(true);
+  settings_controller.init(true);
+  settings_controller.drawGraph();
   header_controller.listenForSticky();
 });
 
 EventBus.subscribe("goToSettingsCategory", function () {
   header_controller.initBasic("settings");
-  settings_controller.initModel(false);
+  settings_controller.init(false);
   header_controller.listenForSticky();
 });
 
@@ -198,10 +200,7 @@ EventBus.subscribe("getNewSettings", function () {
 });
 
 EventBus.subscribe("setNewSettings", function (data) {
-
   settings_controller.setNewSettingsData(data);
-  settings_controller.init();
-  settings_controller.drawGraph();
 });
 EventBus.subscribe("writeNewSettings", function () {
   database.updateSettingsData(settings_controller.getNewSettingsData());
@@ -216,9 +215,29 @@ EventBus.subscribe("setActiveState", function(activeTask){
   timer_controller.setActiveTask(activeTask);
 });
 EventBus.subscribe("cancelTimer",function(){
-  console.log(timer_controller.getActiveTask().id);
   task_controller.changeState([timer_controller.getActiveTask().id, "DAILY_LIST"]);
 });
+EventBus.subscribe("startTimer",function(){
+timer_controller.startTimer(settings_controller.getSettingsData());
+});
+EventBus.subscribe("increasePomodoros",function(){
+  timer_controller.increasePomodoros();
+});
+EventBus.subscribe("failPomodoro",function(){
+  timer_controller.failPomodoro(settings_controller.getSettingsData());
+});
+EventBus.subscribe("finishPomodoro",function(){
+  timer_controller.finishPomodoro(settings_controller.getSettingsData());
+});
+EventBus.subscribe("taskCompleted",function(){
+  header_controller.initBasic("tasklist");
+  timer_controller.taskCompleted(settings_controller.getSettingsData());
+  header_controller.listenForSticky();
+});
+EventBus.subscribe("completedTaskReady",function(){
+  database.updateData([database.getFIDTaskById(timer_controller.getCompletedTask().id),timer_controller.getCompletedTask()]);
+});
+
 
 
 

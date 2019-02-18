@@ -1,0 +1,31 @@
+<main class="page page--no-sticky">
+  <div class="page__item container">
+    <section class="timer timer--completed ">
+      <h2 class="timer__title">{{activeTask.activeTask.title}}</h2>
+      <p class="timer__description">{{activeTask.activeTask.description}}</p>
+      <div class="timer__estimates">
+
+      </div>
+      <div class="timer__dial">
+        <svg class="timer__indicator">
+          <circle class="circle circle--done" cx="50%" cy="50%"
+                  r="105"></circle>
+        </svg>
+        <div class="timer__message"><span class="timer__phase"></span><span
+          class="timer__time-number"></span><span class="timer__time-basic ">You Completed Task</span>
+        </div>
+      </div>
+      <a class="timer__goback arrow" data-id="tasklist" href="#">
+        <span class="arrow__item arrow__item--top"></span>
+        <span class="arrow__item arrow__item--bottom"></span>
+        <span class="sr-only">Go back</span>
+      </a>
+      <a class="timer__goback timer__goback--right  arrow" data-id="reports"href="#">
+        <span class="arrow__item arrow__item--right"></span>
+        <span class="arrow__item arrow__item--left"></span>
+        <span class="sr-only">Go to settings</span>
+      </a>
+    </section>
+  </div>
+</main>
+<script src="/bundle.js"></script>

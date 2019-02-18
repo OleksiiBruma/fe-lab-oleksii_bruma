@@ -26,7 +26,11 @@ export class Global_view {
       }
       if (e.target.classList.contains("task__indicator")) {
         e.preventDefault();
-        if(e.target.parentElement.parentElement.classList.contains("daily__tasks-list")){
+       if(e.target.parentElement.classList.contains("task--done")){
+         console.log("The task has already done");
+         return
+       }
+        else if(e.target.parentElement.parentElement.classList.contains("daily__tasks-list")){
           EventBus.emit('writeActiveState',e.target.parentElement.dataset.id);
           Router.navigate('/timer/');
           return
@@ -105,6 +109,26 @@ export class Global_view {
         e.preventDefault();
         EventBus.emit("cancelTimer");
         Router.navigate('todoList');
+      }
+      if (e.target.matches(`[data-id="start-timer"]`)) {
+        e.preventDefault();
+        EventBus.emit("startTimer");
+      }
+      if (e.target.matches(`[data-id="increase-pomodoro"]`)) {
+        e.preventDefault();
+        EventBus.emit("increasePomodoros");
+      }
+      if (e.target.matches(`[data-id="fail-pomodora"]`)) {
+        e.preventDefault();
+        EventBus.emit("failPomodoro");
+      }
+      if (e.target.matches(`[data-id="finish-pomodora"]`)) {
+        e.preventDefault();
+        EventBus.emit("finishPomodoro");
+      }
+      if (e.target.matches(`[data-id="complete-task"]`)) {
+        e.preventDefault();
+        EventBus.emit("taskCompleted");
       }
     }
 

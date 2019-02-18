@@ -14,6 +14,7 @@ export class Database {
       messagingSenderId: "231543741919"
     });
     this.alltasks = {};
+    this.settings = {};
     this.remoteTasks = firebase.database().ref("tasks");
     this.remoteSettings = firebase.database().ref("settings");
 
@@ -34,7 +35,8 @@ export class Database {
 
   getSettingsData() {
     this.remoteSettings.once("value").then((snapshot) => {
-      EventBus.emit("setNewSettings", snapshot.val());
+      this.settings = snapshot.val();
+      EventBus.emit("setNewSettings", this.settings);
     })
   }
 
@@ -42,6 +44,7 @@ export class Database {
     this.alltasks = data;
     EventBus.emit("databaseUpdated");
   }
+
 
   updateDataBase() {
     this.remoteTasks.on('value', (data) => {
@@ -68,23 +71,29 @@ export class Database {
   }
 
   updateData(arg) {
-    this.remoteTasks.child(`/${arg[0]}/`).update(arg[1]);
+    this.remoteTasks.child(`/${arg[0]}/`).update(arg[1]).then(function () {
+      console.log("Success - new data have been stored")
+    }).catch(function (error) {
+      console.log(error)
+    });
   }
-  getTask(FID){
-    this.remoteTasks.child(`/${FID}/`).once('value').then(function(task) {
-      EventBus.emit("setActiveState",task.val());
-    })}
 
-  getFIDTaskById(id,status) {
+  getTask(FID) {
+    this.remoteTasks.child(`/${FID}/`).once('value').then(function (task) {
+      EventBus.emit("setActiveState", task.val());
+    })
+  }
+
+  getFIDTaskById(id, status) {
     const tasks = this.alltasks;
     let FID = 0;
     Object.keys(tasks).forEach(function (task) {
         if (tasks[task].id === +id) {
           FID = task
         }
-      if (tasks[task].status === status) {
-        FID = task
-      }
+        if (tasks[task].status === status) {
+          FID = task
+        }
       }
     );
     return FID;

@@ -1,0 +1,21 @@
+<main class="page ">
+  <div class="page__item container">
+<section class="timer timer--break-is-over ">
+  <h2 class="timer__title">{{activeTask.activeTask.title}}</h2>
+  <p class="timer__description">{{activeTask.activeTask.description}}</p>
+  <div class="timer__estimates">
+  </div>
+  <div class="timer__dial">
+    <svg class="timer__indicator" >
+      <circle class="circle circle--done" cx="50%" cy="50%" r="105"></circle>
+    </svg>
+    <div class="timer__message"><span class="timer__time-basic timer__time-basic--brake-is-over">Break is over</span></div>
+  </div>
+  <div class="timer__buttons buttons">
+    <button class="buttons__item buttons__item--success" data-id="start-timer" type="button">Start Pomodora</button>
+    <button class="buttons__item buttons__item--info " data-id="complete-task" type="button">Finish Task</button>
+  </div>
+</section>
+  </div>
+</main>
+<script src="/bundle.js"></script>
