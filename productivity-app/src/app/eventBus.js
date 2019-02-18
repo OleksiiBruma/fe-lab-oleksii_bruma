@@ -36,10 +36,12 @@ EventBus.subscribe("renderLists", function () {
   task_collection_controller.dailyListRender();
 });
 EventBus.subscribe("databaseUpdated", function () {
-  header_controller.initFull("tasklist");
-  task_collection_controller.setTasks(database.getData());
-  task_controller.setTasks(database.getData());
-  task_controller.renderTasks(task_collection_controller.getState());
+  if (location.pathname === "/") {
+    header_controller.initFull("tasklist");
+    task_collection_controller.setTasks(database.getData());
+    task_controller.setTasks(database.getData());
+    task_controller.renderTasks(task_collection_controller.getState());
+  }
   settings_controller.initModel();
 });
 EventBus.subscribe('goToTaskList', function () {
@@ -211,31 +213,31 @@ EventBus.subscribe('writeActiveState', function (id) {
   task_controller.changeState([id, "ACTIVE"]);
   database.getTask(database.getFIDTaskById(null, "ACTIVE"));
 });
-EventBus.subscribe("setActiveState", function(activeTask){
+EventBus.subscribe("setActiveState", function (activeTask) {
   timer_controller.setActiveTask(activeTask);
 });
-EventBus.subscribe("cancelTimer",function(){
+EventBus.subscribe("cancelTimer", function () {
   task_controller.changeState([timer_controller.getActiveTask().id, "DAILY_LIST"]);
 });
-EventBus.subscribe("startTimer",function(){
-timer_controller.startTimer(settings_controller.getSettingsData());
+EventBus.subscribe("startTimer", function () {
+  timer_controller.startTimer(settings_controller.getSettingsData());
 });
-EventBus.subscribe("increasePomodoros",function(){
+EventBus.subscribe("increasePomodoros", function () {
   timer_controller.increasePomodoros();
 });
-EventBus.subscribe("failPomodoro",function(){
+EventBus.subscribe("failPomodoro", function () {
   timer_controller.failPomodoro(settings_controller.getSettingsData());
 });
-EventBus.subscribe("finishPomodoro",function(){
+EventBus.subscribe("finishPomodoro", function () {
   timer_controller.finishPomodoro(settings_controller.getSettingsData());
 });
-EventBus.subscribe("taskCompleted",function(){
+EventBus.subscribe("taskCompleted", function () {
   header_controller.initBasic("tasklist");
   timer_controller.taskCompleted(settings_controller.getSettingsData());
   header_controller.listenForSticky();
 });
-EventBus.subscribe("completedTaskReady",function(){
-  database.updateData([database.getFIDTaskById(timer_controller.getCompletedTask().id),timer_controller.getCompletedTask()]);
+EventBus.subscribe("completedTaskReady", function () {
+  database.updateData([database.getFIDTaskById(timer_controller.getCompletedTask().id), timer_controller.getCompletedTask()]);
 });
 
 
