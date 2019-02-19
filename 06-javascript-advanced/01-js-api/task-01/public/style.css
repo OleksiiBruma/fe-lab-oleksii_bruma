@@ -17,13 +17,13 @@ body{
 	display:flex;
 	flex-direction: column;
 	justify-content: flex-end;
+	opacity: 0.5;
 }
 .dropzone__title {
 	font-size:3rem;
 	text-transform: uppercase;
 	color: grey;
 	text-align: center;
-	opacity: 0.5;
 }
 .container{
 	width:48%;
@@ -53,4 +53,12 @@ body{
 	min-height: 520px;
 	width:48%;
 	border: 1px solid grey;
+}
+.dragover{
+	border:3px grey dotted;
+	opacity:1;
+}
+.dragdrop{
+	border:3px green dotted;
+	opacity:1;
 }
