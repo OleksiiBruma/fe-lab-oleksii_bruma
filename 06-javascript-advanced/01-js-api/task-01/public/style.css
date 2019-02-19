@@ -57,8 +57,26 @@ body{
 .dragover{
 	border:3px grey dotted;
 	opacity:1;
+	background: red;
 }
+
 .dragdrop{
 	border:3px green dotted;
 	opacity:1;
+}
+.dragdrop .dropzone__title{
+	display:none;
+}
+.preview__image{
+	width:150px;
+	height:150px;
+}
+.preview__card{
+	padding:1rem 0;
+	display:flex;
+	width:50%;
+	margin:0 auto;
+}
+.preview__description{
+	width:50%;
 }
