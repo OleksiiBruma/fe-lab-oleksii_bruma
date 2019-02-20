@@ -12,18 +12,36 @@ dropzone.ondrop = function (e) {
     e.preventDefault();
     this.className = "dropzone dragdrop";
     const files = e.dataTransfer.files;
+    const arrayOfFiles = Object.keys(files);
+    const cssFiles = arrayOfFiles.filter(file => files[file].type.match(/css/));
+    while (dropzone.firstChild) {
+        dropzone.removeChild(dropzone.firstChild);
+    }
+    while (results.firstChild) {
+        results.removeChild(results.firstChild);
+    }
+    if(cssFiles.length > 0){
+        const reader = new FileReader();
+        reader.readAsText(files[cssFiles[0]]);
+        reader.onload = () => {
+            const regForColors = /#(?:[a-f\d]{3}){1,2}\b|rgb\((?:(?:\s*0*(?:25[0-5]|2[0-4]\d|1?\d?\d)\s*,){2}\s*0*(?:25[0-5]|2[0-4]\d|1?\d?\d)|\s*0*(?:100(?:\.0+)?|\d?\d(?:\.\d+)?)%(?:\s*,\s*0*(?:100(?:\.0+)?|\d?\d(?:\.\d+)?)%){2})\s*\)|hsl\(\s*0*(?:360|3[0-5]\d|[12]?\d?\d)\s*(?:,\s*0*(?:100(?:\.0+)?|\d?\d(?:\.\d+)?)%\s*){2}\)|(?:rgba\((?:(?:\s*0*(?:25[0-5]|2[0-4]\d|1?\d?\d)\s*,){3}|(?:\s*0*(?:100(?:\.0+)?|\d?\d(?:\.\d+)?)%\s*,){3})|hsla\(\s*0*(?:360|3[0-5]\d|[12]?\d?\d)\s*(?:,\s*0*(?:100(?:\.0+)?|\d?\d(?:\.\d+)?)%\s*){2},)\s*0*(?:1|0(?:\.\d+)?)\s*\)/ig;
+            const regForUnits = /(\s0(px|pt|em|rem|vh|vw))/g;
+            const UniqueColors = Array.from(new Set(reader.result.match(regForColors)));
+            const UnnededUnits =Array.from(new Set(reader.result.match(regForUnits)));
+            let colors = "";
+            let units = "";
+            UniqueColors.forEach(color=> {colors +=`<pre>${color}</pre>`});
+            UnnededUnits.forEach(unit=> {units +=`<pre>${unit}</pre>`});
+            let result = `<h2>Colors</h2>${colors}<h2>Units</h2>${units}`;
+            results.insertAdjacentHTML("afterbegin",result);
+    }}
+    else {
 
     for (let key in files) {
         if (key === "length") {
             break
         }
         if (files[key].type.match(/image/)) {
-            while (dropzone.firstChild) {
-                dropzone.removeChild(dropzone.firstChild);
-            }
-            while (results.firstChild) {
-                results.removeChild(results.firstChild);
-            }
             const reader = new FileReader();
             reader.readAsDataURL(files[key]);
             reader.onload = () => {
@@ -37,7 +55,7 @@ dropzone.ondrop = function (e) {
                 dropzone.insertAdjacentHTML("afterbegin", result);
             };
         }
-    }
+    }}
     const sliceSize = 1024;
     const maxSize = getMaxSize(files);
     const progressValue = getProgressValue(sliceSize, maxSize);
@@ -47,8 +65,9 @@ dropzone.ondrop = function (e) {
     async function processArray(files) {
 
         for (const file of files) {
-            console.log(file);
-            await uploadFile(file);
+            if (file.type.match(/image/)){
+                await uploadFile(file);
+            }
         }
     }
     processArray(files);
