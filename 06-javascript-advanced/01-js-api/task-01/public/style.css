@@ -40,7 +40,7 @@ body{
 	justify-content: space-between;
 }
 .progress__bar{
-	width:10%;
+	width: 0;
 	background:blue;
 	height:20px;
 }
