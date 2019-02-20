@@ -21,6 +21,9 @@ dropzone.ondrop = function (e) {
             while (dropzone.firstChild) {
                 dropzone.removeChild(dropzone.firstChild);
             }
+            while (results.firstChild) {
+                results.removeChild(results.firstChild);
+            }
             const reader = new FileReader();
             reader.readAsDataURL(files[key]);
             reader.onload = () => {
