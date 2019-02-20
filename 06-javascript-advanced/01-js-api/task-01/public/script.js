@@ -3,7 +3,7 @@ let permision = true;
 const dropzone = document.querySelector(".dropzone");
 const progressBar = document.querySelector(".progress__bar");
 const startPauseButton = document.querySelector(".start-pause");
-
+const results = document.querySelector(".results-block");
 dropzone.ondragover = function (e) {
     e.preventDefault();
     this.className = "dropzone dragover"
@@ -103,6 +103,10 @@ dropzone.ondrop = function (e) {
                             start = JSON.parse(xhr.responseText).expectedStart;
                             resolve(start);
                         }
+                        else {imageUrl = JSON.parse(xhr.responseText).fileUrl;
+
+                            renderResults(imageUrl)
+                        }
 
                     }
                 }
@@ -112,6 +116,11 @@ dropzone.ondrop = function (e) {
         /**
          * Formalize file.slice
          */
+        function renderResults(url){
+            let image = `<a href="/${url}" target="_blank"><image class="preview__image" src="/${url}"></a>`;
+            results.insertAdjacentHTML("afterbegin", image)
+
+        }
 
         function slice(file, start, end) {
             var slice = file.mozSlice ? file.mozSlice :
