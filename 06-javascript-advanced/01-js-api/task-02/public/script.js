@@ -35,7 +35,7 @@ e.preventDefault();
     if (event.target.tagName.toLowerCase() === 'a') {
 
         const tabName = e.target.parentElement.dataset.tab;
-        const tabcontent = Array.prototype.slice.call(document.querySelectorAll(".content-block"));
+        const tabcontent = Array.prototype.slice.call(document.querySelectorAll(".content__block"));
         const tablinks = Array.prototype.slice.call(document.querySelectorAll(".tabs__item"));
 
         tabcontent.forEach((tab) => tab.style.display = "none");
@@ -46,8 +46,56 @@ e.preventDefault();
 }
 
 const nav = document.querySelector("nav");
+const content = document.querySelector(".content");
 nav.addEventListener("click", openTab);
 document.querySelector(`[data-tab="default"] a`).click();
+if (document.fullscreenEnabled) {
+    const tabcontent = Array.prototype.slice.call(document.querySelectorAll(".content__block"));
+    const button = `<button class="toggle-fullscreen">+</button>`;
+    tabcontent.forEach(content=>content.insertAdjacentHTML("beforeend",button))
+}
+function toggleHeading(block){
+    block.firstElementChild .classList.toggle("hidden");
+}
 
 
+
+
+
+function toggleFullScreen(button,block) {
+
+    if (!document.fullscreenElement) {
+        block.requestFullscreen();
+        button.innerText="-";
+        toggleHeading(block);
+    } else {
+        if (document.exitFullscreen) {
+            button.innerText="+";
+            document.exitFullscreen();
+            toggleHeading(block)
+        } else if (document.webkitExitFullscreen) {
+            button.innerText="+";
+            document.webkitExitFullscreen();
+            toggleHeading(block)
+        } else if (document.mozCancelFullScreen) {
+            button.innerText="+";
+            document.mozCancelFullScreen();
+            toggleHeading(block)
+        } else if (document.msExitFullscreen) {
+            button.innerText="+";
+            document.msExitFullscreen();
+            toggleHeading(block)
+        } else {
+            console.log('Fullscreen API is not supported.');
+        }
+    }
+}
+content.addEventListener("click", function(e) {
+    console.log(e);
+    if (e.target.classList.contains("toggle-fullscreen")) {
+        let button = e.target;
+        let block = button.parentElement;
+        toggleFullScreen(button,block);
+    }
+}, false);
 

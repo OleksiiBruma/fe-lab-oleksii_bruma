@@ -1,38 +1,41 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>JS API Part 2</title>
-    <link rel="stylesheet" href="style.css"/>
+	<meta charset="UTF-8">
+	<title>JS API Part 2</title>
+	<link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 <div class="container">
-<nav>
-    <ul class="tabs">
-        <li class="tabs__item" data-tab="default"><a href="/">Default</a></li>
-        <li class="tabs__item" data-tab="geolocation"><a href="/geolocation">Geolocation</a></li>
-        <li class="tabs__item" data-tab="synccalculation"><a href="/synccalculation">Sync calculation</a></li>
-        <li class="tabs__item" data-tab="webworker"><a href="/webworker">WebWorker</a></li>
-    </ul>
-</nav>
-<section class="content">
-    <div class="content-block" data-content="default">
-        This is default tab visible to user. Also all unresolved urls should point here.
-    </div>
-    <div class="content-block" data-content="geolocation">
-        <img src="/waiting.gif" alt="Map">
-    </div>
-    <div class="content-block" data-content="synccalculation">
-        <p>Example of long calculations that blocks page. This is example page.</p>
-
-        <p>Click on button and try to navigate to other tabs on the page or activate fullscreen.</p>
-        <button id="syncstart">Start sync calculation</button>
-        <p>Calculations result: <span id="syncresult">N/A</span></p>
-    </div>
-    <div class="content-block" data-content="webworker">
-        <p>This page should be updated normally</p>
-    </div>
-</section>
+	<nav>
+		<ul class="tabs">
+			<li class="tabs__item" data-tab="default"><a href="/">Default</a></li>
+			<li class="tabs__item" data-tab="geolocation"><a href="/geolocation">Geolocation</a></li>
+			<li class="tabs__item" data-tab="synccalculation"><a href="/synccalculation">Sync calculation</a></li>
+			<li class="tabs__item" data-tab="webworker"><a href="/webworker">WebWorker</a></li>
+		</ul>
+	</nav>
+	<section class="content">
+		<div class="content__block" data-content="default">
+			<h2 class="heading hidden">Default tab</h2>
+			This is default tab visible to user. Also all unresolved urls should point here.
+		</div>
+		<div class="content__block" data-content="geolocation">
+			<h2 class="heading hidden">Geolocation</h2>
+			<img src="/waiting.gif" alt="Map">
+		</div>
+		<div class="content__block" data-content="synccalculation">
+			<h2 class="heading hidden">Simple sync calculations</h2>
+			<p>Example of long calculations that blocks page. This is example page.</p>
+			<p>Click on button and try to navigate to other tabs on the page or activate fullscreen.</p>
+			<button id="syncstart">Start sync calculation</button>
+			<p>Calculations result: <span id="syncresult">N/A</span></p>
+		</div>
+		<div class="content__block" data-content="webworker">
+			<h2 class="heading hidden">Calculations in worker</h2>
+			<p>This page should be updated normally</p>
+		</div>
+	</section>
 </div>
 <script src="script.js"></script>
 </body>
