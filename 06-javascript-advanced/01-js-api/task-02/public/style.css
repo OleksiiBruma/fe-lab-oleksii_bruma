@@ -1,4 +1,8 @@
 /* Styles here */
+img {
+	width: 100%;
+}
+
 .container {
 	max-width: 80%;
 	margin: 0 auto;
@@ -12,8 +16,9 @@
 	position: relative;
 	min-height: 400px;
 }
-.content__block:fullscreen{
-	background:white;
+
+.content__block:fullscreen {
+	background: white;
 }
 
 .tabs {
@@ -57,8 +62,9 @@ a:visited {
 	right: 0;
 	width: 50px;
 	height: 50px;
-	font-size:40px;
+	font-size: 40px;
 }
+
 .toggle-fullscreen:fullscreen {
 	position: absolute;
 	top: 0;
@@ -66,6 +72,12 @@ a:visited {
 	width: 40px;
 	height: 50px;
 }
+
 .hidden {
-	display:none;
+	display: none;
+}
+
+.heading--maps {
+	position:absolute;
+
 }

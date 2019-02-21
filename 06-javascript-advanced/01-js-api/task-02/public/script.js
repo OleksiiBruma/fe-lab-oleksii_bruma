@@ -100,17 +100,14 @@ const Router = {
 Router.config({mode: 'history'});
 Router
     .add(/geolocation/, function () {
-        openTab("geolocation");
+        openTab((window.location.pathname).slice(1));
 
     })
     .add(/synccalculation/, function () {
-        openTab("synccalculation");
-
+        openTab((window.location.pathname).slice(1));
     })
     .add(/webworker/, function () {
-        openTab("webworker");
-
-
+        openTab((window.location.pathname).slice(1));
     })
     .add(function () {
         history.replaceState(null, null, "/");
@@ -118,6 +115,16 @@ Router
     })
     .check().listen();
 
+
+function checkUrl() {
+    if ((window.location.pathname).slice(1) === "geolocation") {
+        startWatching();
+    } else {
+        stopWatching();
+        mapLabel = 0;
+    }
+
+}
 
 const nav = document.querySelector("nav");
 const content = document.querySelector(".content");
@@ -136,7 +143,7 @@ if (document.fullscreenEnabled) {
 }
 
 content.addEventListener("click", function (e) {
-    console.log(e);
+
     if (e.target.classList.contains("toggle-fullscreen")) {
         let button = e.target;
         let block = button.parentElement;
@@ -148,6 +155,7 @@ function openTab(nameTab) {
     const tab = document.querySelector(`[data-tab="${nameTab}"]`);
     const tabcontent = Array.prototype.slice.call(document.querySelectorAll(".content__block"));
     const tablinks = Array.prototype.slice.call(document.querySelectorAll(".tabs__item"));
+    checkUrl();
     tabcontent.forEach((tab) => tab.style.display = "none");
     tablinks.forEach((link) => link.classList.remove("tabs__item--active"));
     document.querySelector(`[data-content="${nameTab}"]`).style.display = "block";
@@ -160,7 +168,6 @@ function toggleHeading(block) {
 
 
 function toggleFullScreen(button, block) {
-
     if (!document.fullscreenElement) {
         block.requestFullscreen();
         button.innerText = "-";
@@ -188,4 +195,35 @@ function toggleFullScreen(button, block) {
     }
 }
 
+const MAPLABELLIMIT = 10;
+var mapLabel = 0;
+var watchID;
+
+
+function startWatching() {
+    watchID = navigator.geolocation.watchPosition(function (position) {
+        if (mapLabel < MAPLABELLIMIT) {
+            mapLabel++;
+            //const mapSrc= getStaticMapSrc(position);
+            //renderMap(mapSrc);
+        } else {
+            stopWatching();
+        }
+    });
+}
+
+function stopWatching() {
+    navigator.geolocation.clearWatch(watchID);
+}
+
+function getStaticMapSrc(position) {
+    const lat = position.coords.latitude;
+    const long = position.coords.longitude;
+    const src = `https://maps.googleapis.com/maps/api/staticmap?size=${Math.round(window.innerWidth / 2)}x${Math.round(window.innerHeight / 2)}&scale=2&markers=label:${mapLabel}%7C${lat},${long}&key=AIzaSyCFwZS-kFutyICG5O2mB-qSAqjWY9Xhzgs`;
+    return src
+}
+
+function renderMap(src) {
+    document.querySelector(`[data-content="geolocation"] img`).src = src;
+}
 
