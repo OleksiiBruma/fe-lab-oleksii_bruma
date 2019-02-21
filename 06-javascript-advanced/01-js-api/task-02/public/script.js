@@ -29,3 +29,25 @@
         document.querySelector('#syncresult').innerHTML = computePi();
     });
 })();
+
+function openTab(e) {
+e.preventDefault();
+    if (event.target.tagName.toLowerCase() === 'a') {
+
+        const tabName = e.target.parentElement.dataset.tab;
+        const tabcontent = Array.prototype.slice.call(document.querySelectorAll(".content-block"));
+        const tablinks = Array.prototype.slice.call(document.querySelectorAll(".tabs__item"));
+
+        tabcontent.forEach((tab) => tab.style.display = "none");
+        tablinks.forEach((link) => link.classList.remove("tabs__item--active"));
+        document.querySelector(`[data-content="${tabName}"]`).style.display = "block";
+        e.target.parentElement.classList.add("tabs__item--active");
+    }
+}
+
+const nav = document.querySelector("nav");
+nav.addEventListener("click", openTab);
+document.querySelector(`[data-tab="default"] a`).click();
+
+
+

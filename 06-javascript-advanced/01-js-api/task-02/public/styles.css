@@ -1,8 +1,0 @@
-/* Styles here */
-.content {
-    border: 1px solid gray;
-}
-.content-block {
-    min-height: 400px;
-    outline: 1px solid gray; /*remove this property*/
-}
