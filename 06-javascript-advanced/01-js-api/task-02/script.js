@@ -215,7 +215,7 @@ function startWatching() {
 function stopWatching() {
     navigator.geolocation.clearWatch(watchID);
 }
-
+/*
 function getStaticMapSrc(position) {
     const lat = position.coords.latitude;
     const long = position.coords.longitude;
@@ -225,5 +225,4 @@ function getStaticMapSrc(position) {
 
 function renderMap(src) {
     document.querySelector(`[data-content="geolocation"] img`).src = src;
-}
-
+}*/
