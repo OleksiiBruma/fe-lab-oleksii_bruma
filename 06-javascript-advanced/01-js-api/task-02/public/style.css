@@ -78,6 +78,24 @@ a:visited {
 }
 
 .heading--maps {
-	position:absolute;
+	position: absolute;
 
+}
+
+.content__block--columns:fullscreen {
+	display: flex !important;
+	flex-direction: row;
+}
+
+.results {
+	width: 50%;
+	height: 500px;
+}
+
+.content__block--columns .heading {
+	position: absolute;
+}
+
+.content__block--columns:fullscreen .input-data {
+	padding: 40px 0 0 0;
 }

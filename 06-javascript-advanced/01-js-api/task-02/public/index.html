@@ -31,9 +31,18 @@
 			<button id="syncstart">Start sync calculation</button>
 			<p>Calculations result: <span id="syncresult">N/A</span></p>
 		</div>
-		<div class="content__block" data-content="webworker">
-			<h2 class="heading hidden">Calculations in worker</h2>
+		<div class="content__block content__block--columns" data-content="webworker">
+			<h2 class="heading hidden heading--left">Calculations in worker</h2>
+			<div class="input-data">
 			<p>This page should be updated normally</p>
+			<label for="iterations">Iterations</label><input id="iterations" type="number">
+			<label for="results-every">Results every</label><input id="results-every" type="number">
+			<button id="submit-data">Start async calculations</button>
+			</div>
+			<div class="results">
+				<table><th><td>Iterations</td><td>Computed</td><td>Delta</td></th></table>
+
+			</div>
 		</div>
 	</section>
 </div>
