@@ -19,6 +19,10 @@ img {
 
 .content__block:fullscreen {
 	background: white;
+	height: 100vh;
+}
+.content:fullscreen{
+	height: 100vh;
 }
 
 .tabs {
@@ -90,6 +94,10 @@ a:visited {
 .results {
 	width: 50%;
 	height: 500px;
+	overflow-x: scroll;
+}
+.content__block--columns:fullscreen .results{
+	height:100vh;
 }
 
 .content__block--columns .heading {
@@ -98,4 +106,20 @@ a:visited {
 
 .content__block--columns:fullscreen .input-data {
 	padding: 40px 0 0 0;
+}
+.content__block--columns:fullscreen{
+	height:100vh;
+}
+th{
+	background:grey;
+	border:1px solid black;
+}
+td{
+	background: lightgrey;
+	border:1px solid black;
+	padding:0.5rem;
+}
+table{
+	margin:1rem;
+	border-collapse: collapse;
 }

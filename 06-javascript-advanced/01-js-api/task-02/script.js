@@ -1,6 +1,40 @@
+(function () {
+    'use strict';
+
+    const ITERATIONS = 100000000;
+
+    const generatePoint = () => {
+        const r = 16;
+        const x = Math.random() * r * 2 - r;
+        const y = Math.random() * r * 2 - r;
+        return (Math.pow(x, 2) + Math.pow(y, 2) < Math.pow(r, 2))
+    };
+
+    const computePi = () => {
+        let inCircle = 0;
+        let i;
+        for (i = 0; i < ITERATIONS; i++) {
+            if (generatePoint()) {
+                inCircle++;
+            }
+        }
+        return inCircle / ITERATIONS * 4;
+    };
+    document.querySelector('#syncstart').addEventListener('click', function () {
+        document.querySelector('#syncresult').innerHTML = computePi();
+    });
+})();
+
 const MAPLABELLIMIT = 10;
 const ITERATIONS = 100000000;
 const RESULTSEVERY = 1000000;
+const worker = new Worker("worker.js");
+const nav = document.querySelector("nav");
+const content = document.querySelector(".content");
+let finished = true;
+let mapLabel = 0;
+let watchID;
+
 const Router = {
     routes: [],
     mode: null,
@@ -73,7 +107,6 @@ Router.config({mode: 'history'});
 Router
     .add(/geolocation/, function () {
         openTab((window.location.pathname).slice(1));
-
     })
     .add(/synccalculation/, function () {
         openTab((window.location.pathname).slice(1));
@@ -98,8 +131,6 @@ function checkUrl() {
 
 }
 
-const nav = document.querySelector("nav");
-const content = document.querySelector(".content");
 nav.addEventListener("click", function (e) {
     e.preventDefault();
     if (e.target.tagName.toLowerCase() === "a") {
@@ -166,9 +197,6 @@ function toggleFullScreen(button, block) {
         }
     }
 }
-var mapLabel = 0;
-var watchID;
-
 
 function startWatching() {
     watchID = navigator.geolocation.watchPosition(function (position) {
@@ -185,6 +213,7 @@ function startWatching() {
 function stopWatching() {
     navigator.geolocation.clearWatch(watchID);
 }
+
 /*
 function getStaticMapSrc(position) {
     const lat = position.coords.latitude;
@@ -197,15 +226,34 @@ function renderMap(src) {
     document.querySelector(`[data-content="geolocation"] img`).src = src;
 }*/
 
-const worker = new Worker("worker.js");
 
-
-function makeRequest (e){
-    const iterations = document.querySelector('#iterations').value || ITERATIONS;
-    const resultsEvery = document.querySelector('#results-every').value || RESULTSEVERY;
-    worker.postMessage({iterations:iterations,resultsEvery:resultsEvery});
+function makeRequest(e) {
+    if (finished) {
+        while (document.querySelector("table").firstElementChild) {
+            document.querySelector("table").removeChild(document.querySelector("table").firstElementChild);
+        }
+        const iterations = document.querySelector('#iterations').value || ITERATIONS;
+        const resultsEvery = document.querySelector('#results-every').value || RESULTSEVERY;
+        worker.postMessage({iterations: iterations, resultsEvery: resultsEvery});
+    }
 }
 
+function renderData(e) {
+    finished = e.data[0].finished || false;
+    console.log(e.data[0].finished);
+    const iteration = e.data[0].iteration;
+    const computed = e.data[0].computed;
+    const delta = e.data[0].delta;
+    const result = `<tr><td>${iteration}</td><td>${computed}</td><td>${delta}</td><tr/>`;
+    const tableHeading = `<tr><th>Iteration</th><th>Computed</th><th>Delta</th></tr>`;
+    if (document.querySelector("th")) {
+        document.querySelector("table").insertAdjacentHTML("beforeend", result);
+    } else {
+        document.querySelector("table").insertAdjacentHTML("beforeend", tableHeading);
+        document.querySelector("table").insertAdjacentHTML("beforeend", result);
+    }
+}
 
-//Performs synchronous calculations of Pi after click on button
+worker.addEventListener("message", renderData);
+
 document.querySelector('#submit-data').addEventListener('click', makeRequest);

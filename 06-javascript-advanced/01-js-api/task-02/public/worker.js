@@ -1,30 +1,39 @@
-self.addEventListener('message',perfomCalculation);
-function perfomCalculation(e){
-    const iterations = e.data.iterations;
-    const resultsEvery = e.data.resultsEvery;
+self.addEventListener('message', perfomCalculation);
 
-    var generatePoint = function () {
-        var r = 16;
-        var x = Math.random() * r * 2 - r;
-        var y = Math.random() * r * 2 - r;
+function perfomCalculation(e) {
+
+    const iterations = parseInt(e.data.iterations);
+    const resultsEvery = parseInt(e.data.resultsEvery);
+    const PI = Math.PI;
+
+    const generatePoint = () => {
+        const r = 16;
+        const x = Math.random() * r * 2 - r;
+        const y = Math.random() * r * 2 - r;
+
         return (Math.pow(x, 2) + Math.pow(y, 2) < Math.pow(r, 2))
     };
 
-    var computePi = function () {
-        var inCircle = 0;
-        var i;
-        for (i = 0; i < iterations; i++) {
-            if(i===0) continue;
-            if(i%resultsEvery === 0){
-                if (generatePoint()) {
-                    //return inCircle / ITERATIONS * 4;
-                    console.log({iteration:i,generatePoint:generatePoint()})
-                    //self.postMessage({data: data});
-                    inCircle++;
+    const computePi = () => {
+        let inCircle = 0;
+        let i;
+
+        for (i = 0; i <= iterations; i++) {
+            if (i === 0) continue;
+            if (generatePoint()) {
+                inCircle++;
             }
+            if (i % resultsEvery === 0) {
+                const result = inCircle / i * 4;
+                const delta = PI - result;
+
+                if (i === iterations) {
+                    self.postMessage([{iteration: i, computed: result, delta: delta, finished: true}]);
+                } else {
+                    self.postMessage([{iteration: i, computed: result, delta: delta}]);
+                }
             }
         }
     };
-
     computePi();
 }
