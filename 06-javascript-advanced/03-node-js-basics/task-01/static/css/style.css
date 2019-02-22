@@ -1,3 +1,13 @@
+body{
+	background: yellow;
+}
 h1{
+	font-size:3rem;
 	color:red;
+}
+ul{
+	list-style-type: none;
+}
+li{
+	font-size:1rem;
 }

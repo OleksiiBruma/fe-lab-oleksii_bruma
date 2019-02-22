@@ -1,20 +1,15 @@
-const index = require("./index.js");
+const modules = require("./index.js").modules;
 const http = require("http");
-var fs = require("fs");
+const fs = require("fs");
+const pug = require('pug');
+const express = require('express');
+const app = express();
+app.set("views","static");
+app.use("/",express.static("./static/"));
+app.get('/', function (req, res) {
+    const paths = modules.getFilePaths("./content");
+    const categorised = modules.sort(paths);
+    res.render('index.pug', {category:categorised});
+});
 
-function onRequest(request, response) {
-    response.writeHead(200, {"Content-Type": "text/html"});
-    fs.readFile("./../../static/index.html", null, function (error, data) {
-            if (error) {
-                response.writeHead(404);
-                response.write('File not found!');
-            } else {
-                response.write(data);
-            }
-            response.end();
-        });
-    console.log(index.walkSync("./content"));
-}
-
-http.createServer(onRequest).listen(8000);
-
+app.listen(8000);
