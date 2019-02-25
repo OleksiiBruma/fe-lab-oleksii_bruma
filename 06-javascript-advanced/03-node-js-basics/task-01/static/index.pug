@@ -6,4 +6,8 @@ html
             hi=index
             ul
                 each url in val
-                    li= url
+                        li= url
+                            a(class="button--delete button") delete
+                            a(class="button--download button" href=`${url}`) download
+
+

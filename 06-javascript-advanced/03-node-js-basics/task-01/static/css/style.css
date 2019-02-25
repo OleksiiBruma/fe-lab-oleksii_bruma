@@ -11,3 +11,11 @@ ul{
 li{
 	font-size:1rem;
 }
+.button,
+.button:active,
+.button:visited,
+.button:hover{
+	text-decoration: none;
+	color:blue;
+	margin:0 .5rem;
+}
