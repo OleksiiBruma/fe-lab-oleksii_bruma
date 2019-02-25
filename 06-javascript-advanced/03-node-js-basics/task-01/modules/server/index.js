@@ -53,19 +53,6 @@ const modules = {
             }
         });
         return sorted
-    },
-    render(files){
-        const headings = Object.keys(files);
-        headings.forEach((heading)=>{
-            const headingHTML = `<h2>${heading}</h2>`;
-            document.querySelector("body").insertAdjacentHTML("beforeend",headingHTML);
-            files[heading].forEach((filePath)=>{
-                const filePathHTML = `<pre>${filePath}<pre>`;
-                document.querySelector("body").insertAdjacentHTML("beforeend",filePathHTML);
-            })
-
-        });
-
     }
 };
 
