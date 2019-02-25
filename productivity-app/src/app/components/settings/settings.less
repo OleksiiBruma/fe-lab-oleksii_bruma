@@ -74,7 +74,11 @@
     margin: 0 auto;
     padding: 0;
     max-width: @rem*750;
+    @media screen and (max-width: @rem*700) {
+      justify-content: center;
+    }
   }
+
 
   &__caption {
     margin-top: @rem*80;
@@ -245,5 +249,10 @@
   &__long-break {
     height:@rem*10;
     background: @hobby;
+  }
+}
+.page__toggle--settings{
+  @media screen and (max-width: 600px) {
+    top: -0.5rem;
   }
 }

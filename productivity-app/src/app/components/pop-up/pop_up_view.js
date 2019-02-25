@@ -24,21 +24,22 @@ export class Pop_up_view {
   }
 
   closeSelf() {
-    document.querySelector(".modal").remove();
+    const modal = document.querySelector(".modal");
+    modal.parentNode.removeChild(modal);
   }
 
   scanProperties() {
-    const form = document.forms.modal;
-    let deadlineDate = form.deadline.value;
-    if (!isNaN(form.deadline.value)) {
+    const form = document.querySelector(".modal__form");
+    let deadlineDate = form.querySelector("#deadline").value;
+    if (!isNaN(form.querySelector("#deadline").value)) {
       deadlineDate = new Date().toISOString();
     }
     return {
-      title: form.title.value,
-      description: form.description.value,
-      categoryId: form.category.value,
-      priority: parseInt(form.priority.value),
-      estimation: parseInt(form.estimation.value),
+      title: form.querySelector("#title").value,
+      description: form.querySelector("#description").value,
+      categoryId: form.querySelector("fieldset[name=category] input:checked").value,
+      priority: parseInt(form.querySelector("fieldset[name=priority] input:checked").value),
+      estimation: parseInt(form.querySelector("fieldset[name=estimation] input:checked").value),
       deadlineDate: deadlineDate,
     }
   }

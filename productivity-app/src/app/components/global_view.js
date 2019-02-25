@@ -8,19 +8,19 @@ export class Global_view {
   addEventListeners() {
 
     function chooseTarget(e) {
-      if (e.target.matches(`[data-id="tasklist"]`)) {
+      if (e.target.dataset.id === "tasklist") {
         e.preventDefault();
         Router.navigate('');
       }
-      if (e.target.matches(`[data-id="reports"]`)) {
+      if (e.target.dataset.id === "reports") {
         e.preventDefault();
         Router.navigate('/reports/day/tasks');
       }
-      if (e.target.matches(`[data-id="settings"]`)) {
+      if (e.target.dataset.id === "settings") {
         e.preventDefault();
         Router.navigate('/settings\/pomodoros/');
       }
-      if (e.target.matches(`[data-id="tasklistfirsttime"]`)) {
+      if (e.target.dataset.id === "tasklistfirsttime") {
         e.preventDefault();
         EventBus.emit('goToTaskList');
       }
@@ -37,9 +37,11 @@ export class Global_view {
         console.log("Please drag the task to the daily list");
       }
       if (e.target.classList.contains("page__add-button")) {
+        e.preventDefault();
         EventBus.emit('addNewTask');
       }
       if (e.target.classList.contains("modal__close")) {
+        e.preventDefault();
         EventBus.emit('closeModal');
       }
       if (e.target.classList.contains("modal__submit--add")) {
@@ -50,7 +52,7 @@ export class Global_view {
         e.preventDefault();
         EventBus.emit("submitEditedTask");
       }
-      if (e.target.matches(`[data-id="globalbutton"]`)) {
+      if (e.target.dataset.id === "globalbutton") {
         EventBus.emit("toggleGlobalList");
       }
       if (e.target.classList.contains("task__shift")) {
@@ -70,7 +72,7 @@ export class Global_view {
       if (e.target.classList.contains("modal__submit--edit")) {
         EventBus.emit("submitEdit");
       }
-      if (e.target.matches(`[data-id="trash"]`)) {
+      if (e.target.dataset.id === "trash") {
         e.preventDefault();
         EventBus.emit("RemoveMode");
       }
@@ -91,41 +93,41 @@ export class Global_view {
       if (e.target.classList.contains("button--remove")) {
         EventBus.emit("submitDeleteTask")
       }
-      if (e.target.matches(`[data-id="pomodoros"]`)) {
+      if (e.target.dataset.id === "pomodoros") {
         e.preventDefault();
         Router.navigate('/settings\/pomodoros/');
       }
-      if (e.target.matches(`[data-id="category"]`)) {
+      if (e.target.dataset.id === "category") {
         e.preventDefault();
         Router.navigate('/settings\/categories/');
       }
-      if (e.target.matches(`[data-id="saveNewSettings"]`)) {
+      if (e.target.dataset.id === "saveNewSettings") {
         e.preventDefault();
         EventBus.emit("writeNewSettings");
         Router.navigate('todoList');
       }
-      if (e.target.matches(`[data-id="from-timer-to-tasklist"]`)) {
+      if (e.target.dataset.id === "from-timer-to-tasklist") {
         e.preventDefault();
         EventBus.emit("cancelTimer");
         Router.navigate('todoList');
       }
-      if (e.target.matches(`[data-id="start-timer"]`)) {
+      if (e.target.dataset.id === "start-timer") {
         e.preventDefault();
         EventBus.emit("startTimer");
       }
-      if (e.target.matches(`[data-id="increase-pomodoro"]`)) {
+      if (e.target.dataset.id === "increase-pomodoro") {
         e.preventDefault();
         EventBus.emit("increasePomodoros");
       }
-      if (e.target.matches(`[data-id="fail-pomodora"]`)) {
+      if (e.target.dataset.id === "fail-pomodora") {
         e.preventDefault();
         EventBus.emit("failPomodoro");
       }
-      if (e.target.matches(`[data-id="finish-pomodora"]`)) {
+      if (e.target.dataset.id === "finish-pomodora") {
         e.preventDefault();
         EventBus.emit("finishPomodoro");
       }
-      if (e.target.matches(`[data-id="complete-task"]`)) {
+      if (e.target.dataset.id === "complete-task") {
         e.preventDefault();
         EventBus.emit("taskCompleted");
       }
