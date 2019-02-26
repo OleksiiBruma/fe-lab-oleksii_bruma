@@ -30,6 +30,13 @@ To change view to remove mode :
 - to mark _task_ as _done_ add `task--done` modifier;
 - for remove mode add `task--delete` modifier to all `task` elements also add `task--delete-checked` modifier to the 'task' that has been checked;
 - to mark _task_ as _overdue_ add `task--overdue` modifier;
+
+**IF YOU USE IE11**
+
+Step 1: go to Tools > Internet Options > Security > Local Intranet > Sites.
+Step 2: Uncheck all checkboxes (or only a particular one, if you know how exactly your domain did end up in intranet ones).
+
+NOTE: IE uses (among other things) its proxy settings to determine local sites: if your domain is listed as excluded from proxying in proxy settings, then it will probably be treated as intranet one.
  
 
 
