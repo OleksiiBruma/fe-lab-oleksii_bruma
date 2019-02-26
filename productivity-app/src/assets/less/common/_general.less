@@ -6,6 +6,7 @@
 html, body {
   margin: 0;
   background-color: @adoration;
+  min-width: 528*@rem;
 }
 
 .sr-only {
@@ -82,7 +83,6 @@ input[type="radio"]{
   &__number {
     display: flex;
     justify-content: space-between;
-    width: @rem*100;
     margin-right: @rem*80;
     margin-left: auto;
     border-bottom: @rem*1 solid @alicante;
@@ -238,7 +238,10 @@ input[type="radio"]{
     @media screen and (max-width: 600px) {
       position: absolute;
       top:-5.4rem;
-
+      &--top-left{
+        position: absolute;
+        top: -3.4rem;
+      }
     }
   }
 

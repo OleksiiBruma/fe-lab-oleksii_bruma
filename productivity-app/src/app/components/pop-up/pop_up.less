@@ -16,6 +16,10 @@
     border-bottom: @rem*1 solid @alicante;
     margin-bottom: @rem*29;
     padding-bottom: @rem*7;
+    &--estimation{
+      display:flex;
+      justify-content:flex-start;
+    }
 
     &:last-child {
       margin-bottom: 0;
@@ -45,6 +49,7 @@
     padding: 0;
     &--pomodoro{
      direction: rtl;
+      width:116*@rem;
     }
   }
 
@@ -73,6 +78,7 @@
   &__title {
     display: inline-block;
     width: 100%;
+    direction: ltr;
     .font(@font-caption);
     color: @beefsteak;
     padding-bottom: @rem*10;
@@ -119,12 +125,17 @@
     width: @rem*20;
     height: @rem*20;
     margin: 0;
-    background: url("/images/empty-tomato.svg");
+    background: url("/images/empty-tomato.svg") no-repeat  center;
     cursor: pointer;
+    direction: ltr;
+  }
+
+  &__pomodoro{
+    direction: ltr;
   }
 
   &__pomodoro:checked ~ &__estimate {
-    background: url("/images/fill tomato.svg");
+    background: url("/images/fill tomato.svg") no-repeat  center;
   }
 
   &__close {
@@ -139,7 +150,7 @@
     &::before {
       position: absolute;
       .icon(@icon-close);
-      transform: translate(-50%, -50%);
+      transform: translate(-40%, -50%);
       font-size: @rem*20;
     }
 
@@ -170,7 +181,7 @@
     &::before {
       position: absolute;
       .icon(@icon-check);
-      transform: translate(-50%, -50%);
+      transform: translate(-40%, -50%);
       font-size: @rem*20;
     }
 

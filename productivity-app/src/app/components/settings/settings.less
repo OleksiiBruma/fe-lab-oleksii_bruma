@@ -92,6 +92,7 @@
 .number {
 
   &__input {
+    flex-basis: 3*@rem;
     flex-grow: 2;
     padding-bottom:@rem*5;
     .font(@font-paragraph);
@@ -102,25 +103,28 @@
   }
 
   &__step{
+    display:flex;
+    flex-grow:1;
     position: relative;
-    padding-bottom:@rem*5;
+    padding:0 0 @rem*5 ;
     background: none;
     border:0;
     cursor: pointer;
     color: @alicante;
+    align-self: center;
+    height: 20*@rem;
 
     &:hover{
       color: @hanover;
     }
 
     &--up{
-      padding-left: @rem*20;
-
-      &::before{
-        position: absolute;
+      padding-left:@rem*20;
+      &:before{
+        align-self: center;
+        display:block;
         .icon(@icon-add);
-        transform: translate(-50%, -50%);
-      }
+     }
     }
     &--disabled:hover {
       color:@alicante;
@@ -129,10 +133,9 @@
     &--down{
       padding-right: @rem*20;
 
-      &::before{
-        position: absolute;
+      &:before{
+        align-self: center;
         .icon(@icon-minus);
-        transform: translate(-50%, -50%);
       }
     }
   }
