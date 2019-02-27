@@ -78,4 +78,7 @@ module.exports = class Game{
 
     }
   }
+  nextLevel() {
+    this.addCount();
+  }
 };
