@@ -27,8 +27,8 @@ body {
 }
 
 .button {
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 60px;
   border-radius: 9px;
   box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.55);
   outline: none;
