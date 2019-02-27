@@ -14,3 +14,16 @@ test("consists of basic properties", ()=>{
   expect(obj.currentGame).toHaveLength(0);
   expect(obj.player).toHaveLength(0)
 });
+test("clearGame method should reset basic properties and run addCount method",()=>{
+  const obj = new Game(20);
+  document.body.innerHTML =
+      '<div class="box">' +
+      '</div>';
+  obj.addCount = ()=> true;
+  obj.clearGame();
+  expect(obj.amountOfRounds).toBe(20);
+  expect(obj.count).toBe(0);
+  expect(obj.possibilities).toHaveLength(4);
+  expect(obj.currentGame).toHaveLength(0);
+  expect(obj.player).toHaveLength(0)
+});
