@@ -85,4 +85,10 @@ module.exports = class Game{
     this.currentGame.push(this.possibilities[(Math.floor(Math.random() * 4))]);
     this.showMoves();
   }
+  addCount() {
+    this.count++;
+    document.querySelector(".counter").innerText = this.count;
+
+    this.generateMove();
+  }
 };
