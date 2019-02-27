@@ -89,6 +89,14 @@ describe('methods', () => {
     expect(obj.currentButton).toBe(".button--4");
     expect(obj.playerTurn).toHaveBeenCalledTimes(4);
     expect(obj.player).toHaveLength(4);
+  });
+  test("playerMethod when last property is not equal between player and currentGame should run newGame",()=>{
+    const obj = new Game(20);
+    obj.player=[1];
+    obj.currentGame=[2];
+    obj.newGame = jest.fn();
+    obj.playerTurn();
+    expect(obj.newGame).toHaveBeenCalled();
   })
 });
 
