@@ -19,8 +19,12 @@ test("clearGame method should reset basic properties and run addCount method",()
   document.body.innerHTML =
       '<div class="box">' +
       '</div>';
-  obj.addCount = ()=> true;
+  obj.addCount = jest.fn();
+  obj.addToPlayer = jest.fn();
   obj.clearGame();
+  document.querySelector(".box").click();
+  expect(obj.addToPlayer).toHaveBeenCalled()
+  expect(obj.addCount).toHaveBeenCalled();
   expect(obj.amountOfRounds).toBe(20);
   expect(obj.count).toBe(0);
   expect(obj.possibilities).toHaveLength(4);
