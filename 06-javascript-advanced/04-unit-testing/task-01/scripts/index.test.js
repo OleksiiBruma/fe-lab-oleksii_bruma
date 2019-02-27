@@ -141,5 +141,17 @@ describe('methods', () => {
     expect(obj.showMoves).toHaveBeenCalled();
     expect(obj.currentGame[0]).toBeLessThan(5);
   });
+  test("addCount should count++ run generateMove,",()=>{
+    const obj = new Game(20);
+    obj.count = 0;
+    obj.generateMove = jest.fn();
+    document.body.innerHTML =
+        '<div class="counter">' +
+        '</div>';
+    obj.addCount();
+    expect(obj.generateMove).toHaveBeenCalled();
+    expect(obj.count).toBe(1);
+    expect(document.querySelector(".counter").innerText).toBe(1);
+  });
 });
 
