@@ -12,4 +12,7 @@ module.exports = class Game{
     this.addCount();
     document.querySelector(".box").addEventListener("click",(e)=> this.addToPlayer(e.target.classList))
   };
+  newGame() {
+    this.clearGame();
+  }
 };
