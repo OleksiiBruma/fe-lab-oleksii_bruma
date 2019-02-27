@@ -87,8 +87,7 @@ module.exports = class Game{
   }
   addCount() {
     this.count++;
-    document.querySelector(".counter").innerText = this.count;
-
+    document.querySelector(".counter").innerHTML = this.count;
     this.generateMove();
   }
 };

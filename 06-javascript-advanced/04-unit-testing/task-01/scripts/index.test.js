@@ -151,7 +151,7 @@ describe('methods', () => {
     obj.addCount();
     expect(obj.generateMove).toHaveBeenCalled();
     expect(obj.count).toBe(1);
-    expect(document.querySelector(".counter").innerText).toBe(1);
+    expect(document.querySelector(".counter").textContent).toBe("1");
   });
 });
 
