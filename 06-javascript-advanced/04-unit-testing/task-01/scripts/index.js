@@ -81,4 +81,8 @@ module.exports = class Game{
   nextLevel() {
     this.addCount();
   }
+  generateMove() {
+    this.currentGame.push(this.possibilities[(Math.floor(Math.random() * 4))]);
+    this.showMoves();
+  }
 };
