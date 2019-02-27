@@ -35,4 +35,8 @@ module.exports = class Game{
       document.querySelector(`${field}`).classList.remove('hover');
     }, 300);
   }
+  clearPlayer() {
+    this.player = [];
+  }
+
 };
