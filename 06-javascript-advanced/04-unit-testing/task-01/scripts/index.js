@@ -6,4 +6,10 @@ module.exports = class Game{
     this.player = [];
     this.amountOfRounds = a;
   }
+  clearGame() {
+    this.currentGame = [];
+    this.count = 0;
+    this.addCount();
+    document.querySelector(".box").addEventListener("click",(e)=> this.addToPlayer(e.target.classList))
+  };
 };
