@@ -57,5 +57,20 @@ describe('methods', () => {
     obj.showMoves();
     expect(obj.clearPlayer).toHaveBeenCalled();
   });
+  test("playGame method should add and then remove hover class",()=>{
+    jest.useFakeTimers();
+
+    document.body.innerHTML =
+        '<div class="box">' +
+        '</div>';
+
+    const obj = new Game(20);
+
+    obj.playGame(".box");
+    expect(document.querySelector(".box").classList.contains("hover")).toBeTruthy();
+    expect(setTimeout).toHaveBeenCalledTimes(1);
+
+
+  });
 });
 
