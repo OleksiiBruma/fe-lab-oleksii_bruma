@@ -27,4 +27,12 @@ module.exports = class Game{
 
     this.clearPlayer();
   }
+
+  playGame(field) {
+
+    document.querySelector(`${field}`).classList.add('hover');
+    setTimeout(function () {
+      document.querySelector(`${field}`).classList.remove('hover');
+    }, 300);
+  }
 };
