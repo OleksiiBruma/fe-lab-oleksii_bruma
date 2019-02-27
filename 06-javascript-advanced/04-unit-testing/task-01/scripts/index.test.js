@@ -121,6 +121,12 @@ describe('methods', () => {
     obj.playerTurn();
     expect(alert).toHaveBeenCalled();
     expect(obj.nextLevel).toHaveBeenCalled();
+  });
+  test("nextLevel run addCount method",()=>{
+    const obj = new Game(20);
+    obj.addCount=jest.fn();
+    obj.nextLevel();
+    expect(obj.addCount).toHaveBeenCalled();
   })
 });
 
