@@ -49,7 +49,7 @@ describe('methods', () => {
     obj.newGame();
     expect(obj.clearGame).toHaveBeenCalled();
   });
-  test("method showMoves should run clearGame method playGame, currentGame, and clearPlayer",()=>{
+  test("method showMoves should run clearGame method playGame, currentGame, and clearPlayer", () => {
     const obj = new Game(20);
     obj.playGame = jest.fn();
     obj.currentGame = [1];
@@ -57,7 +57,7 @@ describe('methods', () => {
     obj.showMoves();
     expect(obj.clearPlayer).toHaveBeenCalled();
   });
-  test("playGame method should add and then remove hover class",()=>{
+  test("playGame method should add and then remove hover class", () => {
     jest.useFakeTimers();
 
     document.body.innerHTML =
@@ -69,13 +69,26 @@ describe('methods', () => {
     obj.playGame(".box");
     expect(document.querySelector(".box").classList.contains("hover")).toBeTruthy();
     expect(setTimeout).toHaveBeenCalledTimes(1);
-
-
   });
-  test("clearPlayer method should clear player property",()=>{
+  test("clearPlayer method should clear player property", () => {
     const obj = new Game(20);
     obj.clearPlayer();
     expect(obj.player).toHaveLength(0);
+  });
+  test("addToPlayer method should add target to player and run playerTurn method", () => {
+    const obj = new Game(20);
+    obj.player = [];
+    obj.playerTurn = jest.fn();
+    obj.addToPlayer("button--1");
+    expect(obj.currentButton).toBe(".button--1");
+    obj.addToPlayer("button--2");
+    expect(obj.currentButton).toBe(".button--2");
+    obj.addToPlayer("button--3");
+    expect(obj.currentButton).toBe(".button--3");
+    obj.addToPlayer("button--4");
+    expect(obj.currentButton).toBe(".button--4");
+    expect(obj.playerTurn).toHaveBeenCalledTimes(4);
+    expect(obj.player).toHaveLength(4);
   })
 });
 
