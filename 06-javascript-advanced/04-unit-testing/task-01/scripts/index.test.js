@@ -97,6 +97,30 @@ describe('methods', () => {
     obj.newGame = jest.fn();
     obj.playerTurn();
     expect(obj.newGame).toHaveBeenCalled();
+  });
+  test("playerMethod when last property is equal between player and currentGame  and currentRound equal to amount of rounds then game ends",()=>{
+    const obj = new Game(20);
+    obj.player=[1];
+    obj.currentGame=[1];
+    obj.count= 3;
+    obj.amountOfRounds = 3;
+    global.alert = jest.fn();
+    obj.newGame = jest.fn();
+    obj.playerTurn();
+    expect(alert).toHaveBeenCalled();
+  });
+  test("playerMethod when last property is equal between player and currentGame  and currentRound not equal to amount of rounds then game ends",()=>{
+    const obj = new Game(20);
+    obj.player=[1];
+    obj.currentGame=[1];
+    obj.count= 2;
+    obj.amountOfRounds = 3;
+    obj.nextLevel = jest.fn();
+    global.alert = jest.fn();
+    obj.newGame = jest.fn();
+    obj.playerTurn();
+    expect(alert).toHaveBeenCalled();
+    expect(obj.nextLevel).toHaveBeenCalled();
   })
 });
 
