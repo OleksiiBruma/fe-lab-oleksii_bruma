@@ -72,5 +72,10 @@ describe('methods', () => {
 
 
   });
+  test("clearPlayer method should clear player property",()=>{
+    const obj = new Game(20);
+    obj.clearPlayer();
+    expect(obj.player).toHaveLength(0);
+  })
 });
 
