@@ -45,8 +45,17 @@ describe('methods', () => {
   test("method newGame should run clearGame method", () => {
     const obj = new Game(20);
     obj.clearGame = jest.fn();
-    
+
     obj.newGame();
     expect(obj.clearGame).toHaveBeenCalled();
-  })
+  });
+  test("method showMoves should run clearGame method playGame, currentGame, and clearPlayer",()=>{
+    const obj = new Game(20);
+    obj.playGame = jest.fn();
+    obj.currentGame = [1];
+    obj.clearPlayer = jest.fn();
+    obj.showMoves();
+    expect(obj.clearPlayer).toHaveBeenCalled();
+  });
 });
+
