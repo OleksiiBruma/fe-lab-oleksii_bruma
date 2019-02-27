@@ -15,4 +15,16 @@ module.exports = class Game{
   newGame() {
     this.clearGame();
   }
+  showMoves() {
+    let i = 0;
+    let moves = setInterval(function () {
+      this.playGame(this.currentGame[i]);
+      i++;
+      if (i >= this.currentGame.length) {
+        clearInterval(moves);
+      }
+    }.bind(this), 600);
+
+    this.clearPlayer();
+  }
 };
