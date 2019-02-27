@@ -66,7 +66,16 @@ module.exports = class Game{
       this.newGame();
     } else {
 
-     
+      var check = this.player.length === this.currentGame.length;
+      if (check) {
+        if (this.count === this.amountOfRounds) {
+          alert('You won! Congrats.');
+        } else {
+          alert('Next round!');
+          this.nextLevel();
+        }
+      }
+
     }
   }
 };
