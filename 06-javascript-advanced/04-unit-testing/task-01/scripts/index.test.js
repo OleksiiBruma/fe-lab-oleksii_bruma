@@ -23,11 +23,18 @@ test("clearGame method should reset basic properties and run addCount method",()
   obj.addToPlayer = jest.fn();
   obj.clearGame();
   document.querySelector(".box").click();
-  expect(obj.addToPlayer).toHaveBeenCalled()
+  expect(obj.addToPlayer).toHaveBeenCalled();
   expect(obj.addCount).toHaveBeenCalled();
   expect(obj.amountOfRounds).toBe(20);
   expect(obj.count).toBe(0);
   expect(obj.possibilities).toHaveLength(4);
   expect(obj.currentGame).toHaveLength(0);
   expect(obj.player).toHaveLength(0)
+});
+test("method newGame should run clearGame method",()=>{
+  const obj = new Game(20);
+  obj.addCount = jest.fn();
+  obj.clearGame  = jest.fn();
+  obj.newGame();
+  expect(obj.clearGame).toHaveBeenCalled();
 });
