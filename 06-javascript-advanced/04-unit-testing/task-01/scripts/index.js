@@ -58,8 +58,15 @@ module.exports = class Game{
         break;
     }
 
-
     this.player.push(this.currentButton);
     this.playerTurn(this.currentButton);
+  }
+  playerTurn() {
+    if (this.player[this.player.length - 1] !== this.currentGame[this.player.length - 1]) {
+      this.newGame();
+    } else {
+
+     
+    }
   }
 };
