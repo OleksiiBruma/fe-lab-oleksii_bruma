@@ -38,5 +38,28 @@ module.exports = class Game{
   clearPlayer() {
     this.player = [];
   }
+  addToPlayer(target) {
+    const field = target;
 
+
+    switch(true) {
+      case field.includes("button--1"):
+        this.currentButton = ".button--1";
+        break;
+
+      case field.includes("button--2"):
+        this.currentButton = ".button--2";
+        break;
+      case field.includes("button--3"):
+        this.currentButton = ".button--3";
+        break;
+      case field.includes("button--4"):
+        this.currentButton = ".button--4";
+        break;
+    }
+
+
+    this.player.push(this.currentButton);
+    this.playerTurn(this.currentButton);
+  }
 };
