@@ -79,6 +79,7 @@ describe('methods', () => {
     const obj = new Game(20);
     obj.player = [];
     obj.playerTurn = jest.fn();
+
     obj.addToPlayer("button--1");
     expect(obj.currentButton).toBe(".button--1");
     obj.addToPlayer("button--2");
@@ -95,6 +96,7 @@ describe('methods', () => {
     obj.player=[1];
     obj.currentGame=[2];
     obj.newGame = jest.fn();
+
     obj.playerTurn();
     expect(obj.newGame).toHaveBeenCalled();
   });
@@ -106,6 +108,7 @@ describe('methods', () => {
     obj.amountOfRounds = 3;
     global.alert = jest.fn();
     obj.newGame = jest.fn();
+
     obj.playerTurn();
     expect(alert).toHaveBeenCalled();
   });
@@ -118,6 +121,7 @@ describe('methods', () => {
     obj.nextLevel = jest.fn();
     global.alert = jest.fn();
     obj.newGame = jest.fn();
+
     obj.playerTurn();
     expect(alert).toHaveBeenCalled();
     expect(obj.nextLevel).toHaveBeenCalled();
@@ -127,6 +131,15 @@ describe('methods', () => {
     obj.addCount=jest.fn();
     obj.nextLevel();
     expect(obj.addCount).toHaveBeenCalled();
-  })
+  });
+  test("generateMove should push new value from 1 to 4 to the currentGame and run showMoves",()=>{
+    const obj = new Game(20);
+    obj.showMoves = jest.fn();
+    obj.currentGame = [];
+    obj.possibilities = [1,2,3,4];
+    obj.generateMove();
+    expect(obj.showMoves).toHaveBeenCalled();
+    expect(obj.currentGame[0]).toBeLessThan(5);
+  });
 });
 
