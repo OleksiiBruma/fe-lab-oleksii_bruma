@@ -1,4 +1,4 @@
-module.exports = class Game{
+class Game{
   constructor(a) {
     this.count = 0;
     this.possibilities = ['.button--1', '.button--2', '.button--3', '.button--4'];
@@ -10,7 +10,8 @@ module.exports = class Game{
     this.currentGame = [];
     this.count = 0;
     this.addCount();
-    document.querySelector(".box").addEventListener("click",(e)=> this.addToPlayer(e.target.classList))
+    document.querySelector(".box").removeEventListener("click",(e)=> this.addToPlayer(e.target.classList));
+    document.querySelector(".box").addEventListener("click",(e)=> this.addToPlayer(e.target.classList));
   };
   newGame() {
     this.clearGame();
@@ -39,30 +40,37 @@ module.exports = class Game{
     this.player = [];
   }
   addToPlayer(target) {
-    const field = target;
+    const field = [...target];
 
 
     switch(true) {
       case field.includes("button--1"):
         this.currentButton = ".button--1";
+        this.player.push(this.currentButton);
+        this.playerTurn(this.currentButton);
         break;
 
       case field.includes("button--2"):
         this.currentButton = ".button--2";
+        this.player.push(this.currentButton);
+        this.playerTurn(this.currentButton);
         break;
       case field.includes("button--3"):
         this.currentButton = ".button--3";
+        this.player.push(this.currentButton);
+        this.playerTurn(this.currentButton);
         break;
       case field.includes("button--4"):
         this.currentButton = ".button--4";
+        this.player.push(this.currentButton);
+        this.playerTurn(this.currentButton);
         break;
     }
 
-    this.player.push(this.currentButton);
-    this.playerTurn(this.currentButton);
   }
   playerTurn() {
     if (this.player[this.player.length - 1] !== this.currentGame[this.player.length - 1]) {
+      alert("You lose!");
       this.newGame();
     } else {
 
@@ -90,4 +98,8 @@ module.exports = class Game{
     document.querySelector(".counter").innerHTML = this.count;
     this.generateMove();
   }
-};
+}
+const game = new Game();
+game.newGame();
+
+module.exports.Game = Game;

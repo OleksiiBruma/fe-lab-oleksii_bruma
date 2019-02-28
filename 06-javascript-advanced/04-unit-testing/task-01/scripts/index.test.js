@@ -22,7 +22,10 @@ describe('class', () => {
   });
 });
 describe('methods', () => {
-
+  beforeEach(() => {
+    document.body.innerHTML =
+        '<div class="counter"></div>';
+  });
   test("clearGame method should reset basic properties and run addCount method", () => {
     const obj = new Game(20);
 
@@ -142,12 +145,10 @@ describe('methods', () => {
     expect(obj.currentGame[0]).toBeLessThan(5);
   });
   test("addCount should count++ run generateMove,",()=>{
+
     const obj = new Game(20);
     obj.count = 0;
     obj.generateMove = jest.fn();
-    document.body.innerHTML =
-        '<div class="counter">' +
-        '</div>';
     obj.addCount();
     expect(obj.generateMove).toHaveBeenCalled();
     expect(obj.count).toBe(1);
