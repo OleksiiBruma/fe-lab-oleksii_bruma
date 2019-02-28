@@ -43,6 +43,14 @@ label[for="info_block"] {
 	padding: 0 20px 0 0;
 }
 
+#txtArea {
+	height: 80px;
+	width: 493px;
+	max-height: 100px;
+	max-width: 493px;
+
+}
+
 #details p {
 	padding: 0;
 	margin: 0;
@@ -90,4 +98,11 @@ label[for="info_block"] {
 	position: absolute;
 	top: 130px;
 	right: 40px;
+}
+
+.successHolder {
+	width: 200px;
+	position: absolute;
+	height: 100px;
+	background: white;
 }

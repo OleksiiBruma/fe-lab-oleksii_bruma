@@ -1,36 +1,7 @@
-DESCRIPTION:
+Step 1: `npm install`;
 
-Task has two parts:
-- part 1 - Refactor existing code, add docs
-- part 2 - Cover refactored code with unit tests
+Step 2: `npm run doc` to generate documentation. The output will be out/index.html;
 
-NOTE: The parts will be evaluated separately (like separate tasks)
-
-
-Part 1
-
-REQUIREMENTS:
-
-Rewrite existing code to make it more understandable, supportable, testable and clear.
-Support Chrome.
-
-For js use:
-- conventional approaches and avoid hardcode, code repeating etc
-- single responsibility principle
-- patterns: DRY, KISS and YAGNI
-- documentation; cover code with docs, add script to generate documentation
-- linting utility ESLint [ESLint getting started](https://eslint.org/docs/user-guide/getting-started)
-- README.md - how to start the app, how to generate docs
-
-Refactoring of JavaScript code is obligatory, html and css - as a bonus task
-
-
-SOURCES:
-
-* jquery-2.1.4.min.js
-* index.html
-* styles.css
-* main.js
 
 
 Part 2

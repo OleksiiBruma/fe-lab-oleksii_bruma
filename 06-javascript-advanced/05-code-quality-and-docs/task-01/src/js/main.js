@@ -1,87 +1,126 @@
 'use strict';
 
-
-var body = document.querySelectorAll('html body');
-var checkbox = document.getElementById('details_block');
-
-$(function () {
-    var open_details =function open_detailsFunction(){
-        var temporary = $(body).find('.form-holderArea .formMain #details_block');
-        temporary.after("<div class=\"details\" id=\"details\"><p><textarea style=width:493px; id=\"txtArea\"></textarea></p></div>");
-        $(body).find('.form-holderArea .formMain #txtArea').css('width: 420px');
-        $('#txtArea').height('80px')
-        $('#txtArea').css('max-height', '100px');
-        $('#txtArea').css('max-width', '493px')
-        $('#txtArea').css('min-width', '493px');
+/**
+ * Represents a form.
+ * @class
+ */
+class Form {
+  /**
+   * Represents a book.
+   * @constructor
+   */
+  constructor() {
+    this.checkbox = $('#details_block');
+    this.checkbox.checked = false;
+    this.body = $('body');
+    this.name = $('#name');
+    this.secondName = $('#second_name');
+    this.submitButton = $('.SubmitButton');
+    this.openDetails = this.openDetails.bind(this);
+    this.isCheckboxClicked = this.isCheckboxClicked.bind(this);
+    this.doSubmit = this.doSubmit.bind(this);
+    this.closeSubmitted = this.closeSubmitted.bind(this);
+    this.showErrorName = this.showErrorName.bind(this);
+    this.showErrorSecondName = this.showErrorSecondName.bind(this);
+    this.initializeCloseButton = this.initializeCloseButton.bind(this);
+  }
+  /**
+   * Method that opens details window
+   * @method
+   */
+  openDetails() {
+    this.checkbox.after('<div class=\'details\' id=\'details\'><p>' +
+        '<textarea id=\'txtArea\'></textarea></p></div>');
+    this.details = $('.details');
+  }
+  /**
+   * Method that checks whether checkbox
+   * @method
+   */
+  isCheckboxClicked() {
+    if (this.checkbox.is(':checked')) {
+      this.openDetails();
+    } else {
+      this.details.remove();
     }
-
-    //
-    checkbox.checked= false;
-
-    function is_checkbox_clicked  (){
-        if($('#details_block').is(':checked')){ open_details();}
-        else {
-            var k = document.getElementsByClassName('details');
-            $(k).remove();
-        }
+  }
+  /**
+   * Method that closes submitted
+   * @method
+   */
+  closeSubmitted() {
+    this.successPopup.remove();
+    this.successHolder.remove();
+  }
+  /**
+   * Method that initializes close button
+   * @method
+   */
+  initializeCloseButton() {
+    this.closeButton = $('.close-button');
+    this.closeButton.on('click', this.closeSubmitted);
+  }
+  /**
+   * Method that show error when name`s length less then 3
+   * @method
+   * @return {boolean}
+   */
+  showErrorName() {
+    if (this.name.val().length < 3) {
+      this.name.addClass('error');
+    } else {
+      this.name.removeClass('error');
+      return true;
     }
+  }
+  /**
+   * Method that show error when second name`s length less then 3
+   * @method
+   * @return {boolean}
+   */
+  showErrorSecondName() {
+    if (this.secondName.val().length < 3) {
+      this.secondName.addClass('error');
+    } else {
+      this.secondName.removeClass('error');
+      return true;
+    }
+  };
+  /**
+   * Method that show error when name`s length less then 3
+   * @method
+   * @param {object} e for preventing default action.
+   */
+  doSubmit(e) {
+    e.preventDefault();
+    if (this.showErrorName() && this.showErrorSecondName()) {
+      this.body.append('<div class=\'success-PopUpOverlay\' ' +
+          'id=\'success-PopUpOverlay\'></div>' +
+          '<div class=\'successHolder\'>' +
+          '<span class="successHolder__name">' +
+          '</span>thanks for your request!</div>');
+      this.successPopup = $('#success-PopUpOverlay');
+      this.successHolder = $('.successHolder');
+      this.successHolderName = $('.successHolder__name');
+      this.successHolder.append('<button ' +
+          'class=\'close-button\'>Close</button>');
+      this.successHolderName.html(this.name.val() +
+          ',<br><br>');
+      this.initializeCloseButton();
+    }
+  }
+  /**
+   * Method that initializes listeners
+   * @method
+   */
+  initListeners() {
+    this.name.on('change', this.showErrorName);
+    this.secondName.on('change', this.showErrorSecondName);
+    this.submitButton.on('click', this.doSubmit);
+    this.checkbox.on('click', this.isCheckboxClicked);
+  }
+}
 
-    $('#name').on('change', function( ){
-    if ($('#name').val().length < 3){
-            $('#name').addClass('error');
-        }else {
-            $('#name').removeClass('error');
-        }
-    });
+const form = new Form();
+form.initListeners();
 
-    $('#second_name').on('change',function() {
-        if ($('#second_name').val().length < 3) {
-            $('#second_name').addClass('error');
-        } else{
-            $('#second_name').removeClass('error');
-        }
-    });
-
-
-    $('.SubmitButton').click(function( e ) {
-
-        e.preventDefault();
-
-        if($('#name').val().length < 3){
-            $('#name').addClass('error');
-        }else {
-            $('#name').removeClass('error');}
-
-        if  ( $('#second_name').val().length < 3){
-            $('#second_name').addClass('error');
-        } else{
-            $('#second_name').removeClass('error');
-        }
-
-        if($('#name').val().length >= 3 && $('#second_name').val().length >= 3){
-
-            $('body').append('<div class="success-PopUpOverlay" id=\"success-PopUpOverlay\"></div><div class="successHolder"><span></span>thanks for your request!</div>');
-            $('body').find('.successHolder').append('<button>Close</button>');
-            $('body').find('.successHolder > span').html($('#name').val() + ',<br><br>');
-
-
-            initializeClose_button();
-            var css_properties ={"width": "200px", "position": "absolute", "height": "100px", "background": "white"}
-
-            $('.successHolder').css(css_properties);
-
-
-        }
-    });
-
-    /* initializing close button*/
-    function initializeClose_button(){
-        $('html body .successHolder button').click(function(){
-            $('#success-PopUpOverlay').remove();
-            $('.successHolder').remove();
-        });
-    };
-
-    $('#details_block').on('click', is_checkbox_clicked);
-
-});
