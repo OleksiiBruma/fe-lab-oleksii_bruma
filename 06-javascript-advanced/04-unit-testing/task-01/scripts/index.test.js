@@ -1,4 +1,4 @@
-const Game = require('./index.js');
+import Game  from './index.js' ;
 describe('class', () => {
 
   test("handle clean game", () => {

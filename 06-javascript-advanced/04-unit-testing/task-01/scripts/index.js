@@ -1,4 +1,4 @@
-class Game{
+export default class Game{
   constructor(a) {
     this.count = 0;
     this.possibilities = ['.button--1', '.button--2', '.button--3', '.button--4'];
@@ -10,8 +10,8 @@ class Game{
     this.currentGame = [];
     this.count = 0;
     this.addCount();
-    document.querySelector(".box").removeEventListener("click",(e)=> this.addToPlayer(e.target.classList));
-    document.querySelector(".box").addEventListener("click",(e)=> this.addToPlayer(e.target.classList));
+    document.querySelector(".box").removeEventListener("click",(e)=> this.addToPlayer(e.target.className));
+    document.querySelector(".box").addEventListener("click",(e)=> this.addToPlayer(e.target.className));
   };
   newGame() {
     this.clearGame();
@@ -40,9 +40,7 @@ class Game{
     this.player = [];
   }
   addToPlayer(target) {
-    const field = [...target];
-
-
+    const field = target;
     switch(true) {
       case field.includes("button--1"):
         this.currentButton = ".button--1";
@@ -98,8 +96,8 @@ class Game{
     document.querySelector(".counter").innerHTML = this.count;
     this.generateMove();
   }
-}
-const game = new Game();
-game.newGame();
+};
 
-module.exports.Game = Game;
+ //const game = new Game();
+ //game.newGame();
+
