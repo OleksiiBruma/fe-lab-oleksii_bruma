@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "DESCRIPTION:",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "jquery": "^3.3.1"
+  },
   "devDependencies": {
+    "@babel/preset-env": "^7.3.4",
     "eslint": "^5.14.1",
     "eslint-config-google": "^0.12.0",
     "eslint-config-standard": "^12.0.0",
@@ -12,11 +15,13 @@
     "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
+    "babel-plugin-add-module-exports": "^1.0.0",
+    "jest": "^24.1.0",
     "jsdoc": "^3.5.5"
   },
   "scripts": {
-    "doc": "npx jsdoc src/js/main.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --coverage",
+    "doc": "npx jsdoc src/js/main.js"
   },
   "keywords": [],
   "author": "",

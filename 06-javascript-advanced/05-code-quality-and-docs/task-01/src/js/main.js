@@ -1,10 +1,10 @@
 'use strict';
-
+const $ = require('jquery');
 /**
  * Represents a form.
  * @class
  */
-class Form {
+export default class App {
   /**
    * Represents a book.
    * @constructor
@@ -121,6 +121,6 @@ class Form {
   }
 }
 
-const form = new Form();
-form.initListeners();
+// const app = new App();
+// app.initListeners();
 
