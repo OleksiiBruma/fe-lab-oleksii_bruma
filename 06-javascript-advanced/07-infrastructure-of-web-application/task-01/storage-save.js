@@ -1,12 +1,14 @@
 Storage.save = (key, value,
-     storageType = Storage.LOCAL_STORAGE, callback)=> {
+                storageType = Storage.LOCAL_STORAGE, callback) => {
+  if (hasStorage(storageType)) {
+    return
+  }
   try {
     if (!callback && storageType === 'IDB') {
       throw 'callback is required';
     }
 
-  }
-  catch(err) {
+  } catch (err) {
     console.error(err);
   }
   if (callback) {
@@ -21,19 +23,25 @@ Storage.save = (key, value,
               sessionStorage.setItem(key, JSON.stringify(value));
               resolve('saved');
               break;
-            case 'IDB':
-              resolve('saved');
-              break;
-            default:
-              alert('Please specify correct type');
           }
-
         });
     promise
         .then(
             result => callback(result)
-        )
+        );
   }
+    if (storageType === 'IDB' && callback) {
+     const request = Storage._IDB_CONNECTION();
+     request.onupgradeneeded = ()=>{
+       const db = event.target.result;
+       const objectStore = db.createObjectStore('store', {
+         autoIncrement: false
+       });
+       objectStore.add(value,key);
+     };
+      request.onsuccess = ()=>{
+      callback();
+      }
 
-
+    }
 };

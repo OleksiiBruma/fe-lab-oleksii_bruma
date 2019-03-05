@@ -1,4 +1,7 @@
 Storage.getAll = (storageType = Storage.LOCAL_STORAGE, callback) => {
+  if(hasStorage(storageType)) {
+    return
+  }
   try {
     if (!callback && storageType === 'IDB') {
       throw 'callback is required';
@@ -19,7 +22,6 @@ Storage.getAll = (storageType = Storage.LOCAL_STORAGE, callback) => {
   }
   if (callback) {
 
-
     let promise = new Promise(
         function (resolve, reject) {
           switch (storageType) {
@@ -39,6 +41,18 @@ Storage.getAll = (storageType = Storage.LOCAL_STORAGE, callback) => {
         .then(
             result => callback(result)
         )
+  }
+  if (storageType === 'IDB' && callback) {
+    const request = Storage._IDB_CONNECTION();
+    request.onsuccess = () => {
+      const db = event.target.result;
+      const tx = db.transaction('store');
+      const store = tx.objectStore('store');
+      const getRequest = store.getAll();
+      getRequest.onsuccess = (event) => {
+        callback(getRequest.result);
+      }
+    };
   }
   return value;
 };
