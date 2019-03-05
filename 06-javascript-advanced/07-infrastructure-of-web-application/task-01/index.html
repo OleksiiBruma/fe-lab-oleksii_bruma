@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<script src="dist/storage.min.js"></script>
+<script src="dist/storage-min.js"></script>
 <script>
     Storage.save('myKey1', { prop: 'someObjProp' }, Storage.LOCAL_STORAGE); // saves object to localStorage
 
@@ -26,6 +26,5 @@
     Storage.get('myKey2', Storage.INDEXED_DB); // throws exception -  callback is required
     Storage.get('myKey2', Storage.INDEXED_DB, (value) => { console.log('myKey2', value); }); // asynchronously logs 'myKey2' and 'value'
 </script>
-
 </body>
 </html>

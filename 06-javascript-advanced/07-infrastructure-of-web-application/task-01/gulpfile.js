@@ -9,12 +9,13 @@ const minify = require('gulp-minify');
 function lint(){
   return src(['./*.js','!./gulpfile.js'])
 .pipe(eslint({
-  "parserOptions": { "ecmaVersion": 6},
+  "parserOptions": { "ecmaVersion": 6,
+    "sourceType" : "module"},
     'rules':{
       'quotes': ["error", "single"],
       'space-before-blocks': "error",
       'no-var': "error",
-      'max-len': ["error",{"code":60}],
+      'max-len': ["error",{"code":80}],
     }
   }))
       .pipe(eslint.format())
@@ -22,7 +23,7 @@ function lint(){
 }
 function css() {
   return src('styles/*.css')
-      .pipe(concat('styles.min.css'))
+      .pipe(concat('storage.min.css'))
       .pipe(autoprefixer({
         browsers: ['last 2 versions'],
         cascade: false
