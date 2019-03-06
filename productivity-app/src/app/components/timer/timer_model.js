@@ -1,4 +1,5 @@
-import {EventBus} from "../../eventBus";
+import { EventBus } from '../../eventBus';
+
 export class Timer_model {
   controller() {
     this.activeTask = null;
@@ -11,38 +12,42 @@ export class Timer_model {
     this.completedCount = [];
     this.failedPomodoros = [];
   }
-  increaseEstimation(){
+
+  increaseEstimation() {
     this.estimation++;
   }
-  failPomodoro(){
+
+  failPomodoro() {
     this.currentPomodoro++;
     this.failedPomodoros.push(this.currentPomodoro);
   }
-  finishPomodoro(){
+
+  finishPomodoro() {
     this.currentPomodoro++;
     this.completedCount.push(this.currentPomodoro);
   }
-  taskCompleted(){
+
+  taskCompleted() {
     this.estimation = this.completedCount.length + this.failedPomodoros.length;
     this.activeTask.completedCount = this.completedCount;
     this.activeTask.failedPomodoros = this.failedPomodoros;
-    this.activeTask.status = "COMPLETED";
+    this.activeTask.status = 'COMPLETED';
     this.activeTask.completeDate = new Date();
-    EventBus.emit("completedTaskReady");
+    EventBus.emit('completedTaskReady');
   }
-  getCompletedTask(){
+
+  getCompletedTask() {
     return this.activeTask;
   }
 
 
-
   getActiveTask() {
     return {
-      activeTask :this.activeTask,
-      estimation :this.estimation,
-      currentPomodoro:this.currentPomodoro,
-      completedCount:this.completedCount,
-      failedPomodoros:this.failedPomodoros,
-    }
+      activeTask: this.activeTask,
+      estimation: this.estimation,
+      currentPomodoro: this.currentPomodoro,
+      completedCount: this.completedCount,
+      failedPomodoros: this.failedPomodoros,
+    };
   }
 }
