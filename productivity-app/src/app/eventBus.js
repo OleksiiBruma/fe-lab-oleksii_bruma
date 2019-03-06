@@ -88,9 +88,7 @@ EventBus.subscribe("submitEdit", function () {
 EventBus.subscribe('toggleGlobalList', function () {
   task_collection_controller.toggleGlobalList();
 });
-EventBus.subscribe("deleteAllData", function () {
-  database.removeAllData();
-});
+
 EventBus.subscribe("globalToDaily", function ([id, status]) {
   task_controller.changeState([id, status]);
 });

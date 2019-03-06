@@ -9,9 +9,6 @@ class Global_controller {
   }
   init(){
     this.view.addEventListeners();
-    if(sessionStorage.length === 0){
-      EventBus.emit("deleteAllData");
-    }
   }
 }
 export const global_controller = new Global_controller(new Global_view(), new Global_model());
