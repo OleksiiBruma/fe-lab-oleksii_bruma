@@ -88,7 +88,8 @@ module.exports = {
   'devServer': {
     'historyApiFallback': true,
     'contentBase': './dist',
-    'port': 3000
+    'port': 3000,
+    'host': '192.168.1.102',
   },
   'devtool': 'eval-source-map'
 }

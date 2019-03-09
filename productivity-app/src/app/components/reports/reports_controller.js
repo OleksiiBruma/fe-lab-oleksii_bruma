@@ -34,10 +34,9 @@ export class Reports_controller {
 
   clearRawData() {
     this.rawData = {
-      date: null,
       urgent: 0,
       high: 0,
-      medium: 0,
+      middle: 0,
       low: 0,
       failed: 0,
     };
@@ -52,7 +51,7 @@ export class Reports_controller {
         this.rawData.high += 1;
         break;
       case 3:
-        this.rawData.medium += 1;
+        this.rawData.middle += 1;
         break;
       case 4:
         this.rawData.low += 1;
@@ -69,7 +68,7 @@ export class Reports_controller {
         this.rawData.high = Number(tasks[task].completedCount.length);
         break;
       case 3:
-        this.rawData.medium = Number(tasks[task].completedCount.length);
+        this.rawData.middle = Number(tasks[task].completedCount.length);
         break;
       case 4:
         this.rawData.low = Number(tasks[task].completedCount.length);
@@ -113,10 +112,9 @@ export class Reports_controller {
     const readyData = [];
     const preparedTasks = this.getAllPreparedTasksbyTasks(tasks);
     preparedTasks.filter(task => task.date === today).forEach((task) => {
-      this.rawData.date = task.date;
       this.rawData.urgent += task.urgent;
       this.rawData.high += task.high;
-      this.rawData.medium += task.medium;
+      this.rawData.middle += task.middle;
       this.rawData.low += task.low;
       this.rawData.failed += task.failed;
     });
@@ -130,10 +128,9 @@ export class Reports_controller {
     const readyData = [];
     const preparedTasks = this.getPreparedAllTasksByPomodoros(tasks);
     preparedTasks.filter(task => task.date === today).forEach((task) => {
-      this.rawData.date = task.date;
       this.rawData.urgent += task.urgent;
       this.rawData.high += task.high;
-      this.rawData.medium += task.medium;
+      this.rawData.middle += task.middle;
       this.rawData.low += task.low;
       this.rawData.failed += task.failed;
     });
@@ -151,14 +148,14 @@ export class Reports_controller {
         date: currentDay,
         urgent: 0,
         high: 0,
-        medium: 0,
+        middle: 0,
         low: 0,
         failed: 0
       };
       preparedTasks.filter(task => task.date === currentDay).forEach((task) => {
         currentTask.urgent += task.urgent;
         currentTask.high += task.high;
-        currentTask.medium += task.medium;
+        currentTask.middle += task.middle;
         currentTask.low += task.low;
         currentTask.failed += task.failed;
 
@@ -179,14 +176,14 @@ export class Reports_controller {
         date: currentDay,
         urgent: 0,
         high: 0,
-        medium: 0,
+        middle: 0,
         low: 0,
         failed: 0,
       };
       preparedTasks.filter(task => task.date === currentDay).forEach((task) => {
         currentTask.urgent += task.urgent;
         currentTask.high += task.high;
-        currentTask.medium += task.medium;
+        currentTask.middle += task.middle;
         currentTask.low += task.low;
         currentTask.failed += task.failed;
       });
@@ -204,14 +201,14 @@ export class Reports_controller {
         date: currentDayMonth,
         urgent: 0,
         high: 0,
-        medium: 0,
+        middle: 0,
         low: 0,
         failed: 0,
       };
       preparedTasks.filter(task => task.date === currentDayMonth).forEach((task) => {
         currentTask.urgent += task.urgent;
         currentTask.high += task.high;
-        currentTask.medium += task.medium;
+        currentTask.middle += task.middle;
         currentTask.low += task.low;
         currentTask.failed += task.failed;
       });
@@ -229,20 +226,82 @@ export class Reports_controller {
         date: currentDayMonth,
         urgent: 0,
         high: 0,
-        medium: 0,
+        middle: 0,
         low: 0,
         failed: 0,
       };
       preparedTasks.filter(task => task.date === currentDayMonth).forEach((task) => {
         currentTask.urgent += task.urgent;
         currentTask.high += task.high;
-        currentTask.medium += task.medium;
+        currentTask.middle += task.middle;
         currentTask.low += task.low;
         currentTask.failed += task.failed;
       });
       readyData.push(currentTask);
     }
     return readyData;
+  }
+  prepareToRenderForWeekOrMonth(preparedData, type){
+    let duration = "week";
+    if(preparedData.length > 7){
+      duration = "month"
+    }
+    const data =[];
+    const preData={
+      date:[],
+      urgent:[],
+      high:[],
+      middle:[],
+      low:[],
+      failed:[],
+    };
+    preparedData.forEach(value => {
+      if(duration==="week"){
+      preData.date.push(new Date(value.date).toString().slice(0, 3));}
+      else if(duration ==="month"){
+        preData.date.push(parseInt(new Date(value.date).toString().slice(7, 10),10))}
+      preData.urgent.push(value.urgent);
+      preData.high.push(value.high);
+      preData.middle.push(value.middle);
+      preData.low.push(value.low);
+      preData.failed.push(value.failed);
+    });
+    const legend= preData.date;
+
+    for (let key in preparedData[0]) {
+      let stack = "success";
+      if(key === "date"){
+        continue;
+      }
+      if(key==="failed" && preData.date.length === 7){
+        stack = "failed"
+      }
+      data.push(
+        {
+          name: `${key}`,
+          data: preData[key],
+          stack: stack
+        })
+    }
+    return {data,legend,type}
+  }
+  prepareToRenderForDay(preparedData,type){
+    const data = [];
+    const legend = [];
+    let i = 0;
+    for (let key in preparedData[0]) {
+      legend.push(`${key}`);
+      data.push({
+        name: `${key}`,
+        data: [{
+          name: `${key}`,
+          y: preparedData[0][key],
+          x: i,
+        }]
+      });
+      i++
+    }
+    return {data, legend,type};
   }
 
   prepareData([type, time, tasks]) {
@@ -252,22 +311,35 @@ export class Reports_controller {
     const currentDay = new Date(weekAgo).setHours(0, 0, 0, 0);
     const currentDayMonth = new Date(monthAgo).setHours(0, 0, 0, 0);
     if (type === 'tasks' && time === 'day') {
-      return this.prepareTasksDay(tasks, today);
+      let type = 'Tasks';
+      const preparedData = this.prepareTasksDay(tasks, today);
+      return this.prepareToRenderForDay(preparedData,type)
     }
     if (type === 'pomodoros' && time === 'day') {
-      return this.preparePomodorosDay(tasks, today);
+      let type = 'Pomodoros';
+      const preparedData = this.preparePomodorosDay(tasks, today);
+      return this.prepareToRenderForDay(preparedData,type)
     }
     if (type === 'tasks' && time === 'week') {
-      return this.prepareTasksWeek(currentDay, today, tasks);
+      let type = 'Tasks';
+      const preparedData = this.prepareTasksWeek(currentDay, today, tasks);
+      return this.prepareToRenderForWeekOrMonth(preparedData,type);
     }
     if (type === 'pomodoros' && time === 'week') {
-      return this.preparePomodorosWeek(currentDay, today, tasks);
+      let type = 'Pomodoros';
+      const preparedData = this.preparePomodorosWeek(currentDay, today, tasks);
+      return this.prepareToRenderForWeekOrMonth(preparedData,type);
     }
     if (type === 'tasks' && time === 'month') {
-      return this.prepareTasksMonth(currentDayMonth, today, tasks);
+      let type = 'Tasks';
+      const preparedData = this.prepareTasksMonth(currentDayMonth, today, tasks);
+     return  this.prepareToRenderForWeekOrMonth(preparedData,type);
+
     }
     if (type === 'pomodoros' && time === 'month') {
-      return this.preparePomodorosMonth(currentDayMonth, today, tasks);
+      let type = 'Pomodoros';
+      const preparedData =  this.preparePomodorosMonth(currentDayMonth, today, tasks);
+      return this.prepareToRenderForWeekOrMonth(preparedData,type);
     }
   }
 }

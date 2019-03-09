@@ -38,6 +38,7 @@
     "babel-polyfill": "^6.26.0",
     "firebase": "^5.8.1",
     "handlebars": "^4.1.0",
-    "handlebars-loader": "^1.7.1"
+    "handlebars-loader": "^1.7.1",
+    "highcharts": "^7.0.3"
   }
 }
