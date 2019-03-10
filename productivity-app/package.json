@@ -39,6 +39,10 @@
     "firebase": "^5.8.1",
     "handlebars": "^4.1.0",
     "handlebars-loader": "^1.7.1",
-    "highcharts": "^7.0.3"
+    "highcharts": "^7.0.3",
+    "jquery": "^3.3.1",
+    "jquery-ui": "^1.12.1",
+    "jquery-ui-css": "^1.11.5",
+    "save": "^2.3.3"
   }
 }

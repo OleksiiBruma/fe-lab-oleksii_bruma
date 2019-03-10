@@ -1,5 +1,4 @@
 import {EventBus} from "../../eventBus.js";
-
 require('./task_collection.less');
 import template from "./task_collection.handlebars";
 import globalListTemplate from "./task_collection_globalList.handlebars"

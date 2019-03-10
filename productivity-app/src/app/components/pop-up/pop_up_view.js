@@ -3,6 +3,8 @@ import templateAdd from "./pop_up_add.handlebars";
 import templateEdit from "./pop_up_edit.handlebars";
 import templateRemove from "./pop_up_remove.handlebars";
 
+require("jquery-ui/ui/widgets/datepicker");
+
 export class Pop_up_view {
   constructor() {
     this.templateAdd = templateAdd();
@@ -12,11 +14,24 @@ export class Pop_up_view {
 
   renderAdd() {
     document.querySelector("main").insertAdjacentHTML("beforeend", this.templateAdd);
+    $(function () {
+      const today = $.datepicker.formatDate("MM d, yy", new Date());
+      $("#deadline").datepicker({
+        dateFormat: "MM d, yy",
+        defaultDate: +1
+      }).attr("placeholder", today) ;
+    });
   }
 
   renderEdit() {
-
     document.querySelector("main").insertAdjacentHTML("beforeend", this.templateEdit);
+    $(function () {
+      const today = $.datepicker.formatDate("MM d, yy", new Date());
+      $("#deadline").datepicker({
+        dateFormat: "MM d, yy",
+        defaultDate: +1
+      }).attr("placeholder", today) ;
+    });
   }
 
   renderRemove() {

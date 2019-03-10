@@ -1,6 +1,7 @@
-const path = require('path')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
   'mode': 'none',
@@ -66,6 +67,12 @@ module.exports = {
     ]
   },
   'plugins': [
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
+      "window.jQuery": "jquery'",
+      "window.$": "jquery"
+    }),
     new MiniCssExtractPlugin({
       'filename': 'styles.css'
     }),
@@ -89,7 +96,6 @@ module.exports = {
     'historyApiFallback': true,
     'contentBase': './dist',
     'port': 3000,
-    'host': '192.168.1.102',
   },
   'devtool': 'eval-source-map'
 }
