@@ -39,7 +39,7 @@ export class Timer_controller {
   }
   finishPomodoro(settingsData){
     this.model.finishPomodoro();
-    this.view. breakSuccessTimer(this.model.getActiveTask(), settingsData);
+    this.view.breakSuccessTimer(this.model.getActiveTask(), settingsData);
   }
   taskCompleted(settingsData){
     this.model.taskCompleted();

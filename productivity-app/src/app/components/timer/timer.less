@@ -74,10 +74,11 @@
 
     .circle {
       stroke-dasharray: @rem*660;
-      stroke-dashoffset: @rem*388;
+      stroke-dashoffset: 41.25rem;
       stroke-width: @rem*30;
       stroke: @alicante;
       fill: none;
+      animation: startTimer 60s linear 1;
 
       &--done{
         stroke-dashoffset: 0;
@@ -160,4 +161,9 @@
       left:unset;
     }
   }
+}
+
+@keyframes startTimer {
+  from {stroke-dashoffset: 41.25rem;}
+  to {stroke-dashoffset: 0;}
 }
