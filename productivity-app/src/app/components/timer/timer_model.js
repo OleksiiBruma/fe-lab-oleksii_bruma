@@ -7,6 +7,7 @@ export class Timer_model {
 
   setActiveTask(activeTask) {
     this.activeTask = activeTask;
+    console.log(activeTask);
     this.estimation = this.activeTask.estimation;
     this.currentPomodoro = 0;
     this.completedCount = [];
@@ -43,6 +44,7 @@ export class Timer_model {
 
   getActiveTask() {
     return {
+      id: this.activeTask.id,
       activeTask: this.activeTask,
       estimation: this.estimation,
       currentPomodoro: this.currentPomodoro,
