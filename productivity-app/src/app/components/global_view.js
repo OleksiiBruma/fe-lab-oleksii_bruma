@@ -108,6 +108,7 @@ export class Global_view {
       }
       if (e.target.dataset.id === "from-timer-to-tasklist") {
         e.preventDefault();
+        EventBus.emit("changeStatusBackToDaily");
         EventBus.emit("cancelTimer");
         Router.navigate('todoList');
       }
