@@ -1,4 +1,5 @@
-import { EventBus } from '../../eventBus';
+import $ from 'jquery';
+import {EventBus} from '../../eventBus';
 
 const firebase = require('firebase/app');
 require('firebase/database');
@@ -25,9 +26,9 @@ export class Database {
     }
     this.remoteSettings.set(newData, (error) => {
       if (error) {
-        console.log(error);
+        $('main').notification({type: 'success', text: 'Unable to save settings. Try again later'});
       } else {
-        console.log('settings have been updated successfully');
+        $('main').notification({type: 'success', text: 'Settings was successfully saved'});
       }
     });
   }
@@ -58,18 +59,18 @@ export class Database {
   addNewTaskData(newTask) {
     this.remoteTasks.push(newTask)
       .then(() => {
-        console.log('success!: new task has been added');
+        $('main').notification({type: 'success', text: 'Your task was successfully saved'});
       })
       .catch((error) => {
-        console.log(error);
+        $('main').notification({type: 'error', text: 'Unable to save your task. Try again later'});
       });
   }
 
   updateData(arg) {
     this.remoteTasks.child(`/${arg[0]}/`).update(arg[1]).then(() => {
-      console.log('Success - new data have been stored');
+      $('main').notification({type: 'success', text: 'New data have been stored'});
     }).catch((error) => {
-      console.log(error);
+      $('main').notification({type: 'error', text: 'Something went wrong. Try again later :('});
     });
   }
 
@@ -96,11 +97,11 @@ export class Database {
   deleteData(id) {
     this.remoteTasks.child(`/${id}/`).remove()
       .then(() => {
-        console.log('items removed');
+        $('main').notification({type: 'success', text: 'Your task was successfully removed'});
         database.updateDataBase();
       })
       .catch((error) => {
-        console.log(error);
+        $('main').notification({type: 'success', text: 'Unable to remove task. Try again later'});
       });
   }
 }

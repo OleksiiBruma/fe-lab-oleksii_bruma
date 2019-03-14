@@ -1,5 +1,5 @@
-*:not(div):not(main):not(body):not(html):focus{
-  outline: rgba(255,255,255, 0.3) solid @rem*1;
+*:not(div):not(main):not(body):not(html):focus {
+  outline: rgba(255, 255, 255, 0.3) solid @rem*1;
 }
 
 
@@ -16,7 +16,7 @@ html, body {
   padding: 0;
   margin: @rem*-1;
   overflow: hidden;
-  clip: rect(0,0,0,0);
+  clip: rect(0, 0, 0, 0);
   border: 0;
 }
 
@@ -25,13 +25,14 @@ input[type="number"] {
   -moz-appearance: textfield;
   appearance: textfield;
 }
+
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
 }
 
-input[type="radio"]{
-  display:none;
+input[type="radio"] {
+  display: none;
 }
 
 .graph {
@@ -47,24 +48,24 @@ input[type="radio"]{
   justify-content: space-between;
   width: @rem*300;
 
-  &__label{
+  &__label {
     position: relative;
     .font(@font-caption);
     color: @beefsteak;
 
-    &--work-time{
+    &--work-time {
       .circle(@work);
     }
 
-    &--work-iteration{
+    &--work-iteration {
       .circle(@other);
     }
 
-    &--short-break{
+    &--short-break {
       .circle(@education);
     }
 
-    &--long-break{
+    &--long-break {
       .circle(@hobby);
     }
   }
@@ -77,7 +78,7 @@ input[type="radio"]{
 
   &__highlighted {
     font-style: normal;
-    color:@beefsteak;
+    color: @beefsteak;
   }
 
   &__number {
@@ -87,11 +88,11 @@ input[type="radio"]{
     margin-left: auto;
     border-bottom: @rem*1 solid @alicante;
 
-&:hover{
-  border-color: @hanover;
-}
+    &:hover {
+      border-color: @hanover;
+    }
 
-    &:hover .number__input{
+    &:hover .number__input {
       color: @beefsteak;
     }
   }
@@ -135,10 +136,9 @@ input[type="radio"]{
 
 .subcaption {
   .font(@font-subtitle2);
-  color:@alicante;
+  color: @alicante;
   text-align: center;
 }
-
 
 
 .tab {
@@ -197,6 +197,7 @@ input[type="radio"]{
   padding-left: 6.73%;
   padding-right: 6.73%;
 }
+
 .page {
   margin: 0;
   padding-top: @rem*136;
@@ -224,9 +225,10 @@ input[type="radio"]{
   &__add-button::before {
     .icon(@icon-add);
   }
-  &__add-button--header{
+
+  &__add-button--header {
     vertical-align: baseline;
-    color:@alicante;
+    color: @alicante;
   }
 
 
@@ -237,8 +239,8 @@ input[type="radio"]{
     color: @beefsteak;
     @media screen and (max-width: 600px) {
       position: absolute;
-      top:-5.4rem;
-      &--top-left{
+      top: -5.4rem;
+      &--top-left {
         position: absolute;
         top: -3.4rem;
       }
@@ -248,11 +250,12 @@ input[type="radio"]{
   &__item {
     position: relative;
   }
+
   &__toggle {
     position: relative;
     display: flex;
     justify-content: flex-end;
-    top:@rem*34;
+    top: @rem*34;
     text-align: right;
 
     &--reports {
@@ -260,6 +263,7 @@ input[type="radio"]{
     }
   }
 }
+
 .radio(other);
 .radio(work);
 .radio(education);
@@ -271,14 +275,14 @@ input[type="radio"]{
 .radio(low);
 
 .arrow {
-  &__item{
-    top:50%;
-    position:absolute;
-    left:@rem*10;
-    display:block;
-    width:@rem*48;
-    height:@rem*4;
-    background:@alicante;
+  &__item {
+    top: 50%;
+    position: absolute;
+    left: @rem*10;
+    display: block;
+    width: @rem*48;
+    height: @rem*4;
+    background: @alicante;
     transform-origin: left;
 
     &--top {
@@ -302,19 +306,26 @@ input[type="radio"]{
 }
 
 .notification {
-  position: absolute;
-  right:0;
-  bottom:@rem*30;
-  display:flex;
+  position: fixed;
+  right: 0;
+  bottom: @rem*30;
+  display: flex;
   margin-right: 6.73%;
-  align-items:center;
-  width:@rem*550;
+  align-items: center;
+  width: @rem*550;
   height: @rem*65;
   border-style: solid;
   border-width: @rem*1;
   border-color: @beefsteak;
   border-radius: @rem*2;
   box-shadow: 0 @rem*18 @rem*30.72 @rem*1.28 rgba(0, 0, 0, 0.2);
+  opacity: 1;
+
+  &__wrapper {
+    position: fixed;
+    display: none;
+    z-index: 100;
+  }
 
   &__message {
     margin: 0 auto 0 @rem*100;
@@ -324,12 +335,13 @@ input[type="radio"]{
     line-height: @rem*18;
   }
 
-  &--info{
+  &--info {
     background: @san;
 
     .notification__indicator {
-      background:fade(@beefsteak,20%);
-      &:before{
+      background: fade(@beefsteak, 20%);
+
+      &:before {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -341,12 +353,13 @@ input[type="radio"]{
     }
   }
 
-  &--warning{
+  &--warning {
     background: @high;
 
     .notification__indicator {
-      background:fade(@beefsteak,20%);
-      &:before{
+      background: fade(@beefsteak, 20%);
+
+      &:before {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -376,11 +389,13 @@ input[type="radio"]{
     }
   }
 
-  &--success{
+  &--success {
     background: @campari;
+
     .notification__indicator {
-      background:fade(@beefsteak,20%);
-      &:before{
+      background: fade(@beefsteak, 20%);
+
+      &:before {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -394,23 +409,23 @@ input[type="radio"]{
 
   &__indicator {
     position: absolute;
-    left:0;
-    width:@rem*80;
+    left: 0;
+    width: @rem*80;
     display: block;
     height: 100%;
   }
 
-  &__close-button{
+  &__close-button {
     position: absolute;
     background: none;
     top: 50%;
     right: @rem*20;
     width: @rem*30;
     height: @rem*30;
-    border:0;
+    border: 0;
     transform: translate(0, -50%);
 
-    &::before{
+    &::before {
       position: absolute;
       .icon(@icon-close);
       transform: translate(-50%, -50%);
@@ -431,32 +446,32 @@ input[type="radio"]{
 
 .timer {
   &__title {
-    margin:0;
+    margin: 0;
     .font(@font-heading-1);
     color: @beefsteak;
     text-align: center;
   }
 
-  &__description{
+  &__description {
     .font(@font-subtitle);
     color: @beefsteak;
     text-align: center;
-    margin:@rem*25 0 0;
+    margin: @rem*25 0 0;
   }
 
   &__estimates {
     text-align: center;
-    margin:@rem*35 auto 0;
+    margin: @rem*35 auto 0;
   }
 
   &__estimate {
     position: relative;
     display: inline-block;
     padding-right: @rem*10;
-    width:@rem*25;
+    width: @rem*25;
     height: @rem*25;
-    margin:0;
-    background: url("../../images/empty-tomato.svg")  no-repeat;
+    margin: 0;
+    background: url("../../images/empty-tomato.svg") no-repeat;
   }
 
   &__estimate--success {
@@ -466,11 +481,12 @@ input[type="radio"]{
   &__estimate--failed {
     background: url("../../images/tomato-failed.svg") no-repeat;
   }
-  &__dial{
+
+  &__dial {
     position: relative;
     margin: @rem*65 auto 0;
-    width:@rem*254;
-    height:@rem*254;
+    width: @rem*254;
+    height: @rem*254;
     border-radius: 50%;
     border: @rem*6 solid @high;
     box-shadow: 0 @rem*5 @rem*83 @rem*17 rgba(21, 43, 59, 0.25);
@@ -507,65 +523,67 @@ input[type="radio"]{
       stroke: @alicante;
       fill: none;
 
-      &--done{
+      &--done {
         stroke-dashoffset: 0;
       }
+
       &--failed {
         stroke-dashoffset: @rem*100;
       }
     }
   }
-&__time-number {
-  font-family: @font-family-roboto, sans-serif;
-  font-size: @rem*100;
-  display:block;
-  color: @beefsteak;
-  line-height:1;
-}
+
+  &__time-number {
+    font-family: @font-family-roboto, sans-serif;
+    font-size: @rem*100;
+    display: block;
+    color: @beefsteak;
+    line-height: 1;
+  }
 
   &__time-basic {
-    display:block;
+    display: block;
     .font(@font-indicator-timer);
     color: @beefsteak;
     text-align: center;
 
-    &--brake-is-over{
+    &--brake-is-over {
       padding: 0 @rem*38;
     }
   }
 
-&__phase{
-  font-size: @rem*15;
-  font-family: @font-family-roboto, sans-serif;
-  font-weight: normal;
-  color: @beefsteak;
-}
-
-&__add {
-  position: relative;
-  border: 0;
-  background: none;
-  width: @rem*25;
-  height: @rem*25;
-
-  &:before {
-    position: absolute;
-    top:50%;
-    left:50%;
-    content:"";
-    display:block;
-    .icon(@icon-add);
+  &__phase {
     font-size: @rem*15;
-    color: @alicante;
-    transform: translate(-50%, -50%);
+    font-family: @font-family-roboto, sans-serif;
+    font-weight: normal;
+    color: @beefsteak;
   }
 
-  &:hover:before{
-    color:@hanover;
-  }
-}
+  &__add {
+    position: relative;
+    border: 0;
+    background: none;
+    width: @rem*25;
+    height: @rem*25;
 
-  &__buttons{
+    &:before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      content: "";
+      display: block;
+      .icon(@icon-add);
+      font-size: @rem*15;
+      color: @alicante;
+      transform: translate(-50%, -50%);
+    }
+
+    &:hover:before {
+      color: @hanover;
+    }
+  }
+
+  &__buttons {
     margin: @rem*70 0;
   }
 
@@ -583,9 +601,9 @@ input[type="radio"]{
       background: @hanover;
     }
 
-    &--right{
-      right:@rem*36;
-      left:unset;
+    &--right {
+      right: @rem*36;
+      left: unset;
     }
   }
 }
