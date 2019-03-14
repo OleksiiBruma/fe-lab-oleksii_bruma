@@ -114,36 +114,6 @@
   }
 }
 
-//Mixin for tooltip
-.tooltip() {
-  &::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    z-index: 2;
-    top: @rem*10;
-    right: 0;
-    text-align: center;
-    background-color: @colorfortooltips;
-    color: @adoration;
-    border-radius: @rem*2;
-    padding: @rem*10;
-    .font(@font-tooltip);
-    transform: translate(70%, 50%);
-    white-space: nowrap;
-  }
-
-  &::before {
-    content: "";
-    position: absolute;
-    bottom: -@rem*10;
-    left: 50%;
-    margin-left: @rem*(-5);
-    border-width: @rem*5;
-    border-style: solid;
-    border-color: transparent transparent @colorfortooltips transparent;
-  }
-}
-
 //Mixin for circles
 .circle (@color) {
   &:before {

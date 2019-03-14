@@ -14,14 +14,14 @@
               class="sr-only">Add task button</span></button>
           </li>
           <li class="menu__item">
-            <a href="#" class="menu__link menu__link--icon-trash" data-id="trash"><span class="trash__count"
+            <a href="#" class="menu__link menu__link--icon-trash" title = "Go to trash" data-id="trash"><span class="trash__count"
                                                                                         data-id="trash">5</span><span
               class="sr-only">Go to trash</span></a>
           </li>
         {{/if}}
         {{#each tabs}}
           <li class="menu__item">
-            <a href="#" class="menu__link menu__link--icon-{{class}} " data-id="{{id}}"><span
+            <a href="#" class="menu__link menu__link--icon-{{class}} " title="{{text}}" data-id="{{id}}"><span
               class="sr-only">{{text}}</span></a>
           </li>
         {{/each}}

@@ -99,8 +99,6 @@ export class Reports_view {
         pointFormat: `<b class="highcharts-tooltip">${type} : {point.y}</b><br>`,
         borderWidth: 0,
         useHTML: true,
-        followTouchMove: true,
-        followPointer: true,
       },
       series: data
     })

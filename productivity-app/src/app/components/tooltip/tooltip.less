@@ -1,0 +1,32 @@
+@import ( reference ) '~@less-helpers-module/_mixins.less';
+@import ( reference ) '~@less-helpers-module/_variables.less';
+.tooltip {
+  background: @colorfortooltips !important;
+  color: @adoration !important;
+  .font(@font-tooltip) !important;
+    //&::after {
+    //  position: absolute;
+    //  z-index: 2;
+    //  top: @rem*10;
+    //  right: 0;
+    //  text-align: center;
+    //  background: @colorfortooltips;
+    //  color: @adoration;
+    //  border-radius: @rem*2;
+    //  padding: @rem*10;
+    //  .font(@font-tooltip);
+    //  transform: translate(70%, 50%);
+    //  white-space: nowrap;
+    //}
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -@rem*10;
+      left: @rem*20;
+      margin-left: @rem*(-5);
+      border-width: @rem*5;
+      border-style: solid;
+      border-color: transparent transparent @colorfortooltips transparent;
+    }
+}
