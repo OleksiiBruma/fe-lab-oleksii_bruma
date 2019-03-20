@@ -1,0 +1,28 @@
+ul {
+  list-style-type: none;
+}
+
+.search-result {
+  display: flex;
+}
+.book{
+  display:flex;
+  flex-direction:column;
+  border: 1px solid black;
+}
+.container{
+  width:50%;
+}
+i {
+  display:block;
+  width:100%;
+  text-align: right;
+}
+.book__description{
+  display: flex;
+
+}
+button{
+  width: 100px;
+  align-self: flex-end;
+}

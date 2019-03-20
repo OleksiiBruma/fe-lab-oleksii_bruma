@@ -1,0 +1,50 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+  <div class="App">
+    <div class="search">
+      <form [formGroup]="form" (submit)="submit()" action="">
+        <input formControlName="book" type="text"/>
+        <button type="submit">search</button>
+      </form>
+    </div>
+    <div class="search-result">
+      <div class="container">
+        <h2>Search result:</h2>
+        <ul *ngFor="let book of records">
+          <li class="book">
+            <h3 *ngIf="book.volumeInfo.title">{{book.volumeInfo.title}}</h3>
+            <h4 *ngIf="book.volumeInfo.subtitle">{{book.volumeInfo.subtitle}}</h4>
+            <div class="book__description">
+            <img *ngIf="book.volumeInfo.imageLinks.thumbnail" src="{{book.volumeInfo.imageLinks.thumbnail}}" alt=""/>
+            <div class="book__text">
+            <p *ngIf="book.volumeInfo.description">{{book.volumeInfo.description.slice(0,200)}}</p>
+            <i *ngIf="book.volumeInfo.publishedDate">{{formatDate(book.volumeInfo.publishedDate)}}</i>
+            <i *ngIf="book.volumeInfo.authors">{{book.volumeInfo.authors.join(", ")}}</i>
+            </div>
+            </div>
+            <button (click)="addToUser(book)">add</button>
+          </li>
+        </ul>
+      </div>
+      <div class="container">
+        <h2>My list:</h2>
+        <ul *ngFor="let book of userBooks">
+          <li class="book">
+            <h3 *ngIf="book.volumeInfo.title">{{book.volumeInfo.title}}</h3>
+            <h4 *ngIf="book.volumeInfo.subtitle">{{book.volumeInfo.subtitle}}</h4>
+            <div class="book__description">
+              <img *ngIf="book.volumeInfo.imageLinks.thumbnail" src="{{book.volumeInfo.imageLinks.thumbnail}}" alt=""/>
+              <div class="book__text">
+                <p *ngIf="book.volumeInfo.description">{{book.volumeInfo.description.slice(0,200)}}</p>
+                <i *ngIf="book.volumeInfo.publishedDate">{{formatDate(book.volumeInfo.publishedDate)}}</i>
+                <i *ngIf="book.volumeInfo.authors">{{book.volumeInfo.authors.join(", ")}}</i>
+              </div>
+            </div>
+            <button (click)="removeBookFromUserShelf(book)">remove</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<router-outlet></router-outlet>
