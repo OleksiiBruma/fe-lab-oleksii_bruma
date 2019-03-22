@@ -19,15 +19,14 @@ export class Reports_view {
     document.querySelector(`[data-${type}="${value}"`).classList.add("tab__link--active");
   }
 
-  renderGraph({data, legend,type}) {
+  renderGraph({data, legend, type}) {
     let grouping = false;
     let stacking = null;
 
-    if(legend.length === 7){
+    if (legend.length === 7) {
       grouping = true;
       stacking = "normal";
-    }
-    else if(legend.length >7){
+    } else if (legend.length > 7) {
       grouping = false;
       stacking = "normal";
     }

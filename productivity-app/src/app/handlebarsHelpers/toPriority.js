@@ -1,14 +1,14 @@
 module.exports = function (priority) {
   switch (priority) {
     case 1:
-      return "urgent";
+      return 'urgent';
     case 2:
-      return "high";
+      return 'high';
     case 3:
-      return "middle";
+      return 'middle';
     case 4:
-      return "low";
+      return 'low';
     default:
-      throw("priority is not a number!");
+      throw 'priority is not a number!';
   }
 };

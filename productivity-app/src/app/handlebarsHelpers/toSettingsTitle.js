@@ -1,3 +1,3 @@
 module.exports = function (settingsName) {
-  return settingsName.toUpperCase().replace("-", ' ');
+  return settingsName.toUpperCase().replace('-', ' ');
 };

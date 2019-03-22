@@ -1,4 +1,4 @@
-import {EventBus} from "../../eventBus";
+import {EventBus} from '../../eventBus';
 
 export class Settings_model {
   constructor() {
@@ -6,7 +6,7 @@ export class Settings_model {
   }
 
   init() {
-    EventBus.emit("getNewSettings")
+    EventBus.emit('getNewSettings');
   }
 
 
@@ -18,21 +18,21 @@ export class Settings_model {
           settingsStep: 5,
           settingsMin: 15,
           settingsMax: 30,
-          settingsValue: 30
+          settingsValue: 30,
         },
         shortBreak: {
           settingsElem: 'short-break',
           settingsStep: 1,
           settingsMin: 3,
           settingsMax: 5,
-          settingsValue: 5
+          settingsValue: 5,
         },
         workIteration: {
           settingsElem: 'work-iteration',
           settingsStep: 1,
           settingsMin: 2,
           settingsMax: 5,
-          settingsValue: 5
+          settingsValue: 5,
         },
         workTime: {
           settingsElem: 'work-time',
@@ -42,10 +42,9 @@ export class Settings_model {
           settingsValue: 25,
         },
       };
-      return
+      return;
     }
     this.settingsData = newSettingsData;
-
   }
 
   getSettingsData() {

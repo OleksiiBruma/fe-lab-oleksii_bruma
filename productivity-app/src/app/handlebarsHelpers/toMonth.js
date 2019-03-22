@@ -1,7 +1,18 @@
 module.exports = function (date) {
-  const months = ["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"]
-  if(new Date(date).getUTCDate()=== new Date().getUTCDate()){
-    return "TODAY"
+  const months = ['JANUARY',
+    'FEBRUARY',
+    'MARCH',
+    'APRIL',
+    'MAY',
+    'JUNE',
+    'JULY',
+    'AUGUST',
+    'SEPTEMBER',
+    'OCTOBER',
+    'NOVEMBER',
+    'DECEMBER'];
+  if (new Date(date).getUTCDate() === new Date().getUTCDate()) {
+    return 'TODAY';
   }
-  else return months[new Date(date).getMonth()];
+  return months[new Date(date).getMonth()];
 };

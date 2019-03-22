@@ -2,11 +2,41 @@
   outline: rgba(255, 255, 255, 0.3) solid @rem*1;
 }
 
+.hidden {
+  display: none !important;
+}
 
 html, body {
   margin: 0;
   background-color: @adoration;
   min-width: 528*@rem;
+}
+
+.buttons {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+
+  &__item {
+    display: inline-block;
+    background: none;
+    border: none;
+    padding: @rem*10 @rem*25;
+    .font (@font-button);
+    color: @beefsteak;
+    min-width: @rem*120;
+    .button-bg(success);
+    .button-bg(info);
+    .button-bg(danger);
+
+    &:first-child {
+      margin: 0 @rem*10 0 0;
+    }
+
+    &:last-child {
+      margin: 0 0 0 @rem*10;
+    }
+  }
 }
 
 .sr-only {
@@ -108,31 +138,6 @@ input[type="radio"] {
   height: auto;
 }
 
-.buttons {
-  margin: 0 auto;
-  text-align: center;
-
-  &__item {
-    display: inline-block;
-    background: none;
-    border: none;
-    padding: @rem*10 @rem*25;
-    .font (@font-button);
-    color: @beefsteak;
-    min-width: @rem*120;
-    .button-bg(success);
-    .button-bg(info);
-    .button-bg(danger);
-
-    &:first-child {
-      margin: 0 @rem*10 0 0;
-    }
-
-    &:last-child {
-      margin: 0 0 0 @rem*10;
-    }
-  }
-}
 
 .subcaption {
   .font(@font-subtitle2);
@@ -215,6 +220,7 @@ input[type="radio"] {
     background: none;
     color: @beefsteak;
     padding: 0;
+    cursor: pointer;
 
     &:hover,
     &:focus {
@@ -320,6 +326,9 @@ input[type="radio"] {
   border-radius: @rem*2;
   box-shadow: 0 @rem*18 @rem*30.72 @rem*1.28 rgba(0, 0, 0, 0.2);
   opacity: 1;
+  @media @mobile-p {
+    width: 28rem;
+  }
 
   &__wrapper {
     position: fixed;
@@ -333,6 +342,9 @@ input[type="radio"] {
     color: @beefsteak;
     text-align: center;
     line-height: @rem*18;
+    @media @mobile-p {
+     margin-left: 2.25rem;
+    }
   }
 
   &--info {
@@ -342,12 +354,8 @@ input[type="radio"] {
       background: fade(@beefsteak, 20%);
 
       &:before {
-        position: absolute;
-        top: 50%;
-        left: 50%;
         .icon(@icon-tomato-info);
         font-size: @rem*40;
-        transform: translate(-50%, -50%);
         color: @beefsteak;
       }
     }
@@ -360,12 +368,8 @@ input[type="radio"] {
       background: fade(@beefsteak, 20%);
 
       &:before {
-        position: absolute;
-        top: 50%;
-        left: 50%;
         .icon(@icon-tomato-info);
         font-size: @rem*40;
-        transform: translate(-50%, -50%);
         color: @beefsteak;
       }
     }
@@ -378,12 +382,8 @@ input[type="radio"] {
       background: fade(@beefsteak, 20%);
 
       &:before {
-        position: absolute;
-        top: 50%;
-        left: 50%;
         .icon(@icon-tomato-error);
         font-size: @rem*40;
-        transform: translate(-50%, -50%);
         color: @beefsteak;
       }
     }
@@ -396,39 +396,37 @@ input[type="radio"] {
       background: fade(@beefsteak, 20%);
 
       &:before {
-        position: absolute;
-        top: 50%;
-        left: 50%;
         .icon(@icon-tomato-success);
         font-size: @rem*40;
-        transform: translate(-50%, -50%);
         color: @beefsteak;
       }
     }
   }
 
   &__indicator {
-    position: absolute;
-    left: 0;
     width: @rem*80;
-    display: block;
     height: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &__close-button {
-    position: absolute;
+    display:flex;
+    justify-content: center;
+    align-items: center;
     background: none;
-    top: 50%;
-    right: @rem*20;
     width: @rem*30;
     height: @rem*30;
     border: 0;
-    transform: translate(0, -50%);
-
+    margin-right: 1.5rem;
+    position:relative;
     &::before {
       position: absolute;
+      top:50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
       .icon(@icon-close);
-      transform: translate(-50%, -50%);
       font-size: @rem*30;
     }
 
@@ -608,6 +606,24 @@ input[type="radio"] {
   }
 }
 
-.hidden {
-  display: none !important;
+.stub {
+  &__img {
+    display: block;
+    margin: @rem*127 auto 0 auto;
+    height: @rem*162;
+    width: auto;
+    text-align: center;
+  }
+
+  &__choose {
+    margin-top: @rem*81;
+    padding-bottom: @rem*56;
+  }
+
+  &__message {
+    margin: @rem*80 auto 0;
+    text-align: center;
+    .font(@font-message);
+    color: @alicante;
+  }
 }

@@ -1,39 +1,39 @@
-import * as EventBus from "./eventBus";
+import * as EventBus from './eventBus';
 
 export const Router = {
   routes: [],
   mode: null,
   root: '/',
-  config: function (options) {
+  config(options) {
     this.mode = options && options.mode && options.mode == 'history'
-    && !!(history.pushState) ? 'history' : 'hash';
-    this.root = options && options.root ? '/' + this.clearSlashes(options.root) + '/' : '/';
+    && !!history.pushState ? 'history' : 'hash';
+    this.root = options && options.root ? `/${this.clearSlashes(options.root)}/` : '/';
     return this;
   },
-  getFragment: function () {
-    var fragment = '';
+  getFragment() {
+    let fragment = '';
     if (this.mode === 'history') {
       fragment = this.clearSlashes(decodeURI(location.pathname + location.search));
       fragment = fragment.replace(/\?(.*)$/, '');
       fragment = this.root != '/' ? fragment.replace(this.root, '') : fragment;
     } else {
-      var match = window.location.href.match(/#(.*)$/);
+      const match = window.location.href.match(/#(.*)$/);
       fragment = match ? match[1] : '';
     }
     return this.clearSlashes(fragment);
   },
-  clearSlashes: function (path) {
+  clearSlashes(path) {
     return path.toString().replace(/\/$/, '').replace(/^\//, '');
   },
-  add: function (re, handler) {
-    if (typeof re == 'function') {
+  add(re, handler) {
+    if (typeof re === 'function') {
       handler = re;
       re = '';
     }
-    this.routes.push({re: re, handler: handler});
+    this.routes.push({ re, handler });
     return this;
   },
-  remove: function (param) {
+  remove(param) {
     for (var i = 0, r; i < this.routes.length, r = this.routes[i]; i++) {
       if (r.handler === param || r.re.toString() === param.toString()) {
         this.routes.splice(i, 1);
@@ -42,16 +42,16 @@ export const Router = {
     }
     return this;
   },
-  flush: function () {
+  flush() {
     this.routes = [];
     this.mode = null;
     this.root = '/';
     return this;
   },
-  check: function (f) {
-    var fragment = f || this.getFragment();
-    for (var i = 0; i < this.routes.length; i++) {
-      var match = fragment.match(this.routes[i].re);
+  check(f) {
+    const fragment = f || this.getFragment();
+    for (let i = 0; i < this.routes.length; i++) {
+      const match = fragment.match(this.routes[i].re);
       if (match) {
         match.shift();
         this.routes[i].handler.apply({}, match);
@@ -60,10 +60,10 @@ export const Router = {
     }
     return this;
   },
-  listen: function () {
-    var self = this;
-    var current = self.getFragment();
-    var fn = function () {
+  listen() {
+    const self = this;
+    let current = self.getFragment();
+    const fn = function () {
       if (current !== self.getFragment()) {
         current = self.getFragment();
         self.check(current);
@@ -73,45 +73,45 @@ export const Router = {
     this.interval = setInterval(fn, 50);
     return this;
   },
-  navigate: function (path) {
-    path = path ? path : '';
+  navigate(path) {
+    path = path || '';
     if (this.mode === 'history') {
       history.pushState(null, null, this.root + this.clearSlashes(path));
     } else {
-      window.location.href = window.location.href.replace(/#(.*)$/, '') + '#' + path;
+      window.location.href = `${window.location.href.replace(/#(.*)$/, '')}#${path}`;
     }
     return this;
-  }
+  },
 };
 
-Router.config({mode: 'history'});
+Router.config({ mode: 'history' });
 Router
   .add(/settings\/pomodoros/, () => EventBus.EventBus.emit('goToSettings'))
   .add(/settings\/categories/, () => {
-    EventBus.EventBus.emit("goToSettingsCategory")
+    EventBus.EventBus.emit('goToSettingsCategory');
   })
   .add(/reports\/day\/tasks/, () => {
-    EventBus.EventBus.emit('goToReports')
+    EventBus.EventBus.emit('goToReports');
   })
   .add(/reports\/day\/pomodoros/, () => {
-    EventBus.EventBus.emit('goToReports')
+    EventBus.EventBus.emit('goToReports');
   })
   .add(/reports\/week\/tasks/, () => {
-    EventBus.EventBus.emit('goToReports')
+    EventBus.EventBus.emit('goToReports');
   })
   .add(/reports\/week\/pomodoros/, () => {
-    EventBus.EventBus.emit('goToReports')
+    EventBus.EventBus.emit('goToReports');
   })
   .add(/reports\/month\/tasks/, () => {
-    EventBus.EventBus.emit('goToReports')
+    EventBus.EventBus.emit('goToReports');
   })
   .add(/reports\/month\/pomodoros/, () => {
-    EventBus.EventBus.emit('goToReports')
+    EventBus.EventBus.emit('goToReports');
   })
   .add(/timer/, () => EventBus.EventBus.emit('goToTimer'))
   .add(() => {
-    history.replaceState(null, null, "/");
+    history.replaceState(null, null, '/');
     EventBus.EventBus.emit('goToTaskList');
   })
-  .check().listen();
-
+  .check()
+  .listen();

@@ -1,5 +1,5 @@
-export class Global_model{
-  constructor(){
+export class Global_model {
+  constructor() {
 
   }
 }

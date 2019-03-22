@@ -85,6 +85,7 @@
 
     .task__delete {
       width: 100%;
+      cursor: pointer;
     }
     .task__delete:before {
       position: absolute;
@@ -250,6 +251,8 @@
 
     &:before {
       position: absolute;
+      top: 50%;
+      left: 50%;
       z-index:2;
       transform: translate(-50%, -50%);
       .icon(@icon-arrows-up);

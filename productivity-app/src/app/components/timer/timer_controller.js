@@ -1,5 +1,5 @@
-import {Timer_view} from "./timer_view";
-import {Timer_model} from "./timer_model";
+import { Timer_view } from './timer_view';
+import { Timer_model } from './timer_model';
 
 export class Timer_controller {
   constructor(model, view) {
@@ -33,19 +33,23 @@ export class Timer_controller {
       this.view.addButton();
     }
   }
+
   failPomodoro(settingsData) {
     this.model.failPomodoro();
     this.view.breakTimer(this.model.getActiveTask(), settingsData);
   }
-  finishPomodoro(settingsData){
+
+  finishPomodoro(settingsData) {
     this.model.finishPomodoro();
     this.view.breakSuccessTimer(this.model.getActiveTask(), settingsData);
   }
-  taskCompleted(settingsData){
+
+  taskCompleted(settingsData) {
     this.model.taskCompleted();
     this.view.taskCompleted(this.model.getActiveTask(), settingsData);
   }
-  getCompletedTask(){
+
+  getCompletedTask() {
     return this.model.getCompletedTask();
   }
 }

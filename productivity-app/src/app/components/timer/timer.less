@@ -78,13 +78,14 @@
       stroke-width: @rem*30;
       stroke: @alicante;
       fill: none;
+      -webkit-animation: startTimer 60s linear 1;
       animation: startTimer 60s linear 1;
 
       &--done{
         stroke-dashoffset: 0;
       }
       &--failed {
-        stroke-dashoffset: @rem*100;
+        stroke-dashoffset: 41.25rem;
       }
     }
   }

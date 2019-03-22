@@ -1,5 +1,5 @@
-import {Header_view} from "./header_view";
-import {Header_model} from "./header_model";
+import { Header_view } from './header_view';
+import { Header_model } from './header_model';
 
 export class Header_controller {
   constructor(model, view) {
@@ -19,19 +19,19 @@ export class Header_controller {
 
 
   listenForSticky() {
-    this.view.listenForSticky()
+    this.view.listenForSticky();
   }
 
   openTrashCount() {
-    this.view.openTrashCount()
+    this.view.openTrashCount();
   }
 
   closeTrashCount() {
-    this.view.closeTrashCount()
+    this.view.closeTrashCount();
   }
 
   updateTrashCount(amount) {
-    this.view.updateTrashCount(amount)
+    this.view.updateTrashCount(amount);
   }
 
   isChecked() {
@@ -40,7 +40,3 @@ export class Header_controller {
 }
 
 export const header_controller = new Header_controller(new Header_model(), new Header_view());
-
-
-
-

@@ -1,26 +1,33 @@
+import taskTemplate from './task.handlebars';
+
 require('./task.less');
-import taskTemplate from "./task.handlebars";
 
 export class Task_view {
-  constructor(){
+  constructor() {
     this.taskTemplate = taskTemplate;
   }
- renderTaskGlobal(data, category){
-    document.querySelector(`.tasks--${category}`).insertAdjacentHTML("beforeend",this.taskTemplate(data));
- }
- renderTaskDaily(data){
-   document.querySelector(".daily__tasks-list").insertAdjacentHTML("beforeend",this.taskTemplate(data));
- }
- removeModeOn(){
-   [].forEach.call(document.querySelectorAll(".task"),(task)=>{task.classList.add("task--delete");})
- }
-  removeModeOff(){
-    [].forEach.call(document.querySelectorAll(".task"),(task)=>{task.classList.remove("task--delete");})
+
+  renderTaskGlobal(data, category) {
+    document.querySelector(`.tasks--${category}`).insertAdjacentHTML('beforeend', this.taskTemplate(data));
   }
- selectAll(list){
-   [].forEach.call(document.querySelectorAll(`.${list.dataset.id} .task`),(task)=>{task.classList.add("task--delete-checked");})
- }
- deselectAll(list){
-   [].forEach.call(document.querySelectorAll(`.${list.dataset.id} .task`),(task)=>{task.classList.remove("task--delete-checked");})
- }
+
+  renderTaskDaily(data) {
+    document.querySelector('.daily__tasks-list').insertAdjacentHTML('beforeend', this.taskTemplate(data));
+  }
+
+  removeModeOn() {
+    [].forEach.call(document.querySelectorAll('.task'), (task) => { task.classList.add('task--delete'); });
+  }
+
+  removeModeOff() {
+    [].forEach.call(document.querySelectorAll('.task'), (task) => { task.classList.remove('task--delete'); });
+  }
+
+  selectAll(list) {
+    [].forEach.call(document.querySelectorAll(`.${list.dataset.id} .task`), (task) => { task.classList.add('task--delete-checked'); });
+  }
+
+  deselectAll(list) {
+    [].forEach.call(document.querySelectorAll(`.${list.dataset.id} .task`), (task) => { task.classList.remove('task--delete-checked'); });
+  }
 }

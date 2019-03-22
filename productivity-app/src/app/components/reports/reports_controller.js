@@ -59,7 +59,9 @@ export class Reports_controller {
     }
   }
 
-  setRawDataPriorityPomodoro([priority, tasks, task]) {
+  setRawDataPriorityPomodoro([priority,
+    tasks,
+    task]) {
     switch (priority) {
       case 1:
         this.rawData.urgent = Number(tasks[task].completedCount.length);
@@ -82,7 +84,8 @@ export class Reports_controller {
     Object.keys(tasks).forEach((task) => {
       const completedDate = new Date(tasks[task].completeDate).setHours(0, 0, 0, 0);
       this.rawData.date = completedDate;
-      if (tasks[task].failedPomodoros && tasks[task].failedPomodoros.length >= tasks[task].completedCount.length) {
+      if (tasks[task].failedPomodoros && tasks[task].failedPomodoros.length
+        >= tasks[task].completedCount.length) {
         this.rawData.failed += 1;
       } else {
         this.setRawDataPriorityTasks(tasks[task].priority);
@@ -99,7 +102,9 @@ export class Reports_controller {
     Object.keys(tasks).forEach((task) => {
       this.rawData.date = new Date(tasks[task].completeDate).setHours(0, 0, 0, 0);
       this.rawData.failed = tasks[task].completedCount.length;
-      this.setRawDataPriorityPomodoro([tasks[task].priority, tasks, task]);
+      this.setRawDataPriorityPomodoro([tasks[task].priority,
+        tasks,
+        task]);
       preparedData.push(this.rawData);
       this.clearRawData();
     });
@@ -150,7 +155,7 @@ export class Reports_controller {
         high: 0,
         middle: 0,
         low: 0,
-        failed: 0
+        failed: 0,
       };
       preparedTasks.filter(task => task.date === currentDay).forEach((task) => {
         currentTask.urgent += task.urgent;
@@ -158,7 +163,6 @@ export class Reports_controller {
         currentTask.middle += task.middle;
         currentTask.low += task.low;
         currentTask.failed += task.failed;
-
       });
 
       readyData.push(currentTask);
@@ -241,55 +245,59 @@ export class Reports_controller {
     }
     return readyData;
   }
-  prepareToRenderForWeekOrMonth(preparedData, type){
-    let duration = "week";
-    if(preparedData.length > 7){
-      duration = "month"
+
+  prepareToRenderForWeekOrMonth(preparedData, type) {
+    let duration = 'week';
+    if (preparedData.length > 7) {
+      duration = 'month';
     }
-    const data =[];
-    const preData={
-      date:[],
-      urgent:[],
-      high:[],
-      middle:[],
-      low:[],
-      failed:[],
+    const data = [];
+    const preData = {
+      date: [],
+      urgent: [],
+      high: [],
+      middle: [],
+      low: [],
+      failed: [],
     };
-    preparedData.forEach(value => {
-      if(duration==="week"){
-      preData.date.push(new Date(value.date).toString().slice(0, 3));}
-      else if(duration ==="month"){
-        preData.date.push(parseInt(new Date(value.date).toString().slice(7, 10),10))}
+    preparedData.forEach((value) => {
+      if (duration === 'week') {
+        preData.date.push(new Date(value.date).toString().slice(0, 3));
+      } else if (duration === 'month') {
+        preData.date.push(parseInt(new Date(value.date).toString().slice(7, 10), 10));
+      }
       preData.urgent.push(value.urgent);
       preData.high.push(value.high);
       preData.middle.push(value.middle);
       preData.low.push(value.low);
       preData.failed.push(value.failed);
     });
-    const legend= preData.date;
+    const legend = preData.date;
 
-    for (let key in preparedData[0]) {
-      let stack = "success";
-      if(key === "date"){
+    for (const key in preparedData[0]) {
+      let stack = 'success';
+      if (key === 'date') {
         continue;
       }
-      if(key==="failed" && preData.date.length === 7){
-        stack = "failed"
+      if (key === 'failed' && preData.date.length === 7) {
+        stack = 'failed';
       }
       data.push(
         {
           name: `${key}`,
           data: preData[key],
-          stack: stack
-        })
+          stack,
+        },
+      );
     }
-    return {data,legend,type}
+    return {data, legend, type};
   }
-  prepareToRenderForDay(preparedData,type){
+
+  prepareToRenderForDay(preparedData, type) {
     const data = [];
     const legend = [];
     let i = 0;
-    for (let key in preparedData[0]) {
+    for (const key in preparedData[0]) {
       legend.push(`${key}`);
       data.push({
         name: `${key}`,
@@ -297,11 +305,11 @@ export class Reports_controller {
           name: `${key}`,
           y: preparedData[0][key],
           x: i,
-        }]
+        }],
       });
-      i++
+      i += 1;
     }
-    return {data, legend,type};
+    return { data, legend, type };
   }
 
   prepareData([type, time, tasks]) {
@@ -311,35 +319,34 @@ export class Reports_controller {
     const currentDay = new Date(weekAgo).setHours(0, 0, 0, 0);
     const currentDayMonth = new Date(monthAgo).setHours(0, 0, 0, 0);
     if (type === 'tasks' && time === 'day') {
-      let type = 'Tasks';
+      const type = 'Tasks';
       const preparedData = this.prepareTasksDay(tasks, today);
-      return this.prepareToRenderForDay(preparedData,type)
+      return this.prepareToRenderForDay(preparedData, type);
     }
     if (type === 'pomodoros' && time === 'day') {
-      let type = 'Pomodoros';
+      const type = 'Pomodoros';
       const preparedData = this.preparePomodorosDay(tasks, today);
-      return this.prepareToRenderForDay(preparedData,type)
+      return this.prepareToRenderForDay(preparedData, type);
     }
     if (type === 'tasks' && time === 'week') {
-      let type = 'Tasks';
+      const type = 'Tasks';
       const preparedData = this.prepareTasksWeek(currentDay, today, tasks);
-      return this.prepareToRenderForWeekOrMonth(preparedData,type);
+      return this.prepareToRenderForWeekOrMonth(preparedData, type);
     }
     if (type === 'pomodoros' && time === 'week') {
-      let type = 'Pomodoros';
+      const type = 'Pomodoros';
       const preparedData = this.preparePomodorosWeek(currentDay, today, tasks);
-      return this.prepareToRenderForWeekOrMonth(preparedData,type);
+      return this.prepareToRenderForWeekOrMonth(preparedData, type);
     }
     if (type === 'tasks' && time === 'month') {
-      let type = 'Tasks';
+      const type = 'Tasks';
       const preparedData = this.prepareTasksMonth(currentDayMonth, today, tasks);
-     return  this.prepareToRenderForWeekOrMonth(preparedData,type);
-
+      return this.prepareToRenderForWeekOrMonth(preparedData, type);
     }
     if (type === 'pomodoros' && time === 'month') {
-      let type = 'Pomodoros';
-      const preparedData =  this.preparePomodorosMonth(currentDayMonth, today, tasks);
-      return this.prepareToRenderForWeekOrMonth(preparedData,type);
+      const type = 'Pomodoros';
+      const preparedData = this.preparePomodorosMonth(currentDayMonth, today, tasks);
+      return this.prepareToRenderForWeekOrMonth(preparedData, type);
     }
   }
 }

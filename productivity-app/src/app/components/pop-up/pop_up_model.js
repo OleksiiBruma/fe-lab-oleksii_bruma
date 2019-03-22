@@ -11,10 +11,12 @@ export class Pop_up_model {
   getNewTaskData() {
     return this.data;
   }
-  setTaskToBeEdited(id){
+
+  setTaskToBeEdited(id) {
     this.taskToBeEdited = id;
   }
-  getTaskToBeEdited(){
+
+  getTaskToBeEdited() {
     return this.taskToBeEdited;
   }
 }

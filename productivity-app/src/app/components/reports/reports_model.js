@@ -1,8 +1,8 @@
 export class Reports_model {
   constructor() {
     this.state = {
-      reports__type: "tasks",
-      reports__time: "day",
+      reports__type: 'tasks',
+      reports__time: 'day',
     };
     this.reportData = [];
   }

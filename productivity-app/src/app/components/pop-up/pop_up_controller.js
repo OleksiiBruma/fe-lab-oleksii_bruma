@@ -1,5 +1,5 @@
-import {Pop_up_view} from "./pop_up_view";
-import {Pop_up_model} from "./pop_up_model";
+import { Pop_up_view } from './pop_up_view';
+import { Pop_up_model } from './pop_up_model';
 
 export class Pop_up_controller {
   constructor(view, model) {
@@ -32,14 +32,15 @@ export class Pop_up_controller {
   }
 
   getScannedProperties() {
-    return this.view.scanProperties()
+    return this.view.scanProperties();
   }
 
   setNewTaskData() {
     const newTaskRawData = this.getScannedProperties();
-    newTaskRawData.id = +new Date();
-    newTaskRawData.status = "GLOBAL_LIST";
-    newTaskRawData.createDate = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+    newTaskRawData.id = Number(new Date());
+    newTaskRawData.status = 'GLOBAL_LIST';
+    newTaskRawData.createDate = new Date(new Date().getFullYear(),
+      new Date().getMonth(), new Date().getDate());
     newTaskRawData.completeDate = false;
     newTaskRawData.failedPomodoros = [];
     newTaskRawData.completedCount = false;
