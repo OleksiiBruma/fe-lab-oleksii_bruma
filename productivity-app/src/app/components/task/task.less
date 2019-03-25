@@ -67,6 +67,7 @@
 
     .task__indicator:hover:before {
       .icon(@icon-tomato);
+
       color: @beefsteak;
     }
 
@@ -88,10 +89,11 @@
       cursor: pointer;
     }
     .task__delete:before {
+      .icon(@icon-trash);
+
       position: absolute;
       top: 50%;
       left: 50%;
-      .icon(@icon-trash);
       transform: translate(-50%, -50%);
       font-size: @rem*45;
       color: @beefsteak;
@@ -120,13 +122,14 @@
   }
 
   &__date {
+    .font(@font-task-date);
+
     position: absolute;
     top: 50%;
     left: 60%;
     transform: translate(-50%, -50%);
     margin: 0;
     color: @bigbeef;
-    .font(@font-task-date);
   }
 
   &__date-day {
@@ -157,16 +160,18 @@
   }
 
   &__caption {
+    .font(@font-heading-3);
+
     display: block;
     margin: 0;
-    .font(@font-heading-3);
   }
 
   &__details {
+    .font(@font-paragraph);
+
     display: block;
     margin: 0;
     padding-top: @rem*5;
-    .font(@font-paragraph);
     color: @brandywine;
   }
 
@@ -180,12 +185,13 @@
   }
 
   &__indicator {
+    .font(@font-indicator);
+
     position: relative;
     border: 0;
     margin: 0;
     min-width: @rem*87;
     background-color: red;
-    .font(@font-indicator);
     color: @beefsteak;
     cursor: pointer;
   }
@@ -195,13 +201,14 @@
   }
 
   &__indicator:before {
+    .icon(@icon-tomato);
+
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: @rem*50;
     color: @beefsteak;
-    .icon(@icon-tomato);
   }
 
   &__indicator:hover:before {
@@ -221,12 +228,13 @@
     background: none;
 
     &:before {
+      .icon(@icon-edit);
+
       position: absolute;
       z-index:2;
       left:50%;
       top:50%;
       transform: translate(-50%, -50%);
-      .icon(@icon-edit);
     }
 
     &:hover,
@@ -252,12 +260,13 @@
     background: none;
 
     &:before {
+      .icon(@icon-arrows-up);
+
       position: absolute;
       top: 50%;
       left: 50%;
       z-index:2;
       transform: translate(-50%, -50%);
-      .icon(@icon-arrows-up);
     }
 
     &:hover,

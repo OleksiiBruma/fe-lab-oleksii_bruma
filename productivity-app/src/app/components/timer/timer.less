@@ -2,14 +2,16 @@
 @import ( reference ) '~@less-helpers-module/_variables.less';
 .timer {
   &__title {
-    margin: 0;
     .font(@font-heading-1);
+
+    margin: 0;
     color: @beefsteak;
     text-align: center;
   }
 
   &__description {
     .font(@font-subtitle);
+
     color: @beefsteak;
     text-align: center;
     margin: @rem*25 0 0;
@@ -98,8 +100,9 @@
   }
 
   &__time-basic {
-    display: block;
     .font(@font-indicator-timer);
+
+    display: block;
     color: @beefsteak;
     text-align: center;
 
@@ -123,12 +126,13 @@
     height: @rem*25;
 
     &:before {
+      .icon(@icon-add);
+
       position: absolute;
       top: 50%;
       left: 50%;
       content: "";
       display: block;
-      .icon(@icon-add);
       font-size: @rem*15;
       color: @alicante;
       transform: translate(-50%, -50%);

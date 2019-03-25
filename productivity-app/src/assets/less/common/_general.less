@@ -18,6 +18,10 @@ html, body {
   text-align: center;
 
   &__item {
+    .button-bg(success);
+    .button-bg(info);
+    .button-bg(danger);
+
     display: inline-block;
     background: none;
     border: none;
@@ -26,9 +30,6 @@ html, body {
     color: @beefsteak;
     min-width: @rem*120;
     cursor: pointer;
-    .button-bg(success);
-    .button-bg(info);
-    .button-bg(danger);
 
     &:first-child {
       margin: 0 @rem*10 0 0;
@@ -80,8 +81,9 @@ input[type="radio"] {
   width: @rem*300;
 
   &__label {
-    position: relative;
     .font(@font-caption);
+
+    position: relative;
     color: @beefsteak;
 
     &--work-time {
@@ -102,8 +104,9 @@ input[type="radio"] {
   }
 
   &__description {
-    width: 100%;
     .font(@font-caption);
+
+    width: 100%;
     color: @alicante;
   }
 
@@ -142,6 +145,7 @@ input[type="radio"] {
 
 .subcaption {
   .font(@font-subtitle2);
+
   color: @alicante;
   text-align: center;
 }
@@ -158,12 +162,13 @@ input[type="radio"] {
   }
 
   &__link {
+    .font(@font-caption);
+
     display: block;
     padding: 0 @rem*10;
     text-decoration: none;
     color: @alicante;
     border-right: @rem*1 @alicante solid;
-    .font(@font-caption);
     line-height: @rem*14;
   }
 
@@ -240,11 +245,12 @@ input[type="radio"] {
 
 
   &__caption {
+    .font(@font-heading-1);
+
     margin: 0;
     text-align: center;
-    .font(@font-heading-1);
     color: @beefsteak;
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: @rem*600) {
       position: absolute;
       top: -5.4rem;
       &--top-left {
@@ -338,8 +344,9 @@ input[type="radio"] {
   }
 
   &__message {
-    margin: 0 auto 0 @rem*100;
     .font(@font-button);
+
+    margin: 0 auto 0 @rem*100;
     color: @beefsteak;
     text-align: center;
     line-height: @rem*18;
@@ -356,6 +363,7 @@ input[type="radio"] {
 
       &:before {
         .icon(@icon-tomato-info);
+
         font-size: @rem*40;
         color: @beefsteak;
       }
@@ -370,6 +378,7 @@ input[type="radio"] {
 
       &:before {
         .icon(@icon-tomato-info);
+
         font-size: @rem*40;
         color: @beefsteak;
       }
@@ -384,6 +393,7 @@ input[type="radio"] {
 
       &:before {
         .icon(@icon-tomato-error);
+
         font-size: @rem*40;
         color: @beefsteak;
       }
@@ -398,6 +408,7 @@ input[type="radio"] {
 
       &:before {
         .icon(@icon-tomato-success);
+
         font-size: @rem*40;
         color: @beefsteak;
       }
@@ -424,11 +435,12 @@ input[type="radio"] {
     position: relative;
 
     &::before {
+      .icon(@icon-close);
+
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      .icon(@icon-close);
       font-size: @rem*30;
     }
 
@@ -459,9 +471,10 @@ input[type="radio"] {
   }
 
   &__message {
+    .font(@font-message);
+
     margin: @rem*80 auto 0;
     text-align: center;
-    .font(@font-message);
     color: @alicante;
   }
 }

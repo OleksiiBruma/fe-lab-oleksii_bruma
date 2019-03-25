@@ -17,12 +17,13 @@
   }
 
   &__item {
+    .font(@font-paragraph);
+
     position: relative;
     padding-bottom: @rem*10;
     border-bottom: @rem*1 solid @alicante;
     max-width: @rem*245;
     margin: @rem*34 auto 0;
-    .font(@font-paragraph);
     color: @alicante;
 
     &:first-child {
@@ -81,8 +82,9 @@
 
 
   &__caption {
-    margin-top: @rem*80;
     .font(@font-caption2);
+
+    margin-top: @rem*80;
     color: @beefsteak;
     text-align: center;
   }
@@ -92,10 +94,11 @@
 .number {
 
   &__input {
+    .font(@font-paragraph);
+
     flex-basis: 2.18rem;
     flex-grow: 2;
     padding-bottom:@rem*5;
-    .font(@font-paragraph);
     text-align: center;
     color: @alicante;
     background:transparent;
@@ -121,9 +124,10 @@
     &--up{
       padding-left:@rem*20;
       &:before{
+        .icon(@icon-add);
+
         align-self: center;
         display:block;
-        .icon(@icon-add);
      }
     }
     &--disabled:hover {
@@ -134,8 +138,9 @@
       padding-right: @rem*20;
 
       &:before{
-        align-self: center;
         .icon(@icon-minus);
+
+        align-self: center;
       }
     }
   }
@@ -143,8 +148,9 @@
 
 .progress {
   &__bottom-scale {
-    display:flex;
     .font(@font-caption);
+
+    display:flex;
     color:@alicante;
     padding-top:@rem*15;
     position:relative;
@@ -174,9 +180,10 @@
     }
   }
   &__top-scale{
+    .font(@font-caption);
+
     display:flex;
     flex-wrap: nowrap;
-    .font(@font-caption);
     padding-bottom:@rem*15;
     color:@alicante;
   }
@@ -255,7 +262,7 @@
   }
 }
 .page__toggle--settings{
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: @rem*600) {
     top: -0.5rem;
   }
 }

@@ -74,12 +74,12 @@
   }
 
   &__text-input {
+    .font(@font-paragraph);
+
     display: inline-block;
     width: 100%;
     background: none;
     border: 0;
-
-    .font(@font-paragraph);
     color: @beefsteak;
 
     &::-webkit-input-placeholder {
@@ -96,10 +96,11 @@
   }
 
   &__title {
+    .font(@font-caption);
+
     display: inline-block;
     width: 100%;
     direction: ltr;
-    .font(@font-caption);
     color: @beefsteak;
     padding-bottom: @rem*10;
     cursor: pointer;
@@ -133,9 +134,10 @@
   }
 
   &__caption {
+    .font(@font-heading-1);
+
     margin: 0;
     text-align: center;
-    .font(@font-heading-1);
     color: @beefsteak;
   }
 
@@ -168,8 +170,9 @@
     background: none;
 
     &::before {
-      position: absolute;
       .icon(@icon-close);
+
+      position: absolute;
       transform: translate(-40%, -50%);
       font-size: @rem*20;
     }
@@ -199,8 +202,9 @@
     border: 0;
 
     &::before {
-      position: absolute;
       .icon(@icon-check);
+
+      position: absolute;
       transform: translate(-40%, -50%);
       font-size: @rem*20;
     }
@@ -226,8 +230,9 @@
     border: 0;
 
     &::before {
-      position: absolute;
       .icon(@icon-trash);
+
+      position: absolute;
       transform: translate(-50%, -50%);
       font-size: @rem*20;
     }
@@ -249,10 +254,11 @@
   }
 
   &__message {
+    .font(@font-message);
+
     margin: @rem*155 auto 0;
     text-align: center;
     width: 90%;
-    .font(@font-message);
     color: @alicante;
   }
 
@@ -275,17 +281,20 @@
 
   td a {
     .font(@font-caption);
+
     color: white;
     background: @adoration;
   }
 
   .ui-state-active {
     .font(@font-caption);
-    border: @hanover 1px solid;
+
+    border: @hanover @rem*1 solid;
   }
 
   .ui-datepicker-month, .ui-datepicker-year {
     .font(@font-caption);
+
     color: white;
   }
 }

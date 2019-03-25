@@ -1,5 +1,5 @@
-//Mixin for fonts
 
+//Mixin for fonts
 .font(@font-name) {
   font-family: @font-name[family];
   font-weight: @font-name[weight];
@@ -16,7 +16,6 @@
 }
 
 //Mixin for icons
-
 .icon (@icon-name) {
   content: @icon-name;
   speak: none;
@@ -26,14 +25,15 @@
   font-variant: normal;
   text-transform: none;
   line-height: 1;
+
   //Better Font Rendering
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
 }
-
 //Mixin for task modifiers
 //priority
+
 .task-modifier-priority (@priority) {
   .task__indicator {
     background-color: ~"@{@{priority}}";
@@ -57,14 +57,14 @@
 }
 
 //Mixin for color links
-
 .colors-for-links () {
   & {
     color: @alicante;
   }
   &:hover,
   &:focus,
-  &:active {
+  &:active,
+  &:visited {
     color: @hanover;
   }
 }
@@ -101,7 +101,6 @@
 }
 
 //Mixin for buttons
-
 .button-bg (@color) {
   &--@{color} {
     background: e("@{@{@{color}}}");

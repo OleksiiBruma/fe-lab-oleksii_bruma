@@ -11,9 +11,10 @@
   }
 
   &__item--caption {
+    .font(@font-heading-2);
+
     margin-left: @rem*20;
     margin-bottom: @rem*15;
-    .font(@font-heading-2);
     line-height: 1;
     text-transform: uppercase;
   }
@@ -59,10 +60,11 @@
   }
 
   &__message {
+    .font(@font-message);
+
     position: relative;
     margin-top: @rem*40;
     margin-bottom: @rem*120 - @rem*40;
-    .font(@font-message);
     color: @alicante;
     text-align: center;
 
@@ -70,6 +72,7 @@
 
       &:before {
         .icon(@icon-arrow_circle);
+
         position: absolute;
         bottom: @rem*-30;
         left: 50%;
@@ -80,22 +83,25 @@
   }
 }
 .open-button {
+  .font(@font-caption2);
+  .colors-for-links ();
+
   position: relative;
   padding: 0;
   background: none;
   border: none;
-  .font(@font-caption2);
-  .colors-for-links ();
   line-height: 1;
   cursor: pointer;
 
   &__icon:before {
     .icon(@icon-global-list-arrow-right);
+
     font-size: @rem*11;
   }
 
   &__icon--active:before {
     .icon(@icon-global-list-arrow-down);
+
     font-size: @rem*11;
   }
 }
