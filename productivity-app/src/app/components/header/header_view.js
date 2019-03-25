@@ -1,7 +1,6 @@
 import {EventBus} from '../../eventBus';
-import template from './header.handlebars';
-
-require('./header.less');
+import template from './header.hbs';
+import header from './header.less';
 
 export class Header_view {
   constructor() {

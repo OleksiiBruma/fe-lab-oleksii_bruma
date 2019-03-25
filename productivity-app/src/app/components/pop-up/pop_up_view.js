@@ -1,10 +1,8 @@
-import templateAdd from './pop_up_add.handlebars';
-import templateEdit from './pop_up_edit.handlebars';
-import templateRemove from './pop_up_remove.handlebars';
-
-require('./pop_up.less');
-
-require('jquery-ui/ui/widgets/datepicker');
+import templateAdd from './pop_up_add.hbs';
+import templateEdit from './pop_up_edit.hbs';
+import templateRemove from './pop_up_remove.hbs';
+import popUpStyles from './pop_up.less';
+import datepicker from 'jquery-ui/ui/widgets/datepicker';
 
 export class Pop_up_view {
   constructor() {

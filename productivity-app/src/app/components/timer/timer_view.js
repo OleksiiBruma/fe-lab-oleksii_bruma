@@ -1,12 +1,11 @@
-import template from './timerInit.handlebars';
-import timerStart from './timerStart.handlebars';
-import timerBreak from './timerBreakFail.handlebars';
-import timerBreakSuccess from './timerBrakeSuccess.handlebars';
-import timerTaskCompleted from './timerTaskCompleted.handlebars';
-import pomodoros from './timerPomodoros.handlebars';
-import pomodorosPlus from './pomodorosPlus.handlebars';
-
-require('./timer.less');
+import template from './timerInit.hbs';
+import timerStart from './timerStart.hbs';
+import timerBreak from './timerBreakFail.hbs';
+import timerBreakSuccess from './timerBrakeSuccess.hbs';
+import timerTaskCompleted from './timerTaskCompleted.hbs';
+import pomodoros from './timerPomodoros.hbs';
+import pomodorosPlus from './pomodorosPlus.hbs';
+import timerStyles from './timer.less';
 
 export class Timer_view {
   constructor() {

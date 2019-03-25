@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import template from './notification.handlebars';
+import template from './notification.hbs';
 
 (function ($) {
   $.fn.notification = function (options) {

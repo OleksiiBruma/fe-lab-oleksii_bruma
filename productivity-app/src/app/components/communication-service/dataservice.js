@@ -1,8 +1,7 @@
 import $ from 'jquery';
 import { EventBus } from '../../eventBus';
-
-const firebase = require('firebase/app');
-require('firebase/database');
+import firebase from 'firebase/app';
+import firebasData from 'firebase/database';
 
 export class Database {
   constructor() {

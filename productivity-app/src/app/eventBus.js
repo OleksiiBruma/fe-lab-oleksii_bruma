@@ -149,7 +149,6 @@ EventBus.subscribe('closeRemoveModal', () => {
 });
 EventBus.subscribe('submitDeleteTask', () => {
   task_controller.removeTasks();
-  pop_up_controller.closeSelf();
 });
 EventBus.subscribe('deleteTask', (id) => {
   database.deleteData(database.getFIDTaskById(id));

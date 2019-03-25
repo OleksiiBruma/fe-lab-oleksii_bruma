@@ -1,5 +1,5 @@
-require('./reports.less');
-import template from "./reports.handlebars";
+import reportsStyles from './reports.less';
+import template from "./reports.hbs";
 import Highcharts from 'highcharts';
 import Exporting from 'highcharts/modules/exporting';
 

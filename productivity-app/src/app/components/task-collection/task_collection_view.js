@@ -1,9 +1,8 @@
 import { EventBus } from '../../eventBus.js';
-import template from './task_collection.handlebars';
-import globalListTemplate from './task_collection_globalList.handlebars';
-import globalRemove from './task_collection_globalRemove.handlebars';
-
-require('./task_collection.less');
+import template from './task_collection.hbs';
+import globalListTemplate from './task_collection_globalList.hbs';
+import globalRemove from './task_collection_globalRemove.hbs';
+import taskCollectionStyles from './task_collection.less';
 
 export class Task_collection_view {
   constructor() {

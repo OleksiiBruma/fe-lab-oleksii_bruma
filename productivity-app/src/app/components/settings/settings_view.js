@@ -1,6 +1,5 @@
-import template from './settings.handlebars';
-
-require('./settings.less');
+import template from './settings.hbs';
+import settingsStyles from './settings.less';
 
 export class Settings_view {
   constructor() {

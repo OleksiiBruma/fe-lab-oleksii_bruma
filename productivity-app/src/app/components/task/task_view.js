@@ -1,6 +1,5 @@
-import taskTemplate from './task.handlebars';
-
-require('./task.less');
+import taskTemplate from './task.hbs';
+import taskStyles from './task.less';
 
 export class Task_view {
   constructor() {

@@ -46,7 +46,7 @@ module.exports = {
         use: ['file-loader'],
       },
       {
-        test: /\.handlebars$/,
+        test: /\.hbs$/,
         loader: 'handlebars-loader',
         exclude: /(node_modules)/,
         query: {

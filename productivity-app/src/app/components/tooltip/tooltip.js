@@ -1,5 +1,5 @@
-require('jquery-ui/ui/widgets/tooltip');
-require('./tooltip.less');
+import tooltip from 'jquery-ui/ui/widgets/tooltip';
+import tooltipStyles from './tooltip.less';
 
 $(() => {
   $(document).tooltip({
