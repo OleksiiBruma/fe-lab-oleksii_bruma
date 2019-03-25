@@ -60,8 +60,8 @@ export class Reports_controller {
   }
 
   setRawDataPriorityPomodoro([priority,
-    tasks,
-    task]) {
+                               tasks,
+                               task]) {
     switch (priority) {
       case 1:
         this.rawData.urgent = Number(tasks[task].completedCount.length);
@@ -309,7 +309,7 @@ export class Reports_controller {
       });
       i += 1;
     }
-    return { data, legend, type };
+    return {data, legend, type};
   }
 
   prepareData([type, time, tasks]) {

@@ -1,11 +1,11 @@
-import { pop_up_controller } from './components/pop-up/pop_up_controller';
-import { database } from './components/communication-service/dataservice';
-import { task_collection_controller } from './components/task-collection/task_collection_controller';
-import { task_controller } from './components/task/task_controller';
-import { header_controller } from './components/header/header_controller';
-import { settings_controller } from './components/settings/settings_controller';
-import { timer_controller } from './components/timer/timer_controller';
-import { reports_controller } from './components/reports/reports_controller';
+import {pop_up_controller} from './components/pop-up/pop_up_controller';
+import {database} from './components/communication-service/dataservice';
+import {task_collection_controller} from './components/task-collection/task_collection_controller';
+import {task_controller} from './components/task/task_controller';
+import {header_controller} from './components/header/header_controller';
+import {settings_controller} from './components/settings/settings_controller';
+import {timer_controller} from './components/timer/timer_controller';
+import {reports_controller} from './components/reports/reports_controller';
 import * as Router from './router';
 
 export const EventBus = {
@@ -17,7 +17,7 @@ export const EventBus = {
   },
   subscribe(eventName, handlerFn) {
     this.handlers.push(
-      { eventName, handlerFn },
+      {eventName, handlerFn},
     );
   },
 };
@@ -34,6 +34,9 @@ EventBus.subscribe('renderLists', () => {
   task_collection_controller.dailyListRender();
 });
 EventBus.subscribe('databaseUpdated', () => {
+  task_collection_controller.setTasks(database.getData());
+  task_controller.setTasks(database.getData());
+  settings_controller.initModel();
   if (location.pathname === '/') {
     header_controller.initFull('tasklist');
     task_controller.renderTasks(task_collection_controller.getState());
@@ -43,13 +46,8 @@ EventBus.subscribe('databaseUpdated', () => {
     reports_controller.init(database.getData());
     header_controller.listenForSticky();
   }
-  task_collection_controller.setTasks(database.getData());
-  task_controller.setTasks(database.getData());
-  settings_controller.initModel();
 });
 EventBus.subscribe('goToTaskList', () => {
-  header_controller.initFull('tasklist');
-  header_controller.listenForSticky();
   database.updateDataBase();
 });
 
