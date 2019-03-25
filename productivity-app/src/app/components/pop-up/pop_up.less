@@ -16,9 +16,10 @@
     border-bottom: @rem*1 solid @alicante;
     margin-bottom: @rem*29;
     padding-bottom: @rem*7;
-    &--estimation{
-      display:flex;
-      justify-content:flex-start;
+
+    &--estimation {
+      display: flex;
+      justify-content: flex-start;
     }
 
     &:last-child {
@@ -36,6 +37,24 @@
     width: @rem*410;
     height: @rem*540;
     background: @adoration;
+    @media @mobile-l {
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      transform: translate(0, 0);
+      width: auto;
+      height: auto;
+    }
+    @media @mobile-p {
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      transform: translate(0, 0);
+      width: auto;
+      height: auto;
+    }
   }
 
   &__list {
@@ -47,9 +66,10 @@
   &__field {
     border: 0;
     padding: 0;
-    &--pomodoro{
-     direction: rtl;
-      width:116*@rem;
+
+    &--pomodoro {
+      direction: rtl;
+      width: 116*@rem;
     }
   }
 
@@ -125,17 +145,17 @@
     width: @rem*20;
     height: @rem*20;
     margin: 0;
-    background: url("/images/empty-tomato.svg") no-repeat  center;
+    background: url("/images/empty-tomato.svg") no-repeat center;
     cursor: pointer;
     direction: ltr;
   }
 
-  &__pomodoro{
+  &__pomodoro {
     direction: ltr;
   }
 
   &__pomodoro:checked ~ &__estimate {
-    background: url("/images/fill tomato.svg") no-repeat  center;
+    background: url("/images/fill tomato.svg") no-repeat center;
   }
 
   &__close {
@@ -246,21 +266,25 @@
   border: 0;
   border-radius: 0;
   color: white;
-  .ui-datepicker-header{
-    background:#8da5b8 ;
+
+  .ui-datepicker-header {
+    background: #8da5b8;
     border: 0;
     border-radius: 0;
   }
-  td a{
+
+  td a {
     .font(@font-caption);
-  color: white;
-  background: @adoration;
+    color: white;
+    background: @adoration;
   }
-  .ui-state-active{
+
+  .ui-state-active {
     .font(@font-caption);
     border: @hanover 1px solid;
   }
-  .ui-datepicker-month, .ui-datepicker-year{
+
+  .ui-datepicker-month, .ui-datepicker-year {
     .font(@font-caption);
     color: white;
   }

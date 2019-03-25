@@ -1,34 +1,33 @@
 @import ( reference ) '~@less-helpers-module/_mixins.less';
 @import ( reference ) '~@less-helpers-module/_variables.less';
-
 .timer {
   &__title {
-    margin:0;
+    margin: 0;
     .font(@font-heading-1);
     color: @beefsteak;
     text-align: center;
   }
 
-  &__description{
+  &__description {
     .font(@font-subtitle);
     color: @beefsteak;
     text-align: center;
-    margin:@rem*25 0 0;
+    margin: @rem*25 0 0;
   }
 
   &__estimates {
     text-align: center;
-    margin:@rem*35 auto 0;
+    margin: @rem*35 auto 0;
   }
 
   &__estimate {
     position: relative;
     display: inline-block;
     padding-right: @rem*10;
-    width:@rem*25;
+    width: @rem*25;
     height: @rem*25;
-    margin:0;
-    background: url("/images/empty-tomato.svg")  no-repeat;
+    margin: 0;
+    background: url("/images/empty-tomato.svg") no-repeat;
   }
 
   &__estimate--success {
@@ -38,11 +37,12 @@
   &__estimate--failed {
     background: url("/images/tomato-failed.svg") no-repeat;
   }
-  &__dial{
+
+  &__dial {
     position: relative;
     margin: @rem*65 auto 0;
-    width:@rem*254;
-    height:@rem*254;
+    width: @rem*254;
+    height: @rem*254;
     border-radius: 50%;
     border: @rem*6 solid @high;
     box-shadow: 0 @rem*5 @rem*83 @rem*17 rgba(21, 43, 59, 0.25);
@@ -74,41 +74,41 @@
 
     .circle {
       stroke-dasharray: @rem*660;
-      stroke-dashoffset: 41.25rem;
+      stroke-dashoffset: @rem*388;
       stroke-width: @rem*30;
       stroke: @alicante;
       fill: none;
-      -webkit-animation: startTimer 60s linear 1;
-      animation: startTimer 60s linear 1;
 
-      &--done{
+      &--done {
         stroke-dashoffset: 0;
       }
+
       &--failed {
-        stroke-dashoffset: 41.25rem;
+        stroke-dashoffset: @rem*100;
       }
     }
   }
+
   &__time-number {
     font-family: @font-family-roboto, sans-serif;
     font-size: @rem*100;
-    display:block;
+    display: block;
     color: @beefsteak;
-    line-height:1;
+    line-height: 1;
   }
 
   &__time-basic {
-    display:block;
+    display: block;
     .font(@font-indicator-timer);
     color: @beefsteak;
     text-align: center;
 
-    &--brake-is-over{
+    &--brake-is-over {
       padding: 0 @rem*38;
     }
   }
 
-  &__phase{
+  &__phase {
     font-size: @rem*15;
     font-family: @font-family-roboto, sans-serif;
     font-weight: normal;
@@ -124,22 +124,22 @@
 
     &:before {
       position: absolute;
-      top:50%;
-      left:50%;
-      content:"";
-      display:block;
+      top: 50%;
+      left: 50%;
+      content: "";
+      display: block;
       .icon(@icon-add);
       font-size: @rem*15;
       color: @alicante;
       transform: translate(-50%, -50%);
     }
 
-    &:hover:before{
-      color:@hanover;
+    &:hover:before {
+      color: @hanover;
     }
   }
 
-  &__buttons{
+  &__buttons {
     margin: @rem*70 0;
   }
 
@@ -157,9 +157,9 @@
       background: @hanover;
     }
 
-    &--right{
-      right:@rem*36;
-      left:unset;
+    &--right {
+      right: @rem*36;
+      left: auto;
     }
   }
 }
